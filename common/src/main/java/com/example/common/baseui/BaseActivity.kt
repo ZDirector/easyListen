@@ -15,10 +15,10 @@ import com.example.common.baseui.dialog.LoadingDialog
 
 abstract class BaseActivity<VDB : ViewDataBinding, VM : BaseViewModel> : AppCompatActivity() {
 
-    private var _sViewModel : VM? = null
-    private val sViewModel get() = _sViewModel
-    private var _sViewDateBinding: VDB? = null
-    private val sViewDateBinding get() = _sViewDateBinding
+    private lateinit var _sViewModel : VM
+    open val viewModel get() = _sViewModel
+    private lateinit var _sViewDateBinding: VDB
+    open val viewDateBinding get() = _sViewDateBinding
     private lateinit var loadingDialog: Dialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,7 +33,7 @@ abstract class BaseActivity<VDB : ViewDataBinding, VM : BaseViewModel> : AppComp
 
     private fun handlerVDB() {
         _sViewDateBinding = DataBindingUtil.setContentView(this, getLayoutId())
-        sViewDateBinding?.lifecycleOwner = this
+        _sViewDateBinding.lifecycleOwner = this
     }
 
     private fun handlerVM() {
@@ -47,17 +47,15 @@ abstract class BaseActivity<VDB : ViewDataBinding, VM : BaseViewModel> : AppComp
         }
         _sViewModel = ViewModelProvider(this)[viewModelClass] as VM
         if (getVariableId() > 0) {
-            if (sViewModel != null) {
-                lifecycle.addObserver(sViewModel!!)
-            }
-            sViewDateBinding?.setVariable(getVariableId(), sViewModel)
+            lifecycle.addObserver(_sViewModel)
+            _sViewDateBinding.setVariable(getVariableId(), _sViewModel)
         }
     }
 
     abstract fun getLayoutId(): Int
 
     private fun receiveLiveData() {
-        _sViewModel?.loadingEvent?.observe(this) { aBoolean ->
+        _sViewModel.loadingEvent.observe(this) { aBoolean ->
             if (aBoolean) {
                 showLoading()
             } else {

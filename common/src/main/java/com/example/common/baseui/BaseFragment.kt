@@ -1,5 +1,6 @@
 package com.example.common.baseui
 
+import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,22 +14,23 @@ import com.example.common.baseui.dialog.LoadingDialog
 import java.lang.reflect.ParameterizedType
 
 abstract class BaseFragment<VDB : ViewDataBinding, VM : BaseViewModel> : Fragment() {
-    private var viewModel: VM? = null
-    private var viewDataBinding: VDB? = null
 
-
-    private lateinit var loadingDialog : LoadingDialog
+    private lateinit var _sViewModel : VM
+    open val viewModel get() = _sViewModel
+    private lateinit var _sViewDateBinding: VDB
+    open val viewDateBinding get() = _sViewDateBinding
+    private lateinit var loadingDialog: Dialog
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewDataBinding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false)
-        return if (viewDataBinding != null) {
-            viewDataBinding!!.lifecycleOwner = this
-            viewDataBinding!!.root
-        } else inflater.inflate(getLayoutId(), container, false)
+        _sViewDateBinding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false)
+        return run {
+            _sViewDateBinding.lifecycleOwner = this
+            _sViewDateBinding.root
+        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -48,40 +50,30 @@ abstract class BaseFragment<VDB : ViewDataBinding, VM : BaseViewModel> : Fragmen
             //使用父类的类型
             BaseViewModel::class.java
         }
-        viewModel = ViewModelProvider(requireActivity())[viewModelClass] as VM //找到Activity对于的VM
-        if (viewModel == null) {
-            viewModel = ViewModelProvider(this)[viewModelClass] as VM //fragment自己的VM 不是Activity
-        }
+        _sViewModel = ViewModelProvider(requireActivity())[viewModelClass] as VM //找到Activity对于的VM
         if (getVariableId() > 0) {
-            if (viewModel != null) lifecycle.addObserver(viewModel!!)
-            viewDataBinding?.setVariable(getVariableId(), viewModel)
+            lifecycle.addObserver(_sViewModel)
+            _sViewDateBinding.setVariable(getVariableId(), _sViewModel)
         }
     }
 
     private fun receiveLiveData() {
-        if (viewModel != null){
-            viewModel!!.loadingEvent.observe(viewLifecycleOwner){ aBoolean ->
-                if (aBoolean) {
-                    showLoading()
-                } else {
-                    dismissLoading()
-                }
+        _sViewModel.loadingEvent.observe(viewLifecycleOwner){ aBoolean ->
+            if (aBoolean) {
+                showLoading()
+            } else {
+                dismissLoading()
             }
         }
     }
 
     abstract fun getLayoutId(): Int
 
-    open fun getViewModel(): VM {
-        return viewModel!!
-    }
-
-    open fun getViewDataBinding(): VDB {
-        return viewDataBinding!!
-
-    }
-
     abstract fun initData(savedInstanceState: Bundle?)
+
+    open fun setLoadingDialog(dialog : Dialog){
+        loadingDialog = dialog
+    }
 
     /**
      * 初始化ViewModel的id
@@ -102,8 +94,7 @@ abstract class BaseFragment<VDB : ViewDataBinding, VM : BaseViewModel> : Fragmen
 
     override fun onDestroy() {
         super.onDestroy()
-        viewDataBinding?.unbind()
-        viewDataBinding = null
+        _sViewDateBinding.unbind()
     }
 
 }

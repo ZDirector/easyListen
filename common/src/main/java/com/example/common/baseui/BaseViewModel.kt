@@ -1,6 +1,8 @@
 package com.example.common.baseui
 
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
+import com.example.common.utils.MyApplication
 
 open class BaseViewModel : LifeViewModel(), IViewModel {
 
@@ -14,7 +16,7 @@ open class BaseViewModel : LifeViewModel(), IViewModel {
         loadingEvent.postValue(false)
     }
 
-    override fun onError() {
-
+    override fun onError(msg : String) {
+        Toast.makeText(MyApplication.context,msg,Toast.LENGTH_SHORT).show()
     }
 }
