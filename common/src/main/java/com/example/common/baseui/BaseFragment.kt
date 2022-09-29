@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.CallSuper
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
@@ -15,86 +16,87 @@ import java.lang.reflect.ParameterizedType
 
 abstract class BaseFragment<VDB : ViewDataBinding, VM : BaseViewModel> : Fragment() {
 
-    private lateinit var _sViewModel : VM
-    open val viewModel get() = _sViewModel
-    private lateinit var _sViewDateBinding: VDB
-    open val viewDateBinding get() = _sViewDateBinding
-    private lateinit var loadingDialog: Dialog
+    // Protected Field Start ----<<<<
+    //
+    //
 
-    override fun onCreateView(
+    protected val viewModel: VM get() = _viewModel!!
+
+    protected val binding: VDB get() = _binding!!
+
+    /**
+     * @LayoutRes
+     */
+    protected abstract val layoutId: Int
+
+    /**
+     * ViewModel 的 ID ，默认不设置 ID
+     */
+    protected val variableId: Int = -1
+
+    protected abstract fun initData(savedInstanceState: Bundle?)
+
+    protected open fun initDialog(): Dialog =
+        LoadingDialog(requireContext(), R.layout.dialog_loading)
+
+    //
+    //
+    // Protected Field End ----<<<<
+
+    private var _viewModel: VM? = null
+
+    private var _binding: VDB? = null
+
+    private val dialog: Dialog by lazy { initDialog() }
+
+    // final
+    final override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        _sViewDateBinding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false)
-        return run {
-            _sViewDateBinding.lifecycleOwner = this
-            _sViewDateBinding.root
-        }
+    ): View {
+        _binding = DataBindingUtil.inflate(inflater, layoutId, container, false)
+        binding.lifecycleOwner = this
+        return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        handlerVM()
-        loadingDialog = LoadingDialog(requireActivity(), R.style.trans_Dialog)
-        receiveLiveData()
+    @CallSuper
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initViewModel()
+        viewModel.loadingEvent.observe(viewLifecycleOwner, ::showOrHideDialog)
         initData(savedInstanceState)
     }
 
-    private fun handlerVM() {
-        val viewModelClass: Class<BaseViewModel>
+    @CallSuper
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding.unbind()
+        _binding = null
+    }
+
+    @Suppress("UNCHECKED_CAST")
+    private fun initViewModel() {
         val type = javaClass.genericSuperclass
-        viewModelClass = if (type is ParameterizedType) {
+        val clz = if (type is ParameterizedType) {
             type.actualTypeArguments[1] as Class<BaseViewModel> //获取第1个注解即VM的注解类型
         } else {
             //使用父类的类型
             BaseViewModel::class.java
         }
-        _sViewModel = ViewModelProvider(requireActivity())[viewModelClass] as VM //找到Activity对于的VM
-        if (getVariableId() > 0) {
-            lifecycle.addObserver(_sViewModel)
-            _sViewDateBinding.setVariable(getVariableId(), _sViewModel)
+        _viewModel = ViewModelProvider(this)[clz] as VM
+        if (variableId > 0) {
+            lifecycle.addObserver(viewModel)
+            binding.setVariable(variableId, viewModel)
         }
     }
 
-    private fun receiveLiveData() {
-        _sViewModel.loadingEvent.observe(viewLifecycleOwner){ aBoolean ->
-            if (aBoolean) {
-                showLoading()
-            } else {
-                dismissLoading()
-            }
+    private fun showOrHideDialog(isVisible: Boolean) {
+        if (isVisible && !dialog.isShowing) {
+            dialog.show()
+        } else if (!isVisible && dialog.isShowing) {
+            dialog.hide()
         }
-    }
-
-    abstract fun getLayoutId(): Int
-
-    abstract fun initData(savedInstanceState: Bundle?)
-
-    open fun setLoadingDialog(dialog : Dialog){
-        loadingDialog = dialog
-    }
-
-    /**
-     * 初始化ViewModel的id
-     *
-     * @return BR的id
-     */
-    abstract fun getVariableId(): Int
-
-    open fun showLoading() {
-        if (!loadingDialog.isShowing) {
-            loadingDialog.show()
-        }
-    }
-
-    open fun dismissLoading() {
-        loadingDialog.dismiss()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        _sViewDateBinding.unbind()
     }
 
 }

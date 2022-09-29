@@ -17,5 +17,4 @@ class MyApplication : Application() {
         CrashHandler.instance.init(context)
     }
 
-
 }

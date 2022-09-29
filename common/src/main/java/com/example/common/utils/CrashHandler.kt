@@ -17,14 +17,12 @@ import kotlin.system.exitProcess
 /**
  * 全局捕获异常
  * 当程序发生Uncaught异常的时候,有该类来接管程序,并记录错误日志
- *
  */
-
 class CrashHandler private constructor() : Thread.UncaughtExceptionHandler {
-    private var mContext: Context? = null
+    private lateinit var mContext: Context
     private var mDefaultHandler: Thread.UncaughtExceptionHandler? = null
 
-    fun init(context: Context?) {
+    fun init(context: Context) {
         mContext = context
         mDefaultHandler = Thread.getDefaultUncaughtExceptionHandler()
         Thread.setDefaultUncaughtExceptionHandler(this)
@@ -53,11 +51,12 @@ class CrashHandler private constructor() : Thread.UncaughtExceptionHandler {
      * @param c
      * @param ex
      */
-    private fun collectDeviceInfo(c: Context?, ex: Throwable): String {
-        val infos: HashMap<String, String> = HashMap()
+    @Suppress("Deprecation")
+    private fun collectDeviceInfo(c: Context, ex: Throwable): String {
+        val infos: HashMap<String, String> = hashMapOf()
         //收集版本信息
         try {
-            val pm = c!!.packageManager
+            val pm = c.packageManager
             val pi = pm.getPackageInfo(c.packageName, PackageManager.GET_ACTIVITIES)
             if (pi != null) {
                 val versionCode = pi.versionCode.toString() + ""
@@ -123,9 +122,10 @@ class CrashHandler private constructor() : Thread.UncaughtExceptionHandler {
                 sdCardDir.createNewFile()
             }
         }
-        val time = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
-            .format(Date())
-        val fileName = "$time.txt"
+        val fileName = "${
+            SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
+                .format(Date())
+        }.txt"
         //新建文件
         val saveFile = File(sdCardDir, fileName)
         if (!saveFile.exists()) {
@@ -141,6 +141,8 @@ class CrashHandler private constructor() : Thread.UncaughtExceptionHandler {
 
     companion object {
         private const val TAG = "CrashHandlerTag"
-        val instance : CrashHandler by lazy (mode = LazyThreadSafetyMode.SYNCHRONIZED) { CrashHandler() }
+
+        // 只执行一次，没必要加锁
+        val instance: CrashHandler by lazy(LazyThreadSafetyMode.NONE) { CrashHandler() }
     }
 }

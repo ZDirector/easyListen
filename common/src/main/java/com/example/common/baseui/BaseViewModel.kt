@@ -1,22 +1,17 @@
 package com.example.common.baseui
 
-import android.widget.Toast
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.common.utils.MyApplication
+import com.example.common.utils.showToast
 
 open class BaseViewModel : LifeViewModel(), IViewModel {
 
-    var loadingEvent = MutableLiveData<Boolean>()
+    private val _loadingEvent = MutableLiveData<Boolean>()
+    val loadingEvent: LiveData<Boolean> = _loadingEvent
 
-    override fun showLoading() {
-        loadingEvent.postValue(true)
-    }
+    override fun showLoading() = _loadingEvent.postValue(true)
 
-    override fun closeLoading() {
-        loadingEvent.postValue(false)
-    }
+    override fun closeLoading() = _loadingEvent.postValue(false)
 
-    override fun onError(msg : String) {
-        Toast.makeText(MyApplication.context,msg,Toast.LENGTH_SHORT).show()
-    }
+    override fun onError(msg: String) = showToast(msg)
 }
