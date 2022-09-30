@@ -32,7 +32,7 @@ abstract class BaseFragment<VDB : ViewDataBinding, VM : BaseViewModel> : Fragmen
     /**
      * ViewModel 的 ID ，默认不设置 ID
      */
-    protected val variableId: Int = -1
+    protected open val variableId: Int = -1
 
     protected abstract fun initData(savedInstanceState: Bundle?)
 
