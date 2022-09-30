@@ -3,6 +3,9 @@ package com.example.common.utils
 import android.annotation.SuppressLint
 import android.app.Application
 import android.content.Context
+import android.os.Handler
+import android.os.Looper
+import android.util.Log
 
 class MyApplication : Application() {
 
@@ -16,5 +19,4 @@ class MyApplication : Application() {
         context = applicationContext
         CrashHandler.instance.init(context)
     }
-
 }

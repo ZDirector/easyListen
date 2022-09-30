@@ -7,6 +7,7 @@ import android.os.Process.killProcess
 import android.os.Process.myPid
 import android.text.TextUtils
 import android.util.Log
+import com.example.common.utils.MyApplication.Companion.context
 import java.io.*
 import java.lang.reflect.Field
 import java.text.SimpleDateFormat
@@ -114,7 +115,8 @@ class CrashHandler private constructor() : Thread.UncaughtExceptionHandler {
      * @param errorLog
      */
     private fun outToSdcard(errorLog: String?) {
-        val sdPath = Environment.getExternalStorageDirectory().path.toString() + "/error_log"
+        val sdPath = context.cacheDir.toString() + "/error_log"
+        LogUtil.d("Error",sdPath)
         //新建文件
         val sdCardDir = File(sdPath)
         if (!sdCardDir.exists()) {
