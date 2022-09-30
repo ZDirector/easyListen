@@ -1,4 +1,5 @@
 package com.example.common.baseui.dialog
+
 import android.app.Dialog
 import android.content.Context
 import android.view.WindowManager

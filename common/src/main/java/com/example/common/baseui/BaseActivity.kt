@@ -1,98 +1,83 @@
 package com.example.common.baseui
 
-
 import android.app.Dialog
-import android.graphics.Color
 import android.os.Bundle
+import androidx.annotation.CallSuper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
 import com.example.common.R
-import com.example.common.utils.setStatusBarColor
-import java.lang.reflect.ParameterizedType
 import com.example.common.baseui.dialog.LoadingDialog
+import java.lang.reflect.ParameterizedType
 
 abstract class BaseActivity<VDB : ViewDataBinding, VM : BaseViewModel> : AppCompatActivity() {
 
-    private lateinit var _sViewModel : VM
-    open val viewModel get() = _sViewModel
-    private lateinit var _sViewDateBinding: VDB
-    open val viewDateBinding get() = _sViewDateBinding
-    private lateinit var loadingDialog: Dialog
+    // Protected Field Start ----<<<<
+    //
+    //
 
+    protected val viewModel: VM get() = _viewModel!!
+
+    protected val binding: VDB get() = _binding!!
+
+    /**
+     * @LayoutRes
+     */
+    protected abstract val layoutId: Int
+
+    /**
+     * ViewModel 的 ID ，默认不设置 ID
+     */
+    protected val variableId: Int = -1
+
+    protected abstract fun initData(savedInstanceState: Bundle?)
+
+    protected open fun initDialog(): Dialog =
+        LoadingDialog(this, R.layout.dialog_loading)
+
+    //
+    //
+    // Protected Field End ----<<<<
+
+    private var _viewModel: VM? = null
+
+    private var _binding: VDB? = null
+
+    private val dialog: Dialog by lazy { initDialog() }
+
+    @CallSuper
     override fun onCreate(savedInstanceState: Bundle?) {
-        setStatusBarColor(Color.BLACK)
         super.onCreate(savedInstanceState)
-        handlerVDB()
-        handlerVM()
-        loadingDialog = getLoadingDialog()
-        receiveLiveData()
+        initViewModelAndViewDataBinding()
+        viewModel.loadingEvent.observe(this, ::showOrHideDialog)
         initData(savedInstanceState)
     }
 
-    private fun handlerVDB() {
-        _sViewDateBinding = DataBindingUtil.setContentView(this, getLayoutId())
-        _sViewDateBinding.lifecycleOwner = this
-    }
-
-    private fun handlerVM() {
-        val viewModelClass: Class<BaseViewModel>
+    @Suppress("UNCHECKED_CAST")
+    private fun initViewModelAndViewDataBinding() {
+        _binding = DataBindingUtil.setContentView(this, layoutId)
+        binding.lifecycleOwner = this
         val type = javaClass.genericSuperclass
-        viewModelClass = if (type is ParameterizedType) {
+        val clz = if (type is ParameterizedType) {
             type.actualTypeArguments[1] as Class<BaseViewModel> //获取第1个注解即VM的注解类型
         } else {
             //使用父类的类型
             BaseViewModel::class.java
         }
-        _sViewModel = ViewModelProvider(this)[viewModelClass] as VM
-        if (getVariableId() > 0) {
-            lifecycle.addObserver(_sViewModel)
-            _sViewDateBinding.setVariable(getVariableId(), _sViewModel)
+        _viewModel = ViewModelProvider(this)[clz] as VM
+        if (variableId > 0) {
+            lifecycle.addObserver(viewModel)
+            binding.setVariable(variableId, viewModel)
         }
     }
 
-    abstract fun getLayoutId(): Int
-
-    private fun receiveLiveData() {
-        _sViewModel.loadingEvent.observe(this) { aBoolean ->
-            if (aBoolean) {
-                showLoading()
-            } else {
-                dismissLoading()
-            }
+    private fun showOrHideDialog(isVisible: Boolean) {
+        if (isVisible && !dialog.isShowing) {
+            dialog.show()
+        } else if (!isVisible && dialog.isShowing) {
+            dialog.hide()
         }
     }
 
-    open fun showLoading() {
-        if (!loadingDialog.isShowing) {
-            loadingDialog.show()
-        }
-    }
-
-    private fun getLoadingDialog(): LoadingDialog =
-        LoadingDialog(this, R.style.trans_Dialog)
-
-
-    open fun dismissLoading() {
-        if (loadingDialog.isShowing) {
-            loadingDialog.dismiss()
-        }
-    }
-
-    open fun setLoadingDialog(dialog : Dialog){
-        loadingDialog = dialog
-    }
-
-    /**
-     * 初始化ViewModel的id
-     *
-     * @return BR的id
-     */
-    abstract fun getVariableId(): Int
-
-    /**
-     * 初始化数据，相当于OnCreate方法
-     */
-    abstract fun initData(savedInstanceState: Bundle?)
 }
