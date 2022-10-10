@@ -10,6 +10,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.MainThread
 import androidx.appcompat.widget.LinearLayoutCompat
+import androidx.cardview.widget.CardView
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
@@ -138,10 +139,18 @@ class MusicSheetListView @JvmOverloads constructor(
                         ViewGroup.LayoutParams.WRAP_CONTENT
                     )
                     addView(
-                        ImageView(context).apply {
+                        CardView(context).apply {
                             layoutParams = LayoutParams(104.dp2px, 104.dp2px)
-                            scaleType = ImageView.ScaleType.CENTER_INSIDE
-                            tag = IMAGE_VIEW_TAG
+                            addView(
+                                ImageView(context).apply {
+                                    layoutParams = LayoutParams(104.dp2px, 104.dp2px)
+                                    scaleType = ImageView.ScaleType.CENTER_INSIDE
+                                    tag = IMAGE_VIEW_TAG
+                                }
+                            )
+                            cardElevation = 2.dp2px.toFloat()
+                            setCardBackgroundColor(Color.LTGRAY)
+                            radius = 16.dp2px.toFloat()
                         }
                     )
                     addView(
