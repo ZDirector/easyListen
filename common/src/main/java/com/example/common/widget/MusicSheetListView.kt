@@ -1,7 +1,10 @@
 package com.example.common.widget
 
 import android.content.Context
+import android.content.res.ColorStateList
 import android.graphics.Color
+import android.graphics.drawable.RippleDrawable
+import android.os.Build
 import android.text.TextUtils
 import android.util.AttributeSet
 import android.view.View
@@ -17,6 +20,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import com.example.common.R
 import com.example.common.bean.MusicSheet
 import com.example.common.utils.dp2px
 import com.example.common.utils.isDarkMode
@@ -145,11 +149,22 @@ class MusicSheetListView @JvmOverloads constructor(
                                 ImageView(context).apply {
                                     layoutParams = LayoutParams(104.dp2px, 104.dp2px)
                                     scaleType = ImageView.ScaleType.CENTER_INSIDE
+                                    val rippleDrawable = RippleDrawable(
+                                        ColorStateList.valueOf(Color.GRAY),
+                                        null,
+                                        null
+                                    )
+                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                                        foreground = rippleDrawable
+                                    } else {
+                                        background = rippleDrawable
+                                    }
                                     tag = IMAGE_VIEW_TAG
                                 }
                             )
                             cardElevation = 2.dp2px.toFloat()
-                            setCardBackgroundColor(Color.LTGRAY)
+                            @Suppress("Deprecation")
+                            setCardBackgroundColor(context.resources.getColor(R.color.theme_light))
                             radius = 16.dp2px.toFloat()
                         }
                     )
