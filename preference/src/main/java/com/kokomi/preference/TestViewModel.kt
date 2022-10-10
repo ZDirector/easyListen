@@ -1,6 +1,6 @@
-package com.kokomi.preference.user.viewmodel
+package com.kokomi.preference
 
 import com.example.common.baseui.BaseViewModel
 
-class UserViewModel : BaseViewModel() {
+class TestViewModel : BaseViewModel() {
 }

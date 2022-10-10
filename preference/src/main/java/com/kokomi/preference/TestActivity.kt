@@ -1,11 +1,15 @@
 package com.kokomi.preference
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.common.baseui.BaseActivity
+import com.kokomi.preference.databinding.ActivityTestBinding
 
-class TestActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_test)
+class TestActivity : BaseActivity<ActivityTestBinding, TestViewModel>() {
+
+    override val layoutId: Int = R.layout.activity_test
+
+    override fun initData(savedInstanceState: Bundle?) {
+
     }
+
 }

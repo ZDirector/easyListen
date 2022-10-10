@@ -39,7 +39,7 @@ fun Activity.setStatusBarTextColor(isStateBarTextBlack: Boolean) {
     WindowCompat.getInsetsController(
         window,
         window.decorView
-    )!!.isAppearanceLightStatusBars = isStateBarTextBlack
+    ).isAppearanceLightStatusBars = isStateBarTextBlack
 }
 
 /**
