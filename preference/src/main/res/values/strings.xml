@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="not_login">Not Logged In</string>
+    <string name="follow">Follow</string>
+    <string name="fans">Fans</string>
+    <string name="zero">0</string>
+    <string name="recent_playlists">Recent Playlists</string>
+    <string name="download">Download</string>
+    <string name="friends">Friends</string>
+    <string name="favorite_playlists">Favorite Playlists</string>
+</resources>
