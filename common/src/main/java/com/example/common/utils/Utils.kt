@@ -14,14 +14,14 @@ private var toast: Toast? = null
  * Toast，会自动取消上一个，保证不让 Toast 乱弹
  * */
 fun showToast(msg: String, time: Int = Toast.LENGTH_SHORT) {
-    fun show() {
+    if (Looper.myLooper() == Looper.getMainLooper()) {
         toast?.cancel()
         toast = Toast.makeText(MyApplication.context, msg, time).apply { show() }
-    }
-    if (Looper.myLooper() == Looper.getMainLooper()) {
-        show()
     } else {
-        Handler(Looper.getMainLooper()).post(::show)
+        Handler(Looper.getMainLooper()).post {
+            toast?.cancel()
+            toast = Toast.makeText(MyApplication.context, msg, time).apply { show() }
+        }
     }
 }
 
@@ -39,7 +39,7 @@ fun Activity.setStatusBarTextColor(isStateBarTextBlack: Boolean) {
     WindowCompat.getInsetsController(
         window,
         window.decorView
-    )!!.isAppearanceLightStatusBars = isStateBarTextBlack
+    ).isAppearanceLightStatusBars = isStateBarTextBlack
 }
 
 /**
