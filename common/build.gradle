@@ -8,7 +8,6 @@ android {
     compileSdk 32
 
     defaultConfig {
-//        applicationId "com.example.common"
         minSdk 21
         targetSdk 32
         versionCode 1
@@ -31,7 +30,7 @@ android {
         jvmTarget = '1.8'
     }
     // 开启viewBinding
-    viewBinding{
+    viewBinding {
         enabled = true
     }
     dataBinding {
@@ -50,6 +49,9 @@ dependencies {
     //retrofit
     api('com.squareup.retrofit2:retrofit:2.9.0')
     api('com.squareup.retrofit2:converter-gson:2.9.0')
+
+    // coil
+    implementation 'io.coil-kt:coil:2.2.2'
 
     // okhttp
     implementation('com.squareup.okhttp3:okhttp:4.9.0')

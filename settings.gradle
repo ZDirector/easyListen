@@ -15,4 +15,4 @@ dependencyResolutionManagement {
 rootProject.name = "easyListen"
 include ':app'
 include ':common'
-include ':search'
+include ':preference'

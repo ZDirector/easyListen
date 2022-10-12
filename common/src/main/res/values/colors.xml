@@ -10,4 +10,6 @@
     <color name="themeColor">#1a67a5</color>
     <color name="tabLayoutTextColor">#696969</color>
     <color name="tabSelectedTextColor">#353535</color>
+    <color name="theme_light">#FFB3E5FC</color>
+    <color name="theme_dark">#FF1565C0</color>
 </resources>

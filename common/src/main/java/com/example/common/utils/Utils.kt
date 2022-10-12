@@ -40,7 +40,7 @@ fun Activity.setStatusBarTextColor(isStateBarTextBlack: Boolean) {
     WindowCompat.getInsetsController(
         window,
         window.decorView
-    )!!.isAppearanceLightStatusBars = isStateBarTextBlack
+    ).isAppearanceLightStatusBars = isStateBarTextBlack
 }
 
 fun Activity.setAndroidNativeLightStatusBar() {
@@ -61,7 +61,7 @@ val Context.windowsHeight: Int
     get() = resources.displayMetrics.heightPixels
 
 /** 获取屏幕的宽度  */
-val Context.getWindowsWidth: Int
+val Context.windowsWidth: Int
     get() = resources.displayMetrics.widthPixels
 
 /**

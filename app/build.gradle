@@ -29,9 +29,17 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    viewBinding {
+        enabled = true
+    }
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
+    implementation(project(":common"))
+    implementation(project(":preference"))
 
     implementation(project(':common'))
 
