@@ -17,7 +17,10 @@ object SearchRepository {
         val searchSuggestResponse = ApiCallHandler.apiCall { SearchNetWork.getSearchSuggest(keyWords) }
         if (searchSuggestResponse.data != null){
             val searchSuggestList = mutableListOf<String>()
-            searchSuggestResponse.data!!.result.allMatch.forEach {
+//            searchSuggestResponse.result!!.result.allMatch.forEach {
+//                searchSuggestList.add(it.keyword)
+//            }
+            searchSuggestResponse.data!!.allMatch.forEach {
                 searchSuggestList.add(it.keyword)
             }
             emit(searchSuggestList)
