@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "com.example.search-mergeDebugResources-36:/layout/activity_search.xml",
+        "source": "com.example.search-main-39:/layout/activity_search.xml"
+    },
+    {
+        "merged": "com.example.search-mergeDebugResources-36:/layout/item_search_suggest.xml",
+        "source": "com.example.search-main-39:/layout/item_search_suggest.xml"
+    },
+    {
+        "merged": "com.example.search-mergeDebugResources-36:/layout/item_flow_list.xml",
+        "source": "com.example.search-main-39:/layout/item_flow_list.xml"
+    }
+]
