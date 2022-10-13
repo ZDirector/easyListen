@@ -1,0 +1,26 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/musicFragment"
+        android:icon="@drawable/ic_music"
+        app:showAsAction="withText"
+        android:title="@string/music" />
+
+    <item
+        android:id="@+id/careFragment"
+        android:icon="@drawable/ic_care"
+        app:showAsAction="withText"
+        android:title="@string/care"/>
+    <item
+        android:id="@+id/videoFragment"
+        android:icon="@drawable/ic_video"
+        app:showAsAction="withText"
+        android:title="@string/video" />
+    <item
+        android:id="@+id/mineFragment"
+        android:icon="@drawable/ic_mine"
+        app:showAsAction="withText"
+        android:title="@string/mine" />
+
+
+</menu>
