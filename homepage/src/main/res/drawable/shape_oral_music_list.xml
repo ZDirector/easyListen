@@ -11,7 +11,8 @@
 
     <!--以下可单独设计圆角-->
     <corners
-            android:radius="15dp"
+        android:topLeftRadius="20dp"
+        android:topRightRadius="20dp"
 
         />
 

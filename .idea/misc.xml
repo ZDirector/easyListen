@@ -27,6 +27,7 @@
         <entry key="..\:/topview/easyMusic/homepage/src/main/res/drawable/ic_round_solid_3.xml" value="0.2505" />
         <entry key="..\:/topview/easyMusic/homepage/src/main/res/drawable/ic_video.xml" value="0.3435" />
         <entry key="..\:/topview/easyMusic/homepage/src/main/res/drawable/selector_bottom.xml" value="0.3435" />
+        <entry key="..\:/topview/easyMusic/homepage/src/main/res/drawable/shape_control_circle.xml" value="0.2505" />
         <entry key="..\:/topview/easyMusic/homepage/src/main/res/drawable/shape_list_ranking_details.xml" value="0.2505" />
         <entry key="..\:/topview/easyMusic/homepage/src/main/res/drawable/shape_more.xml" value="0.3435" />
         <entry key="..\:/topview/easyMusic/homepage/src/main/res/drawable/shape_oral_music_list.xml" value="0.2795" />
@@ -34,9 +35,10 @@
         <entry key="..\:/topview/easyMusic/homepage/src/main/res/drawable/shape_oval.xml" value="0.342" />
         <entry key="..\:/topview/easyMusic/homepage/src/main/res/layout/activity_home.xml" value="0.33" />
         <entry key="..\:/topview/easyMusic/homepage/src/main/res/layout/activity_main.xml" value="0.5114583333333333" />
+        <entry key="..\:/topview/easyMusic/homepage/src/main/res/layout/floating_play_control.xml" value="0.33" />
         <entry key="..\:/topview/easyMusic/homepage/src/main/res/layout/fragment_care.xml" value="0.37916666666666665" />
         <entry key="..\:/topview/easyMusic/homepage/src/main/res/layout/fragment_mine.xml" value="0.37916666666666665" />
-        <entry key="..\:/topview/easyMusic/homepage/src/main/res/layout/fragment_music.xml" value="0.5" />
+        <entry key="..\:/topview/easyMusic/homepage/src/main/res/layout/fragment_music.xml" value="0.33" />
         <entry key="..\:/topview/easyMusic/homepage/src/main/res/layout/fragment_video.xml" value="0.37916666666666665" />
         <entry key="..\:/topview/easyMusic/homepage/src/main/res/layout/item_list_ranking.xml" value="0.39947916666666666" />
         <entry key="..\:/topview/easyMusic/homepage/src/main/res/menu/menu_main.xml" value="0.263671875" />
