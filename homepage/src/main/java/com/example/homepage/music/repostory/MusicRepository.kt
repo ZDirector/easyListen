@@ -1,7 +1,9 @@
 package com.example.homepage.music.repostory
 
+import android.widget.Toast
 import com.example.common.bean.MusicSheet
 import com.example.homepage.music.bean.Banner
+import com.example.homepage.music.bean.Rank
 import com.example.homepage.network.MyNetWork
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -21,4 +23,13 @@ object MusicRepository {
         }.flowOn(Dispatchers.IO)
     }
 
+    fun getRankList(): Flow<List<Rank>> {
+        return flow{
+            val result = MyNetWork.getRankResponse()
+            println("我就像看看你$result")
+            if (result.code == 200){
+                emit(result.list)
+            }
+        }.flowOn(Dispatchers.IO)
+    }
 }
