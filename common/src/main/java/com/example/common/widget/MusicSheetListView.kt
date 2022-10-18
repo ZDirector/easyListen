@@ -48,12 +48,12 @@ class MusicSheetListView @JvmOverloads constructor(
     init {
         orientation = VERTICAL
         textView = TextView(context).apply {
-            setPadding(16.dp2px, 4.dp2px, 16, 4.dp2px)
+            setPadding(16.dp2px, 1.dp2px, 16, 4.dp2px)
             layoutParams = LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT
             )
-            textSize = 20f
+            textSize = 1f
             paint.isFakeBoldText = true
             setTextColor(if (!context.isDarkMode) Color.BLACK else Color.WHITE)
         }
@@ -109,6 +109,9 @@ class MusicSheetListView @JvmOverloads constructor(
 
     override fun onChanged(t: List<MusicSheet>?) {
         t ?: return
+        val size = musicSheetList.size
+        musicSheetList.clear()
+        musicSheetAdapter.notifyItemRangeRemoved(0, size)
         musicSheetList.addAll(t)
         musicSheetAdapter.notifyItemRangeInserted(0, musicSheetList.size)
     }
@@ -187,7 +190,7 @@ class MusicSheetListView @JvmOverloads constructor(
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             with(holder) {
-                imageView.load(musicSheet[position].img)
+                imageView.load(musicSheet[position].picUrl)
                 textView.text = musicSheet[position].name
                 itemView.setOnClickListener {
                     onItemClickListener?.invoke(musicSheet[position], position)

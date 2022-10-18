@@ -1,20 +1,15 @@
 package com.example.common.bean
 
 data class MusicSheet(
-    /**
-     * 歌单 ID
-     * */
+    val alg: String,
+    val canDislike: Boolean,
+    val copywriter: String,
+    val highQuality: Boolean,
     val id: Long,
-    /**
-     * 歌单名
-     * */
     val name: String,
-    /**
-     * 歌单描述
-     * */
-    val des: String,
-    /**
-     * 歌单图片
-     * */
-    val img: String
+    val picUrl: String,
+    val playCount: Int,
+    val trackCount: Int,
+    val trackNumberUpdateTime: Long,
+    val type: Int
 )

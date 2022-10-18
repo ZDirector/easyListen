@@ -15,7 +15,6 @@ class SplashActivity : AppCompatActivity() {
         supportActionBar?.hide()
         setContentView(R.layout.activity_splash)
         lifecycleScope.launch {
-            Thread.sleep(3000)
             val intent = Intent(applicationContext,HomeActivity::class.java)
             startActivity(intent)
             finish()
