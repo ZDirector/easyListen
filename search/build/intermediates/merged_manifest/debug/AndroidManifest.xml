@@ -7,7 +7,6 @@
     <uses-sdk
         android:minSdkVersion="21"
         android:targetSdkVersion="32" />
-
     <!-- 网络 -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 读 -->
@@ -28,6 +27,9 @@
         android:theme="@style/Theme.EasyListen"
         android:usesCleartextTraffic="true" >
         <activity
+            android:name="com.example.search.SearchResultActivity"
+            android:exported="false" />
+        <activity
             android:name="com.example.search.ui.SearchActivity"
             android:exported="true" >
             <intent-filter>
@@ -36,6 +38,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service
+            android:name="androidx.room.MultiInstanceInvalidationService"
+            android:directBootAware="true"
+            android:exported="false" />
 
         <provider
             android:name="androidx.startup.InitializationProvider"
@@ -48,11 +55,6 @@
                 android:name="androidx.lifecycle.ProcessLifecycleInitializer"
                 android:value="androidx.startup" />
         </provider>
-
-        <service
-            android:name="androidx.room.MultiInstanceInvalidationService"
-            android:directBootAware="true"
-            android:exported="false" />
     </application>
 
 </manifest>

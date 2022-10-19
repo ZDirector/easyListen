@@ -15,11 +15,11 @@ public class ActivitySearchBindingImpl extends ActivitySearchBinding  {
         sIncludes = null;
         sViewsWithIds = new android.util.SparseIntArray();
         sViewsWithIds.put(R.id.search_back, 1);
-        sViewsWithIds.put(R.id.constraintLayout, 2);
+        sViewsWithIds.put(R.id.search_top_layout, 2);
         sViewsWithIds.put(R.id.search_text_input, 3);
         sViewsWithIds.put(R.id.search_editText_icon, 4);
         sViewsWithIds.put(R.id.search_editText_clear, 5);
-        sViewsWithIds.put(R.id.search_main, 6);
+        sViewsWithIds.put(R.id.search_main_layout, 6);
         sViewsWithIds.put(R.id.guideline1, 7);
         sViewsWithIds.put(R.id.guideline2, 8);
         sViewsWithIds.put(R.id.guideline3, 9);
@@ -33,6 +33,9 @@ public class ActivitySearchBindingImpl extends ActivitySearchBinding  {
         sViewsWithIds.put(R.id.search_hot_list_text, 17);
         sViewsWithIds.put(R.id.search_hot_list, 18);
         sViewsWithIds.put(R.id.search_suggest_list, 19);
+        sViewsWithIds.put(R.id.search_loading_layout, 20);
+        sViewsWithIds.put(R.id.search_loading_anim, 21);
+        sViewsWithIds.put(R.id.search_result_layout, 22);
     }
     // views
     @NonNull
@@ -43,11 +46,10 @@ public class ActivitySearchBindingImpl extends ActivitySearchBinding  {
     // Inverse Binding Event Handlers
 
     public ActivitySearchBindingImpl(@Nullable androidx.databinding.DataBindingComponent bindingComponent, @NonNull View root) {
-        this(bindingComponent, root, mapBindings(bindingComponent, root, 20, sIncludes, sViewsWithIds));
+        this(bindingComponent, root, mapBindings(bindingComponent, root, 23, sIncludes, sViewsWithIds));
     }
     private ActivitySearchBindingImpl(androidx.databinding.DataBindingComponent bindingComponent, View root, Object[] bindings) {
         super(bindingComponent, root, 0
-            , (androidx.constraintlayout.widget.ConstraintLayout) bindings[2]
             , (androidx.constraintlayout.widget.Guideline) bindings[7]
             , (androidx.constraintlayout.widget.Guideline) bindings[8]
             , (androidx.constraintlayout.widget.Guideline) bindings[9]
@@ -61,11 +63,15 @@ public class ActivitySearchBindingImpl extends ActivitySearchBinding  {
             , (androidx.recyclerview.widget.RecyclerView) bindings[12]
             , (androidx.recyclerview.widget.RecyclerView) bindings[18]
             , (android.widget.TextView) bindings[17]
-            , (androidx.core.widget.NestedScrollView) bindings[6]
+            , (com.wang.avi.AVLoadingIndicatorView) bindings[21]
+            , (androidx.constraintlayout.widget.ConstraintLayout) bindings[20]
+            , (androidx.constraintlayout.widget.ConstraintLayout) bindings[6]
             , (androidx.recyclerview.widget.RecyclerView) bindings[14]
             , (android.widget.TextView) bindings[13]
+            , (com.example.common.baseui.assembly.BaseViewPage) bindings[22]
             , (androidx.recyclerview.widget.RecyclerView) bindings[19]
             , (com.google.android.material.textfield.TextInputEditText) bindings[3]
+            , (androidx.constraintlayout.widget.ConstraintLayout) bindings[2]
             );
         this.mboundView0 = (androidx.constraintlayout.widget.ConstraintLayout) bindings[0];
         this.mboundView0.setTag(null);

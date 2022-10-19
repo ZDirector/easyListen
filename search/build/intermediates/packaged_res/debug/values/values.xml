@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="http://schemas.android.com/tools">
     <color name="black">#FF000000</color>
+    <color name="black_2a">#2a2a2a</color>
+    <color name="black_2e">#2e2e2e</color>
+    <color name="black_31">#313131</color>
     <color name="black_3D">#3D3D3D</color>
     <color name="black_3b">#3b3b3b</color>
     <color name="black_47">#474747</color>
+    <color name="gold_vip">#d09473</color>
+    <color name="gold_vip_stroke">#e0c5b6</color>
     <color name="gray_35">#353535</color>
     <color name="gray_69">#696969</color>
+    <color name="gray_7c">#7c7c7c</color>
     <color name="gray_81">#818181</color>
     <color name="gray_9c">#9c9c9c</color>
     <color name="gray_9f">#9f9f9f</color>
     <color name="gray_bg">#DFDDDB</color>
+    <color name="gray_e6">#e6e6e6</color>
     <color name="gray_f3">#F3F3F3</color>
     <color name="gray_f7">#F7F7F7</color>
     <color name="purple_200">#FFBB86FC</color>
@@ -18,10 +25,17 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="themeColor">#1a67a5</color>
+    <color name="themeColor_stroke">#0096C7</color>
     <color name="white">#FFFFFFFF</color>
     <string name="app_name">search</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="search_history_text">搜索历史</string>
     <string name="search_hot_list_text">热搜榜</string>
+    <string name="search_loading">正在加载…</string>
+    <string name="search_music_audition">试听</string>
+    <string name="search_music_original">原唱</string>
+    <string name="search_music_sq">SQ</string>
+    <string name="search_music_vip">VIP</string>
     <string name="search_recommend_text">搜索推荐</string>
     <style name="Theme.EasyListen" parent="Theme.MaterialComponents.Light.NoActionBar">
         

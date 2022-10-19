@@ -6,97 +6,102 @@
 6
 7    <uses-sdk
 8        android:minSdkVersion="21"
-8-->D:\AndroidProject\easyListen\search\src\main\AndroidManifest.xml
+8-->F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml
 9        android:targetSdkVersion="32" />
-9-->D:\AndroidProject\easyListen\search\src\main\AndroidManifest.xml
-10
-11    <!-- 网络 -->
-12    <uses-permission android:name="android.permission.INTERNET" />
-12-->D:\AndroidProject\easyListen\search\src\main\AndroidManifest.xml:7:5-67
-12-->D:\AndroidProject\easyListen\search\src\main\AndroidManifest.xml:7:22-64
-13    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 读 -->
-13-->[:common] D:\AndroidProject\easyListen\common\build\intermediates\merged_manifest\debug\AndroidManifest.xml:11:5-79
-13-->[:common] D:\AndroidProject\easyListen\common\build\intermediates\merged_manifest\debug\AndroidManifest.xml:11:22-76
-14    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- 写 -->
-14-->[:common] D:\AndroidProject\easyListen\common\build\intermediates\merged_manifest\debug\AndroidManifest.xml:12:5-80
-14-->[:common] D:\AndroidProject\easyListen\common\build\intermediates\merged_manifest\debug\AndroidManifest.xml:12:22-77
-15    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-15-->[:common] D:\AndroidProject\easyListen\common\build\intermediates\merged_manifest\debug\AndroidManifest.xml:13:5-81
-15-->[:common] D:\AndroidProject\easyListen\common\build\intermediates\merged_manifest\debug\AndroidManifest.xml:13:22-78
-16
-17    <application
-17-->D:\AndroidProject\easyListen\search\src\main\AndroidManifest.xml:9:5-27:19
-18        android:name="com.example.common.utils.MyApplication"
-18-->D:\AndroidProject\easyListen\search\src\main\AndroidManifest.xml:10:9-62
-19        android:allowBackup="true"
-19-->D:\AndroidProject\easyListen\search\src\main\AndroidManifest.xml:11:9-35
-20        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-20-->[androidx.core:core:1.8.0] C:\Users\Kokomi\.gradle\caches\transforms-3\319818de8066db9dee1015fa48896948\transformed\core-1.8.0\AndroidManifest.xml:24:18-86
-21        android:debuggable="true"
-21-->[:common] D:\AndroidProject\easyListen\common\build\intermediates\merged_manifest\debug\AndroidManifest.xml:18:9-34
-22        android:icon="@drawable/ic_icon"
-22-->D:\AndroidProject\easyListen\search\src\main\AndroidManifest.xml:12:9-41
-23        android:label="@string/app_name"
-23-->D:\AndroidProject\easyListen\search\src\main\AndroidManifest.xml:13:9-41
-24        android:requestLegacyExternalStorage="true"
-24-->[:common] D:\AndroidProject\easyListen\common\build\intermediates\merged_manifest\debug\AndroidManifest.xml:21:9-52
-25        android:roundIcon="@drawable/ic_icon"
-25-->D:\AndroidProject\easyListen\search\src\main\AndroidManifest.xml:14:9-46
-26        android:supportsRtl="true"
-26-->D:\AndroidProject\easyListen\search\src\main\AndroidManifest.xml:15:9-35
-27        android:testOnly="true"
-28        android:theme="@style/Theme.EasyListen"
-28-->D:\AndroidProject\easyListen\search\src\main\AndroidManifest.xml:16:9-48
-29        android:usesCleartextTraffic="true" >
-29-->D:\AndroidProject\easyListen\search\src\main\AndroidManifest.xml:17:9-44
-30        <activity
-30-->D:\AndroidProject\easyListen\search\src\main\AndroidManifest.xml:19:9-26:20
-31            android:name="com.example.search.ui.SearchActivity"
-31-->D:\AndroidProject\easyListen\search\src\main\AndroidManifest.xml:20:13-46
-32            android:exported="true" >
-32-->D:\AndroidProject\easyListen\search\src\main\AndroidManifest.xml:21:13-36
-33            <intent-filter>
-33-->D:\AndroidProject\easyListen\search\src\main\AndroidManifest.xml:22:13-25:29
-34                <action android:name="android.intent.action.MAIN" />
-34-->D:\AndroidProject\easyListen\search\src\main\AndroidManifest.xml:23:17-69
-34-->D:\AndroidProject\easyListen\search\src\main\AndroidManifest.xml:23:25-66
-35
-36                <category android:name="android.intent.category.LAUNCHER" />
-36-->D:\AndroidProject\easyListen\search\src\main\AndroidManifest.xml:24:17-77
-36-->D:\AndroidProject\easyListen\search\src\main\AndroidManifest.xml:24:27-74
-37            </intent-filter>
-38        </activity>
-39
-40        <provider
-40-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Kokomi\.gradle\caches\transforms-3\8646fc24a05f0f3fb603801ddeb6af39\transformed\emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
-41            android:name="androidx.startup.InitializationProvider"
-41-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Kokomi\.gradle\caches\transforms-3\8646fc24a05f0f3fb603801ddeb6af39\transformed\emoji2-1.2.0\AndroidManifest.xml:25:13-67
-42            android:authorities="com.example.search.androidx-startup"
-42-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Kokomi\.gradle\caches\transforms-3\8646fc24a05f0f3fb603801ddeb6af39\transformed\emoji2-1.2.0\AndroidManifest.xml:26:13-68
-43            android:exported="false" >
-43-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Kokomi\.gradle\caches\transforms-3\8646fc24a05f0f3fb603801ddeb6af39\transformed\emoji2-1.2.0\AndroidManifest.xml:27:13-37
-44            <meta-data
-44-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Kokomi\.gradle\caches\transforms-3\8646fc24a05f0f3fb603801ddeb6af39\transformed\emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
-45                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-45-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Kokomi\.gradle\caches\transforms-3\8646fc24a05f0f3fb603801ddeb6af39\transformed\emoji2-1.2.0\AndroidManifest.xml:30:17-75
-46                android:value="androidx.startup" />
-46-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Kokomi\.gradle\caches\transforms-3\8646fc24a05f0f3fb603801ddeb6af39\transformed\emoji2-1.2.0\AndroidManifest.xml:31:17-49
-47            <meta-data
-47-->[androidx.lifecycle:lifecycle-process:2.5.0] C:\Users\Kokomi\.gradle\caches\transforms-3\38d04523313831f4e8f914a712cbc985\transformed\lifecycle-process-2.5.0\AndroidManifest.xml:31:13-33:52
-48                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-48-->[androidx.lifecycle:lifecycle-process:2.5.0] C:\Users\Kokomi\.gradle\caches\transforms-3\38d04523313831f4e8f914a712cbc985\transformed\lifecycle-process-2.5.0\AndroidManifest.xml:32:17-78
-49                android:value="androidx.startup" />
-49-->[androidx.lifecycle:lifecycle-process:2.5.0] C:\Users\Kokomi\.gradle\caches\transforms-3\38d04523313831f4e8f914a712cbc985\transformed\lifecycle-process-2.5.0\AndroidManifest.xml:33:17-49
-50        </provider>
-51
-52        <service
-52-->[androidx.room:room-runtime:2.4.3] C:\Users\Kokomi\.gradle\caches\transforms-3\95923d3386b280608cf631337ad8cbd5\transformed\room-runtime-2.4.3\AndroidManifest.xml:25:9-28:40
-53            android:name="androidx.room.MultiInstanceInvalidationService"
-53-->[androidx.room:room-runtime:2.4.3] C:\Users\Kokomi\.gradle\caches\transforms-3\95923d3386b280608cf631337ad8cbd5\transformed\room-runtime-2.4.3\AndroidManifest.xml:26:13-74
-54            android:directBootAware="true"
-54-->[androidx.room:room-runtime:2.4.3] C:\Users\Kokomi\.gradle\caches\transforms-3\95923d3386b280608cf631337ad8cbd5\transformed\room-runtime-2.4.3\AndroidManifest.xml:27:13-43
-55            android:exported="false" />
-55-->[androidx.room:room-runtime:2.4.3] C:\Users\Kokomi\.gradle\caches\transforms-3\95923d3386b280608cf631337ad8cbd5\transformed\room-runtime-2.4.3\AndroidManifest.xml:28:13-37
-56    </application>
-57
-58</manifest>
+9-->F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml
+10    <!-- 网络 -->
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:6:5-67
+11-->F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:6:22-64
+12    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 读 -->
+12-->[:common] F:\Androidprj\easyListen\common\build\intermediates\merged_manifest\debug\AndroidManifest.xml:11:5-79
+12-->[:common] F:\Androidprj\easyListen\common\build\intermediates\merged_manifest\debug\AndroidManifest.xml:11:22-76
+13    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- 写 -->
+13-->[:common] F:\Androidprj\easyListen\common\build\intermediates\merged_manifest\debug\AndroidManifest.xml:12:5-80
+13-->[:common] F:\Androidprj\easyListen\common\build\intermediates\merged_manifest\debug\AndroidManifest.xml:12:22-77
+14    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+14-->[:common] F:\Androidprj\easyListen\common\build\intermediates\merged_manifest\debug\AndroidManifest.xml:13:5-81
+14-->[:common] F:\Androidprj\easyListen\common\build\intermediates\merged_manifest\debug\AndroidManifest.xml:13:22-78
+15
+16    <application
+16-->F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:8:5-30:19
+17        android:name="com.example.common.utils.MyApplication"
+17-->F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:9:9-62
+18        android:allowBackup="true"
+18-->F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:10:9-35
+19        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+19-->[androidx.core:core:1.8.0] C:\Users\Administrator\.gradle\caches\transforms-3\319818de8066db9dee1015fa48896948\transformed\core-1.8.0\AndroidManifest.xml:24:18-86
+20        android:debuggable="true"
+20-->[:common] F:\Androidprj\easyListen\common\build\intermediates\merged_manifest\debug\AndroidManifest.xml:18:9-34
+21        android:icon="@drawable/ic_icon"
+21-->F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:11:9-41
+22        android:label="@string/app_name"
+22-->F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:12:9-41
+23        android:requestLegacyExternalStorage="true"
+23-->[:common] F:\Androidprj\easyListen\common\build\intermediates\merged_manifest\debug\AndroidManifest.xml:21:9-52
+24        android:roundIcon="@drawable/ic_icon"
+24-->F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:13:9-46
+25        android:supportsRtl="true"
+25-->F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:14:9-35
+26        android:testOnly="true"
+27        android:theme="@style/Theme.EasyListen"
+27-->F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:15:9-48
+28        android:usesCleartextTraffic="true" >
+28-->F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:16:9-44
+29        <activity
+29-->F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:18:9-20:40
+30            android:name="com.example.search.SearchResultActivity"
+30-->F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:19:13-49
+31            android:exported="false" />
+31-->F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:20:13-37
+32        <activity
+32-->F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:21:9-29:20
+33            android:name="com.example.search.ui.SearchActivity"
+33-->F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:22:13-46
+34            android:exported="true" >
+34-->F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:23:13-36
+35            <intent-filter>
+35-->F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:24:13-28:29
+36                <action android:name="android.intent.action.MAIN" />
+36-->F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:25:17-69
+36-->F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:25:25-66
+37
+38                <category android:name="android.intent.category.LAUNCHER" />
+38-->F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:27:17-77
+38-->F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:27:27-74
+39            </intent-filter>
+40        </activity>
+41
+42        <service
+42-->[androidx.room:room-runtime:2.4.3] C:\Users\Administrator\.gradle\caches\transforms-3\95923d3386b280608cf631337ad8cbd5\transformed\room-runtime-2.4.3\AndroidManifest.xml:25:9-28:40
+43            android:name="androidx.room.MultiInstanceInvalidationService"
+43-->[androidx.room:room-runtime:2.4.3] C:\Users\Administrator\.gradle\caches\transforms-3\95923d3386b280608cf631337ad8cbd5\transformed\room-runtime-2.4.3\AndroidManifest.xml:26:13-74
+44            android:directBootAware="true"
+44-->[androidx.room:room-runtime:2.4.3] C:\Users\Administrator\.gradle\caches\transforms-3\95923d3386b280608cf631337ad8cbd5\transformed\room-runtime-2.4.3\AndroidManifest.xml:27:13-43
+45            android:exported="false" />
+45-->[androidx.room:room-runtime:2.4.3] C:\Users\Administrator\.gradle\caches\transforms-3\95923d3386b280608cf631337ad8cbd5\transformed\room-runtime-2.4.3\AndroidManifest.xml:28:13-37
+46
+47        <provider
+47-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\9eaa5499e5917bf161e9e1c1138b7d31\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
+48            android:name="androidx.startup.InitializationProvider"
+48-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\9eaa5499e5917bf161e9e1c1138b7d31\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:25:13-67
+49            android:authorities="com.example.search.androidx-startup"
+49-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\9eaa5499e5917bf161e9e1c1138b7d31\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:26:13-68
+50            android:exported="false" >
+50-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\9eaa5499e5917bf161e9e1c1138b7d31\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:27:13-37
+51            <meta-data
+51-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\9eaa5499e5917bf161e9e1c1138b7d31\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
+52                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+52-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\9eaa5499e5917bf161e9e1c1138b7d31\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:30:17-75
+53                android:value="androidx.startup" />
+53-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\9eaa5499e5917bf161e9e1c1138b7d31\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:31:17-49
+54            <meta-data
+54-->[androidx.lifecycle:lifecycle-process:2.5.0] C:\Users\Administrator\.gradle\caches\transforms-3\20094a7a661d24426efc7cd2df6d72f2\transformed\jetified-lifecycle-process-2.5.0\AndroidManifest.xml:31:13-33:52
+55                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+55-->[androidx.lifecycle:lifecycle-process:2.5.0] C:\Users\Administrator\.gradle\caches\transforms-3\20094a7a661d24426efc7cd2df6d72f2\transformed\jetified-lifecycle-process-2.5.0\AndroidManifest.xml:32:17-78
+56                android:value="androidx.startup" />
+56-->[androidx.lifecycle:lifecycle-process:2.5.0] C:\Users\Administrator\.gradle\caches\transforms-3\20094a7a661d24426efc7cd2df6d72f2\transformed\jetified-lifecycle-process-2.5.0\AndroidManifest.xml:33:17-49
+57        </provider>
+58    </application>
+59
+60</manifest>

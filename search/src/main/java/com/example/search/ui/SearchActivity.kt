@@ -9,80 +9,85 @@ import android.text.TextWatcher
 import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.ImageView
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.widget.NestedScrollView
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.common.baseui.BaseActivity
-import com.example.common.utils.setAndroidNativeLightStatusBar
+import com.example.common.baseui.assembly.BaseViewPageAdapter
+import com.example.common.utils.LogUtil
 import com.example.common.utils.setStatusBarColor
+import com.example.common.utils.setStatusBarTextColor
 import com.example.search.BR
 import com.example.search.R
+import com.example.search.adapter.HotSearchListAdapter
+import com.example.search.adapter.RecommendSearchListAdapter
 import com.example.search.adapter.SearchSuggestListAdapter
 import com.example.search.databinding.ActivitySearchBinding
+import com.example.search.manager.FlowLayoutManager
+import com.example.search.ui.fragment.MusicResultFragment
+import com.example.search.ui.fragment.TestFragment
 import com.example.search.viewmodel.SearchViewModel
-import com.google.android.material.textfield.TextInputEditText
 
 class SearchActivity : BaseActivity<ActivitySearchBinding,SearchViewModel>() ,
     View.OnClickListener{
     override var layoutId: Int = R.layout.activity_search
     override var variableId: Int = BR.searchViewModel
 
-    private lateinit var searchBackImg : ImageView
-    private lateinit var searchTextInput : TextInputEditText
-    private lateinit var searchEditTextClear : ImageView
-    private lateinit var searchHistoryLayout : ConstraintLayout
-    private lateinit var searchHistoryClear : ImageView
-    private lateinit var searchHistoryRel : RecyclerView
-    private lateinit var searchRecommendRel : RecyclerView
-    private lateinit var searchSuggestRel : RecyclerView
-    private lateinit var searchHotRel : RecyclerView
-    private lateinit var searchScroll : NestedScrollView
-
-    private val searchSuggestLayoutManager = LinearLayoutManager(this)
+    private val titleList = listOf("单曲","歌单","视频","用户")
+    private val pageList = listOf(
+        MusicResultFragment(),
+        TestFragment(),
+        TestFragment(),
+        TestFragment()
+    )
+    private var isSuggestToSearch = false
 
     override fun initData(savedInstanceState: Bundle?) {
+        setStatusBarTextColor(true)
         setStatusBarColor(Color.WHITE)
-        setAndroidNativeLightStatusBar()
         initView()
         initListener()
         initObserve()
     }
 
     private fun initView(){
-        searchBackImg = binding.searchBack
-        searchTextInput = binding.searchTextInput
-        searchEditTextClear = binding.searchEditTextClear
-        searchHistoryLayout = binding.searchHistoryLayout
-        searchHistoryClear = binding.searchHistoryClear
-        searchHistoryRel = binding.searchHistoryList
-        searchRecommendRel = binding.searchRecommendList
-        searchHotRel = binding.searchHotList
-        searchSuggestRel = binding.searchSuggestList
-        searchScroll = binding.searchMain
+        binding.searchSuggestList.layoutManager = LinearLayoutManager(this)
+        binding.searchHotList.layoutManager = LinearLayoutManager(this)
+        binding.searchRecommendList.layoutManager = FlowLayoutManager()
+        binding.searchHistoryList.layoutManager = FlowLayoutManager()
 
-        searchSuggestRel.layoutManager = searchSuggestLayoutManager
+        binding.searchResultLayout.mViewPage.adapter = BaseViewPageAdapter(pageList,supportFragmentManager,lifecycle)
+        binding.searchResultLayout.attach(titleList)
+
+        startLoading()
+        //加载搜索历史记录
+        viewModel.getSearchHistory()
+        //加载搜索推荐
+        viewModel.getRecommendSearchList()
+        //加载热搜榜
+        viewModel.getHotSearchList()
     }
 
     private fun initListener(){
-        searchBackImg.setOnClickListener(this)
-        searchEditTextClear.setOnClickListener(this)
-        searchHistoryClear.setOnClickListener(this)
+        binding.searchBack.setOnClickListener(this)
+        binding.searchEditTextClear.setOnClickListener(this)
+        binding.searchHistoryClear.setOnClickListener(this)
 
         //输入过程中的搜索建议监听
-        searchTextInput.addTextChangedListener(object : TextWatcher{
+        binding.searchTextInput.addTextChangedListener(object : TextWatcher{
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 if(s.toString() == ""){
-                    searchSuggestRel.visibility = View.GONE
-                    searchScroll.visibility = View.VISIBLE
+                    binding.searchSuggestList.visibility = View.GONE
+                    binding.searchMainLayout.visibility = View.VISIBLE
+                    binding.searchResultLayout.visibility = View.GONE
                 }
                 else{
-                    viewModel.getSearchSuggest(s.toString())
-                    searchSuggestRel.visibility = View.VISIBLE
-                    searchScroll.visibility = View.GONE
+                    if (!isSuggestToSearch){
+                        viewModel.getSearchSuggest(s.toString())
+                        startLoading()
+                        binding.searchMainLayout.visibility = View.GONE
+                        binding.searchResultLayout.visibility = View.GONE
+                    }else isSuggestToSearch = false
                 }
             }
 
@@ -90,10 +95,10 @@ class SearchActivity : BaseActivity<ActivitySearchBinding,SearchViewModel>() ,
         })
 
         //设置搜索回车监听和相关逻辑
-        searchTextInput.setOnKeyListener { _, keyCode, _ ->
+        binding.searchTextInput.setOnKeyListener { _, keyCode, _ ->
             if (keyCode == KeyEvent.KEYCODE_ENTER && keyCode != KeyEvent.ACTION_UP) {
-                val text = searchTextInput.text
-
+                val text = binding.searchTextInput.text
+                onClickSearch(text.toString())
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                     imm.hideSoftInputFromWindow(window.decorView.windowToken, 0)
@@ -104,9 +109,104 @@ class SearchActivity : BaseActivity<ActivitySearchBinding,SearchViewModel>() ,
     }
 
     private fun initObserve(){
-        viewModel.mSearchSuggestList.observe(this@SearchActivity){
-            val adapter = SearchSuggestListAdapter(it)
-            searchSuggestRel.adapter = adapter
+        //获得搜索建议数据并传递给搜索建议列表
+        viewModel.mSearchSuggestList.observe(this){
+            val adapter : SearchSuggestListAdapter
+            //防止反复创建adapter
+            if (binding.searchSuggestList.adapter == null){
+                adapter = SearchSuggestListAdapter(it)
+                adapter.setItemOnClickListener(object : SearchSuggestListAdapter.ItemOnClickListener{
+                    override fun onClick(view: View, i: Int) {
+                        isSuggestToSearch = true
+                        binding.searchTextInput.setText(adapter.searchSuggestList[i])
+                        onClickSearch(adapter.searchSuggestList[i])
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                            imm.hideSoftInputFromWindow(window.decorView.windowToken, 0)
+                        }
+                    }
+                })
+                binding.searchSuggestList.adapter = adapter
+            }else{
+                adapter = binding.searchSuggestList.adapter as SearchSuggestListAdapter
+                adapter.searchSuggestList = it
+                adapter.notifyDataSetChanged()
+            }
+            finishLoading()
+            binding.searchSuggestList.visibility = View.VISIBLE
+        }
+
+        //获得热搜榜数据并传递给热搜榜
+        viewModel.mHotSearchList.observe(this){
+            val adapter = HotSearchListAdapter(it)
+            adapter.setItemOnClickListener(object : HotSearchListAdapter.ItemOnClickListener{
+                override fun onClick(view: View, i: Int) {
+                    binding.searchTextInput.setText(it[i])
+                }
+            })
+            binding.searchHotList.adapter = adapter
+        }
+
+        //获得推荐搜索列表数据并传递给推荐搜索列表
+        viewModel.mRecommendSearchList.observe(this){
+            val adapter = RecommendSearchListAdapter(it)
+            adapter.setItemOnClickListener(object : RecommendSearchListAdapter.ItemOnClickListener{
+                override fun onClick(view: View, i: Int) {
+                    binding.searchTextInput.setText(it[i])
+                }
+            })
+            binding.searchRecommendList.adapter = adapter
+        }
+
+        //获得搜索历史列表数据并传递给搜索历史列表
+        viewModel.mSearchHistoryList.observe(this){
+            if (it.isEmpty()){
+                binding.searchHistoryLayout.visibility = View.GONE
+            }else{
+                binding.searchHistoryLayout.visibility = View.VISIBLE
+                //防止反复创建adapter
+                val adapter : RecommendSearchListAdapter
+                if (binding.searchHistoryList.adapter == null){
+                    adapter = RecommendSearchListAdapter(it)
+                    adapter.setItemOnClickListener(object : RecommendSearchListAdapter.ItemOnClickListener{
+                        override fun onClick(view: View, i: Int) {
+                            binding.searchTextInput.setText(adapter.recommendSearchList[i])
+                        }
+                    })
+                    binding.searchHistoryList.adapter = adapter
+                }else{
+                    adapter = binding.searchHistoryList.adapter as RecommendSearchListAdapter
+                    adapter.recommendSearchList = it
+                    adapter.notifyDataSetChanged()
+                }
+            }
+        }
+
+        //当初始化加载完成后显示界面并取消加载界面
+        viewModel.initMission.observe(this){
+            val initList = listOf("getHotSearchList","getRecommendSearchList","getSearchHistory")
+            var isFinish = true
+            initList.forEach { item ->
+                if (it.containsKey(item)){
+                    if(!it[item]!!) isFinish = false
+                }
+            }
+            if (isFinish){
+                finishLoading()
+                binding.searchMainLayout.visibility = View.VISIBLE
+            }
+        }
+
+        //fragment加载时通知Activity
+        viewModel.isSearchResultFinishLoading.observe(this){
+            if (it){
+                finishLoading()
+                binding.searchResultLayout.visibility = View.VISIBLE
+            }
+            else{
+                startLoading()
+                binding.searchResultLayout.visibility = View.INVISIBLE
+            }
         }
     }
 
@@ -116,12 +216,31 @@ class SearchActivity : BaseActivity<ActivitySearchBinding,SearchViewModel>() ,
                 finish()
             }
             R.id.search_editText_clear ->{
-                searchTextInput.setText("")
+                binding.searchTextInput.setText("")
+                finishLoading()
             }
             R.id.search_history_clear ->{
-                searchHistoryLayout.visibility = View.GONE
+                viewModel.delAllSearchHistory()
             }
         }
+    }
+
+    private fun startLoading(){
+        binding.searchLoadingLayout.visibility = View.VISIBLE
+        binding.searchLoadingAnim.smoothToShow()
+    }
+
+    private fun finishLoading(){
+        binding.searchLoadingLayout.visibility = View.GONE
+        binding.searchLoadingAnim.smoothToShow()
+    }
+
+    private fun onClickSearch(keyWords : String){
+        viewModel.addSearchHistory(keyWords)
+        binding.searchSuggestList.visibility = View.GONE
+        binding.searchMainLayout.visibility = View.GONE
+        viewModel.keyWords.postValue(keyWords)
+        LogUtil.d("onClickSearch",keyWords)
     }
 
 }

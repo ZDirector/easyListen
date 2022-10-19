@@ -3,4 +3,10 @@
     <string name="search_history_text">搜索历史</string>
     <string name="search_recommend_text">搜索推荐</string>
     <string name="search_hot_list_text">热搜榜</string>
+    <string name="search_loading">正在加载…</string>
+    <string name="search_music_vip">VIP</string>
+    <string name="search_music_audition">试听</string>
+    <string name="search_music_original">原唱</string>
+    <string name="search_music_sq">SQ</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -43,11 +43,6 @@ fun Activity.setStatusBarTextColor(isStateBarTextBlack: Boolean) {
     ).isAppearanceLightStatusBars = isStateBarTextBlack
 }
 
-fun Activity.setAndroidNativeLightStatusBar() {
-    val controller = ViewCompat.getWindowInsetsController(window.decorView)
-    controller?.isAppearanceLightStatusBars = !isDarkMode
-}
-
 /**
  * 获取当前是否为深色模式
  * @return true 为深色模式  false 为浅色模式

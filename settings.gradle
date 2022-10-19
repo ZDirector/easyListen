@@ -10,9 +10,11 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        jcenter()
     }
 }
 rootProject.name = "easyListen"
 include ':app'
 include ':common'
 include ':preference'
+include ':search'

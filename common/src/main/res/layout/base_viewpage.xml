@@ -4,12 +4,13 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@android:color/transparent">
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/base_viewPage_Tab"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:textSize="18sp"
         app:tabTextColor="@color/tabLayoutTextColor"
         app:tabSelectedTextColor="@color/tabSelectedTextColor"

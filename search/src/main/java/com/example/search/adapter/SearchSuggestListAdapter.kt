@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.search.R
 
-class SearchSuggestListAdapter(private val searchSuggestList : List<String>) : RecyclerView.Adapter<SearchSuggestListAdapter.ViewHolder>() {
+class SearchSuggestListAdapter(var searchSuggestList : List<String>) : RecyclerView.Adapter<SearchSuggestListAdapter.ViewHolder>() {
 
     inner class ViewHolder(view : View) : RecyclerView.ViewHolder(view){
         val itemSearchSuggestText : TextView = view.findViewById(R.id.item_search_suggest_text)

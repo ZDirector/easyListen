@@ -1,6 +1,7 @@
 package com.example.common.network
 
 import com.example.common.constants.HttpConstants
+import com.example.common.utils.showToast
 import com.google.gson.Gson
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -79,6 +80,11 @@ class NetworkFlowCollector<T> {
 
     fun ioException(block: (IOException) -> Unit) {
         ioHandler = block
+    }
+    fun toastError(){
+        timeout { showToast("ErrorCode: 408,ErrorMassage: 网络连接超时，请稍后重试!") }
+        httpException { showToast("ErrorCode: 400,ErrorMassage: 数据格式出错，请稍后重试!") }
+        ioException { showToast("ErrorCode: -1,ErrorMassage: 请求错误!") }
     }
 }
 

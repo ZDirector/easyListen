@@ -10,21 +10,19 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.Guideline;
-import androidx.core.widget.NestedScrollView;
 import androidx.databinding.Bindable;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 import androidx.recyclerview.widget.RecyclerView;
+import com.example.common.baseui.assembly.BaseViewPage;
 import com.example.search.R;
 import com.example.search.viewmodel.SearchViewModel;
 import com.google.android.material.textfield.TextInputEditText;
+import com.wang.avi.AVLoadingIndicatorView;
 import java.lang.Deprecated;
 import java.lang.Object;
 
 public abstract class ActivitySearchBinding extends ViewDataBinding {
-  @NonNull
-  public final ConstraintLayout constraintLayout;
-
   @NonNull
   public final Guideline guideline1;
 
@@ -65,7 +63,13 @@ public abstract class ActivitySearchBinding extends ViewDataBinding {
   public final TextView searchHotListText;
 
   @NonNull
-  public final NestedScrollView searchMain;
+  public final AVLoadingIndicatorView searchLoadingAnim;
+
+  @NonNull
+  public final ConstraintLayout searchLoadingLayout;
+
+  @NonNull
+  public final ConstraintLayout searchMainLayout;
 
   @NonNull
   public final RecyclerView searchRecommendList;
@@ -74,24 +78,31 @@ public abstract class ActivitySearchBinding extends ViewDataBinding {
   public final TextView searchRecommendText;
 
   @NonNull
+  public final BaseViewPage searchResultLayout;
+
+  @NonNull
   public final RecyclerView searchSuggestList;
 
   @NonNull
   public final TextInputEditText searchTextInput;
 
+  @NonNull
+  public final ConstraintLayout searchTopLayout;
+
   @Bindable
   protected SearchViewModel mSearchViewModel;
 
   protected ActivitySearchBinding(Object _bindingComponent, View _root, int _localFieldCount,
-      ConstraintLayout constraintLayout, Guideline guideline1, Guideline guideline2,
-      Guideline guideline3, Guideline guideline4, Guideline guideline5, ImageView searchBack,
-      ImageView searchEditTextClear, ImageView searchEditTextIcon, ImageView searchHistoryClear,
+      Guideline guideline1, Guideline guideline2, Guideline guideline3, Guideline guideline4,
+      Guideline guideline5, ImageView searchBack, ImageView searchEditTextClear,
+      ImageView searchEditTextIcon, ImageView searchHistoryClear,
       ConstraintLayout searchHistoryLayout, RecyclerView searchHistoryList,
-      RecyclerView searchHotList, TextView searchHotListText, NestedScrollView searchMain,
-      RecyclerView searchRecommendList, TextView searchRecommendText,
-      RecyclerView searchSuggestList, TextInputEditText searchTextInput) {
+      RecyclerView searchHotList, TextView searchHotListText,
+      AVLoadingIndicatorView searchLoadingAnim, ConstraintLayout searchLoadingLayout,
+      ConstraintLayout searchMainLayout, RecyclerView searchRecommendList,
+      TextView searchRecommendText, BaseViewPage searchResultLayout, RecyclerView searchSuggestList,
+      TextInputEditText searchTextInput, ConstraintLayout searchTopLayout) {
     super(_bindingComponent, _root, _localFieldCount);
-    this.constraintLayout = constraintLayout;
     this.guideline1 = guideline1;
     this.guideline2 = guideline2;
     this.guideline3 = guideline3;
@@ -105,11 +116,15 @@ public abstract class ActivitySearchBinding extends ViewDataBinding {
     this.searchHistoryList = searchHistoryList;
     this.searchHotList = searchHotList;
     this.searchHotListText = searchHotListText;
-    this.searchMain = searchMain;
+    this.searchLoadingAnim = searchLoadingAnim;
+    this.searchLoadingLayout = searchLoadingLayout;
+    this.searchMainLayout = searchMainLayout;
     this.searchRecommendList = searchRecommendList;
     this.searchRecommendText = searchRecommendText;
+    this.searchResultLayout = searchResultLayout;
     this.searchSuggestList = searchSuggestList;
     this.searchTextInput = searchTextInput;
+    this.searchTopLayout = searchTopLayout;
   }
 
   public abstract void setSearchViewModel(@Nullable SearchViewModel searchViewModel);

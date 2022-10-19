@@ -26,7 +26,7 @@
             android:layout_marginTop="5dp"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout"
+            android:id="@+id/search_top_layout"
             android:layout_width="275dp"
             android:layout_height="32dp"
             android:layout_marginTop="5dp"
@@ -48,7 +48,11 @@
                 android:layout_marginEnd="6dp"
                 android:textCursorDrawable="@drawable/edit_text_color_cursor"
                 android:textColor="@color/black_3b"
-                android:textSize="16sp"/>
+                android:textSize="16sp"
+                android:lines="1"
+                android:maxLines="1"
+                android:inputType="text"
+                android:imeOptions="actionSearch"/>
 
             <ImageView
                 android:id="@+id/search_editText_icon"
@@ -75,17 +79,19 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.core.widget.NestedScrollView
-            android:id="@+id/search_main"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+            app:layout_constraintTop_toBottomOf="@+id/search_top_layout"
+            android:layout_marginTop="10dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/search_main_layout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:visibility="gone">
 
                 <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/guideline1"
@@ -120,7 +126,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/search_history_text"
                         android:textColor="@color/black_3D"
-                        android:textSize="16sp"
+                        android:textSize="17sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"/>
@@ -138,8 +144,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         app:layout_constraintTop_toBottomOf="@+id/search_history_clear"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"/>
+                        android:layout_marginTop="8dp"/>
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <TextView
@@ -148,7 +155,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/search_recommend_text"
                     android:textColor="@color/black_3D"
-                    android:textSize="16sp"
+                    android:textSize="17sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@+id/guideline2"
                     app:layout_constraintTop_toBottomOf="@+id/search_history_layout"
@@ -158,9 +165,10 @@
                     android:id="@+id/search_recommend_list"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     app:layout_constraintEnd_toStartOf="@+id/guideline3"
                     app:layout_constraintStart_toStartOf="@+id/guideline2"
-                    app:layout_constraintTop_toBottomOf="@+id/search_recommend_text"/>
+                    app:layout_constraintTop_toBottomOf="@+id/search_recommend_text" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="0dp"
@@ -178,14 +186,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        app:layout_constraintGuide_percent="0.03" />
+                        app:layout_constraintGuide_percent="0.04" />
 
                     <androidx.constraintlayout.widget.Guideline
                         android:id="@+id/guideline5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        app:layout_constraintGuide_percent="0.97" />
+                        app:layout_constraintGuide_percent="0.96" />
 
                     <TextView
                         android:id="@+id/search_hot_list_text"
@@ -193,10 +201,19 @@
                         android:layout_height="wrap_content"
                         android:text="@string/search_hot_list_text"
                         android:textColor="@color/black_3D"
-                        android:textSize="18sp"
+                        android:textSize="19sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="@id/guideline4"
                         app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginTop="10dp"/>
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        app:layout_constraintTop_toBottomOf="@id/search_hot_list_text"
+                        app:layout_constraintStart_toStartOf="@id/search_hot_list_text"
+                        app:layout_constraintEnd_toStartOf="@id/guideline5"
+                        android:background="@color/gray_e6"
                         android:layout_marginTop="10dp"/>
 
                     <androidx.recyclerview.widget.RecyclerView
@@ -205,7 +222,8 @@
                         android:layout_height="wrap_content"
                         app:layout_constraintEnd_toStartOf="@+id/guideline5"
                         app:layout_constraintStart_toStartOf="@id/guideline4"
-                        app:layout_constraintTop_toBottomOf="@id/search_hot_list_text"/>
+                        app:layout_constraintTop_toBottomOf="@id/search_hot_list_text"
+                        android:layout_marginTop="16dp"/>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -218,10 +236,54 @@
             android:id="@+id/search_suggest_list"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+            app:layout_constraintTop_toBottomOf="@+id/search_top_layout"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:visibility="gone"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/search_loading_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/search_top_layout"
+            app:layout_constraintVertical_bias="0.3"
+            android:visibility="gone">
+
+            <com.wang.avi.AVLoadingIndicatorView
+                android:id="@+id/search_loading_anim"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:indicatorName="LineScalePartyIndicator"
+                app:indicatorColor="@color/themeColor"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/search_loading"
+                app:layout_constraintStart_toEndOf="@+id/search_loading_anim"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:textSize="16sp"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.example.common.baseui.assembly.BaseViewPage
+            android:id="@+id/search_result_layout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/search_top_layout"
+            android:layout_marginTop="10dp"
+            android:visibility="invisible"
+            android:background="@android:color/transparent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
     

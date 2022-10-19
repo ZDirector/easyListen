@@ -9,4 +9,10 @@ object SearchNetWork {
 
     suspend fun getSearchSuggest(keyWords : String) = searchService.getSearchSuggest(keyWords)
 
+    suspend fun getHotSearchList() = searchService.getHotSearchList()
+
+    suspend fun getRecommendSearchList() = searchService.getRecommendSearchList()
+
+    suspend fun getSearchMusicResultList(keyWords: String,offset: Int) = searchService.getSearchMusicResultList(keyWords = keyWords, offset = offset)
+
 }

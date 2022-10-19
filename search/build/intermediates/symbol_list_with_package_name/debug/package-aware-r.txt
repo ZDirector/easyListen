@@ -566,6 +566,7 @@ attr indicatorColor
 attr indicatorDirectionCircular
 attr indicatorDirectionLinear
 attr indicatorInset
+attr indicatorName
 attr indicatorSize
 attr initialActivityCount
 attr insetForeground
@@ -682,6 +683,8 @@ attr layout_optimizationLevel
 attr layout_scrollEffect
 attr layout_scrollFlags
 attr layout_scrollInterpolator
+attr layout_srlBackgroundColor
+attr layout_srlSpinnerStyle
 attr layout_wrapBehaviorInParent
 attr liftOnScroll
 attr liftOnScrollTargetViewId
@@ -938,6 +941,64 @@ attr springMass
 attr springStiffness
 attr springStopThreshold
 attr srcCompat
+attr srlAccentColor
+attr srlClassicsSpinnerStyle
+attr srlDisableContentWhenLoading
+attr srlDisableContentWhenRefresh
+attr srlDragRate
+attr srlDrawableArrow
+attr srlDrawableArrowSize
+attr srlDrawableMarginRight
+attr srlDrawableProgress
+attr srlDrawableProgressSize
+attr srlDrawableSize
+attr srlEnableAutoLoadMore
+attr srlEnableClipFooterWhenFixedBehind
+attr srlEnableClipHeaderWhenFixedBehind
+attr srlEnableFooterFollowWhenLoadFinished
+attr srlEnableFooterFollowWhenNoMoreData
+attr srlEnableFooterTranslationContent
+attr srlEnableHeaderTranslationContent
+attr srlEnableHorizontalDrag
+attr srlEnableLastTime
+attr srlEnableLoadMore
+attr srlEnableLoadMoreWhenContentNotFull
+attr srlEnableNestedScrolling
+attr srlEnableOverScrollBounce
+attr srlEnableOverScrollDrag
+attr srlEnablePreviewInEditMode
+attr srlEnablePureScrollMode
+attr srlEnableRefresh
+attr srlEnableScrollContentWhenLoaded
+attr srlEnableScrollContentWhenRefreshed
+attr srlFinishDuration
+attr srlFixedFooterViewId
+attr srlFixedHeaderViewId
+attr srlFooterHeight
+attr srlFooterInsetStart
+attr srlFooterMaxDragRate
+attr srlFooterTranslationViewId
+attr srlFooterTriggerRate
+attr srlHeaderHeight
+attr srlHeaderInsetStart
+attr srlHeaderMaxDragRate
+attr srlHeaderTranslationViewId
+attr srlHeaderTriggerRate
+attr srlPrimaryColor
+attr srlReboundDuration
+attr srlStyle
+attr srlTextFailed
+attr srlTextFinish
+attr srlTextLoading
+attr srlTextNothing
+attr srlTextPulling
+attr srlTextRefreshing
+attr srlTextRelease
+attr srlTextSecondary
+attr srlTextSizeTime
+attr srlTextSizeTitle
+attr srlTextTimeMarginTop
+attr srlTextUpdate
 attr stackFromEnd
 attr staggered
 attr startIconCheckable
@@ -1207,6 +1268,9 @@ color background_floating_material_light
 color background_material_dark
 color background_material_light
 color black
+color black_2a
+color black_2e
+color black_31
 color black_3D
 color black_3b
 color black_47
@@ -1269,12 +1333,16 @@ color error_color_material_dark
 color error_color_material_light
 color foreground_material_dark
 color foreground_material_light
+color gold_vip
+color gold_vip_stroke
 color gray_35
 color gray_69
+color gray_7c
 color gray_81
 color gray_9c
 color gray_9f
 color gray_bg
+color gray_e6
 color gray_f3
 color gray_f7
 color highlighted_text_material_dark
@@ -1786,6 +1854,9 @@ color test_color
 color test_mtrl_calendar_day
 color test_mtrl_calendar_day_selected
 color themeColor
+color themeColor_stroke
+color theme_dark
+color theme_light
 color tooltip_background_dark
 color tooltip_background_light
 color white
@@ -2462,6 +2533,9 @@ drawable base_tablayout_indicator
 drawable bg_dialog_custom
 drawable bg_search_flow_list_item
 drawable bg_search_hot_list
+drawable bg_search_music_aud
+drawable bg_search_music_ori
+drawable bg_search_music_vip
 drawable bg_search_textedit
 drawable btn_checkbox_checked_mtrl
 drawable btn_checkbox_checked_to_unchecked_mtrl_animation
@@ -2477,6 +2551,7 @@ drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
 drawable edit_text_color_cursor
+drawable ic_100tb
 drawable ic_clock_black_24dp
 drawable ic_icon
 drawable ic_icon_tr
@@ -2490,6 +2565,7 @@ drawable ic_mtrl_checked_circle
 drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
+drawable ic_music_setting
 drawable ic_search_back
 drawable ic_search_clear
 drawable ic_search_history_del
@@ -2544,15 +2620,20 @@ id BOTTOM_END
 id BOTTOM_START
 id CTRL
 id FUNCTION
+id FixedBehind
+id FixedFront
 id META
+id MatchLayout
 id NO_DEBUG
 id SHIFT
 id SHOW_ALL
 id SHOW_PATH
 id SHOW_PROGRESS
 id SYM
+id Scale
 id TOP_END
 id TOP_START
+id Translate
 id accelerate
 id accessibility_action_clickable_span
 id accessibility_custom_action_0
@@ -2667,11 +2748,11 @@ id clip_horizontal
 id clip_vertical
 id clockwise
 id closest
+id coil_request_manager
 id collapseActionView
 id compress
 id confirm_button
 id constraint
-id constraintLayout
 id container
 id content
 id contentPanel
@@ -2780,6 +2861,20 @@ id info
 id invisible
 id inward
 id italic
+id item_flow_text
+id item_hot_name
+id item_hot_rank
+id item_search_music_al
+id item_search_music_alia
+id item_search_music_label
+id item_search_music_label_audition
+id item_search_music_label_original
+id item_search_music_label_sq
+id item_search_music_label_vip
+id item_search_music_name
+id item_search_music_setting
+id item_search_music_singer
+id item_search_music_tns
 id item_search_suggest_icon
 id item_search_suggest_text
 id item_touch_helper_previous_elevation
@@ -2852,6 +2947,8 @@ id mtrl_picker_text_input_range_start
 id mtrl_picker_title_text
 id mtrl_view_tag_bottom_padding
 id multiply
+id music_result_list
+id music_result_list_refresh
 id navigation_bar_item_active_indicator_view
 id navigation_bar_item_icon_container
 id navigation_bar_item_icon_view
@@ -2928,14 +3025,19 @@ id search_history_layout
 id search_history_list
 id search_hot_list
 id search_hot_list_text
+id search_loading_anim
+id search_loading_layout
+id search_loading_text
 id search_mag_icon
-id search_main
+id search_main_layout
 id search_plate
 id search_recommend_list
 id search_recommend_text
+id search_result_layout
 id search_src_text
 id search_suggest_list
 id search_text_input
+id search_top_layout
 id search_voice_btn
 id select_dialog_listview
 id selected
@@ -2966,6 +3068,12 @@ id square
 id src_atop
 id src_in
 id src_over
+id srl_classics_arrow
+id srl_classics_center
+id srl_classics_progress
+id srl_classics_title
+id srl_classics_update
+id srl_tag
 id standard
 id start
 id startHorizontal
@@ -2997,6 +3105,7 @@ id test_checkbox_app_button_tint
 id test_radiobutton_android_button_tint
 id test_radiobutton_app_button_tint
 id text
+id text1
 id text2
 id textEnd
 id textSpacerNoButtons
@@ -3163,7 +3272,12 @@ layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout dialog_loading
+layout fragment_music_result
+layout fragment_test
 layout item_flow_list
+layout item_hot_list
+layout item_loading
+layout item_search_music_list
 layout item_search_suggest
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
@@ -3222,6 +3336,8 @@ layout notification_template_part_time
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
+layout srl_classics_footer
+layout srl_classics_header
 layout support_simple_spinner_dropdown_item
 layout test_action_chip
 layout test_chip_zero_corner_radius
@@ -3283,6 +3399,7 @@ string error_icon_content_description
 string exposed_dropdown_menu_content_description
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
+string hello_blank_fragment
 string hide_bottom_view_on_scroll_behavior
 string icon_content_description
 string item_view_role_description
@@ -3365,9 +3482,34 @@ string path_password_eye_mask_visible
 string path_password_strike_through
 string search_history_text
 string search_hot_list_text
+string search_loading
 string search_menu_title
+string search_music_audition
+string search_music_original
+string search_music_sq
+string search_music_vip
 string search_recommend_text
+string srl_component_falsify
+string srl_content_empty
+string srl_footer_failed
+string srl_footer_finish
+string srl_footer_loading
+string srl_footer_nothing
+string srl_footer_pulling
+string srl_footer_refreshing
+string srl_footer_release
+string srl_header_failed
+string srl_header_finish
+string srl_header_loading
+string srl_header_pulling
+string srl_header_refreshing
+string srl_header_release
+string srl_header_secondary
+string srl_header_update
 string status_bar_notification_info_overflow
+style AVLoadingIndicatorView
+style AVLoadingIndicatorView_Large
+style AVLoadingIndicatorView_Small
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
 style AndroidThemeColorAccentYellow
@@ -3741,6 +3883,7 @@ style ShapeAppearanceOverlay_MaterialComponents_MaterialCalendar_Year
 style ShapeAppearanceOverlay_MaterialComponents_TextInputLayout_FilledBox
 style ShapeAppearanceOverlay_TopLeftCut
 style ShapeAppearanceOverlay_TopRightDifferentCornerSize
+style SmartRefreshStyle
 style Test_ShapeAppearanceOverlay_MaterialComponents_MaterialCalendar_Day
 style Test_Theme_MaterialComponents_MaterialCalendar
 style Test_Widget_MaterialComponents_MaterialCalendar
@@ -4423,6 +4566,7 @@ style Widget_MaterialComponents_Toolbar_Surface
 style Widget_MaterialComponents_Tooltip
 style Widget_Support_CoordinatorLayout
 style trans_Dialog
+styleable AVLoadingIndicatorView indicatorColor indicatorName maxHeight maxWidth minHeight minWidth
 styleable ActionBar background backgroundSplit backgroundStacked contentInsetEnd contentInsetEndWithActions contentInsetLeft contentInsetRight contentInsetStart contentInsetStartWithNavigation customNavigationLayout displayOptions divider elevation height hideOnContentScroll homeAsUpIndicator homeLayout icon indeterminateProgressStyle itemPadding logo navigationMode popupTheme progressBarPadding progressBarStyle subtitle subtitleTextStyle title titleTextStyle
 styleable ActionBarLayout android_layout_gravity
 styleable ActionMenuItemView android_minWidth
@@ -4455,6 +4599,8 @@ styleable CheckedTextView android_checkMark checkMarkCompat checkMarkTint checkM
 styleable Chip android_textAppearance android_textSize android_textColor android_ellipsize android_maxWidth android_text android_checkable checkedIcon checkedIconEnabled checkedIconTint checkedIconVisible chipBackgroundColor chipCornerRadius chipEndPadding chipIcon chipIconEnabled chipIconSize chipIconTint chipIconVisible chipMinHeight chipMinTouchTargetSize chipStartPadding chipStrokeColor chipStrokeWidth chipSurfaceColor closeIcon closeIconEnabled closeIconEndPadding closeIconSize closeIconStartPadding closeIconTint closeIconVisible ensureMinTouchTargetSize hideMotionSpec iconEndPadding iconStartPadding rippleColor shapeAppearance shapeAppearanceOverlay showMotionSpec textEndPadding textStartPadding
 styleable ChipGroup checkedChip chipSpacing chipSpacingHorizontal chipSpacingVertical selectionRequired singleLine singleSelection
 styleable CircularProgressIndicator indicatorDirectionCircular indicatorInset indicatorSize
+styleable ClassicsFooter srlAccentColor srlClassicsSpinnerStyle srlDrawableArrow srlDrawableArrowSize srlDrawableMarginRight srlDrawableProgress srlDrawableProgressSize srlDrawableSize srlFinishDuration srlPrimaryColor srlTextFailed srlTextFinish srlTextLoading srlTextNothing srlTextPulling srlTextRefreshing srlTextRelease srlTextSizeTitle
+styleable ClassicsHeader srlAccentColor srlClassicsSpinnerStyle srlDrawableArrow srlDrawableArrowSize srlDrawableMarginRight srlDrawableProgress srlDrawableProgressSize srlDrawableSize srlEnableLastTime srlFinishDuration srlPrimaryColor srlTextFailed srlTextFinish srlTextLoading srlTextPulling srlTextRefreshing srlTextRelease srlTextSecondary srlTextSizeTime srlTextSizeTitle srlTextTimeMarginTop srlTextUpdate
 styleable ClockFaceView clockFaceBackgroundColor clockNumberTextColor
 styleable ClockHandView clockHandColor materialCircleRadius selectorSize
 styleable CollapsingToolbarLayout collapsedTitleGravity collapsedTitleTextAppearance collapsedTitleTextColor contentScrim expandedTitleGravity expandedTitleMargin expandedTitleMarginBottom expandedTitleMarginEnd expandedTitleMarginStart expandedTitleMarginTop expandedTitleTextAppearance expandedTitleTextColor extraMultilineHeightEnabled forceApplySystemWindowInsetTop maxLines scrimAnimationDuration scrimVisibleHeightTrigger statusBarScrim title titleCollapseMode titleEnabled titlePositionInterpolator toolbarId
@@ -4545,6 +4691,8 @@ styleable SearchView android_focusable android_maxWidth android_inputType androi
 styleable ShapeAppearance cornerFamily cornerFamilyBottomLeft cornerFamilyBottomRight cornerFamilyTopLeft cornerFamilyTopRight cornerSize cornerSizeBottomLeft cornerSizeBottomRight cornerSizeTopLeft cornerSizeTopRight
 styleable ShapeableImageView contentPadding contentPaddingBottom contentPaddingEnd contentPaddingLeft contentPaddingRight contentPaddingStart contentPaddingTop shapeAppearance shapeAppearanceOverlay strokeColor strokeWidth
 styleable Slider android_enabled android_value android_stepSize android_valueFrom android_valueTo haloColor haloRadius labelBehavior labelStyle thumbColor thumbElevation thumbRadius thumbStrokeColor thumbStrokeWidth tickColor tickColorActive tickColorInactive tickVisible trackColor trackColorActive trackColorInactive trackHeight
+styleable SmartRefreshLayout android_clipChildren android_clipToPadding srlAccentColor srlDisableContentWhenLoading srlDisableContentWhenRefresh srlDragRate srlEnableAutoLoadMore srlEnableClipFooterWhenFixedBehind srlEnableClipHeaderWhenFixedBehind srlEnableFooterFollowWhenLoadFinished srlEnableFooterFollowWhenNoMoreData srlEnableFooterTranslationContent srlEnableHeaderTranslationContent srlEnableLoadMore srlEnableLoadMoreWhenContentNotFull srlEnableNestedScrolling srlEnableOverScrollBounce srlEnableOverScrollDrag srlEnablePreviewInEditMode srlEnablePureScrollMode srlEnableRefresh srlEnableScrollContentWhenLoaded srlEnableScrollContentWhenRefreshed srlFixedFooterViewId srlFixedHeaderViewId srlFooterHeight srlFooterInsetStart srlFooterMaxDragRate srlFooterTranslationViewId srlFooterTriggerRate srlHeaderHeight srlHeaderInsetStart srlHeaderMaxDragRate srlHeaderTranslationViewId srlHeaderTriggerRate srlPrimaryColor srlReboundDuration
+styleable SmartRefreshLayout_Layout layout_srlBackgroundColor layout_srlSpinnerStyle
 styleable Snackbar snackbarButtonStyle snackbarStyle snackbarTextViewStyle
 styleable SnackbarLayout android_maxWidth actionTextColorAlpha animationMode backgroundOverlayColorAlpha backgroundTint backgroundTintMode elevation maxActionInlineWidth
 styleable Spinner android_entries android_popupBackground android_prompt android_dropDownWidth popupTheme

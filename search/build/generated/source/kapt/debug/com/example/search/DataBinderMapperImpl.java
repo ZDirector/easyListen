@@ -7,6 +7,7 @@ import androidx.databinding.DataBinderMapper;
 import androidx.databinding.DataBindingComponent;
 import androidx.databinding.ViewDataBinding;
 import com.example.search.databinding.ActivitySearchBindingImpl;
+import com.example.search.databinding.FragmentMusicResultBindingImpl;
 import java.lang.IllegalArgumentException;
 import java.lang.Integer;
 import java.lang.Object;
@@ -20,10 +21,13 @@ import java.util.List;
 public class DataBinderMapperImpl extends DataBinderMapper {
   private static final int LAYOUT_ACTIVITYSEARCH = 1;
 
-  private static final SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP = new SparseIntArray(1);
+  private static final int LAYOUT_FRAGMENTMUSICRESULT = 2;
+
+  private static final SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP = new SparseIntArray(2);
 
   static {
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.example.search.R.layout.activity_search, LAYOUT_ACTIVITYSEARCH);
+    INTERNAL_LAYOUT_ID_LOOKUP.put(com.example.search.R.layout.fragment_music_result, LAYOUT_FRAGMENTMUSICRESULT);
   }
 
   @Override
@@ -40,6 +44,12 @@ public class DataBinderMapperImpl extends DataBinderMapper {
             return new ActivitySearchBindingImpl(component, view);
           }
           throw new IllegalArgumentException("The tag for activity_search is invalid. Received: " + tag);
+        }
+        case  LAYOUT_FRAGMENTMUSICRESULT: {
+          if ("layout/fragment_music_result_0".equals(tag)) {
+            return new FragmentMusicResultBindingImpl(component, view);
+          }
+          throw new IllegalArgumentException("The tag for fragment_music_result is invalid. Received: " + tag);
         }
       }
     }
@@ -87,19 +97,21 @@ public class DataBinderMapperImpl extends DataBinderMapper {
   }
 
   private static class InnerBrLookup {
-    static final SparseArray<String> sKeys = new SparseArray<String>(2);
+    static final SparseArray<String> sKeys = new SparseArray<String>(3);
 
     static {
       sKeys.put(0, "_all");
-      sKeys.put(1, "searchViewModel");
+      sKeys.put(1, "musicResultViewModel");
+      sKeys.put(2, "searchViewModel");
     }
   }
 
   private static class InnerLayoutIdLookup {
-    static final HashMap<String, Integer> sKeys = new HashMap<String, Integer>(1);
+    static final HashMap<String, Integer> sKeys = new HashMap<String, Integer>(2);
 
     static {
       sKeys.put("layout/activity_search_0", com.example.search.R.layout.activity_search);
+      sKeys.put("layout/fragment_music_result_0", com.example.search.R.layout.fragment_music_result);
     }
   }
 }
