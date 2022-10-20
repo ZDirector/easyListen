@@ -1,4 +1,4 @@
-package com.example.homepage
+package com.example.homepage.activity
 
 import android.graphics.Color
 import android.os.Build
@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import com.example.homepage.R
 import com.example.homepage.databinding.ActivityHomeBinding
 import com.example.homepage.music.fragment.MusicFragment
 import com.example.homepage.ui.fragment.CareFragment

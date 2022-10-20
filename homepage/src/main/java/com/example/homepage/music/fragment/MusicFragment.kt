@@ -1,5 +1,6 @@
 package com.example.homepage.music.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -17,6 +18,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.example.homepage.R
+import com.example.homepage.activity.WebActivity
 import com.example.homepage.databinding.FragmentMusicBinding
 import com.example.homepage.music.adapter.RankListAdapter
 import com.example.homepage.music.bean.Banner
@@ -25,10 +27,11 @@ import com.example.homepage.music.viewmodel.MusicViewModel
 import com.youth.banner.adapter.BannerImageAdapter
 import com.youth.banner.holder.BannerImageHolder
 import com.youth.banner.indicator.CircleIndicator
+import com.youth.banner.listener.OnBannerListener
 import kotlinx.coroutines.launch
 
 
-class MusicFragment : Fragment() {
+class MusicFragment : Fragment(), OnBannerListener<Banner> {
     private lateinit var mBinding: FragmentMusicBinding
     private lateinit var mViewModel: MusicViewModel
     private var mList = mutableListOf<Banner>()
@@ -106,7 +109,7 @@ private fun initBanner() {
         .setAdapter(mAdapter)
         .setIndicator(CircleIndicator(context))
         .setLoopTime(3000)
-
+        .setOnBannerListener(this)
     mViewModel.mBanners.observe(
         viewLifecycleOwner
     )
@@ -131,4 +134,10 @@ companion object {
             }
         }
 }
+
+    override fun OnBannerClick(data: Banner, position: Int) {
+        val intent = Intent(context,WebActivity::class.java)
+        intent.putExtra("url",mList[position].url)
+        startActivity(intent)
+    }
 }
