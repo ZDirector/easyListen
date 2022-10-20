@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:2:1-32:12
-INJECTED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:2:1-32:12
-INJECTED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:2:1-32:12
-INJECTED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:2:1-32:12
+ADDED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:2:1-29:12
+INJECTED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:2:1-29:12
+INJECTED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:2:1-29:12
+INJECTED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:2:1-29:12
 MERGED from [:common] F:\Androidprj\easyListen\common\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-28:12
 MERGED from [androidx.databinding:databinding-adapters:7.2.2] C:\Users\Administrator\.gradle\caches\transforms-3\f38fe6ade4f7837e7a515cb392c62870\transformed\databinding-adapters-7.2.2\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.databinding:databinding-ktx:7.2.2] C:\Users\Administrator\.gradle\caches\transforms-3\b6e77191286fe0db32687584cde9014a\transformed\jetified-databinding-ktx-7.2.2\AndroidManifest.xml:17:1-24:12
@@ -66,22 +66,22 @@ MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\User
 MERGED from [androidx.print:print:1.0.0] C:\Users\Administrator\.gradle\caches\transforms-3\6f784ec98e20dba0ba6566870c016b4c\transformed\print-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [io.github.scwang90:refresh-drawable-paint:2.0.5] C:\Users\Administrator\.gradle\caches\transforms-3\cfba1d28cbe8570f541d96c9d4e2e9e2\transformed\jetified-refresh-drawable-paint-2.0.5\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.annotation:annotation-experimental:1.1.0] C:\Users\Administrator\.gradle\caches\transforms-3\d94281720382a7a89a20af48d66752c9\transformed\jetified-annotation-experimental-1.1.0\AndroidManifest.xml:17:1-24:12
-INJECTED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:2:1-32:12
-INJECTED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:2:1-32:12
-INJECTED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:2:1-32:12
+INJECTED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:2:1-29:12
+INJECTED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:2:1-29:12
+INJECTED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:2:1-29:12
 	package
 		ADDED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:4:5-33
 		INJECTED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml
 		INJECTED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml
-		ADDED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:2:1-32:12
+		ADDED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:2:1-29:12
 		INJECTED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml
 	xmlns:tools
 		ADDED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:3:5-51
 	android:versionCode
 		INJECTED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml
-		ADDED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:2:1-32:12
+		ADDED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:2:1-29:12
 		INJECTED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:2:11-69
@@ -92,7 +92,7 @@ MERGED from [:common] F:\Androidprj\easyListen\common\build\intermediates\merged
 	android:name
 		ADDED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:6:22-64
 application
-ADDED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:8:5-30:19
+ADDED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:8:5-27:19
 MERGED from [:common] F:\Androidprj\easyListen\common\build\intermediates\merged_manifest\debug\AndroidManifest.xml:15:5-26:19
 MERGED from [:common] F:\Androidprj\easyListen\common\build\intermediates\merged_manifest\debug\AndroidManifest.xml:15:5-26:19
 MERGED from [com.google.android.material:material:1.6.1] C:\Users\Administrator\.gradle\caches\transforms-3\9d6778b007a14e0c6659deb3da7018f2\transformed\material-1.6.1\AndroidManifest.xml:24:5-20
@@ -137,28 +137,22 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\Ad
 		ADDED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:16:9-44
 	android:name
 		ADDED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:9:9-62
-activity#com.example.search.SearchResultActivity
-ADDED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:18:9-20:40
-	android:exported
-		ADDED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:20:13-37
-	android:name
-		ADDED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:19:13-49
 activity#com.example.search.ui.SearchActivity
-ADDED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:21:9-29:20
+ADDED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:18:9-26:20
 	android:exported
-		ADDED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:23:13-36
+		ADDED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:20:13-36
 	android:name
-		ADDED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:22:13-46
+		ADDED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:19:13-46
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:24:13-28:29
+ADDED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:21:13-25:29
 action#android.intent.action.MAIN
-ADDED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:25:17-69
+ADDED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:22:17-69
 	android:name
-		ADDED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:25:25-66
+		ADDED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:22:25-66
 category#android.intent.category.LAUNCHER
-ADDED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:27:17-77
+ADDED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:24:17-77
 	android:name
-		ADDED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:27:27-74
+		ADDED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:24:27-74
 uses-sdk
 INJECTED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml

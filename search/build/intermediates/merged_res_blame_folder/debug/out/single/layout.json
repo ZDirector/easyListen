@@ -20,6 +20,10 @@
         "source": "C:\\Users\\Administrator\\.gradle\\daemon\\7.3.3\\com.example.search-main-45:\\layout\\item_flow_list.xml"
     },
     {
+        "merged": "com.example.search-mergeDebugResources-42:/layout/fragment_test.xml",
+        "source": "com.example.search-main-45:/layout/fragment_test.xml"
+    },
+    {
         "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\7.3.3\\com.example.search-mergeDebugResources-42:\\layout\\activity_search.xml",
         "source": "C:\\Users\\Administrator\\.gradle\\daemon\\7.3.3\\com.example.search-main-45:\\layout\\activity_search.xml"
     },
@@ -30,9 +34,5 @@
     {
         "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\7.3.3\\com.example.search-mergeDebugResources-42:\\layout\\fragment_music_result.xml",
         "source": "C:\\Users\\Administrator\\.gradle\\daemon\\7.3.3\\com.example.search-main-45:\\layout\\fragment_music_result.xml"
-    },
-    {
-        "merged": "com.example.search-mergeDebugResources-42:/layout/item_loading.xml",
-        "source": "com.example.search-main-45:/layout/item_loading.xml"
     }
 ]

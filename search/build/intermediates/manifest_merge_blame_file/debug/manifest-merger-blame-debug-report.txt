@@ -24,7 +24,7 @@
 14-->[:common] F:\Androidprj\easyListen\common\build\intermediates\merged_manifest\debug\AndroidManifest.xml:13:22-78
 15
 16    <application
-16-->F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:8:5-30:19
+16-->F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:8:5-27:19
 17        android:name="com.example.common.utils.MyApplication"
 17-->F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:9:9-62
 18        android:allowBackup="true"
@@ -43,65 +43,58 @@
 24-->F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:13:9-46
 25        android:supportsRtl="true"
 25-->F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:14:9-35
-26        android:testOnly="true"
-27        android:theme="@style/Theme.EasyListen"
-27-->F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:15:9-48
-28        android:usesCleartextTraffic="true" >
-28-->F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:16:9-44
-29        <activity
-29-->F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:18:9-20:40
-30            android:name="com.example.search.SearchResultActivity"
-30-->F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:19:13-49
-31            android:exported="false" />
-31-->F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:20:13-37
-32        <activity
-32-->F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:21:9-29:20
-33            android:name="com.example.search.ui.SearchActivity"
-33-->F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:22:13-46
-34            android:exported="true" >
-34-->F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:23:13-36
-35            <intent-filter>
-35-->F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:24:13-28:29
-36                <action android:name="android.intent.action.MAIN" />
-36-->F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:25:17-69
-36-->F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:25:25-66
+26        android:theme="@style/Theme.EasyListen"
+26-->F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:15:9-48
+27        android:usesCleartextTraffic="true" >
+27-->F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:16:9-44
+28        <activity
+28-->F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:18:9-26:20
+29            android:name="com.example.search.ui.SearchActivity"
+29-->F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:19:13-46
+30            android:exported="true" >
+30-->F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:20:13-36
+31            <intent-filter>
+31-->F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:21:13-25:29
+32                <action android:name="android.intent.action.MAIN" />
+32-->F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:22:17-69
+32-->F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:22:25-66
+33
+34                <category android:name="android.intent.category.LAUNCHER" />
+34-->F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:24:17-77
+34-->F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:24:27-74
+35            </intent-filter>
+36        </activity>
 37
-38                <category android:name="android.intent.category.LAUNCHER" />
-38-->F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:27:17-77
-38-->F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:27:27-74
-39            </intent-filter>
-40        </activity>
-41
-42        <service
-42-->[androidx.room:room-runtime:2.4.3] C:\Users\Administrator\.gradle\caches\transforms-3\95923d3386b280608cf631337ad8cbd5\transformed\room-runtime-2.4.3\AndroidManifest.xml:25:9-28:40
-43            android:name="androidx.room.MultiInstanceInvalidationService"
-43-->[androidx.room:room-runtime:2.4.3] C:\Users\Administrator\.gradle\caches\transforms-3\95923d3386b280608cf631337ad8cbd5\transformed\room-runtime-2.4.3\AndroidManifest.xml:26:13-74
-44            android:directBootAware="true"
-44-->[androidx.room:room-runtime:2.4.3] C:\Users\Administrator\.gradle\caches\transforms-3\95923d3386b280608cf631337ad8cbd5\transformed\room-runtime-2.4.3\AndroidManifest.xml:27:13-43
-45            android:exported="false" />
-45-->[androidx.room:room-runtime:2.4.3] C:\Users\Administrator\.gradle\caches\transforms-3\95923d3386b280608cf631337ad8cbd5\transformed\room-runtime-2.4.3\AndroidManifest.xml:28:13-37
-46
-47        <provider
-47-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\9eaa5499e5917bf161e9e1c1138b7d31\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
-48            android:name="androidx.startup.InitializationProvider"
-48-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\9eaa5499e5917bf161e9e1c1138b7d31\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:25:13-67
-49            android:authorities="com.example.search.androidx-startup"
-49-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\9eaa5499e5917bf161e9e1c1138b7d31\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:26:13-68
-50            android:exported="false" >
-50-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\9eaa5499e5917bf161e9e1c1138b7d31\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:27:13-37
-51            <meta-data
-51-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\9eaa5499e5917bf161e9e1c1138b7d31\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
-52                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-52-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\9eaa5499e5917bf161e9e1c1138b7d31\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:30:17-75
-53                android:value="androidx.startup" />
-53-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\9eaa5499e5917bf161e9e1c1138b7d31\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:31:17-49
-54            <meta-data
-54-->[androidx.lifecycle:lifecycle-process:2.5.0] C:\Users\Administrator\.gradle\caches\transforms-3\20094a7a661d24426efc7cd2df6d72f2\transformed\jetified-lifecycle-process-2.5.0\AndroidManifest.xml:31:13-33:52
-55                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-55-->[androidx.lifecycle:lifecycle-process:2.5.0] C:\Users\Administrator\.gradle\caches\transforms-3\20094a7a661d24426efc7cd2df6d72f2\transformed\jetified-lifecycle-process-2.5.0\AndroidManifest.xml:32:17-78
-56                android:value="androidx.startup" />
-56-->[androidx.lifecycle:lifecycle-process:2.5.0] C:\Users\Administrator\.gradle\caches\transforms-3\20094a7a661d24426efc7cd2df6d72f2\transformed\jetified-lifecycle-process-2.5.0\AndroidManifest.xml:33:17-49
-57        </provider>
-58    </application>
-59
-60</manifest>
+38        <service
+38-->[androidx.room:room-runtime:2.4.3] C:\Users\Administrator\.gradle\caches\transforms-3\95923d3386b280608cf631337ad8cbd5\transformed\room-runtime-2.4.3\AndroidManifest.xml:25:9-28:40
+39            android:name="androidx.room.MultiInstanceInvalidationService"
+39-->[androidx.room:room-runtime:2.4.3] C:\Users\Administrator\.gradle\caches\transforms-3\95923d3386b280608cf631337ad8cbd5\transformed\room-runtime-2.4.3\AndroidManifest.xml:26:13-74
+40            android:directBootAware="true"
+40-->[androidx.room:room-runtime:2.4.3] C:\Users\Administrator\.gradle\caches\transforms-3\95923d3386b280608cf631337ad8cbd5\transformed\room-runtime-2.4.3\AndroidManifest.xml:27:13-43
+41            android:exported="false" />
+41-->[androidx.room:room-runtime:2.4.3] C:\Users\Administrator\.gradle\caches\transforms-3\95923d3386b280608cf631337ad8cbd5\transformed\room-runtime-2.4.3\AndroidManifest.xml:28:13-37
+42
+43        <provider
+43-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\9eaa5499e5917bf161e9e1c1138b7d31\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
+44            android:name="androidx.startup.InitializationProvider"
+44-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\9eaa5499e5917bf161e9e1c1138b7d31\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:25:13-67
+45            android:authorities="com.example.search.androidx-startup"
+45-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\9eaa5499e5917bf161e9e1c1138b7d31\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:26:13-68
+46            android:exported="false" >
+46-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\9eaa5499e5917bf161e9e1c1138b7d31\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:27:13-37
+47            <meta-data
+47-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\9eaa5499e5917bf161e9e1c1138b7d31\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
+48                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+48-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\9eaa5499e5917bf161e9e1c1138b7d31\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:30:17-75
+49                android:value="androidx.startup" />
+49-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\9eaa5499e5917bf161e9e1c1138b7d31\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:31:17-49
+50            <meta-data
+50-->[androidx.lifecycle:lifecycle-process:2.5.0] C:\Users\Administrator\.gradle\caches\transforms-3\20094a7a661d24426efc7cd2df6d72f2\transformed\jetified-lifecycle-process-2.5.0\AndroidManifest.xml:31:13-33:52
+51                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+51-->[androidx.lifecycle:lifecycle-process:2.5.0] C:\Users\Administrator\.gradle\caches\transforms-3\20094a7a661d24426efc7cd2df6d72f2\transformed\jetified-lifecycle-process-2.5.0\AndroidManifest.xml:32:17-78
+52                android:value="androidx.startup" />
+52-->[androidx.lifecycle:lifecycle-process:2.5.0] C:\Users\Administrator\.gradle\caches\transforms-3\20094a7a661d24426efc7cd2df6d72f2\transformed\jetified-lifecycle-process-2.5.0\AndroidManifest.xml:33:17-49
+53        </provider>
+54    </application>
+55
+56</manifest>
