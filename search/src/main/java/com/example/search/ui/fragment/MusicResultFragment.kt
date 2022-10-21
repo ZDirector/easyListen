@@ -1,17 +1,20 @@
 package com.example.search.ui.fragment
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.widget.PopupWindow
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.common.baseui.BaseFragment
-import com.example.common.utils.LogUtil
 import com.example.search.BR
 import com.example.search.R
 import com.example.search.adapter.MusicResultListAdapter
 import com.example.search.databinding.FragmentMusicResultBinding
+import com.example.search.util.MusicPopupWindow
 import com.example.search.viewmodel.SearchViewModel
 import com.example.search.viewmodel.fragment.MusicResultViewModel
+
 
 class MusicResultFragment : BaseFragment<FragmentMusicResultBinding,MusicResultViewModel>() {
     override val layoutId: Int = R.layout.fragment_music_result
@@ -54,7 +57,17 @@ class MusicResultFragment : BaseFragment<FragmentMusicResultBinding,MusicResultV
                     adapter = MusicResultListAdapter(it.toMutableList())
                     adapter.setItemOnClickListener(object : MusicResultListAdapter.ItemOnClickListener{
                         override fun onClick(view: View, i: Int) {
+                            when(view.id){
+                                R.id.item_search_music_setting ->{
+                                    val popupWindow = MusicPopupWindow(view,adapter.musicResultList[i])
+                                    popupWindow.initPopWindow()
+                                    popupWindow.setBackground(requireActivity().window)
+                                    popupWindow.show()
+                                }
+                                else ->{
 
+                                }
+                            }
                         }
                     })
                     binding.musicResultList.adapter = adapter

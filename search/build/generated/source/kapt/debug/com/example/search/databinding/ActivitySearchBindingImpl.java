@@ -28,14 +28,12 @@ public class ActivitySearchBindingImpl extends ActivitySearchBinding  {
         sViewsWithIds.put(R.id.search_history_list, 12);
         sViewsWithIds.put(R.id.search_recommend_text, 13);
         sViewsWithIds.put(R.id.search_recommend_list, 14);
-        sViewsWithIds.put(R.id.guideline4, 15);
-        sViewsWithIds.put(R.id.guideline5, 16);
-        sViewsWithIds.put(R.id.search_hot_list_text, 17);
-        sViewsWithIds.put(R.id.search_hot_list, 18);
-        sViewsWithIds.put(R.id.search_suggest_list, 19);
-        sViewsWithIds.put(R.id.search_loading_layout, 20);
-        sViewsWithIds.put(R.id.search_loading_anim, 21);
-        sViewsWithIds.put(R.id.search_result_layout, 22);
+        sViewsWithIds.put(R.id.search_hot_list_text, 15);
+        sViewsWithIds.put(R.id.search_hot_list, 16);
+        sViewsWithIds.put(R.id.search_suggest_list, 17);
+        sViewsWithIds.put(R.id.search_loading_layout, 18);
+        sViewsWithIds.put(R.id.search_loading_anim, 19);
+        sViewsWithIds.put(R.id.search_result_layout, 20);
     }
     // views
     @NonNull
@@ -46,30 +44,28 @@ public class ActivitySearchBindingImpl extends ActivitySearchBinding  {
     // Inverse Binding Event Handlers
 
     public ActivitySearchBindingImpl(@Nullable androidx.databinding.DataBindingComponent bindingComponent, @NonNull View root) {
-        this(bindingComponent, root, mapBindings(bindingComponent, root, 23, sIncludes, sViewsWithIds));
+        this(bindingComponent, root, mapBindings(bindingComponent, root, 21, sIncludes, sViewsWithIds));
     }
     private ActivitySearchBindingImpl(androidx.databinding.DataBindingComponent bindingComponent, View root, Object[] bindings) {
         super(bindingComponent, root, 0
             , (androidx.constraintlayout.widget.Guideline) bindings[7]
             , (androidx.constraintlayout.widget.Guideline) bindings[8]
             , (androidx.constraintlayout.widget.Guideline) bindings[9]
-            , (androidx.constraintlayout.widget.Guideline) bindings[15]
-            , (androidx.constraintlayout.widget.Guideline) bindings[16]
             , (android.widget.ImageView) bindings[1]
             , (android.widget.ImageView) bindings[5]
             , (android.widget.ImageView) bindings[4]
             , (android.widget.ImageView) bindings[11]
             , (androidx.constraintlayout.widget.ConstraintLayout) bindings[10]
             , (androidx.recyclerview.widget.RecyclerView) bindings[12]
-            , (androidx.recyclerview.widget.RecyclerView) bindings[18]
-            , (android.widget.TextView) bindings[17]
-            , (com.wang.avi.AVLoadingIndicatorView) bindings[21]
-            , (androidx.constraintlayout.widget.ConstraintLayout) bindings[20]
+            , (androidx.recyclerview.widget.RecyclerView) bindings[16]
+            , (android.widget.TextView) bindings[15]
+            , (com.wang.avi.AVLoadingIndicatorView) bindings[19]
+            , (androidx.constraintlayout.widget.ConstraintLayout) bindings[18]
             , (androidx.constraintlayout.widget.ConstraintLayout) bindings[6]
             , (androidx.recyclerview.widget.RecyclerView) bindings[14]
             , (android.widget.TextView) bindings[13]
-            , (com.example.common.baseui.assembly.BaseViewPage) bindings[22]
-            , (androidx.recyclerview.widget.RecyclerView) bindings[19]
+            , (com.example.common.baseui.assembly.BaseViewPage) bindings[20]
+            , (androidx.recyclerview.widget.RecyclerView) bindings[17]
             , (com.google.android.material.textfield.TextInputEditText) bindings[3]
             , (androidx.constraintlayout.widget.ConstraintLayout) bindings[2]
             );

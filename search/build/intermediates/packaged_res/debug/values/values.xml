@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="http://schemas.android.com/tools">
     <color name="black">#FF000000</color>
+    <color name="black_28">#282828</color>
     <color name="black_2a">#2a2a2a</color>
     <color name="black_2e">#2e2e2e</color>
     <color name="black_31">#313131</color>
@@ -13,9 +14,11 @@
     <color name="gray_69">#696969</color>
     <color name="gray_7c">#7c7c7c</color>
     <color name="gray_81">#818181</color>
+    <color name="gray_8e">#8e8e8e</color>
     <color name="gray_9c">#9c9c9c</color>
     <color name="gray_9f">#9f9f9f</color>
     <color name="gray_bg">#DFDDDB</color>
+    <color name="gray_cf">#cfcfcf</color>
     <color name="gray_e6">#e6e6e6</color>
     <color name="gray_f3">#F3F3F3</color>
     <color name="gray_f7">#F7F7F7</color>
@@ -29,6 +32,15 @@
     <color name="white">#FFFFFFFF</color>
     <string name="app_name">search</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="music_album">专辑:</string>
+    <string name="music_collect">收藏到歌单</string>
+    <string name="music_comment">评论</string>
+    <string name="music_download">下载</string>
+    <string name="music_next_play">下一首播放</string>
+    <string name="music_result_popup_window_top">歌曲:</string>
+    <string name="music_share">分享</string>
+    <string name="music_singer">歌手:</string>
+    <string name="music_video">相关视频</string>
     <string name="search_history_text">搜索历史</string>
     <string name="search_hot_list_text">热搜榜</string>
     <string name="search_loading">正在加载…</string>
@@ -49,5 +61,9 @@
         
         <item name="android:statusBarColor" ns1:targetApi="l">?attr/colorPrimaryVariant</item>
         
+    </style>
+    <style name="music_popupwindow_anim" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/anim_music_popup_enter</item>
+        <item name="android:windowExitAnimation">@anim/anim_music_popup_exit</item>
     </style>
 </resources>

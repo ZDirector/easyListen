@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.search-mergeDebugResources-41:/values-land/values-land.xml",
+            "outputFile": "com.example.search-mergeDebugResources-42:/values-land/values-land.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Administrator\\.gradle\\caches\\transforms-3\\fc1f82018352b0cb2503b51beb61b53f\\transformed\\appcompat-1.5.1\\res\\values-land\\values-land.xml",

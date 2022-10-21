@@ -5,7 +5,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:paddingStart="20dp"
     android:paddingEnd="20dp"
-    android:paddingBottom="10dp">
+    android:paddingBottom="10dp"
+    android:background="@drawable/item_press_color">
 
     <ImageView
         android:layout_width="0dp"
@@ -162,6 +163,9 @@
         android:src="@drawable/ic_music_setting"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="@drawable/item_press_color"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

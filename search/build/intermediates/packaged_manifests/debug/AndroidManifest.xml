@@ -27,9 +27,6 @@
         android:theme="@style/Theme.EasyListen"
         android:usesCleartextTraffic="true" >
         <activity
-            android:name="com.example.search.SearchResultActivity"
-            android:exported="false" />
-        <activity
             android:name="com.example.search.ui.SearchActivity"
             android:exported="true" >
             <intent-filter>
