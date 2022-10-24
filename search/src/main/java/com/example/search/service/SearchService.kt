@@ -1,9 +1,6 @@
 package com.example.search.service
 
-import com.example.common.bean.HotSearchBean
-import com.example.common.bean.RecommendSearchBean
-import com.example.common.bean.SearchSuggestBean
-import com.example.common.bean.searchbean.SearchMusicBean
+import com.example.common.bean.searchbean.*
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -25,4 +22,18 @@ interface SearchService {
         @Query("limit") limit : Int = 20,
         @Query("offset") offset : Int,
         @Query("type") type: Int = 1) : SearchMusicBean
+
+    @GET("/cloudsearch")
+    suspend fun getSearchMusicSheetResultList(
+        @Query("keywords") keyWords : String,
+        @Query("limit") limit : Int = 20,
+        @Query("offset") offset : Int,
+        @Query("type") type: Int = 1000) : SearchSongSheetBean
+
+    @GET("/cloudsearch")
+    suspend fun getSearchMusicVideoResultList(
+        @Query("keywords") keyWords : String,
+        @Query("limit") limit : Int = 20,
+        @Query("offset") offset : Int,
+        @Query("type") type: Int = 1004) : SearchMusicVideoBean
 }

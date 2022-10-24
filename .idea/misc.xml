@@ -32,12 +32,16 @@
         <entry key="..\:/Androidprj/easyListen/search/src/main/res/layout/activity_search.xml" value="0.33" />
         <entry key="..\:/Androidprj/easyListen/search/src/main/res/layout/activity_search_result.xml" value="0.36614583333333334" />
         <entry key="..\:/Androidprj/easyListen/search/src/main/res/layout/fragment_music_result.xml" value="0.36614583333333334" />
+        <entry key="..\:/Androidprj/easyListen/search/src/main/res/layout/fragment_music_sheet.xml" value="0.36614583333333334" />
+        <entry key="..\:/Androidprj/easyListen/search/src/main/res/layout/fragment_music_viedo.xml" value="0.36614583333333334" />
         <entry key="..\:/Androidprj/easyListen/search/src/main/res/layout/fragment_test.xml" value="0.36614583333333334" />
         <entry key="..\:/Androidprj/easyListen/search/src/main/res/layout/item_flow_list.xml" value="0.9" />
         <entry key="..\:/Androidprj/easyListen/search/src/main/res/layout/item_hot_list.xml" value="0.3651041666666667" />
         <entry key="..\:/Androidprj/easyListen/search/src/main/res/layout/item_loading.xml" value="0.3651041666666667" />
         <entry key="..\:/Androidprj/easyListen/search/src/main/res/layout/item_music_label.xml" value="0.3651041666666667" />
         <entry key="..\:/Androidprj/easyListen/search/src/main/res/layout/item_search_music_list.xml" value="0.5" />
+        <entry key="..\:/Androidprj/easyListen/search/src/main/res/layout/item_search_music_sheet.xml" value="0.3651041666666667" />
+        <entry key="..\:/Androidprj/easyListen/search/src/main/res/layout/item_search_music_video.xml" value="0.3651041666666667" />
         <entry key="..\:/Androidprj/easyListen/search/src/main/res/layout/item_search_suggest.xml" value="0.3651041666666667" />
         <entry key="..\:/Androidprj/easyListen/search/src/main/res/layout/popupwindow_music_setting.xml" value="0.3651041666666667" />
         <entry key="..\:/Androidprj/easyListen/search/src/main/res/xml/network_security_config.xml" value="0.36614583333333334" />

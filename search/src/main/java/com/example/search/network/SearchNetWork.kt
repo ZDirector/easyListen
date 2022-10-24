@@ -15,4 +15,7 @@ object SearchNetWork {
 
     suspend fun getSearchMusicResultList(keyWords: String,offset: Int) = searchService.getSearchMusicResultList(keyWords = keyWords, offset = offset)
 
+    suspend fun getSearchMusicSheetResultList(keyWords: String,offset: Int) = searchService.getSearchMusicSheetResultList(keyWords = keyWords, offset = offset)
+
+    suspend fun getSearchMusicVideoResultList(keyWords: String,offset: Int) = searchService.getSearchMusicVideoResultList(keyWords = keyWords, offset = offset)
 }

@@ -13,8 +13,11 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.common.bean.searchbean.Song
 import com.example.common.utils.MyApplication
 import com.example.common.utils.windowsHeight
-import com.example.search.R
+import com.example.search.R.*
 
+/**
+ * 音乐列表的音乐设置弹出PopupWindow
+ */
 class MusicPopupWindow(touchView: View,song : Song) {
 
     private val mTouchView = touchView
@@ -37,21 +40,22 @@ class MusicPopupWindow(touchView: View,song : Song) {
     private lateinit var mPopupWindow: PopupWindow
 
     fun initPopWindow(){
-        mContentView = LayoutInflater.from(MyApplication.context).inflate(R.layout.popupwindow_music_setting,null,false)
-        topMusicImg = mContentView.findViewById(R.id.top_music_pic)
-        topMusicSongName = mContentView.findViewById(R.id.top_music_song_name)
-        topMusicSingerName = mContentView.findViewById(R.id.top_music_singer_name)
-        topMusicVIP = mContentView.findViewById(R.id.top_music_label_vip)
-        itemMusicNextPlay = mContentView.findViewById(R.id.item_music_next_play)
-        itemMusicCollect = mContentView.findViewById(R.id.item_music_collect)
-        itemMusicDownload = mContentView.findViewById(R.id.item_music_download)
-        itemMusicComment = mContentView.findViewById(R.id.item_music_comment)
-        itemMusicShare = mContentView.findViewById(R.id.item_music_share)
-        itemMusicSinger = mContentView.findViewById(R.id.item_music_singer)
-        itemMusicAlbum = mContentView.findViewById(R.id.item_music_album)
-        itemMusicVideo = mContentView.findViewById(R.id.item_music_video)
-        itemMusicSingerName = mContentView.findViewById(R.id.item_music_singer_name)
-        itemMusicAlbumName = mContentView.findViewById(R.id.item_music_album_name)
+        mContentView = LayoutInflater.from(MyApplication.context).inflate(layout.popupwindow_music_setting,null,false)
+
+        topMusicImg = mContentView.findViewById(id.top_music_pic)
+        topMusicSongName = mContentView.findViewById(id.top_music_song_name)
+        topMusicSingerName = mContentView.findViewById(id.top_music_singer_name)
+        topMusicVIP = mContentView.findViewById(id.top_music_label_vip)
+        itemMusicNextPlay = mContentView.findViewById(id.item_music_next_play)
+        itemMusicCollect = mContentView.findViewById(id.item_music_collect)
+        itemMusicDownload = mContentView.findViewById(id.item_music_download)
+        itemMusicComment = mContentView.findViewById(id.item_music_comment)
+        itemMusicShare = mContentView.findViewById(id.item_music_share)
+        itemMusicSinger = mContentView.findViewById(id.item_music_singer)
+        itemMusicAlbum = mContentView.findViewById(id.item_music_album)
+        itemMusicVideo = mContentView.findViewById(id.item_music_video)
+        itemMusicSingerName = mContentView.findViewById(id.item_music_singer_name)
+        itemMusicAlbumName = mContentView.findViewById(id.item_music_album_name)
 
         Glide
             .with(topMusicImg)
@@ -75,15 +79,14 @@ class MusicPopupWindow(touchView: View,song : Song) {
         mPopupWindow = PopupWindow(mContentView,ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT, true)
         mPopupWindow.softInputMode = WindowManager.LayoutParams.SOFT_INPUT_STATE_UNCHANGED
         mPopupWindow.softInputMode = WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE
-        mPopupWindow.animationStyle = R.style.music_popupwindow_anim
+        mPopupWindow.animationStyle = style.music_popupwindow_anim
         mPopupWindow.isOutsideTouchable = true
         mPopupWindow.setBackgroundDrawable(ColorDrawable(0x00000000))
+        mContentView.measure(makeDropDownMeasureSpec(mPopupWindow.width),
+            makeDropDownMeasureSpec(mPopupWindow.height))
     }
 
     fun show(){
-        mContentView.measure(makeDropDownMeasureSpec(mPopupWindow.width),
-            makeDropDownMeasureSpec(mPopupWindow.height))
-
         //计算弹出的高度
         val location = IntArray(2)
         mTouchView.getLocationInWindow(location)
@@ -91,6 +94,7 @@ class MusicPopupWindow(touchView: View,song : Song) {
         PopupWindowCompat.showAsDropDown(mPopupWindow, mTouchView, 0, offsetY, Gravity.START)
     }
 
+    //设置弹窗显示时，其余空白处的背景
     fun setBackground(window: Window){
         val lp: WindowManager.LayoutParams = window.attributes
         lp.alpha = 0.5f
@@ -102,6 +106,7 @@ class MusicPopupWindow(touchView: View,song : Song) {
         }
     }
 
+    //计算contentView的宽高
     private fun makeDropDownMeasureSpec(measureSpec: Int): Int {
         val mode: Int = if (measureSpec == ViewGroup.LayoutParams.WRAP_CONTENT) {
             View.MeasureSpec.UNSPECIFIED

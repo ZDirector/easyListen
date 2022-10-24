@@ -33,12 +33,6 @@ public abstract class ActivitySearchBinding extends ViewDataBinding {
   public final Guideline guideline3;
 
   @NonNull
-  public final Guideline guideline4;
-
-  @NonNull
-  public final Guideline guideline5;
-
-  @NonNull
   public final ImageView searchBack;
 
   @NonNull
@@ -93,9 +87,8 @@ public abstract class ActivitySearchBinding extends ViewDataBinding {
   protected SearchViewModel mSearchViewModel;
 
   protected ActivitySearchBinding(Object _bindingComponent, View _root, int _localFieldCount,
-      Guideline guideline1, Guideline guideline2, Guideline guideline3, Guideline guideline4,
-      Guideline guideline5, ImageView searchBack, ImageView searchEditTextClear,
-      ImageView searchEditTextIcon, ImageView searchHistoryClear,
+      Guideline guideline1, Guideline guideline2, Guideline guideline3, ImageView searchBack,
+      ImageView searchEditTextClear, ImageView searchEditTextIcon, ImageView searchHistoryClear,
       ConstraintLayout searchHistoryLayout, RecyclerView searchHistoryList,
       RecyclerView searchHotList, TextView searchHotListText,
       AVLoadingIndicatorView searchLoadingAnim, ConstraintLayout searchLoadingLayout,
@@ -106,8 +99,6 @@ public abstract class ActivitySearchBinding extends ViewDataBinding {
     this.guideline1 = guideline1;
     this.guideline2 = guideline2;
     this.guideline3 = guideline3;
-    this.guideline4 = guideline4;
-    this.guideline5 = guideline5;
     this.searchBack = searchBack;
     this.searchEditTextClear = searchEditTextClear;
     this.searchEditTextIcon = searchEditTextIcon;

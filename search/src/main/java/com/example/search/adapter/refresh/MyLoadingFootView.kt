@@ -5,6 +5,7 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
+import com.example.common.utils.LogUtil
 import com.example.search.R
 import com.scwang.smart.refresh.layout.api.RefreshFooter
 import com.scwang.smart.refresh.layout.api.RefreshLayout
@@ -12,7 +13,9 @@ import com.scwang.smart.refresh.layout.constant.RefreshState
 import com.scwang.smart.refresh.layout.simple.SimpleComponent
 import com.wang.avi.AVLoadingIndicatorView
 
-
+/**
+ * 自定义smartRefresh的Footer
+ */
 class MyLoadingFootView : SimpleComponent,RefreshFooter  {
 
     companion object{
@@ -20,7 +23,6 @@ class MyLoadingFootView : SimpleComponent,RefreshFooter  {
         const val RELEASE_LOADING = "释放立即加载"
         const val FINISH_LOADING = "加载成功"
         const val FAILED_LOADING = "加载失败"
-        const val NO_MORE = "已经没有更多啦!"
         const val DOWN_CANCEL = "下拉取消"
         const val UP_TO_LOADING = "上拉可以刷新"
     }
@@ -63,13 +65,5 @@ class MyLoadingFootView : SimpleComponent,RefreshFooter  {
             }
             else -> {}
         }
-    }
-
-    override fun setNoMoreData(noMoreData: Boolean): Boolean {
-        if (noMoreData){
-            loadingTv.text = NO_MORE
-            loadingAnim.visibility = View.GONE
-        }
-        return super.setNoMoreData(noMoreData)
     }
 }

@@ -1,4 +1,4 @@
-package com.example.common.bean
+package com.example.common.bean.searchbean
 
 data class RecommendSearchBean(
     val code: Int,

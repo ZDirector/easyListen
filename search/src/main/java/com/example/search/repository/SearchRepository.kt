@@ -17,6 +17,10 @@ object SearchRepository {
 
     suspend fun getSearchMusicResultList(keyWords: String,offset: Int) = SearchNetWork.getSearchMusicResultList(keyWords,offset)
 
+    suspend fun getSearchMusicSheetResultList(keyWords: String,offset: Int) = SearchNetWork.getSearchMusicSheetResultList(keyWords,offset)
+
+    suspend fun getSearchMusicVideoResultList(keyWords: String,offset: Int) = SearchNetWork.getSearchMusicVideoResultList(keyWords,offset)
+
     fun getSearchHistoryList() = easyListenDB.queryAllSearchHistory()
 
     fun addSearchHistory(keyWords: String) = easyListenDB.addSearchHistory(SearchHistoryBean(keyWords))
