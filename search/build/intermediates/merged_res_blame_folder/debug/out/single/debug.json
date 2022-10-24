@@ -1,11 +1,11 @@
 [
     {
-        "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\7.3.3\\com.example.search-merged_res-49:\\drawable_ic_search_history_del.png.flat",
-        "source": "C:\\Users\\Administrator\\.gradle\\daemon\\7.3.3\\com.example.search-main-51:\\drawable\\ic_search_history_del.png"
-    },
-    {
         "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\7.3.3\\com.example.search-merged_res-49:\\drawable_ic_icon_tr.png.flat",
         "source": "C:\\Users\\Administrator\\.gradle\\daemon\\7.3.3\\com.example.search-main-51:\\drawable\\ic_icon_tr.png"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\7.3.3\\com.example.search-merged_res-49:\\drawable_ic_search_history_del.png.flat",
+        "source": "C:\\Users\\Administrator\\.gradle\\daemon\\7.3.3\\com.example.search-main-51:\\drawable\\ic_search_history_del.png"
     },
     {
         "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\7.3.3\\com.example.search-merged_res-49:\\mipmap-hdpi_ic_launcher.webp.flat",
@@ -36,12 +36,12 @@
         "source": "C:\\Users\\Administrator\\.gradle\\daemon\\7.3.3\\com.example.search-main-51:\\drawable\\ic_music_collect.png"
     },
     {
-        "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\7.3.3\\com.example.search-merged_res-49:\\drawable_bg_search_textedit.xml.flat",
-        "source": "C:\\Users\\Administrator\\.gradle\\daemon\\7.3.3\\com.example.search-main-51:\\drawable\\bg_search_textedit.xml"
-    },
-    {
         "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\7.3.3\\com.example.search-merged_res-49:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
         "source": "C:\\Users\\Administrator\\.gradle\\daemon\\7.3.3\\com.example.search-main-51:\\mipmap-xhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\7.3.3\\com.example.search-merged_res-49:\\drawable_bg_search_textedit.xml.flat",
+        "source": "C:\\Users\\Administrator\\.gradle\\daemon\\7.3.3\\com.example.search-main-51:\\drawable\\bg_search_textedit.xml"
     },
     {
         "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\7.3.3\\com.example.search-merged_res-49:\\mipmap-mdpi_ic_launcher_round.webp.flat",
@@ -52,12 +52,12 @@
         "source": "C:\\Users\\Administrator\\.gradle\\daemon\\7.3.3\\com.example.search-main-51:\\mipmap-xhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\7.3.3\\com.example.search-merged_res-49:\\drawable_bg_popupwindow_music_setting.xml.flat",
-        "source": "C:\\Users\\Administrator\\.gradle\\daemon\\7.3.3\\com.example.search-main-51:\\drawable\\bg_popupwindow_music_setting.xml"
-    },
-    {
         "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\7.3.3\\com.example.search-merged_res-49:\\layout_item_search_music_sheet.xml.flat",
         "source": "C:\\Users\\Administrator\\.gradle\\daemon\\7.3.3\\com.example.search-main-51:\\layout\\item_search_music_sheet.xml"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\7.3.3\\com.example.search-merged_res-49:\\drawable_bg_popupwindow_music_setting.xml.flat",
+        "source": "C:\\Users\\Administrator\\.gradle\\daemon\\7.3.3\\com.example.search-main-51:\\drawable\\bg_popupwindow_music_setting.xml"
     },
     {
         "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\7.3.3\\com.example.search-merged_res-49:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
@@ -80,12 +80,12 @@
         "source": "C:\\Users\\Administrator\\.gradle\\daemon\\7.3.3\\com.example.search-main-51:\\drawable\\ic_music_share.png"
     },
     {
-        "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\7.3.3\\com.example.search-merged_res-49:\\layout_activity_search.xml.flat",
-        "source": "C:\\Users\\Administrator\\.gradle\\daemon\\7.3.3\\com.example.search-main-51:\\layout\\activity_search.xml"
-    },
-    {
         "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\7.3.3\\com.example.search-merged_res-49:\\drawable_ic_search_back.png.flat",
         "source": "C:\\Users\\Administrator\\.gradle\\daemon\\7.3.3\\com.example.search-main-51:\\drawable\\ic_search_back.png"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\7.3.3\\com.example.search-merged_res-49:\\layout_activity_search.xml.flat",
+        "source": "C:\\Users\\Administrator\\.gradle\\daemon\\7.3.3\\com.example.search-main-51:\\layout\\activity_search.xml"
     },
     {
         "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\7.3.3\\com.example.search-merged_res-49:\\mipmap-hdpi_ic_launcher_round.webp.flat",
@@ -98,6 +98,10 @@
     {
         "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\7.3.3\\com.example.search-merged_res-49:\\drawable_ic_music_setting.png.flat",
         "source": "C:\\Users\\Administrator\\.gradle\\daemon\\7.3.3\\com.example.search-main-51:\\drawable\\ic_music_setting.png"
+    },
+    {
+        "merged": "com.example.search-merged_res-49:/layout_item_search_music_list.xml.flat",
+        "source": "com.example.search-main-51:/layout/item_search_music_list.xml"
     },
     {
         "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\7.3.3\\com.example.search-merged_res-49:\\drawable_bg_search_hot_list.xml.flat",
@@ -182,10 +186,6 @@
     {
         "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\7.3.3\\com.example.search-merged_res-49:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
         "source": "C:\\Users\\Administrator\\.gradle\\daemon\\7.3.3\\com.example.search-main-51:\\mipmap-xxhdpi\\ic_launcher_round.webp"
-    },
-    {
-        "merged": "com.example.search-merged_res-49:/layout_item_search_music_video.xml.flat",
-        "source": "com.example.search-main-51:/layout/item_search_music_video.xml"
     },
     {
         "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\7.3.3\\com.example.search-merged_res-49:\\layout_item_search_music_list.xml.flat",

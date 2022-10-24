@@ -36,4 +36,11 @@ interface SearchService {
         @Query("limit") limit : Int = 20,
         @Query("offset") offset : Int,
         @Query("type") type: Int = 1004) : SearchMusicVideoBean
+
+    @GET("/cloudsearch")
+    suspend fun getSearchUserResultList(
+        @Query("keywords") keyWords : String,
+        @Query("limit") limit : Int = 20,
+        @Query("offset") offset : Int,
+        @Query("type") type: Int = 1002) : SearchUserBean
 }

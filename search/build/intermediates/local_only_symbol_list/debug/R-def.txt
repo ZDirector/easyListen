@@ -108,6 +108,7 @@ id item_search_music_singer
 id item_search_music_tns
 id item_search_suggest_icon
 id item_search_suggest_text
+id linearLayout
 id music_result_list
 id music_result_list_refresh
 id music_sheet_result_list
