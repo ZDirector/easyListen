@@ -28,10 +28,6 @@
         "source": "C:\\Users\\Administrator\\.gradle\\daemon\\7.3.3\\com.example.search-main-51:\\layout\\popupwindow_music_setting.xml"
     },
     {
-        "merged": "com.example.search-mergeDebugResources-48:/layout/item_search_music_list.xml",
-        "source": "com.example.search-main-51:/layout/item_search_music_list.xml"
-    },
-    {
         "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\7.3.3\\com.example.search-mergeDebugResources-48:\\layout\\item_search_suggest.xml",
         "source": "C:\\Users\\Administrator\\.gradle\\daemon\\7.3.3\\com.example.search-main-51:\\layout\\item_search_suggest.xml"
     },
@@ -52,7 +48,19 @@
         "source": "C:\\Users\\Administrator\\.gradle\\daemon\\7.3.3\\com.example.search-main-51:\\layout\\item_search_music_sheet.xml"
     },
     {
+        "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\7.3.3\\com.example.search-mergeDebugResources-48:\\layout\\item_search_user.xml",
+        "source": "C:\\Users\\Administrator\\.gradle\\daemon\\7.3.3\\com.example.search-main-51:\\layout\\item_search_user.xml"
+    },
+    {
         "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\7.3.3\\com.example.search-mergeDebugResources-48:\\layout\\item_search_music_list.xml",
         "source": "C:\\Users\\Administrator\\.gradle\\daemon\\7.3.3\\com.example.search-main-51:\\layout\\item_search_music_list.xml"
+    },
+    {
+        "merged": "com.example.search-mergeDebugResources-48:/layout/item_search_user.xml",
+        "source": "com.example.search-main-51:/layout/item_search_user.xml"
+    },
+    {
+        "merged": "C:\\Users\\Administrator\\.gradle\\daemon\\7.3.3\\com.example.search-mergeDebugResources-48:\\layout\\fragment_search_user.xml",
+        "source": "C:\\Users\\Administrator\\.gradle\\daemon\\7.3.3\\com.example.search-main-51:\\layout\\fragment_search_user.xml"
     }
 ]

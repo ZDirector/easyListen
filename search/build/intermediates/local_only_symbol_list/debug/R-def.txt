@@ -39,6 +39,7 @@ drawable bg_search_music_aud
 drawable bg_search_music_ori
 drawable bg_search_music_vip
 drawable bg_search_textedit
+drawable bg_search_user_follow
 drawable edit_text_color_cursor
 drawable ic_icon
 drawable ic_icon_tr
@@ -57,6 +58,10 @@ drawable ic_search_back
 drawable ic_search_clear
 drawable ic_search_history_del
 drawable ic_search_icon
+drawable ic_user_follow
+drawable ic_user_followed
+drawable ic_user_man
+drawable ic_user_woman
 drawable item_press_color
 id guideline1
 id guideline2
@@ -108,6 +113,13 @@ id item_search_music_singer
 id item_search_music_tns
 id item_search_suggest_icon
 id item_search_suggest_text
+id item_search_user_follow
+id item_search_user_follow_button
+id item_search_user_follow_ic
+id item_search_user_name
+id item_search_user_pic
+id item_search_user_sex
+id item_search_user_sign
 id linearLayout
 id music_result_list
 id music_result_list_refresh
@@ -133,6 +145,8 @@ id search_result_layout
 id search_suggest_list
 id search_text_input
 id search_top_layout
+id search_user_list
+id search_user_list_refresh
 id text1
 id top_music_label_vip
 id top_music_pic
@@ -144,7 +158,7 @@ layout activity_search
 layout fragment_music_result
 layout fragment_music_sheet
 layout fragment_music_viedo
-layout fragment_test
+layout fragment_search_user
 layout item_flow_list
 layout item_hot_list
 layout item_loading
@@ -152,11 +166,11 @@ layout item_search_music_list
 layout item_search_music_sheet
 layout item_search_music_video
 layout item_search_suggest
+layout item_search_user
 layout popupwindow_music_setting
 mipmap ic_launcher
 mipmap ic_launcher_round
 string app_name
-string hello_blank_fragment
 string music_album
 string music_collect
 string music_comment
@@ -174,5 +188,7 @@ string search_music_original
 string search_music_sq
 string search_music_vip
 string search_recommend_text
+string user_follow
+string user_followed
 style Theme.EasyListen
 style music_popupwindow_anim

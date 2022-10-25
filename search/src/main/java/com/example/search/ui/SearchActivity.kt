@@ -24,7 +24,7 @@ import com.example.search.manager.FlowLayoutManager
 import com.example.search.ui.fragment.MusicResultFragment
 import com.example.search.ui.fragment.MusicSheetFragment
 import com.example.search.ui.fragment.MusicVideoFragment
-import com.example.search.ui.fragment.TestFragment
+import com.example.search.ui.fragment.SearchUserFragment
 import com.example.search.viewmodel.SearchViewModel
 
 class SearchActivity : BaseActivity<ActivitySearchBinding,SearchViewModel>() ,
@@ -37,7 +37,7 @@ class SearchActivity : BaseActivity<ActivitySearchBinding,SearchViewModel>() ,
         MusicResultFragment(),
         MusicSheetFragment(),
         MusicVideoFragment(),
-        TestFragment()
+        SearchUserFragment()
     )
     private var isSuggestToSearch = false
 

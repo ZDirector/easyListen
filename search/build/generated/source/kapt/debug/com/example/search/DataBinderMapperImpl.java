@@ -10,6 +10,7 @@ import com.example.search.databinding.ActivitySearchBindingImpl;
 import com.example.search.databinding.FragmentMusicResultBindingImpl;
 import com.example.search.databinding.FragmentMusicSheetBindingImpl;
 import com.example.search.databinding.FragmentMusicViedoBindingImpl;
+import com.example.search.databinding.FragmentSearchUserBindingImpl;
 import java.lang.IllegalArgumentException;
 import java.lang.Integer;
 import java.lang.Object;
@@ -29,13 +30,16 @@ public class DataBinderMapperImpl extends DataBinderMapper {
 
   private static final int LAYOUT_FRAGMENTMUSICVIEDO = 4;
 
-  private static final SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP = new SparseIntArray(4);
+  private static final int LAYOUT_FRAGMENTSEARCHUSER = 5;
+
+  private static final SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP = new SparseIntArray(5);
 
   static {
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.example.search.R.layout.activity_search, LAYOUT_ACTIVITYSEARCH);
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.example.search.R.layout.fragment_music_result, LAYOUT_FRAGMENTMUSICRESULT);
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.example.search.R.layout.fragment_music_sheet, LAYOUT_FRAGMENTMUSICSHEET);
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.example.search.R.layout.fragment_music_viedo, LAYOUT_FRAGMENTMUSICVIEDO);
+    INTERNAL_LAYOUT_ID_LOOKUP.put(com.example.search.R.layout.fragment_search_user, LAYOUT_FRAGMENTSEARCHUSER);
   }
 
   @Override
@@ -70,6 +74,12 @@ public class DataBinderMapperImpl extends DataBinderMapper {
             return new FragmentMusicViedoBindingImpl(component, view);
           }
           throw new IllegalArgumentException("The tag for fragment_music_viedo is invalid. Received: " + tag);
+        }
+        case  LAYOUT_FRAGMENTSEARCHUSER: {
+          if ("layout/fragment_search_user_0".equals(tag)) {
+            return new FragmentSearchUserBindingImpl(component, view);
+          }
+          throw new IllegalArgumentException("The tag for fragment_search_user is invalid. Received: " + tag);
         }
       }
     }
@@ -117,25 +127,27 @@ public class DataBinderMapperImpl extends DataBinderMapper {
   }
 
   private static class InnerBrLookup {
-    static final SparseArray<String> sKeys = new SparseArray<String>(5);
+    static final SparseArray<String> sKeys = new SparseArray<String>(6);
 
     static {
       sKeys.put(0, "_all");
       sKeys.put(1, "musicResultViewModel");
       sKeys.put(2, "musicSheetViewModel");
       sKeys.put(3, "musicVideoViewModel");
-      sKeys.put(4, "searchViewModel");
+      sKeys.put(4, "searchUserViewModel");
+      sKeys.put(5, "searchViewModel");
     }
   }
 
   private static class InnerLayoutIdLookup {
-    static final HashMap<String, Integer> sKeys = new HashMap<String, Integer>(4);
+    static final HashMap<String, Integer> sKeys = new HashMap<String, Integer>(5);
 
     static {
       sKeys.put("layout/activity_search_0", com.example.search.R.layout.activity_search);
       sKeys.put("layout/fragment_music_result_0", com.example.search.R.layout.fragment_music_result);
       sKeys.put("layout/fragment_music_sheet_0", com.example.search.R.layout.fragment_music_sheet);
       sKeys.put("layout/fragment_music_viedo_0", com.example.search.R.layout.fragment_music_viedo);
+      sKeys.put("layout/fragment_search_user_0", com.example.search.R.layout.fragment_search_user);
     }
   }
 }

@@ -9,5 +9,7 @@ public class BR {
 
   public static final int musicVideoViewModel = 3;
 
-  public static final int searchViewModel = 4;
+  public static final int searchUserViewModel = 4;
+
+  public static final int searchViewModel = 5;
 }

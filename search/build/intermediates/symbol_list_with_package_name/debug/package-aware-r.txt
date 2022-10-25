@@ -2642,6 +2642,7 @@ drawable bg_search_music_aud
 drawable bg_search_music_ori
 drawable bg_search_music_vip
 drawable bg_search_textedit
+drawable bg_search_user_follow
 drawable btn_checkbox_checked_mtrl
 drawable btn_checkbox_checked_to_unchecked_mtrl_animation
 drawable btn_checkbox_unchecked_mtrl
@@ -2763,6 +2764,10 @@ drawable ic_search_back
 drawable ic_search_clear
 drawable ic_search_history_del
 drawable ic_search_icon
+drawable ic_user_follow
+drawable ic_user_followed
+drawable ic_user_man
+drawable ic_user_woman
 drawable item_press_color
 drawable lock
 drawable m3_appbar_background
@@ -3202,6 +3207,13 @@ id item_search_music_singer
 id item_search_music_tns
 id item_search_suggest_icon
 id item_search_suggest_text
+id item_search_user_follow
+id item_search_user_follow_button
+id item_search_user_follow_ic
+id item_search_user_name
+id item_search_user_pic
+id item_search_user_sex
+id item_search_user_sign
 id item_touch_helper_previous_elevation
 id jumpToEnd
 id jumpToStart
@@ -3378,6 +3390,8 @@ id search_src_text
 id search_suggest_list
 id search_text_input
 id search_top_layout
+id search_user_list
+id search_user_list_refresh
 id search_voice_btn
 id select_dialog_listview
 id selected
@@ -3650,7 +3664,7 @@ layout exo_track_selection_dialog
 layout fragment_music_result
 layout fragment_music_sheet
 layout fragment_music_viedo
-layout fragment_test
+layout fragment_search_user
 layout item_flow_list
 layout item_hot_list
 layout item_loading
@@ -3658,6 +3672,7 @@ layout item_search_music_list
 layout item_search_music_sheet
 layout item_search_music_video
 layout item_search_suggest
+layout item_search_user
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
 layout m3_alert_dialog_title
@@ -3851,7 +3866,6 @@ string exo_track_unknown
 string exposed_dropdown_menu_content_description
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
-string hello_blank_fragment
 string hide_bottom_view_on_scroll_behavior
 string icon_content_description
 string ijkplayer_dummy
@@ -3975,6 +3989,8 @@ string status_bar_notification_info_overflow
 string tips_not_wifi
 string tips_not_wifi_cancel
 string tips_not_wifi_confirm
+string user_follow
+string user_followed
 style AVLoadingIndicatorView
 style AVLoadingIndicatorView_Large
 style AVLoadingIndicatorView_Small
