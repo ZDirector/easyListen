@@ -260,12 +260,12 @@
                 {
                     "source": "F:\\Androidprj\\easyListen\\common\\build\\intermediates\\packaged_res\\debug\\values\\values.xml",
                     "from": {
-                        "startLines": "6,7,11,12,28",
+                        "startLines": "6,7,11,12,29",
                         "startColumns": "4,4,4,4,4",
-                        "startOffsets": "283,336,526,573,1308",
-                        "endLines": "6,7,11,12,36",
+                        "startOffsets": "283,336,526,573,1350",
+                        "endLines": "6,7,11,12,37",
                         "endColumns": "52,54,46,47,12",
-                        "endOffsets": "331,386,568,616,1816"
+                        "endOffsets": "331,386,568,616,1858"
                     },
                     "to": {
                         "startLines": "949,950,956,957,8630",
