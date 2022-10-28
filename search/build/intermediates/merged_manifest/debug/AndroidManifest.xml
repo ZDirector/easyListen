@@ -35,6 +35,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.example.music_comment.ui.MusicCommentActivity"
+            android:exported="true" >
+        </activity>
 
         <service
             android:name="androidx.room.MultiInstanceInvalidationService"

@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.Guideline;
+import androidx.core.widget.NestedScrollView;
 import androidx.databinding.Bindable;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
@@ -31,6 +32,9 @@ public abstract class ActivitySearchBinding extends ViewDataBinding {
 
   @NonNull
   public final Guideline guideline3;
+
+  @NonNull
+  public final NestedScrollView nestedScrollView;
 
   @NonNull
   public final ImageView searchBack;
@@ -83,22 +87,27 @@ public abstract class ActivitySearchBinding extends ViewDataBinding {
   @NonNull
   public final ConstraintLayout searchTopLayout;
 
+  @NonNull
+  public final TextView textView;
+
   @Bindable
   protected SearchViewModel mSearchViewModel;
 
   protected ActivitySearchBinding(Object _bindingComponent, View _root, int _localFieldCount,
-      Guideline guideline1, Guideline guideline2, Guideline guideline3, ImageView searchBack,
-      ImageView searchEditTextClear, ImageView searchEditTextIcon, ImageView searchHistoryClear,
+      Guideline guideline1, Guideline guideline2, Guideline guideline3,
+      NestedScrollView nestedScrollView, ImageView searchBack, ImageView searchEditTextClear,
+      ImageView searchEditTextIcon, ImageView searchHistoryClear,
       ConstraintLayout searchHistoryLayout, RecyclerView searchHistoryList,
       RecyclerView searchHotList, TextView searchHotListText,
       AVLoadingIndicatorView searchLoadingAnim, ConstraintLayout searchLoadingLayout,
       ConstraintLayout searchMainLayout, RecyclerView searchRecommendList,
       TextView searchRecommendText, BaseViewPage searchResultLayout, RecyclerView searchSuggestList,
-      TextInputEditText searchTextInput, ConstraintLayout searchTopLayout) {
+      TextInputEditText searchTextInput, ConstraintLayout searchTopLayout, TextView textView) {
     super(_bindingComponent, _root, _localFieldCount);
     this.guideline1 = guideline1;
     this.guideline2 = guideline2;
     this.guideline3 = guideline3;
+    this.nestedScrollView = nestedScrollView;
     this.searchBack = searchBack;
     this.searchEditTextClear = searchEditTextClear;
     this.searchEditTextIcon = searchEditTextIcon;
@@ -116,6 +125,7 @@ public abstract class ActivitySearchBinding extends ViewDataBinding {
     this.searchSuggestList = searchSuggestList;
     this.searchTextInput = searchTextInput;
     this.searchTopLayout = searchTopLayout;
+    this.textView = textView;
   }
 
   public abstract void setSearchViewModel(@Nullable SearchViewModel searchViewModel);

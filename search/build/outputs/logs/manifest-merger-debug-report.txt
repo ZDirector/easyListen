@@ -1,9 +1,10 @@
 -- Merging decision tree log ---
 manifest
-ADDED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:2:1-29:12
-INJECTED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:2:1-29:12
-INJECTED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:2:1-29:12
-INJECTED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:2:1-29:12
+ADDED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:2:1-28:12
+INJECTED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:2:1-28:12
+INJECTED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:2:1-28:12
+INJECTED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:2:1-28:12
+MERGED from [:music_comment] F:\Androidprj\easyListen\music_comment\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-26:12
 MERGED from [:common] F:\Androidprj\easyListen\common\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-28:12
 MERGED from [androidx.databinding:databinding-adapters:7.2.2] C:\Users\Administrator\.gradle\caches\transforms-3\f38fe6ade4f7837e7a515cb392c62870\transformed\databinding-adapters-7.2.2\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.databinding:databinding-ktx:7.2.2] C:\Users\Administrator\.gradle\caches\transforms-3\b6e77191286fe0db32687584cde9014a\transformed\jetified-databinding-ktx-7.2.2\AndroidManifest.xml:17:1-24:12
@@ -90,31 +91,34 @@ MERGED from [com.google.android.exoplayer:exoplayer-common:2.18.1] C:\Users\Admi
 MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\Administrator\.gradle\caches\transforms-3\21d999d2482d5176fe1e8f8335d649f6\transformed\documentfile-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\Administrator\.gradle\caches\transforms-3\cf75896d21978a6e2d6dcd44588d889b\transformed\localbroadcastmanager-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.print:print:1.0.0] C:\Users\Administrator\.gradle\caches\transforms-3\6f784ec98e20dba0ba6566870c016b4c\transformed\print-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [com.github.donkingliang:ConsecutiveScroller:4.6.3] C:\Users\Administrator\.gradle\caches\transforms-3\89e17ba24353e488b92c284e44578078\transformed\jetified-ConsecutiveScroller-4.6.3\AndroidManifest.xml:2:1-9:12
 MERGED from [io.github.scwang90:refresh-drawable-paint:2.0.5] C:\Users\Administrator\.gradle\caches\transforms-3\cfba1d28cbe8570f541d96c9d4e2e9e2\transformed\jetified-refresh-drawable-paint-2.0.5\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.annotation:annotation-experimental:1.1.0] C:\Users\Administrator\.gradle\caches\transforms-3\d94281720382a7a89a20af48d66752c9\transformed\jetified-annotation-experimental-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [com.github.CarGuo:GSYIjkJava:1.0.0] C:\Users\Administrator\.gradle\caches\transforms-3\894b4bafb0e616574bb8467dacec4f8a\transformed\jetified-GSYIjkJava-1.0.0\AndroidManifest.xml:2:1-9:12
 MERGED from [io.antmedia:rtmp-client:3.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\ece81c8d34c1709053874895180b546f\transformed\jetified-rtmp-client-3.2.0\AndroidManifest.xml:2:1-11:12
-INJECTED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:2:1-29:12
-INJECTED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:2:1-29:12
-INJECTED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:2:1-29:12
+INJECTED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:2:1-28:12
+INJECTED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:2:1-28:12
+INJECTED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:2:1-28:12
 	package
 		ADDED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:4:5-33
 		INJECTED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml
 		INJECTED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml
-		ADDED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:2:1-29:12
+		ADDED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:2:1-28:12
 		INJECTED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml
 	xmlns:tools
 		ADDED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:3:5-51
 	android:versionCode
 		INJECTED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml
-		ADDED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:2:1-29:12
+		ADDED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:2:1-28:12
 		INJECTED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:2:11-69
 uses-permission#android.permission.INTERNET
 ADDED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:6:5-67
+MERGED from [:music_comment] F:\Androidprj\easyListen\music_comment\build\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-67
+MERGED from [:music_comment] F:\Androidprj\easyListen\music_comment\build\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-67
 MERGED from [:common] F:\Androidprj\easyListen\common\build\intermediates\merged_manifest\debug\AndroidManifest.xml:10:5-67
 MERGED from [:common] F:\Androidprj\easyListen\common\build\intermediates\merged_manifest\debug\AndroidManifest.xml:10:5-67
 MERGED from [io.antmedia:rtmp-client:3.2.0] C:\Users\Administrator\.gradle\caches\transforms-3\ece81c8d34c1709053874895180b546f\transformed\jetified-rtmp-client-3.2.0\AndroidManifest.xml:9:5-67
@@ -122,7 +126,9 @@ MERGED from [io.antmedia:rtmp-client:3.2.0] C:\Users\Administrator\.gradle\cache
 	android:name
 		ADDED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:6:22-64
 application
-ADDED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:8:5-27:19
+ADDED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:8:5-26:19
+MERGED from [:music_comment] F:\Androidprj\easyListen\music_comment\build\intermediates\merged_manifest\debug\AndroidManifest.xml:11:5-24:19
+MERGED from [:music_comment] F:\Androidprj\easyListen\music_comment\build\intermediates\merged_manifest\debug\AndroidManifest.xml:11:5-24:19
 MERGED from [:common] F:\Androidprj\easyListen\common\build\intermediates\merged_manifest\debug\AndroidManifest.xml:15:5-26:19
 MERGED from [:common] F:\Androidprj\easyListen\common\build\intermediates\merged_manifest\debug\AndroidManifest.xml:15:5-26:19
 MERGED from [com.github.bumptech.glide:glide:4.14.2] C:\Users\Administrator\.gradle\caches\transforms-3\4b09eb000e1fecd05ca25033e80c53c5\transformed\jetified-glide-4.14.2\AndroidManifest.xml:9:5-20
@@ -172,25 +178,27 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\Ad
 	android:name
 		ADDED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:9:9-62
 activity#com.example.search.ui.SearchActivity
-ADDED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:18:9-26:20
+ADDED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:18:9-25:20
 	android:exported
 		ADDED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:20:13-36
 	android:name
 		ADDED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:19:13-46
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:21:13-25:29
+ADDED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:21:13-24:29
 action#android.intent.action.MAIN
 ADDED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:22:17-69
 	android:name
 		ADDED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:22:25-66
 category#android.intent.category.LAUNCHER
-ADDED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:24:17-77
+ADDED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:23:17-77
 	android:name
-		ADDED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:24:27-74
+		ADDED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml:23:27-74
 uses-sdk
 INJECTED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml
 INJECTED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml
+MERGED from [:music_comment] F:\Androidprj\easyListen\music_comment\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:music_comment] F:\Androidprj\easyListen\music_comment\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:common] F:\Androidprj\easyListen\common\build\intermediates\merged_manifest\debug\AndroidManifest.xml:6:5-8:41
 MERGED from [:common] F:\Androidprj\easyListen\common\build\intermediates\merged_manifest\debug\AndroidManifest.xml:6:5-8:41
 MERGED from [androidx.databinding:databinding-adapters:7.2.2] C:\Users\Administrator\.gradle\caches\transforms-3\f38fe6ade4f7837e7a515cb392c62870\transformed\databinding-adapters-7.2.2\AndroidManifest.xml:20:5-22:41
@@ -363,6 +371,8 @@ MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\User
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\Administrator\.gradle\caches\transforms-3\cf75896d21978a6e2d6dcd44588d889b\transformed\localbroadcastmanager-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.print:print:1.0.0] C:\Users\Administrator\.gradle\caches\transforms-3\6f784ec98e20dba0ba6566870c016b4c\transformed\print-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.print:print:1.0.0] C:\Users\Administrator\.gradle\caches\transforms-3\6f784ec98e20dba0ba6566870c016b4c\transformed\print-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.github.donkingliang:ConsecutiveScroller:4.6.3] C:\Users\Administrator\.gradle\caches\transforms-3\89e17ba24353e488b92c284e44578078\transformed\jetified-ConsecutiveScroller-4.6.3\AndroidManifest.xml:5:5-7:41
+MERGED from [com.github.donkingliang:ConsecutiveScroller:4.6.3] C:\Users\Administrator\.gradle\caches\transforms-3\89e17ba24353e488b92c284e44578078\transformed\jetified-ConsecutiveScroller-4.6.3\AndroidManifest.xml:5:5-7:41
 MERGED from [io.github.scwang90:refresh-drawable-paint:2.0.5] C:\Users\Administrator\.gradle\caches\transforms-3\cfba1d28cbe8570f541d96c9d4e2e9e2\transformed\jetified-refresh-drawable-paint-2.0.5\AndroidManifest.xml:7:5-9:41
 MERGED from [io.github.scwang90:refresh-drawable-paint:2.0.5] C:\Users\Administrator\.gradle\caches\transforms-3\cfba1d28cbe8570f541d96c9d4e2e9e2\transformed\jetified-refresh-drawable-paint-2.0.5\AndroidManifest.xml:7:5-9:41
 MERGED from [androidx.annotation:annotation-experimental:1.1.0] C:\Users\Administrator\.gradle\caches\transforms-3\d94281720382a7a89a20af48d66752c9\transformed\jetified-annotation-experimental-1.1.0\AndroidManifest.xml:20:5-22:41
@@ -381,6 +391,12 @@ INJECTED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml
 		INJECTED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml
 		ADDED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml
 		INJECTED from F:\Androidprj\easyListen\search\src\main\AndroidManifest.xml
+activity#com.example.music_comment.ui.MusicCommentActivity
+ADDED from [:music_comment] F:\Androidprj\easyListen\music_comment\build\intermediates\merged_manifest\debug\AndroidManifest.xml:20:9-23:20
+	android:exported
+		ADDED from [:music_comment] F:\Androidprj\easyListen\music_comment\build\intermediates\merged_manifest\debug\AndroidManifest.xml:22:13-36
+	android:name
+		ADDED from [:music_comment] F:\Androidprj\easyListen\music_comment\build\intermediates\merged_manifest\debug\AndroidManifest.xml:21:13-77
 uses-permission#android.permission.ACCESS_NETWORK_STATE
 ADDED from [:common] F:\Androidprj\easyListen\common\build\intermediates\merged_manifest\debug\AndroidManifest.xml:11:5-79
 MERGED from [com.github.CarGuo.GSYVideoPlayer:gsyVideoPlayer-java:v8.3.4-release-jitpack] C:\Users\Administrator\.gradle\caches\transforms-3\2c65cc4d80a7c383c5f237834c69915e\transformed\jetified-gsyVideoPlayer-java-v8.3.4-release-jitpack\AndroidManifest.xml:9:5-79

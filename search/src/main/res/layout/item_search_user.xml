@@ -46,14 +46,14 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
+        android:layout_marginEnd="16dp"
+        android:ellipsize="end"
+        android:maxLines="1"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@id/item_search_user_name"
         app:layout_constraintEnd_toStartOf="@+id/item_search_user_follow_button"
-        app:layout_constraintTop_toBottomOf="@+id/item_search_user_name"
-        android:maxLines="1"
-        android:ellipsize="end"
-        android:layout_marginEnd="16dp"/>
+        app:layout_constraintStart_toStartOf="@id/item_search_user_name"
+        app:layout_constraintTop_toBottomOf="@+id/item_search_user_name" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/item_search_user_follow_button"
@@ -74,7 +74,7 @@
             app:layout_constraintEnd_toStartOf="@+id/item_search_user_follow"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/item_search_user_follow"

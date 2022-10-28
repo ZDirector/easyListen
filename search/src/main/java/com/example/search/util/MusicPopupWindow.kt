@@ -1,6 +1,8 @@
 package com.example.search.util
 
+import android.content.Intent
 import android.graphics.drawable.ColorDrawable
+import android.os.Bundle
 import android.view.*
 import android.widget.ImageView
 import android.widget.PopupWindow
@@ -13,6 +15,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.common.bean.searchbean.Song
 import com.example.common.utils.MyApplication
 import com.example.common.utils.windowsHeight
+import com.example.music_comment.ui.MusicCommentActivity
 import com.example.search.R.*
 
 /**
@@ -57,6 +60,8 @@ class MusicPopupWindow(touchView: View,song : Song) {
         itemMusicSingerName = mContentView.findViewById(id.item_music_singer_name)
         itemMusicAlbumName = mContentView.findViewById(id.item_music_album_name)
 
+        initOnClickListener()
+
         Glide
             .with(topMusicImg)
             .load(mSong.al.picUrl)
@@ -84,6 +89,27 @@ class MusicPopupWindow(touchView: View,song : Song) {
         mPopupWindow.setBackgroundDrawable(ColorDrawable(0x00000000))
         mContentView.measure(makeDropDownMeasureSpec(mPopupWindow.width),
             makeDropDownMeasureSpec(mPopupWindow.height))
+    }
+
+    private fun initOnClickListener(){
+        itemMusicComment.setOnClickListener {
+            val intent = Intent(MyApplication.context,MusicCommentActivity::class.java)
+            intent.putExtra("SongId",mSong.id)
+            intent.putExtra("SongCover",mSong.al.picUrl)
+
+            val songName : String = if (mSong.tns != null) mSong.name + "(" + mSong.tns!![0] + ")"
+            else mSong.name
+            intent.putExtra("SongName",songName)
+
+            val singer : StringBuilder = StringBuilder()
+            for(i in 0 until mSong.ar.size){
+                if (i == 0) singer.append(mSong.ar[i].name)
+                else singer.append("/" + mSong.ar[i].name )
+            }
+            intent.putExtra("Singer",singer.toString())
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            MyApplication.context.startActivity(intent)
+        }
     }
 
     fun show(){

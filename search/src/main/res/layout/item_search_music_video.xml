@@ -20,12 +20,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="4dp"
-        android:textColor="@color/white"
-        android:textSize="12sp"
         android:shadowColor="#ccc"
         android:shadowDx="0.5"
         android:shadowDy="0.5"
         android:shadowRadius="2"
+        android:textColor="@color/white"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="@+id/item_music_video_cover"
         app:layout_constraintEnd_toEndOf="@+id/item_music_video_cover" />
 

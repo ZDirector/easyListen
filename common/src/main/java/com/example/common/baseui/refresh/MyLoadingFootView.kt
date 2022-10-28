@@ -1,12 +1,11 @@
-package com.example.search.adapter.refresh
+package com.example.common.baseui.refresh
 
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
-import com.example.common.utils.LogUtil
-import com.example.search.R
+import com.example.common.R
 import com.scwang.smart.refresh.layout.api.RefreshFooter
 import com.scwang.smart.refresh.layout.api.RefreshLayout
 import com.scwang.smart.refresh.layout.constant.RefreshState

@@ -21,14 +21,19 @@ public final class ItemSearchSuggestBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
+  public final ImageView imageView2;
+
+  @NonNull
   public final ImageView itemSearchSuggestIcon;
 
   @NonNull
   public final TextView itemSearchSuggestText;
 
   private ItemSearchSuggestBinding(@NonNull ConstraintLayout rootView,
-      @NonNull ImageView itemSearchSuggestIcon, @NonNull TextView itemSearchSuggestText) {
+      @NonNull ImageView imageView2, @NonNull ImageView itemSearchSuggestIcon,
+      @NonNull TextView itemSearchSuggestText) {
     this.rootView = rootView;
+    this.imageView2 = imageView2;
     this.itemSearchSuggestIcon = itemSearchSuggestIcon;
     this.itemSearchSuggestText = itemSearchSuggestText;
   }
@@ -60,6 +65,12 @@ public final class ItemSearchSuggestBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.imageView2;
+      ImageView imageView2 = ViewBindings.findChildViewById(rootView, id);
+      if (imageView2 == null) {
+        break missingId;
+      }
+
       id = R.id.item_search_suggest_icon;
       ImageView itemSearchSuggestIcon = ViewBindings.findChildViewById(rootView, id);
       if (itemSearchSuggestIcon == null) {
@@ -72,8 +83,8 @@ public final class ItemSearchSuggestBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ItemSearchSuggestBinding((ConstraintLayout) rootView, itemSearchSuggestIcon,
-          itemSearchSuggestText);
+      return new ItemSearchSuggestBinding((ConstraintLayout) rootView, imageView2,
+          itemSearchSuggestIcon, itemSearchSuggestText);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

@@ -75,6 +75,7 @@ id ic_music_share
 id ic_music_singer
 id ic_music_video
 id imageView
+id imageView2
 id item_flow_text
 id item_hot_name
 id item_hot_rank
@@ -127,6 +128,7 @@ id music_sheet_result_list
 id music_sheet_result_list_refresh
 id music_video_list
 id music_video_list_refresh
+id nestedScrollView
 id search_back
 id search_editText_clear
 id search_editText_icon
@@ -137,7 +139,6 @@ id search_hot_list
 id search_hot_list_text
 id search_loading_anim
 id search_loading_layout
-id search_loading_text
 id search_main_layout
 id search_recommend_list
 id search_recommend_text
@@ -148,6 +149,7 @@ id search_top_layout
 id search_user_list
 id search_user_list_refresh
 id text1
+id textView
 id top_music_label_vip
 id top_music_pic
 id top_music_setting
@@ -161,7 +163,6 @@ layout fragment_music_viedo
 layout fragment_search_user
 layout item_flow_list
 layout item_hot_list
-layout item_loading
 layout item_search_music_list
 layout item_search_music_sheet
 layout item_search_music_video

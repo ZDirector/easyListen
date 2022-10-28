@@ -42,6 +42,7 @@ android {
 dependencies {
 
     implementation(project(':common'))
+    implementation(project(':music_comment'))
 
     //GSYVideoPlayer
     implementation 'com.github.CarGuo.GSYVideoPlayer:GSYVideoPlayer:v8.3.4-release-jitpack'

@@ -19,21 +19,23 @@ public class ActivitySearchBindingImpl extends ActivitySearchBinding  {
         sViewsWithIds.put(R.id.search_text_input, 3);
         sViewsWithIds.put(R.id.search_editText_icon, 4);
         sViewsWithIds.put(R.id.search_editText_clear, 5);
-        sViewsWithIds.put(R.id.search_main_layout, 6);
-        sViewsWithIds.put(R.id.guideline1, 7);
-        sViewsWithIds.put(R.id.guideline2, 8);
-        sViewsWithIds.put(R.id.guideline3, 9);
-        sViewsWithIds.put(R.id.search_history_layout, 10);
-        sViewsWithIds.put(R.id.search_history_clear, 11);
-        sViewsWithIds.put(R.id.search_history_list, 12);
-        sViewsWithIds.put(R.id.search_recommend_text, 13);
-        sViewsWithIds.put(R.id.search_recommend_list, 14);
-        sViewsWithIds.put(R.id.search_hot_list_text, 15);
-        sViewsWithIds.put(R.id.search_hot_list, 16);
-        sViewsWithIds.put(R.id.search_suggest_list, 17);
-        sViewsWithIds.put(R.id.search_loading_layout, 18);
-        sViewsWithIds.put(R.id.search_loading_anim, 19);
-        sViewsWithIds.put(R.id.search_result_layout, 20);
+        sViewsWithIds.put(R.id.nestedScrollView, 6);
+        sViewsWithIds.put(R.id.search_main_layout, 7);
+        sViewsWithIds.put(R.id.guideline1, 8);
+        sViewsWithIds.put(R.id.guideline2, 9);
+        sViewsWithIds.put(R.id.guideline3, 10);
+        sViewsWithIds.put(R.id.search_history_layout, 11);
+        sViewsWithIds.put(R.id.search_history_clear, 12);
+        sViewsWithIds.put(R.id.search_history_list, 13);
+        sViewsWithIds.put(R.id.search_recommend_text, 14);
+        sViewsWithIds.put(R.id.search_recommend_list, 15);
+        sViewsWithIds.put(R.id.search_hot_list_text, 16);
+        sViewsWithIds.put(R.id.search_hot_list, 17);
+        sViewsWithIds.put(R.id.search_suggest_list, 18);
+        sViewsWithIds.put(R.id.search_loading_layout, 19);
+        sViewsWithIds.put(R.id.search_loading_anim, 20);
+        sViewsWithIds.put(R.id.textView, 21);
+        sViewsWithIds.put(R.id.search_result_layout, 22);
     }
     // views
     @NonNull
@@ -44,30 +46,32 @@ public class ActivitySearchBindingImpl extends ActivitySearchBinding  {
     // Inverse Binding Event Handlers
 
     public ActivitySearchBindingImpl(@Nullable androidx.databinding.DataBindingComponent bindingComponent, @NonNull View root) {
-        this(bindingComponent, root, mapBindings(bindingComponent, root, 21, sIncludes, sViewsWithIds));
+        this(bindingComponent, root, mapBindings(bindingComponent, root, 23, sIncludes, sViewsWithIds));
     }
     private ActivitySearchBindingImpl(androidx.databinding.DataBindingComponent bindingComponent, View root, Object[] bindings) {
         super(bindingComponent, root, 0
-            , (androidx.constraintlayout.widget.Guideline) bindings[7]
             , (androidx.constraintlayout.widget.Guideline) bindings[8]
             , (androidx.constraintlayout.widget.Guideline) bindings[9]
+            , (androidx.constraintlayout.widget.Guideline) bindings[10]
+            , (androidx.core.widget.NestedScrollView) bindings[6]
             , (android.widget.ImageView) bindings[1]
             , (android.widget.ImageView) bindings[5]
             , (android.widget.ImageView) bindings[4]
-            , (android.widget.ImageView) bindings[11]
-            , (androidx.constraintlayout.widget.ConstraintLayout) bindings[10]
-            , (androidx.recyclerview.widget.RecyclerView) bindings[12]
-            , (androidx.recyclerview.widget.RecyclerView) bindings[16]
-            , (android.widget.TextView) bindings[15]
-            , (com.wang.avi.AVLoadingIndicatorView) bindings[19]
-            , (androidx.constraintlayout.widget.ConstraintLayout) bindings[18]
-            , (androidx.constraintlayout.widget.ConstraintLayout) bindings[6]
-            , (androidx.recyclerview.widget.RecyclerView) bindings[14]
-            , (android.widget.TextView) bindings[13]
-            , (com.example.common.baseui.assembly.BaseViewPage) bindings[20]
+            , (android.widget.ImageView) bindings[12]
+            , (androidx.constraintlayout.widget.ConstraintLayout) bindings[11]
+            , (androidx.recyclerview.widget.RecyclerView) bindings[13]
             , (androidx.recyclerview.widget.RecyclerView) bindings[17]
+            , (android.widget.TextView) bindings[16]
+            , (com.wang.avi.AVLoadingIndicatorView) bindings[20]
+            , (androidx.constraintlayout.widget.ConstraintLayout) bindings[19]
+            , (androidx.constraintlayout.widget.ConstraintLayout) bindings[7]
+            , (androidx.recyclerview.widget.RecyclerView) bindings[15]
+            , (android.widget.TextView) bindings[14]
+            , (com.example.common.baseui.assembly.BaseViewPage) bindings[22]
+            , (androidx.recyclerview.widget.RecyclerView) bindings[18]
             , (com.google.android.material.textfield.TextInputEditText) bindings[3]
             , (androidx.constraintlayout.widget.ConstraintLayout) bindings[2]
+            , (android.widget.TextView) bindings[21]
             );
         this.mboundView0 = (androidx.constraintlayout.widget.ConstraintLayout) bindings[0];
         this.mboundView0.setTag(null);

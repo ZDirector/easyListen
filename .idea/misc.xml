@@ -16,6 +16,12 @@
         <entry key="..\:/Androidprj/easyListen/common/src/main/res/layout/activity_main.xml" value="0.36614583333333334" />
         <entry key="..\:/Androidprj/easyListen/common/src/main/res/layout/base_viewpage.xml" value="0.36614583333333334" />
         <entry key="..\:/Androidprj/easyListen/common/src/main/res/layout/dialog_loading.xml" value="0.36614583333333334" />
+        <entry key="..\:/Androidprj/easyListen/common/src/main/res/layout/item_loading.xml" value="0.36614583333333334" />
+        <entry key="..\:/Androidprj/easyListen/music_comment/src/main/res/drawable/bg_music_album.xml" value="0.2945" />
+        <entry key="..\:/Androidprj/easyListen/music_comment/src/main/res/drawable/item_press_color.xml" value="0.2945" />
+        <entry key="..\:/Androidprj/easyListen/music_comment/src/main/res/layout/activity_music_comment.xml" value="0.33" />
+        <entry key="..\:/Androidprj/easyListen/music_comment/src/main/res/layout/fragment_music_comment.xml" value="0.36614583333333334" />
+        <entry key="..\:/Androidprj/easyListen/music_comment/src/main/res/layout/item_music_comment.xml" value="0.33" />
         <entry key="..\:/Androidprj/easyListen/search/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2895" />
         <entry key="..\:/Androidprj/easyListen/search/src/main/res/drawable/bg_popupwindow_music_setting.xml" value="0.25" />
         <entry key="..\:/Androidprj/easyListen/search/src/main/res/drawable/bg_search_flow_list_item.xml" value="0.2895" />

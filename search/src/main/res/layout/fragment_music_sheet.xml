@@ -16,8 +16,10 @@
 
         <com.scwang.smart.refresh.layout.SmartRefreshLayout
             android:id="@+id/music_sheet_result_list_refresh"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.recyclerview.widget.RecyclerView
@@ -25,7 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <com.example.search.adapter.refresh.MyLoadingFootView
+            <com.example.common.baseui.refresh.MyLoadingFootView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
