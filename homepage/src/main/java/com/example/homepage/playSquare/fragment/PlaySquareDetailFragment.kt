@@ -107,7 +107,9 @@ class PlaySquareDetailFragment(private val title: String) : Fragment() {
                             loadList()
                             mAdapter.addFooterView(footLayout)
                         } else {
-                            Toast.makeText(requireContext(), "数据加载完毕！", Toast.LENGTH_SHORT).show()
+                            if(!loading){
+                                Toast.makeText(requireContext(), "所有数据加载完毕！", Toast.LENGTH_SHORT).show()
+                            }
                         }
                     }
                 }
