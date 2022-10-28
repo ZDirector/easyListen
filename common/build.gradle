@@ -40,6 +40,15 @@ android {
 
 dependencies {
 
+    //room
+    def room_version = "2.4.3"
+    implementation "androidx.room:room-runtime:$room_version"
+    // To use Kotlin annotation processing tool (kapt)
+    kapt "androidx.room:room-compiler:$room_version"
+    // 对livedata和协程的支持
+    implementation "androidx.room:room-ktx:$room_version"
+
+    //retrofit
     api('com.squareup.retrofit2:retrofit:2.9.0')
     api('com.squareup.retrofit2:converter-gson:2.9.0')
 

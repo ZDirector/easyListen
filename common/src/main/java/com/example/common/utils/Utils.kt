@@ -6,7 +6,9 @@ import android.content.res.Configuration
 import android.os.Handler
 import android.os.Looper
 import android.widget.Toast
+import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
+import kotlinx.coroutines.flow.FlowCollector
 
 private var toast: Toast? = null
 
@@ -82,3 +84,5 @@ val Int.px2sp: Int
 val Int.sp2px: Int
     get() = (this * MyApplication.context.resources.displayMetrics.scaledDensity).toInt()
 
+
+suspend inline infix fun <T> FlowCollector<T>.emit(value: T) = emit(value)

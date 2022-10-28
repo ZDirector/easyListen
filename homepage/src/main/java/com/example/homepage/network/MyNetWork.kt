@@ -3,6 +3,7 @@ package com.example.homepage.network
 import com.example.homepage.music.service.BannerService
 import com.example.homepage.music.service.RankListService
 import com.example.homepage.music.service.RecoListService
+import com.example.homepage.playSquare.service.SquareService
 import retrofit2.create
 
 object MyNetWork {
@@ -16,4 +17,14 @@ object MyNetWork {
 
     suspend fun getRankResponse() = rankListService.getRankListResponse()
 
+
+    private val squareService = ServiceCreator.retrofit.create<SquareService>()
+
+    suspend fun getTags() = squareService.getTags()
+
+    suspend fun getSquareList(
+        offset: Int,
+        limit: Int,
+        cat: String
+    ) = squareService.getHighList(offset, limit, cat)
 }

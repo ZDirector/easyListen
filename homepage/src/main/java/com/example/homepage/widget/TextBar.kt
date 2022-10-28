@@ -8,6 +8,6 @@ import com.example.common.R
 
 class TextBar (context: Context, attrs: AttributeSet) : LinearLayout(context, attrs) {
     init {
-        LayoutInflater.from(context).inflate(R.layout.tool_bar_my, this)
+        LayoutInflater.from(context).inflate(com.example.homepage.R.layout.toolbar_text, this)
     }
 }

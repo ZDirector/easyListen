@@ -1,0 +1,146 @@
+[
+    {
+        "merged": "com.example.search-merged_res-43:/drawable_bg_search_textedit.xml.flat",
+        "source": "com.example.search-main-45:/drawable/bg_search_textedit.xml"
+    },
+    {
+        "merged": "com.example.search-merged_res-43:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "com.example.search-main-45:/mipmap-mdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.search-merged_res-43:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.search-main-45:/mipmap-hdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.search-merged_res-43:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "com.example.search-main-45:/mipmap-xxxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.search-merged_res-43:/layout_activity_search.xml.flat",
+        "source": "com.example.search-main-45:/layout/activity_search.xml"
+    },
+    {
+        "merged": "com.example.search-merged_res-43:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.search-main-45:/mipmap-xxxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.search-merged_res-43:/layout_fragment_test.xml.flat",
+        "source": "com.example.search-main-45:/layout/fragment_test.xml"
+    },
+    {
+        "merged": "com.example.search-merged_res-43:/drawable_bg_search_music_aud.xml.flat",
+        "source": "com.example.search-main-45:/drawable/bg_search_music_aud.xml"
+    },
+    {
+        "merged": "com.example.search-merged_res-43:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.search-main-45:/mipmap-mdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.search-merged_res-43:/drawable_ic_music_setting.png.flat",
+        "source": "com.example.search-main-45:/drawable/ic_music_setting.png"
+    },
+    {
+        "merged": "com.example.search-merged_res-43:/layout_item_hot_list.xml.flat",
+        "source": "com.example.search-main-45:/layout/item_hot_list.xml"
+    },
+    {
+        "merged": "com.example.search-merged_res-43:/layout_item_search_music_list.xml.flat",
+        "source": "com.example.search-main-45:/layout/item_search_music_list.xml"
+    },
+    {
+        "merged": "com.example.search-merged_res-43:/layout_item_flow_list.xml.flat",
+        "source": "com.example.search-main-45:/layout/item_flow_list.xml"
+    },
+    {
+        "merged": "com.example.search-merged_res-43:/drawable_bg_search_hot_list.xml.flat",
+        "source": "com.example.search-main-45:/drawable/bg_search_hot_list.xml"
+    },
+    {
+        "merged": "com.example.search-merged_res-43:/drawable_ic_search_history_del.png.flat",
+        "source": "com.example.search-main-45:/drawable/ic_search_history_del.png"
+    },
+    {
+        "merged": "com.example.search-merged_res-43:/layout_item_loading.xml.flat",
+        "source": "com.example.search-main-45:/layout/item_loading.xml"
+    },
+    {
+        "merged": "com.example.search-merged_res-43:/layout_fragment_music_result.xml.flat",
+        "source": "com.example.search-main-45:/layout/fragment_music_result.xml"
+    },
+    {
+        "merged": "com.example.search-merged_res-43:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.example.search-main-45:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.example.search-merged_res-43:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "com.example.search-main-45:/mipmap-xhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.search-merged_res-43:/layout_item_search_suggest.xml.flat",
+        "source": "com.example.search-main-45:/layout/item_search_suggest.xml"
+    },
+    {
+        "merged": "com.example.search-merged_res-43:/drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
+        "source": "com.example.search-pngs-38:/drawable-anydpi-v24/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.example.search-merged_res-43:/drawable_bg_search_music_vip.xml.flat",
+        "source": "com.example.search-main-45:/drawable/bg_search_music_vip.xml"
+    },
+    {
+        "merged": "com.example.search-merged_res-43:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.example.search-main-45:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.example.search-merged_res-43:/drawable_ic_search_icon.png.flat",
+        "source": "com.example.search-main-45:/drawable/ic_search_icon.png"
+    },
+    {
+        "merged": "com.example.search-merged_res-43:/drawable_ic_icon_tr.png.flat",
+        "source": "com.example.search-main-45:/drawable/ic_icon_tr.png"
+    },
+    {
+        "merged": "com.example.search-merged_res-43:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "com.example.search-main-45:/mipmap-hdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.search-merged_res-43:/drawable_ic_search_clear.png.flat",
+        "source": "com.example.search-main-45:/drawable/ic_search_clear.png"
+    },
+    {
+        "merged": "com.example.search-merged_res-43:/drawable_bg_search_music_ori.xml.flat",
+        "source": "com.example.search-main-45:/drawable/bg_search_music_ori.xml"
+    },
+    {
+        "merged": "com.example.search-merged_res-43:/drawable_ic_icon.png.flat",
+        "source": "com.example.search-main-45:/drawable/ic_icon.png"
+    },
+    {
+        "merged": "com.example.search-merged_res-43:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "com.example.search-main-45:/mipmap-xxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.search-merged_res-43:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.search-main-45:/mipmap-xxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.search-merged_res-43:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.example.search-main-45:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "com.example.search-merged_res-43:/drawable_ic_search_back.png.flat",
+        "source": "com.example.search-main-45:/drawable/ic_search_back.png"
+    },
+    {
+        "merged": "com.example.search-merged_res-43:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.search-main-45:/mipmap-xhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.search-merged_res-43:/drawable_edit_text_color_cursor.xml.flat",
+        "source": "com.example.search-main-45:/drawable/edit_text_color_cursor.xml"
+    },
+    {
+        "merged": "com.example.search-merged_res-43:/drawable_bg_search_flow_list_item.xml.flat",
+        "source": "com.example.search-main-45:/drawable/bg_search_flow_list_item.xml"
+    }
+]

@@ -26,7 +26,6 @@ object MusicRepository {
     fun getRankList(): Flow<List<Rank>> {
         return flow{
             val result = MyNetWork.getRankResponse()
-            println("我就像看看你$result")
             if (result.code == 200){
                 emit(result.list)
             }

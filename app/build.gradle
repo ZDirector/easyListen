@@ -52,12 +52,12 @@ dependencies {
 
 
 
-    // åç¨‹æ ¸å¿ƒåº“
+    // Ğ­³ÌºËĞÄ¿â
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.1"
-    // åç¨‹ Android æ”¯æŒåº“
+    // Ğ­³Ì Android Ö§³Ö¿â
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1'
 
-    // lifecycle å¯¹äºåç¨‹çš„æ‰©å±•å°è£…
+    // lifecycle ¶ÔÓÚĞ­³ÌµÄÀ©Õ¹·â×°
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.5.1"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.5.1"

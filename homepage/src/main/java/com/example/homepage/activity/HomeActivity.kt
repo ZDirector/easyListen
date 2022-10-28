@@ -44,8 +44,6 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun initListener() {
-
-
         mBinding.apply {
             navView.setOnItemSelectedListener {
 
@@ -69,7 +67,6 @@ class HomeActivity : AppCompatActivity() {
             }
         }
     }
-
 
     /**
      * 沉浸式处理
