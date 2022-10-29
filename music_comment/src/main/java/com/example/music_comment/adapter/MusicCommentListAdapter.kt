@@ -86,9 +86,14 @@ class MusicCommentListAdapter(var musicCommentList : MutableList<Comment>) : Rec
 
         if (!comment.beReplied.isNullOrEmpty()){
             holder.itemCommentReplied.visibility = View.VISIBLE
-            val spanString = SpannableString(comment.beReplied!![0].user.nickname + " :" + comment.beReplied!![0].content)
-            spanString.setSpan(ForegroundColorSpan(Color.parseColor("#1a67a5")),0,spanString.indexOf(":") + 1,0)
-            holder.itemCommentRepliedText.text = spanString
+            if (!comment.beReplied!![0].content.isNullOrEmpty()){
+                val spanString = SpannableString(comment.beReplied!![0].user.nickname + " :" + comment.beReplied!![0].content)
+                spanString.setSpan(ForegroundColorSpan(Color.parseColor("#1a67a5")),0,spanString.indexOf(":") + 1,0)
+                holder.itemCommentRepliedText.text = spanString
+            }else{
+                holder.itemCommentRepliedText.text = "该评论已删除"
+                holder.itemCommentRepliedText.setTextColor(Color.parseColor("#757575"))
+            }
         }
 
         if (comment.replyCount != 0){

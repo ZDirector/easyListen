@@ -68,8 +68,8 @@ class MusicResultListAdapter(var musicResultList : MutableList<Song> ) : Recycle
         }
         holder.itemSearchMusicSinger.text = singer
         holder.itemSearchMusicAl.text = song.al.name
-        if (song.alia.isNotEmpty()){
-            holder.itemSearchMusicAlia.text = song.alia[0]
+        if (!song.alia.isNullOrEmpty()){
+            holder.itemSearchMusicAlia.text = song.alia!![0]
             holder.itemSearchMusicAlia.visibility = View.VISIBLE
         }
 

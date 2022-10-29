@@ -68,7 +68,7 @@ class MusicPopupWindow(touchView: View,song : Song) {
             .apply(RequestOptions.bitmapTransform(RoundedCorners(10)))
             .override(120,120)
             .into(topMusicImg)
-        val songName : String = if (mSong.tns != null) mSong.name + "(" + mSong.tns!![0] + ")"
+        val songName : String = if (mSong.alia != null) mSong.name + "(" + mSong.alia!![0] + ")"
         else mSong.name
         topMusicSongName.text = songName
         if (mSong.privilege.fee != 0) topMusicVIP.visibility = View.VISIBLE
@@ -97,7 +97,7 @@ class MusicPopupWindow(touchView: View,song : Song) {
             intent.putExtra("SongId",mSong.id)
             intent.putExtra("SongCover",mSong.al.picUrl)
 
-            val songName : String = if (mSong.tns != null) mSong.name + "(" + mSong.tns!![0] + ")"
+            val songName : String = if (mSong.alia != null) mSong.name + "(" + mSong.alia!![0] + ")"
             else mSong.name
             intent.putExtra("SongName",songName)
 

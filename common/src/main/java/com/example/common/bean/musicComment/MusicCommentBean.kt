@@ -7,12 +7,14 @@ data class MusicCommentBean(
 
 data class MusicCommentData(
     val comments: List<Comment>,
+    val ownerComment : Comment,
     val commentsTitle: String,
     val currentCommentTitle: String,
     val cursor: String,
     val hasMore: Boolean,
     val sortType: Int,
     val style: String,
+    val time: Long,
     val totalCount: Int
 )
 
@@ -44,7 +46,7 @@ data class Comment(
 data class BeReplied(
     val beRepliedCommentId: Int,
     val commentId: Int,
-    val content: String,
+    val content: String?,
     val ipLocation: IpLocation,
     val status: Int,
     val user: User

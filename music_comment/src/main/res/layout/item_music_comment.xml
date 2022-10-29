@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:textColor="@color/black_33"
-        android:textSize="12sp"
+        android:textSize="13sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/item_user_release_date"
         app:layout_constraintStart_toEndOf="@+id/item_user_cover"
@@ -40,7 +40,7 @@
         android:id="@+id/item_user_release_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="10sp"
+        android:textSize="11sp"
         app:layout_constraintBottom_toBottomOf="@+id/item_user_cover"
         app:layout_constraintStart_toStartOf="@+id/item_user_name"
         app:layout_constraintTop_toBottomOf="@+id/item_user_name" />
@@ -50,15 +50,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        android:textSize="10sp"
+        android:textSize="11sp"
         app:layout_constraintBottom_toBottomOf="@+id/item_user_release_date"
         app:layout_constraintStart_toEndOf="@+id/item_user_release_date"
         app:layout_constraintTop_toTopOf="@+id/item_user_release_date" />
 
     <ImageView
         android:id="@+id/item_icon_like"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
         android:layout_marginEnd="14dp"
         android:src="@drawable/ic_like"
         app:layout_constraintBottom_toBottomOf="@+id/item_user_cover"
@@ -81,7 +81,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:textColor="@color/black_33"
-        android:textSize="14sp"
+        android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="@+id/item_icon_like"
         app:layout_constraintStart_toStartOf="@+id/item_user_release_date"
         app:layout_constraintTop_toBottomOf="@+id/item_user_release_date" />
@@ -111,7 +111,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:textSize="13sp"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -131,7 +131,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/themeColor"
-            android:textSize="13sp"
+            android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
