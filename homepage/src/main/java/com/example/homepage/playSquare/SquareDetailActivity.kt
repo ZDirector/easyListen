@@ -66,26 +66,36 @@ class SquareDetailActivity : AppCompatActivity() {
             toolbarLayout.setCollapsedTitleTextColor(Color.WHITE)//设置收缩后标题的颜色
             appBar.addOnOffsetChangedListener { appBarLayout, verticalOffset ->
                 val offset = abs(verticalOffset)
-                toolbar.setBackgroundColor(
+ /*               toolbar.setBackgroundColor(
                     changeAlpha(
-                        resources.getColor(R.color.blue),
-                        abs(verticalOffset * 1.0f) / appBarLayout.totalScrollRange
+                        resources.getColor(R.color.white),
+                        abs(verticalOffset * 1.0f) / appBarLayout.totalScrollRange*3
                     )
-                )
-                clPlaylist.alpha =
-                    (appBarLayout.totalScrollRange / 2 - offset * 1.0f) / (appBarLayout.totalScrollRange / 2)
+                )*/
+/*                clPlaylist.alpha =
+                    (appBarLayout.totalScrollRange / 2 - offset * 1.0f) / (appBarLayout.totalScrollRange / 2)*3*/
                 /**
-                 * 当前最大高度便宜值除以2 在减去已偏移值 获取浮动 先显示在隐藏
+                 * 当前最大高度偏移值除以2 在减去已偏移值 获取浮动 先显示在隐藏
                  */
+                toolbar.setBackgroundColor(mMainColor)
 
                 if (offset < appBarLayout.totalScrollRange / 2) {
+
                     tvTitleBar.alpha =
                         (appBarLayout.totalScrollRange / 2 - offset * 1.0f) / (appBarLayout.totalScrollRange / 2)
                     toolbar.title = ""
-                    toolbar.alpha =
+                    if(tvTitleBar.alpha>90){
+                        tvTitleBar.text = ""
+                        tvTitleBarPlay.text ="最动听的歌单"
+
+                    }else{
+                        tvTitleBar.text = "歌单"
+                        tvTitleBarPlay.text =""
+                    }
+/*                    toolbar.alpha =
                         (appBarLayout.totalScrollRange / 2 - offset * 1.0f) / (appBarLayout.totalScrollRange / 2)
                     clPlaylist.alpha =
-                        (appBarLayout.totalScrollRange / 2 - offset * 1.0f) / (appBarLayout.totalScrollRange / 2)
+                        (appBarLayout.totalScrollRange / 2 - offset * 1.0f) / (appBarLayout.totalScrollRange / 2)*/
                     /**
                      * 从最低浮动开始渐显 当前 Offset就是  appBarLayout.getTotalScrollRange() / 2
                      * 所以 Offset - appBarLayout.getTotalScrollRange() / 2
@@ -93,25 +103,32 @@ class SquareDetailActivity : AppCompatActivity() {
                 } else if (offset > appBarLayout.totalScrollRange / 2) {
                     val alpha: Float =
                         (offset - appBarLayout.totalScrollRange / 2) * 1.0f / (appBarLayout.totalScrollRange / 2)
-
-//                    toolbar.alpha = alpha
-                    clPlaylist.alpha = alpha
-//                    toolbar.setNavigationIcon(R.mipmap.image_left)
-                    toolbar.title = "最动听的歌单"
                     toolbar.alpha = alpha
-                    toolbar.setBackgroundColor(mMainColor)
+
+//                    clPlaylist.alpha = alpha
+//                    toolbar.setNavigationIcon(R.mipmap.image_left)
+/*                    toolbar.title = "最动听的歌单"
+                    toolbar.setTitleTextColor(R.color.white)
+                    toolbar.setBackgroundColor(mMainColor)*/
+
+                    tvTitleBarPlay.text = "最动听的歌单"
+                    tvTitleBarPlay.alpha = alpha
                 }
             }
         }
     }
 
-    /**
+/*
+    */
+/**
      * 根据百分比改变颜色透明度
-     */
+     *//*
+
     private fun changeAlpha(color: Int, fraction: Float): Int {
         val alpha = (Color.alpha(color) * fraction).toInt()
         return Color.argb(alpha, 0, 128, 0)
     }
+*/
 
 
     private fun setImageView(){

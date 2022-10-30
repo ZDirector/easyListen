@@ -5,118 +5,194 @@
     <data>
 
     </data>
+
     <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
-
-
-
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/app_bar"
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
-            android:layout_height="240dp">
+            android:layout_height="match_parent">
 
-            <com.google.android.material.appbar.CollapsingToolbarLayout
-                android:id="@+id/toolbar_layout"
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/app_bar"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+                android:layout_height="260dp">
 
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/cl_playlist"
+                <com.google.android.material.appbar.CollapsingToolbarLayout
+                    android:id="@+id/toolbar_layout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    app:layout_collapseMode="parallax"
-                    app:layout_collapseParallaxMultiplier="0">
-
-                    <ImageView
-                        android:scaleType="fitXY"
-                        android:id="@+id/ib_playlist"
-                        android:layout_width="120dp"
-                        android:layout_height="120dp"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginBottom="40dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent" />
-
-                    <TextView
-                        android:id="@+id/tv_title_playlist"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginBottom="2dp"
-                        android:maxLines="2"
-                        android:layout_marginEnd="10dp"
-                        android:text="歌单名称|美好歌单,快每一条十大大苏打阿萨大苏打阿松大阿萨的阿松大阿asd asdasdasdasd松大啊实打实的阿松大阿松大大苏打阿松大阿松大阿萨阿松大"
-                        android:textColor="@color/mike_white"
-                        android:textSize="18sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toEndOf="@+id/ib_playlist"
-                        app:layout_constraintTop_toTopOf="@+id/ib_playlist" />
-
-                    <TextView
-                        android:id="@+id/tv_creator"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:text="陈奕迅"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginBottom="14dp"
-                        android:textColor="@color/little_gray"
-                        android:textSize="14sp"
-                        app:layout_constraintStart_toEndOf="@+id/ib_playlist"
-                        app:layout_constraintBottom_toTopOf="@+id/tv_describe" />
-
-                    <TextView
-                        android:id="@+id/tv_describe"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="@dimen/dp_10"
-                        android:text="这个是一个感动的故事"
-                        android:textColor="@color/little_gray"
-                        android:textSize="14sp"
-                        android:layout_marginEnd="10dp"
-                        app:layout_constraintBottom_toBottomOf="@+id/ib_playlist"
-                        app:layout_constraintStart_toEndOf="@+id/ib_playlist" />
+                    app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.appcompat.widget.Toolbar
-                    android:id="@+id/toolbar"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:text="@string/playlist"
-                    app:layout_collapseMode="pin"
-                    app:subtitleTextColor="@color/mike_white" />
-
-                <!--           <androidx.appcompat.widget.Toolbar
-                               android:id="@+id/toolbar"
-                               android:layout_width="match_parent"
-                               android:layout_height="50dp"
-                               android:minHeight="10dp"
-
-                               app:layout_collapseMode="pin" />-->
-            </com.google.android.material.appbar.CollapsingToolbarLayout>
-        </com.google.android.material.appbar.AppBarLayout>
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_playlist"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        app:layout_collapseMode="parallax"
+                        app:layout_collapseParallaxMultiplier="0">
 
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+                        <ImageView
+                            android:id="@+id/ib_playlist"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginBottom="70dp"
+                            android:scaleType="fitXY"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent" />
+
+                        <TextView
+                            android:id="@+id/tv_title_playlist"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="2dp"
+                            android:maxLines="2"
+                            android:text="歌单名称|美好歌单,快每一条十大大苏打阿萨大苏打阿松大阿萨的阿松大阿asd asdasdasdasd松大啊实打实的阿松大阿松大大苏打阿松大阿松大阿萨阿松大"
+                            android:textColor="@color/mike_white"
+                            android:textSize="18sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toEndOf="@+id/ib_playlist"
+                            app:layout_constraintTop_toTopOf="@+id/ib_playlist" />
+
+                        <TextView
+                            android:id="@+id/tv_creator"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginBottom="14dp"
+                            android:text="陈奕迅"
+                            android:textColor="@color/little_gray"
+                            android:textSize="14sp"
+                            app:layout_constraintBottom_toTopOf="@+id/tv_describe"
+                            app:layout_constraintStart_toEndOf="@+id/ib_playlist" />
+
+                        <TextView
+                            android:id="@+id/tv_describe"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="@dimen/dp_10"
+                            android:layout_marginEnd="10dp"
+                            android:text="这个是一个感动的故事"
+                            android:textColor="@color/little_gray"
+                            android:textSize="14sp"
+                            app:layout_constraintBottom_toBottomOf="@+id/ib_playlist"
+                            app:layout_constraintStart_toEndOf="@+id/ib_playlist" />
+
+                        <View
+                            android:id="@+id/view_coo_bot"
+                            android:layout_width="0dp"
+                            android:layout_height="25dp"
+                            android:background="@color/white"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent" />
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="240dp"
+                            android:layout_height="40dp"
+                            android:background="@drawable/shape_square_comment"
+                            android:elevation="6dp"
+                            android:orientation="horizontal"
+                            android:translationZ="3dp"
+                            app:layout_constraintBottom_toTopOf="@+id/view_coo_bot"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/view_coo_bot">
+
+                            <ImageView
+                                android:id="@+id/iv_comment"
+                                android:layout_width="27dp"
+                                android:layout_height="27dp"
+                                android:layout_marginStart="10dp"
+                                android:src="@drawable/ic_comment"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tv_number_comment"
+                                android:layout_width="0dp"
+                                android:text="12351"
+                                android:textColor="@color/little_black"
+                                android:layout_marginStart="10dp"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintStart_toEndOf="@+id/iv_comment"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent"/>
+
+                            <View
+                                android:id="@+id/view_middle"
+                                android:layout_width="2dp"
+                                android:layout_height="10dp"
+                                android:background="@color/little_black"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/tv_number_share"
+                                app:layout_constraintStart_toEndOf="@+id/iv_share"
+                                app:layout_constraintTop_toTopOf="parent"
+                                android:layout_marginStart="10dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                android:text="52991"
+                                android:textColor="@color/little_black"/>
+
+
+
+                            <ImageView
+                                android:id="@+id/iv_share"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:layout_marginStart="10dp"
+                                android:src="@drawable/ic_share"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/view_middle"
+                                app:layout_constraintTop_toTopOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.appcompat.widget.Toolbar
+                        android:id="@+id/toolbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:text="@string/playlist"
+                        app:layout_collapseMode="pin"
+                        app:subtitleTextColor="@color/mike_white" />
+
+                    <!--           <androidx.appcompat.widget.Toolbar
+                                   android:id="@+id/toolbar"
+                                   android:layout_width="match_parent"
+                                   android:layout_height="50dp"
+                                   android:minHeight="10dp"
+
+                                   app:layout_collapseMode="pin" />-->
+                </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+
+            </com.google.android.material.appbar.AppBarLayout>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
         <TextView
             android:id="@+id/tv_title_bar"
             android:layout_width="wrap_content"
@@ -125,7 +201,15 @@
             android:layout_marginTop="12dp"
             android:text="@string/playlist"
             android:textColor="@color/mike_white"
-            android:textSize="20sp"
-            />
+            android:textSize="20sp" />
+        <TextView
+            android:id="@+id/tv_title_bar_play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/playlist"
+            android:textColor="@color/mike_white"
+            android:textSize="20sp" />
     </FrameLayout>
 </layout>
