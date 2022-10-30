@@ -9,6 +9,8 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="gray">#DFDDDB</color>
+    <color name="little_gray">#9A9D9F</color>
+
     <color name="blue">#FF1A67A5</color>    <color name="themeColor">#1a67a5</color>
     <color name="tabLayoutTextColor">#696969</color>
     <color name="tabSelectedTextColor">#353535</color>
