@@ -13,4 +13,10 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="music_popupwindow_anim" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/anim_music_popup_enter</item>
+        <item name="android:windowExitAnimation">@anim/anim_music_popup_exit</item>
+    </style>
+
 </resources>

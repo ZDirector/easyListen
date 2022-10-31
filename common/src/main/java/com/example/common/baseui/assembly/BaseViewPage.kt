@@ -18,6 +18,7 @@ class BaseViewPage : LinearLayout {
         LayoutInflater.from(context).inflate(R.layout.base_viewpage,this, true)
         mTableLayout = findViewById(R.id.base_viewPage_Tab)
         mViewPage = findViewById(R.id.base_viewPage_VP)
+        mViewPage.offscreenPageLimit = ViewPager2.OFFSCREEN_PAGE_LIMIT_DEFAULT
     }
 
     constructor(context: Context?) : super(context)

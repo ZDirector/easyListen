@@ -12,7 +12,6 @@ import android.view.inputmethod.InputMethodManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.common.baseui.BaseActivity
 import com.example.common.baseui.assembly.BaseViewPageAdapter
-import com.example.common.utils.LogUtil
 import com.example.common.utils.setStatusBarColor
 import com.example.common.utils.setStatusBarTextColor
 import com.example.search.BR
@@ -23,7 +22,9 @@ import com.example.search.adapter.SearchSuggestListAdapter
 import com.example.search.databinding.ActivitySearchBinding
 import com.example.search.manager.FlowLayoutManager
 import com.example.search.ui.fragment.MusicResultFragment
-import com.example.search.ui.fragment.TestFragment
+import com.example.search.ui.fragment.MusicSheetFragment
+import com.example.search.ui.fragment.MusicVideoFragment
+import com.example.search.ui.fragment.SearchUserFragment
 import com.example.search.viewmodel.SearchViewModel
 
 class SearchActivity : BaseActivity<ActivitySearchBinding,SearchViewModel>() ,
@@ -34,9 +35,9 @@ class SearchActivity : BaseActivity<ActivitySearchBinding,SearchViewModel>() ,
     private val titleList = listOf("单曲","歌单","视频","用户")
     private val pageList = listOf(
         MusicResultFragment(),
-        TestFragment(),
-        TestFragment(),
-        TestFragment()
+        MusicSheetFragment(),
+        MusicVideoFragment(),
+        SearchUserFragment()
     )
     private var isSuggestToSearch = false
 
@@ -240,7 +241,8 @@ class SearchActivity : BaseActivity<ActivitySearchBinding,SearchViewModel>() ,
         binding.searchSuggestList.visibility = View.GONE
         binding.searchMainLayout.visibility = View.GONE
         viewModel.keyWords.postValue(keyWords)
-        LogUtil.d("onClickSearch",keyWords)
+        binding.searchResultLayout.mViewPage.adapter?.notifyDataSetChanged()
+        binding.searchResultLayout.mViewPage.currentItem = 0
     }
 
 }

@@ -11,8 +11,8 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         jcenter()
-        maven { url "https://jitpack.io" }
-
+        maven { url 'https://jitpack.io' }
+        maven { url "https://maven.aliyun.com/repository/public" }
     }
 }
 rootProject.name = "easyListen"
@@ -20,4 +20,4 @@ include ':app'
 include ':common'
 include ':preference'
 include ':search'
-include ':homepage'
+include ':music_comment'

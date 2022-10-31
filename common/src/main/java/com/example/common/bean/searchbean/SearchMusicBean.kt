@@ -11,7 +11,7 @@ data class SearchMusicResult(
 )
 
 data class Song(
-    val alia : List<String>,//歌曲的附加信息
+    val alia : List<String>?,//歌曲的附加信息
     val tns: List<String>?,//别名列表，第一个别名会作为副标题，例如Ref:rain(TV动画《恋如雨止》片尾曲)
     val ar: List<Ar>,
     val al: Al,

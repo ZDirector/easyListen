@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">common</string>
-    <string name="search_hint">🔍</string>
+    <string name="loading">正在加载…</string>
 </resources>
