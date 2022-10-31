@@ -23,6 +23,7 @@
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@drawable/ic_icon"
         android:supportsRtl="true"
+        android:testOnly="true"
         android:theme="@style/Theme.EasyListen"
         android:usesCleartextTraffic="true" >
         <activity

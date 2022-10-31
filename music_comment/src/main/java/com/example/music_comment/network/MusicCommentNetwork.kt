@@ -7,6 +7,10 @@ object MusicCommentNetwork {
 
     private val musicCommentService = RetrofitClient.retrofit.create(MusicCommentService::class.java)
 
-    suspend fun getMusicCommentList(id : Int,sortType : Int,pageNo : Int) = musicCommentService.getMusicCommentList(id = id, sortType = sortType, pageNo = pageNo)
+    suspend fun getMusicCommentList(id : Long,sortType : Int,pageNo : Int,cursor : Long)
+    = musicCommentService.getMusicCommentList(id = id, sortType = sortType, pageNo = pageNo, cursor = cursor)
+
+    suspend fun getFloorCommentList(parentCommentId : Long,id : Long,time : Long)
+    = musicCommentService.getFloorCommentList(parentCommentId = parentCommentId, id = id, time = time)
 
 }

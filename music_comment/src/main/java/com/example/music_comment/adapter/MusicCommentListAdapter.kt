@@ -6,6 +6,7 @@ import android.text.style.ForegroundColorSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -14,9 +15,21 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.request.RequestOptions
 import com.example.common.bean.musicComment.Comment
+import com.example.common.utils.MyApplication
 import com.example.music_comment.R
 
-class MusicCommentListAdapter(var musicCommentList : MutableList<Comment>) : RecyclerView.Adapter<MusicCommentListAdapter.ViewHolder>() {
+class MusicCommentListAdapter(musicCommentList : MutableList<Comment>,parentCommentId : Long) : RecyclerView.Adapter<MusicCommentListAdapter.ViewHolder>() {
+
+    var musicCommentList : MutableList<Comment>
+    private var parentCommentId : Long
+
+    init {
+        this.musicCommentList = musicCommentList
+        this.parentCommentId = parentCommentId
+    }
+
+    constructor(musicCommentList : MutableList<Comment>) : this(musicCommentList,0L)
+
 
     inner class ViewHolder(view : View) : RecyclerView.ViewHolder(view){
         val itemUserCover : ImageView = view.findViewById(R.id.item_user_cover)
@@ -48,6 +61,18 @@ class MusicCommentListAdapter(var musicCommentList : MutableList<Comment>) : Rec
         }
         viewHolder.itemIconLike.setOnClickListener { v ->
             if (v != null) {
+                if (!musicCommentList[v.tag as Int].liked){
+                    musicCommentList[v.tag as Int].liked = true
+                    viewHolder.itemIconLike.setImageResource(R.drawable.ic_liked)
+                    viewHolder.itemLikeCount.text = (viewHolder.itemLikeCount.text.toString().toInt() + 1).toString()
+                    viewHolder.itemLikeCount.setTextColor(Color.parseColor("#1a67a5"))
+                    viewHolder.itemIconLike.startAnimation(AnimationUtils.loadAnimation(MyApplication.context,R.anim.anim_like))
+                }else{
+                    musicCommentList[v.tag as Int].liked = false
+                    viewHolder.itemIconLike.setImageResource(R.drawable.ic_like)
+                    viewHolder.itemLikeCount.text = (viewHolder.itemLikeCount.text.toString().toInt() - 1).toString()
+                    viewHolder.itemLikeCount.setTextColor(Color.parseColor("#757575"))
+                }
                 mItemOnClickListener.onClick(v, v.tag as Int)
             }
         }
@@ -73,6 +98,7 @@ class MusicCommentListAdapter(var musicCommentList : MutableList<Comment>) : Rec
             .into(holder.itemUserCover)
 
         holder.itemUserName.text = comment.user.nickname
+        holder.itemUserName.paint.isFakeBoldText = true
         if (comment.user.vipRights?.associator != null){
             Glide.with(holder.itemUserVipLevel)
                 .load(comment.user.vipRights!!.associator!!.iconUrl)
@@ -80,16 +106,23 @@ class MusicCommentListAdapter(var musicCommentList : MutableList<Comment>) : Rec
         }
         holder.itemUserReleaseDate.text = comment.timeStr
         holder.itemUserLocation.text = comment.ipLocation.location
-        if (comment.liked) holder.itemIconLike.setImageResource(R.drawable.ic_liked)
+        if (comment.liked){
+            holder.itemIconLike.setImageResource(R.drawable.ic_liked)
+            holder.itemLikeCount.setTextColor(Color.parseColor("#1a67a5"))
+        }
         holder.itemLikeCount.text = comment.likedCount.toString()
         holder.itemComment.text = comment.content
 
         if (!comment.beReplied.isNullOrEmpty()){
             holder.itemCommentReplied.visibility = View.VISIBLE
             if (!comment.beReplied!![0].content.isNullOrEmpty()){
-                val spanString = SpannableString(comment.beReplied!![0].user.nickname + " :" + comment.beReplied!![0].content)
-                spanString.setSpan(ForegroundColorSpan(Color.parseColor("#1a67a5")),0,spanString.indexOf(":") + 1,0)
-                holder.itemCommentRepliedText.text = spanString
+                if (comment.beReplied!![0].beRepliedCommentId == parentCommentId){
+                    holder.itemCommentReplied.visibility = View.GONE
+                }else{
+                    val spanString = SpannableString(comment.beReplied!![0].user.nickname + " :" + comment.beReplied!![0].content)
+                    spanString.setSpan(ForegroundColorSpan(Color.parseColor("#1a67a5")),0,spanString.indexOf(":") + 1,0)
+                    holder.itemCommentRepliedText.text = spanString
+                }
             }else{
                 holder.itemCommentRepliedText.text = "该评论已删除"
                 holder.itemCommentRepliedText.setTextColor(Color.parseColor("#757575"))
@@ -100,7 +133,7 @@ class MusicCommentListAdapter(var musicCommentList : MutableList<Comment>) : Rec
             holder.itemCommentRepliedMore.visibility = View.VISIBLE
             val text = comment.replyCount.toString() + "条回复"
             holder.itemCommentRepliedCount.text = text
-        }
+        }else holder.itemCommentRepliedMore.visibility = View.GONE
     }
 
     override fun getItemCount() = musicCommentList.size

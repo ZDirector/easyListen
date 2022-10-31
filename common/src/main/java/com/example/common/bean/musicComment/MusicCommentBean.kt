@@ -26,10 +26,10 @@ data class Comment(
     val content: String,
     val decoration: Decoration,
     val ipLocation: IpLocation,
-    val liked: Boolean,
+    var liked: Boolean,
     val likedCount: Int,
     val needDisplayTime: Boolean,
-    val parentCommentId: Int,
+    val parentCommentId: Long,
     val pendantData: PendantData,
     val pickInfo: PickInfo,
     val repliedMark: Boolean,
@@ -44,8 +44,8 @@ data class Comment(
 )
 
 data class BeReplied(
-    val beRepliedCommentId: Int,
-    val commentId: Int,
+    val beRepliedCommentId: Long,
+    val commentId: Long,
     val content: String?,
     val ipLocation: IpLocation,
     val status: Int,

@@ -5,7 +5,6 @@ import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.common.baseui.BaseFragment
-import com.example.common.utils.LogUtil
 import com.example.common.utils.showToast
 import com.example.search.BR
 import com.example.search.R
@@ -87,5 +86,4 @@ class MusicResultFragment : BaseFragment<FragmentMusicResultBinding,MusicResultV
             activityModel.isSearchResultFinishLoading(true)
         }
     }
-
 }

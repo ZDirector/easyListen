@@ -47,9 +47,6 @@ dependencies {
     //加载动画库
     implementation("com.wang.avi:library:2.1.3")
 
-    //吸顶布局
-    implementation ("com.github.donkingliang:ConsecutiveScroller:4.6.3")
-
     //Glide
     implementation ("com.github.bumptech.glide:glide:4.14.2")
     annotationProcessor ("com.github.bumptech.glide:compiler:4.14.2")

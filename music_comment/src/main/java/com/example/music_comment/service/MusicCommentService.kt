@@ -9,9 +9,18 @@ interface MusicCommentService {
     @GET("/comment/new")
     suspend fun getMusicCommentList(
         @Query("type") type : Int = 0,
-        @Query("id") id : Int,
+        @Query("id") id : Long,
         @Query("sortType") sortType : Int,
         @Query("pageSize") pageSize : Int = 20,
-        @Query("pageNo") pageNo : Int) : MusicCommentBean
+        @Query("pageNo") pageNo : Int,
+        @Query("cursor") cursor : Long) : MusicCommentBean
+
+    @GET("/comment/floor")
+    suspend fun getFloorCommentList(
+        @Query("type") type : Int = 0,
+        @Query("parentCommentId") parentCommentId : Long,
+        @Query("id") id : Long,
+        @Query("limit") limit : Int = 20,
+        @Query("time") time : Long) : MusicCommentBean
 
 }
