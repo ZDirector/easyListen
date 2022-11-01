@@ -39,7 +39,7 @@ android {
 
 dependencies {
     implementation(project(":common"))
-
+    implementation(project(":homepage"))
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
 
     implementation("androidx.core:core-ktx:1.7.0")

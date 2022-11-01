@@ -1,5 +1,10 @@
 package com.example.homepage.playSquare.bean
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+import java.io.Serializable
+import java.util.ArrayList
+
 data class HighQualityResponse(
     val code: Int,
     val lasttime: Long,
@@ -13,10 +18,7 @@ data class HighQualityResponse(
 data class Playlist(
     val adType: Int,
     val anonimous: Boolean,
-    val cloudTrackCount: Int,
     val commentCount: Int,
-    val commentThreadId: String,
-    val copywriter: String,
     val coverImgId: Long,
     val coverImgId_str: String,
     val coverImgUrl: String,
@@ -27,11 +29,9 @@ data class Playlist(
     val highQuality: Boolean,
     val id: Long,
     val name: String,
-    val newImported: Boolean,
     val ordered: Boolean,
     val playCount: Long,
     val privacy: Int,
-    val recommendInfo: Any,
     val shareCount: Int,
     val specialType: Int,
     val status: Int,
@@ -39,14 +39,8 @@ data class Playlist(
     val subscribedCount: Int,
     val subscribers: List<Subscriber>,
     val tag: String,
-    val tags: List<String>,
-    val totalDuration: Int,
-    val trackCount: Int,
-    val trackNumberUpdateTime: Long,
-    val trackUpdateTime: Long,
-    val tracks: Any,
-    val updateTime: Long,
-)
+    val tags: ArrayList<String>,
+):Serializable
 
 data class Creator(
     val accountStatus: Int,
@@ -74,11 +68,10 @@ data class Creator(
     val mutual: Boolean,
     val nickname: String,
     val province: Int,
-    val remarkName: Any,
     val signature: String,
     val userType: Int,
     val vipType: Int
-)
+):Serializable
 
 data class Subscriber(
     val accountStatus: Int,
@@ -86,7 +79,6 @@ data class Subscriber(
     val authStatus: Int,
     val authenticationTypes: Int,
     val authority: Int,
-    val avatarDetail: Any,
     val avatarImgId: Long,
     val avatarImgIdStr: String,
     val avatarImgId_str: String,
@@ -100,21 +92,18 @@ data class Subscriber(
     val description: String,
     val detailDescription: String,
     val djStatus: Int,
-    val expertTags: Any,
-    val experts: Any,
     val followed: Boolean,
     val gender: Int,
     val mutual: Boolean,
     val nickname: String,
     val province: Int,
-    val remarkName: Any,
     val signature: String,
     val userType: Int,
     val vipType: Int
-)
+):Serializable
 
 data class AvatarDetail(
     val identityIconUrl: String,
     val identityLevel: Int,
     val userType: Int
-)
+):Serializable

@@ -42,6 +42,7 @@ class SongSquareActivity : AppCompatActivity() {
             lp.height= bottomNav.height + navigationBarHeight
             bottomNav.layoutParams = lp
             bottomNav.requestLayout()
+
         }
 
     }

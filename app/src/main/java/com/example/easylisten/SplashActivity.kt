@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.lifecycle.lifecycleScope
+import com.example.homepage.activity.HomeActivity
 import com.example.homepage.playSquare.SquareDetailActivity
 import kotlinx.coroutines.launch
 
@@ -17,7 +18,7 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
         lifecycleScope.launch {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-                    val intent = Intent(applicationContext, SquareDetailActivity::class.java)
+                    val intent = Intent(applicationContext, HomeActivity::class.java)
                     startActivity(intent)
             }
             finish()

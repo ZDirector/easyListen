@@ -1,58 +1,135 @@
 package com.example.homepage.playSquare
 
-import android.graphics.Bitmap
-import android.graphics.Canvas
+
+import android.content.Context
+import android.content.res.ColorStateList
 import android.graphics.Color
-import android.graphics.PixelFormat
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.Gravity
 import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.widget.RelativeLayout
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.marginTop
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.palette.graphics.Palette
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
+import com.example.common.adapter.DataClickListener
+import com.example.common.bean.searchbean.Song
+import com.example.common.utils.UiUtils.setPic
+import com.example.common.utils.immersive
+import com.example.common.utils.navigationBarHeight
 import com.example.homepage.R
 import com.example.homepage.databinding.ActivitySquareDetailBinding
+import com.example.homepage.playSquare.adapter.SongsAdapter
+import com.example.homepage.playSquare.bean.Playlist
+import com.example.homepage.playSquare.viewmodel.PlayListDetailViewModel
 import kotlin.math.abs
 
 
 class SquareDetailActivity : AppCompatActivity() {
+
+
     private lateinit var mBinding: ActivitySquareDetailBinding
-    private var mMainColor:Int = 0
+    private lateinit var mViewModel: PlayListDetailViewModel
+    private var mMainColor: Int = 0
+    private var mMore = true
+    private var loading: Boolean = false
+    private val mAdapter: SongsAdapter by lazy {
+        val adapter = SongsAdapter()
+        adapter.itemClickListener = object : DataClickListener<Song> {
+            override fun onClick(value: Song, position: Int) {
+
+            }
+        }
+        adapter
+    }
+
+
+    private val mFootView by lazy {
+        LayoutInflater.from(applicationContext).inflate(
+            R.layout.foot_layout, null
+        )
+    }
+
+    companion object {
+        fun getStatusBarHeight(context: Context): Int {
+            var result = 0
+            val resId: Int =
+                context.resources.getIdentifier("status_bar_height", "dimen", "android")
+            if (resId > 0) {
+                result = context.resources.getDimensionPixelOffset(resId)
+            }
+            return result
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        immersive(window, this)
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_square_detail)
+        mViewModel = ViewModelProvider(this)[PlayListDetailViewModel::class.java]
+        mBinding.viewModel = mViewModel
+        mViewModel.listLiveData.observe(this) {
+            getPicColor()
+            mBinding.apply {
+                mViewModel.apply {
+                    nameLiveData.postValue(it.name)
+                    describeLiveData.postValue(it.description)
+                    setPic(ibPlaylist, 20, it.coverImgUrl)
+                    loadList()
+                }
+            }
+
+        }
+        init()
         mBinding.apply {
             recyclerView.layoutManager = LinearLayoutManager(applicationContext)
-            recyclerView.adapter = RvAdapter()
+            recyclerView.adapter = mAdapter
             tvTitleBar.bringToFront()
             setToolBar()
         }
-        val draw1 = this.resources.getDrawable(com.example.homepage.R.drawable.star)
-        val bitmap = drawableToBitmap(draw1)
-        val builder = bitmap?.let { Palette.from(it) }
-        val palette = builder?.generate()
-        if (palette != null) {
-            mMainColor = palette.getDarkVibrantColor(Color.WHITE)
+        mBinding.lifecycleOwner = this
 
-        }
+        getPicColor()
+
         initColor()
         setImageView()
+        initList()
+        initSongs()
+
     }
 
-    private fun initColor(){
+    private fun getPicColor() {
+        lifecycleScope.launchWhenCreated {
+            mViewModel.setBitMap()
+
+            mViewModel.bitmapStateFlow.collect {
+                val builder = it?.let { Palette.from(it) }
+                val palette = builder?.generate()
+                if (palette != null) {
+                    mMainColor = palette.getDarkVibrantColor(Color.WHITE)
+                }
+                Toast.makeText(applicationContext, "这个是什么情况", Toast.LENGTH_SHORT).show()
+                initColor()
+            }
+        }
+
+    }
+
+
+    private fun initColor() {
         mBinding.apply {
             toolbar.setBackgroundColor(mMainColor)
             clPlaylist.setBackgroundColor(mMainColor)
             appBar.setBackgroundColor(mMainColor)
+            viewTop.setBackgroundColor(mMainColor)
         }
     }
 
@@ -66,72 +143,120 @@ class SquareDetailActivity : AppCompatActivity() {
             toolbarLayout.setCollapsedTitleTextColor(Color.WHITE)//设置收缩后标题的颜色
             appBar.addOnOffsetChangedListener { appBarLayout, verticalOffset ->
                 val offset = abs(verticalOffset)
- /*               toolbar.setBackgroundColor(
-                    changeAlpha(
-                        resources.getColor(R.color.white),
-                        abs(verticalOffset * 1.0f) / appBarLayout.totalScrollRange*3
-                    )
-                )*/
-/*                clPlaylist.alpha =
-                    (appBarLayout.totalScrollRange / 2 - offset * 1.0f) / (appBarLayout.totalScrollRange / 2)*3*/
+
                 /**
                  * 当前最大高度偏移值除以2 在减去已偏移值 获取浮动 先显示在隐藏
                  */
                 toolbar.setBackgroundColor(mMainColor)
 
                 if (offset < appBarLayout.totalScrollRange / 2) {
+                    tvTitleBar.setTextColor(R.color.white)
 
                     tvTitleBar.alpha =
                         (appBarLayout.totalScrollRange / 2 - offset * 1.0f) / (appBarLayout.totalScrollRange / 2)
                     toolbar.title = ""
-                    if(tvTitleBar.alpha>90){
-                        tvTitleBar.text = ""
-                        tvTitleBarPlay.text ="最动听的歌单"
+                    if (tvTitleBar.alpha > 15) {
+                        tvTitleBar.hint = ""
+                        tvTitleBarPlay.text = mViewModel.nameLiveData.value
 
-                    }else{
-                        tvTitleBar.text = "歌单"
-                        tvTitleBarPlay.text =""
+                    } else {
+                        tvTitleBar.hint = "歌单"
+                        tvTitleBarPlay.text = ""
                     }
-/*                    toolbar.alpha =
-                        (appBarLayout.totalScrollRange / 2 - offset * 1.0f) / (appBarLayout.totalScrollRange / 2)
-                    clPlaylist.alpha =
-                        (appBarLayout.totalScrollRange / 2 - offset * 1.0f) / (appBarLayout.totalScrollRange / 2)*/
-                    /**
-                     * 从最低浮动开始渐显 当前 Offset就是  appBarLayout.getTotalScrollRange() / 2
-                     * 所以 Offset - appBarLayout.getTotalScrollRange() / 2
-                     */
+
                 } else if (offset > appBarLayout.totalScrollRange / 2) {
                     val alpha: Float =
                         (offset - appBarLayout.totalScrollRange / 2) * 1.0f / (appBarLayout.totalScrollRange / 2)
                     toolbar.alpha = alpha
-
-//                    clPlaylist.alpha = alpha
-//                    toolbar.setNavigationIcon(R.mipmap.image_left)
-/*                    toolbar.title = "最动听的歌单"
-                    toolbar.setTitleTextColor(R.color.white)
-                    toolbar.setBackgroundColor(mMainColor)*/
-
-                    tvTitleBarPlay.text = "最动听的歌单"
-                    tvTitleBarPlay.alpha = alpha
+                    tvTitleBarPlay.text = mViewModel.nameLiveData.value
                 }
             }
         }
     }
 
-/*
-    */
-/**
-     * 根据百分比改变颜色透明度
-     *//*
+    private fun init() {
+        if (intent.getSerializableExtra("playlist") != null) {
+            mViewModel.setList(intent.getSerializableExtra("playlist") as Playlist)
+        }
+        mBinding.apply {
 
-    private fun changeAlpha(color: Int, fraction: Float): Int {
-        val alpha = (Color.alpha(color) * fraction).toInt()
-        return Color.argb(alpha, 0, 128, 0)
+            val lp = bottomNav.layoutParams as RelativeLayout.LayoutParams
+            lp.height = bottomNav.height + navigationBarHeight
+            bottomNav.layoutParams = lp
+            bottomNav.requestLayout()
+
+
+            val rpTv = tvTitleBar.layoutParams as RelativeLayout.LayoutParams
+            rpTv.topMargin = tvTitleBar.marginTop + getStatusBarHeight(applicationContext)
+            tvTitleBar.layoutParams = rpTv
+            tvTitleBar.requestLayout()
+
+            val rpTv1 = tvTitleBarPlay.layoutParams as RelativeLayout.LayoutParams
+            rpTv1.topMargin = tvTitleBarPlay.marginTop + getStatusBarHeight(applicationContext)
+            tvTitleBarPlay.layoutParams = rpTv1
+            tvTitleBarPlay.requestLayout()
+
+
+            val top = viewTop.layoutParams as RelativeLayout.LayoutParams
+            top.height = viewTop.height + getStatusBarHeight(applicationContext)
+            viewTop.layoutParams = top
+            viewTop.requestLayout()
+        }
     }
-*/
+
+    private fun initSongs() {
+        mBinding.apply {
+            recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                    if (newState == RecyclerView.SCROLL_STATE_IDLE && !recyclerView.canScrollVertically(
+                            1
+                        )
+                    ) {
+                        if (mMore) {
+                            if (!loading) {
+                                loadList()
+
+                                mAdapter.addFooterView(mFootView)
+                            } else {
+                                if (!loading) {
+                                    Toast.makeText(
+                                        applicationContext,
+                                        "所有数据加载完毕！",
+                                        Toast.LENGTH_SHORT
+                                    )
+                                        .show()
+                                }
+                            }
+                        }
+                    }
+                }
+            })
+        }
+    }
+
+    private fun loadList() {
+        loading = true
+
+        mViewModel.listLiveData.value?.let { mViewModel.getSongs(it.id, 18, mAdapter.data.size) }
 
 
-    private fun setImageView(){
+    }
+
+    private fun initList() {
+        lifecycleScope.launchWhenCreated {
+            mViewModel.songsStateFlow.collect {
+                Toast.makeText(applicationContext, "来了老弟$it", Toast.LENGTH_SHORT).show()
+                val size = mAdapter.data.size
+                mAdapter.data.addAll(it)
+                mAdapter.notifyItemRangeChanged(size, it.size)
+                loading = false
+                mAdapter.removeFooterView(mFootView)
+
+            }
+        }
+    }
+
+    private fun setImageView() {
         mBinding.apply {
             //Glide设置图片圆角角度
             val roundedCorners = RoundedCorners(20)
@@ -144,36 +269,7 @@ class SquareDetailActivity : AppCompatActivity() {
                 .into(ibPlaylist)
         }
     }
-
-    private fun drawableToBitmap(drawable: Drawable): Bitmap? // drawable 转换成bitmap
-    {
-        val width = drawable.intrinsicWidth // 取drawable的长宽
-        val height = drawable.intrinsicHeight
-        val config =
-            if (drawable.opacity != PixelFormat.OPAQUE) Bitmap.Config.ARGB_8888 else Bitmap.Config.RGB_565 // 取drawable的颜色格式
-        val bitmap = Bitmap.createBitmap(width, height, config) // 建立对应bitmap
-        val canvas = Canvas(bitmap) // 建立对应bitmap的画布
-        drawable.setBounds(0, 0, width, height)
-        drawable.draw(canvas) // 把drawable内容画到画布中
-        return bitmap
-    }
-
 }
 
-class RvAdapter : Adapter<RvAdapter.MyViewHolder>() {
-    inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
 
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.foot_layout, null)
-        return MyViewHolder(view)
-    }
-
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-    }
-
-    override fun getItemCount(): Int {
-        return 30
-    }
-
-}

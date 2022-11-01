@@ -264,7 +264,7 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <com.example.common.baseui.assembly.BaseViewPage
+            <com.example.common.baseui.assembly.BaseViewPage
             android:id="@+id/search_result_layout"
             android:layout_width="match_parent"
             android:layout_height="0dp"

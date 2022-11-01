@@ -1,6 +1,7 @@
 package com.example.homepage.playSquare.adapter
 
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -16,11 +17,16 @@ class PlaylistSquareAdapter: BaseQuickAdapter<Playlist,BaseViewHolder>(R.layout.
 
     override fun convert(helper: BaseViewHolder, item: Playlist) {
         helper.apply {
-            itemView.apply {
-                setOnClickListener {
+/*            itemView.setOnClickListener {
                     itemClickListener?.onClick(item,data.indexOf(item))
-                }
+
+            }*/
+            itemView.findViewById<LinearLayout>(R.id.ll_playlist_item).setOnClickListener {
+                itemClickListener?.onClick(item,data.indexOf(item))
+
             }
+
+
             val imageView = getView<ImageView>(R.id.iv_playlist_detail)
                 //Glide设置图片圆角角度
                 val roundedCorners = RoundedCorners(20)

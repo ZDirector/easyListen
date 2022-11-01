@@ -21,3 +21,4 @@ include ':common'
 include ':preference'
 include ':search'
 include ':music_comment'
+include(':homepage')

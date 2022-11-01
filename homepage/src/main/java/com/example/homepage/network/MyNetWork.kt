@@ -27,4 +27,11 @@ object MyNetWork {
         limit: Int,
         cat: String
     ) = squareService.getHighList(offset, limit, cat)
+
+
+    suspend fun getSongs(
+        id :Long,
+        limit: Int,
+        offset: Int
+    ) = squareService.getListSongs(id, limit, offset)
 }

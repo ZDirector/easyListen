@@ -31,14 +31,14 @@
     <color name="themeColor_stroke">#0096C7</color>
     <color name="white">#FFFFFFFF</color>
     <string name="app_name">search</string>
-    <string name="music_album">专辑:</string>
+    <string name="music_album">专辑 :</string>
     <string name="music_collect">收藏到歌单</string>
     <string name="music_comment">评论</string>
     <string name="music_download">下载</string>
     <string name="music_next_play">下一首播放</string>
-    <string name="music_result_popup_window_top">歌曲:</string>
+    <string name="music_result_popup_window_top">歌曲 :</string>
     <string name="music_share">分享</string>
-    <string name="music_singer">歌手:</string>
+    <string name="music_singer">歌手 :</string>
     <string name="music_video">相关视频</string>
     <string name="search_history_text">搜索历史</string>
     <string name="search_hot_list_text">热搜榜</string>

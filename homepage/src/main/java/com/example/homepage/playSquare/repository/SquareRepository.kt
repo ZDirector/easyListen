@@ -6,6 +6,7 @@ import com.example.homepage.network.MyNetWork
 import com.example.homepage.network.ServiceCreator
 import com.example.homepage.playSquare.bean.HighQualityResponse
 import com.example.homepage.playSquare.bean.Playlist
+import com.example.homepage.playSquare.bean.PlaylistSongsResponse
 import com.example.homepage.playSquare.bean.Sub
 import com.example.homepage.playSquare.service.SquareService
 import com.example.homepage.playSquare.source.HighListPagingSource
@@ -38,6 +39,12 @@ object SquareRepository {
     fun getTabs():Flow<List<Sub>> {
         return flow {
             emit(MyNetWork.getTags().sub)
+        }.flowOn(Dispatchers.IO)
+    }
+
+    fun getSongs(id:Long,limit: Int,offset: Int):Flow<PlaylistSongsResponse>{
+        return flow {
+            emit(MyNetWork.getSongs(id, limit, offset))
         }.flowOn(Dispatchers.IO)
     }
 }

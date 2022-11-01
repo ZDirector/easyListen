@@ -40,8 +40,7 @@ android {
 dependencies {
     implementation(project(":common"))
     implementation(project(":preference"))
-    implementation(project(":homepage"))
-
+    implementation (project(':homepage'))
     implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.6.1'
@@ -52,12 +51,12 @@ dependencies {
 
 
 
-    // 协程核心库
+    // 协锟教猴拷锟侥匡拷
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.1"
-    // 协程 Android 支持库
+    // 协锟斤拷 Android 支锟街匡拷
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1'
 
-    // lifecycle 对于协程的扩展封装
+    // lifecycle 锟斤拷锟斤拷协锟教碉拷锟斤拷展锟斤拷装
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.5.1"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.5.1"

@@ -19,15 +19,9 @@ class SquareViewModel : BaseViewModel() {
     val tagsStateFlow: StateFlow<List<Sub>> = _tagsStateFlow
 
     private val _squareListStateFlow = MutableStateFlow(HighQualityResponse())
-    val squareListStateFlow:StateFlow<HighQualityResponse> = _squareListStateFlow
+    val squareListStateFlow: StateFlow<HighQualityResponse> = _squareListStateFlow
 
-    fun getHighList(cat: String) {
-        viewModelScope.launch {
-            SquareRepository.getHighList(cat).collect {
-                _highListStateFlow.value = it
-            }
-        }
-    }
+
 
 
     fun getSquareList(offset: Int, limit: Int, cat: String) {
@@ -42,10 +36,11 @@ class SquareViewModel : BaseViewModel() {
         viewModelScope.launch {
             SquareRepository.getTabs().collect {
                 _tagsStateFlow.value = it
-                println("内")
             }
         }
     }
+
+
 
 
 }

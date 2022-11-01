@@ -1,6 +1,8 @@
 package com.example.homepage.playSquare.fragment
 
+import android.content.Intent
 import android.os.Bundle
+import android.os.Parcelable
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +16,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.common.adapter.DataClickListener
 import com.example.homepage.R
 import com.example.homepage.databinding.FragmentPlaySquareDetailBinding
+import com.example.homepage.playSquare.SongSquareActivity
+import com.example.homepage.playSquare.SquareDetailActivity
 import com.example.homepage.playSquare.adapter.PlaylistSquareAdapter
 import com.example.homepage.playSquare.bean.Playlist
 import com.example.homepage.playSquare.viewmodel.SquareViewModel
@@ -21,10 +25,11 @@ import java.util.concurrent.RecursiveAction
 
 
 class PlaySquareDetailFragment(private val title: String) : Fragment() {
+    constructor() : this("粤语")
+
     private lateinit var mViewModel: SquareViewModel
     private lateinit var mBinding: FragmentPlaySquareDetailBinding
 
-    //    private lateinit var mAdapter :HighQualityAdapter
     private var loading: Boolean = false
     private var more = true
     private lateinit var footLayout: View
@@ -37,6 +42,13 @@ class PlaySquareDetailFragment(private val title: String) : Fragment() {
         adapter.itemClickListener = object : DataClickListener<Playlist> {
             override fun onClick(value: Playlist, position: Int) {
                 //跳转到歌单详程
+                Toast.makeText(context, "点击了item了吗",Toast.LENGTH_SHORT).show()
+                val intent = Intent(requireActivity(),SquareDetailActivity::class.java)
+                if(position<mViewModel. squareListStateFlow.value.playlists.size){
+                    intent.putExtra("playlist",mViewModel.squareListStateFlow.value.playlists[position])
+                    startActivity(intent)
+                }
+
             }
         }
         adapter
@@ -129,18 +141,7 @@ class PlaySquareDetailFragment(private val title: String) : Fragment() {
     }
 
 
-/*
-    private fun getHighList(){
-        lifecycleScope.launch {
-            mViewModel.highListStateFlow.collect{
-                mAdapter.submitData(it)
-            }
-        }
-        mViewModel.getHighList(title)
 
-
-    }
-*/
 
 
 }
