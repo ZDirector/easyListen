@@ -1,20 +1,26 @@
 plugins {
-    id 'com.android.library'
+    id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
     id 'kotlin-parcelize'
+
 }
 
 android {
     compileSdk 32
 
     defaultConfig {
+        applicationId "com.example.easylisten1"
+
         minSdk 21
         targetSdk 32
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary true
+        }
     }
 
     buildTypes {
@@ -37,6 +43,13 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+
+
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
     }
 
 }

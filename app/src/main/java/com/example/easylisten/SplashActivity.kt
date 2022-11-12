@@ -8,6 +8,7 @@ import android.view.WindowManager
 import androidx.lifecycle.lifecycleScope
 import com.example.homepage.activity.HomeActivity
 import com.example.homepage.playSquare.SquareDetailActivity
+import com.example.search.ui.SearchActivity
 import kotlinx.coroutines.launch
 
 class SplashActivity : AppCompatActivity() {

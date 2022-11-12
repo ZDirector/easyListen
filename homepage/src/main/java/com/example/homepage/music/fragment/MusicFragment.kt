@@ -47,7 +47,6 @@ class MusicFragment : Fragment(), OnBannerListener<Banner> {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mViewModel = ViewModelProvider(this)[MusicViewModel::class.java]
-        Toast.makeText(context,"重建",Toast.LENGTH_SHORT).show()
         init()
         initListener()
     }
@@ -61,6 +60,11 @@ class MusicFragment : Fragment(), OnBannerListener<Banner> {
             llPlaylist.setOnClickListener {
                 val intent = Intent(activity, SongSquareActivity::class.java)
                 startActivity(intent)
+            }
+
+            llList.setOnClickListener {
+ /*               val intent = Intent(activity,TopListActivity::class.java)
+                startActivity(intent)*/
             }
         }
     }
