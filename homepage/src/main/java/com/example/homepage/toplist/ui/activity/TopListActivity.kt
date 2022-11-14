@@ -2,7 +2,6 @@ package com.example.homepage.toplist.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.GridLayout
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
@@ -13,16 +12,13 @@ import com.example.homepage.R
 import com.example.homepage.databinding.ActivityTopListBinding
 import com.example.homepage.toplist.adapter.OfficialAdapter
 import com.example.homepage.toplist.adapter.TopOtherAdapter
-import com.example.homepage.toplist.bean.Song
 import com.example.homepage.toplist.bean.TopListTab
 import com.example.homepage.toplist.viewmodel.TopListViewModel
-import kotlinx.coroutines.flow.collect
 
 class TopListActivity : AppCompatActivity() {
     private lateinit var mBinding: ActivityTopListBinding
     private val mViewModel by viewModels<TopListViewModel>()
     private val mAdapter by lazy { OfficialAdapter() }
-    private val mTab = TopListTab.values()
     private val mFeaturesAdapter by lazy { TopOtherAdapter() }
     private val mGlobalAdapter by lazy { TopOtherAdapter() }
     private val mStyleAdapter by lazy { TopOtherAdapter() }
@@ -92,4 +88,6 @@ class TopListActivity : AppCompatActivity() {
             rvSelect.adapter = mSelectAdapter
         }
     }
+
+
 }
