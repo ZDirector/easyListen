@@ -23,6 +23,7 @@ import com.example.homepage.music.adapter.RankListAdapter
 import com.example.homepage.music.bean.Banner
 import com.example.homepage.music.bean.Rank
 import com.example.homepage.music.viewmodel.MusicViewModel
+import com.example.homepage.toplist.ui.activity.TopListActivity
 import com.youth.banner.adapter.BannerImageAdapter
 import com.youth.banner.holder.BannerImageHolder
 import com.youth.banner.indicator.CircleIndicator
@@ -63,8 +64,8 @@ class MusicFragment : Fragment(), OnBannerListener<Banner> {
             }
 
             llList.setOnClickListener {
- /*               val intent = Intent(activity,TopListActivity::class.java)
-                startActivity(intent)*/
+                val intent = Intent(activity, TopListActivity::class.java)
+                startActivity(intent)
             }
         }
     }

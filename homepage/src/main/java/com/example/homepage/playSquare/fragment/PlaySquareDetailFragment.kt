@@ -42,7 +42,6 @@ class PlaySquareDetailFragment(private val title: String) : Fragment() {
         adapter.itemClickListener = object : DataClickListener<Playlist> {
             override fun onClick(value: Playlist, position: Int) {
                 //跳转到歌单详程
-                Toast.makeText(context, "点击了item了吗",Toast.LENGTH_SHORT).show()
                 val intent = Intent(requireActivity(),SquareDetailActivity::class.java)
                 if(position<mViewModel. squareListStateFlow.value.playlists.size){
                     intent.putExtra("playlist",mViewModel.squareListStateFlow.value.playlists[position])

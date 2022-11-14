@@ -17,16 +17,6 @@ import kotlinx.coroutines.flow.flowOn
 import retrofit2.create
 
 object SquareRepository {
-    private const val PAGE_SIZE = 18
-    private val squareService = ServiceCreator.retrofit.create<SquareService>()
-     fun getHighList(cat: String): Flow<PagingData<Playlist>> {
-         return Pager(
-             config = PagingConfig(PAGE_SIZE),
-             pagingSourceFactory = {
-                 HighListPagingSource(squareService, cat)
-             }
-         ).flow
-    }
 
 
     fun getSquareList(offset: Int, limit:Int, cat: String):Flow<HighQualityResponse>{
