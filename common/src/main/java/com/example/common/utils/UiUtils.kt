@@ -4,30 +4,38 @@ import android.app.Activity
 import android.content.Context
 import android.graphics.Color
 import android.os.Build
-import android.view.ViewGroup
-import android.view.Window
-import android.view.WindowManager
+import android.view.*
+import android.view.ViewTreeObserver.OnGlobalLayoutListener
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 
+
 object UiUtils {
-    fun setPic(imageView: ImageView,radius:Int,url:String) {
+    fun setPic(imageView: ImageView, radius: Int, url: String) {
         //Glide设置图片圆角角度
         val roundedCorners = RoundedCorners(radius)
         //通过RequestOptions扩展功能,override:采样率,因为ImageView就这么大,可以压缩图片,降低内存消耗
         val options = RequestOptions.bitmapTransform(roundedCorners)
-
         Glide.with(imageView.context)
             .load(url) //.placeholder(R.drawable.ic_default_image)
             .apply(options)
             .into(imageView)
-
     }
 
+    fun getViewWidth(view: View, onViewListener: OnViewListener?) {
+        val vto2: ViewTreeObserver = view.viewTreeObserver
+        vto2.addOnGlobalLayoutListener(object : OnGlobalLayoutListener {
+            override fun onGlobalLayout() {
+                view.viewTreeObserver.removeOnGlobalLayoutListener(this)
 
+                onViewListener?.onView(view.width, view.height)
+            }
+        })
+    }
 }
+
 val Context.navigationBarHeight: Int
     get() {
         if (navigationBarHeightInternal != -1) return navigationBarHeightInternal
@@ -50,7 +58,7 @@ private var navigationBarHeightInternal = -1
 /**
  * 沉浸式处理
  */
- fun immersive(window: Window,activity: Activity) {
+fun immersive(window: Window, activity: Activity) {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
         window.apply {
             //清除透明状态栏标识
@@ -62,7 +70,7 @@ private var navigationBarHeightInternal = -1
             //设置状态栏的颜色为透明
             statusBarColor = Color.TRANSPARENT
         }
-        activity. findViewById<ViewGroup>(android.R.id.content).apply {
+        activity.findViewById<ViewGroup>(android.R.id.content).apply {
             //遍历根布局的子布局
             for (index in 0 until childCount) {
                 val child = getChildAt(index) as? ViewGroup
@@ -80,5 +88,9 @@ private var navigationBarHeightInternal = -1
     }
 
 
+}
 
+
+interface OnViewListener {
+    fun onView(width: Int, height: Int)
 }

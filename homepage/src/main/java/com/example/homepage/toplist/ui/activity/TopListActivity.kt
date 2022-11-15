@@ -1,19 +1,28 @@
 package com.example.homepage.toplist.ui.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.view.ViewGroup
+import android.view.ViewTreeObserver
 import android.widget.TextView
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.marginBottom
+import androidx.core.view.marginTop
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.common.utils.OnViewListener
+import com.example.common.utils.UiUtils
 import com.example.homepage.R
 import com.example.homepage.databinding.ActivityTopListBinding
 import com.example.homepage.toplist.adapter.OfficialAdapter
 import com.example.homepage.toplist.adapter.TopOtherAdapter
 import com.example.homepage.toplist.bean.TopListTab
 import com.example.homepage.toplist.viewmodel.TopListViewModel
+import com.google.android.material.tabs.TabLayout
+
 
 class TopListActivity : AppCompatActivity() {
     private lateinit var mBinding: ActivityTopListBinding
@@ -23,14 +32,27 @@ class TopListActivity : AppCompatActivity() {
     private val mGlobalAdapter by lazy { TopOtherAdapter() }
     private val mStyleAdapter by lazy { TopOtherAdapter() }
     private val mSelectAdapter by lazy { TopOtherAdapter() }
+    private var mTabIndex = 0
+    private var mScrollviewFlag = false //标记是否是scrollview在滑动
+    private var h1 = 0
+    private var h2 = 0
+    private var h3 = 0
+    private var h4 = 0
+    private var h5 = 0
+
+    private lateinit var mViewTreeObserver: ViewTreeObserver
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_top_list)
         mBinding.lifecycleOwner = this
         mBinding.viewModel = mViewModel
+        mViewTreeObserver = mBinding.scrollView.viewTreeObserver
         init()
+        composeTabScroll()
+
         setEachRv()
+
     }
 
 
@@ -48,7 +70,6 @@ class TopListActivity : AppCompatActivity() {
                     mAdapter.notifyDataSetChanged()
                 }
                 it[TopListTab.Handpick]?.let {
-                    println("这是啥%￥4$it")
                     mSelectAdapter.data.clear()
                     mSelectAdapter.data.addAll(it)
                     mSelectAdapter.notifyDataSetChanged()
@@ -68,6 +89,7 @@ class TopListActivity : AppCompatActivity() {
                     mGlobalAdapter.data.addAll(it)
                     mGlobalAdapter.notifyDataSetChanged()
                 }
+
             }
         }
         mViewModel.loadTopListData()
@@ -75,18 +97,136 @@ class TopListActivity : AppCompatActivity() {
     }
 
 
-    private fun setEachRv(){
+    private fun setEachRv() {
         mBinding.apply {
-            rvFeatures.layoutManager =  GridLayoutManager(this@TopListActivity,3)
-            rvGlobal.layoutManager =  GridLayoutManager(this@TopListActivity,3)
-            rvStyle.layoutManager =  GridLayoutManager(this@TopListActivity,3)
-            rvSelect.layoutManager =  GridLayoutManager(this@TopListActivity,3)
+            rvFeatures.layoutManager = GridLayoutManager(this@TopListActivity, 3)
+            rvGlobal.layoutManager = GridLayoutManager(this@TopListActivity, 3)
+            rvStyle.layoutManager = GridLayoutManager(this@TopListActivity, 3)
+            rvSelect.layoutManager = GridLayoutManager(this@TopListActivity, 3)
 
-            rvFeatures.adapter= mFeaturesAdapter
+            rvFeatures.adapter = mFeaturesAdapter
             rvGlobal.adapter = mGlobalAdapter
             rvStyle.adapter = mStyleAdapter
             rvSelect.adapter = mSelectAdapter
         }
+    }
+
+    private fun composeTabScroll() {
+        mBinding.apply {
+            tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+                override fun onTabSelected(tab: TabLayout.Tab?) {
+                    if (!mScrollviewFlag) {
+                        when (tab?.position) {
+                            0 -> scrollView.scrollTo(0, h1)
+                            1 -> scrollView.scrollTo(0, h2)
+                            2 -> scrollView.scrollTo(0, h3)
+                            3 -> scrollView.scrollTo(0, h4)
+                            4 -> scrollView.scrollTo(0, h5)
+                        }
+                    }
+                    mScrollviewFlag = false
+                }
+
+                override fun onTabUnselected(tab: TabLayout.Tab?) {
+                }
+
+                override fun onTabReselected(tab: TabLayout.Tab?) {
+                }
+            })
+
+
+            scrollView.viewTreeObserver.addOnScrollChangedListener {
+                scrollView.apply {
+                    println("scrollY为$scrollY   ${rvStyle.top} ${rvStyle.measuredHeight} ${tvSelect.top}}")
+ /*                   h1 = tvOfficial.top*//* 表示第一个item的高度,这是高度 *//*
+                    h2 =
+                        tvOfficial.top + tvStyle.top + rvOfficial.measuredHeight  + rvOfficial.marginTop
+                        +rvStyle.marginBottom+        tvOfficial.marginBottom+tvOfficial.marginTop //这个是第一个item加第二个item的高度  下面同理+
+                    h3 =
+                        tvOfficial.top + tvStyle.top + tvGlobal.top +
+                                rvOfficial.measuredHeight + rvStyle.measuredHeight+
+                    +rvOfficial.marginTop
+                    +rvStyle.marginBottom+        tvOfficial.marginBottom+tvOfficial.marginTop+tvStyle.marginTop+tvStyle.marginBottom
+                    +rvStyle.marginBottom+rvStyle.marginTop
+                    h4 =
+                        tvOfficial.top + tvStyle.top + tvGlobal.top + tvSelect.top +
+                                rvOfficial.measuredHeight + rvStyle.measuredHeight + rvGlobal.measuredHeight
+                    (tvOfficial.top + tvStyle.top + tvGlobal.top + tvSelect.top +
+                            tvFeatures.top + rvSelect.measuredHeight + rvOfficial.measuredHeight +
+                            rvStyle.measuredHeight + rvGlobal.measuredHeight).also {
+                        h5 = it
+                    }*/
+
+                    h1 =tvOfficial.marginTop
+                    h2 = calculateView(tvOfficial)+calculateView(rvOfficial)+tvStyle.marginTop
+                    h3=  calculateView(tvOfficial)+calculateView(rvOfficial)+calculateView(tvStyle)+calculateView(rvStyle)+tvGlobal.marginTop
+
+//                    h4 =  calculateView(tvOfficial)+calculateView(rvOfficial)+calculateView(tvStyle)+calculateView(rvStyle)+calculateView(tvGlobal)+calculateView(rvGlobal)+tvSelect.marginTop
+                    h4 = h3+ calculateView(rvSelect)
+                    h5 = h4+ calculateView(tvFeatures)
+//                    h5 = calculateView(tvOfficial)+calculateView(rvOfficial)+calculateView(tvStyle)+calculateView(rvStyle)+calculateView(tvGlobal)+calculateView(rvGlobal)+calculateView(tvSelect)+calculateView(rvSelect)+tvFeatures.marginTop
+                    println("$h1,$h2,$h3,$h4,$h5 莎莎很大声的 ${tvStyle.top}")
+
+                    mScrollviewFlag = true
+                    mTabIndex = tabLayout.selectedTabPosition
+                        if (scrollY < h2) {
+                            if (mTabIndex != 0) {//增加判断，如果滑动的区域是tableIndex=0对应的区域，则不改变tablayout的状态
+                                tabLayout.selectTab(tabLayout.getTabAt(0))
+                            }
+                        } else if (scrollY in h2 until h3) {
+                            if (mTabIndex != 1) {
+                                tabLayout.selectTab(tabLayout.getTabAt(1))
+                            }
+                        } else if (scrollY in h3 until h4) {
+                            if (mTabIndex != 2) {
+                                tabLayout.selectTab(tabLayout.getTabAt(2))
+                            }
+                        } else if (scrollY in h4 until h5) {
+                            if (mTabIndex != 3) {
+                                tabLayout.selectTab(tabLayout.getTabAt(3))
+                            }
+                        } else {
+                            if (mTabIndex != 4) {
+                                tabLayout.selectTab(tabLayout.getTabAt(4))
+                            }
+                        }
+                    }
+                    mScrollviewFlag = false
+
+            }
+
+        }
+    }
+
+    private fun calculateView(view: View):Int{
+        return view.marginTop+view.marginBottom+view.measuredHeight
+    }
+
+
+
+    override fun onWindowFocusChanged(hasFocus: Boolean) {
+        super.onWindowFocusChanged(hasFocus)
+        mBinding.apply {
+
+            tvFeatures.measure(0, 0)
+/*            h1 = tvOfficial.top*//* 表示第一个item的高度,这是高度 *//*
+            h2 =
+                tvOfficial.top + tvStyle.top + rvOfficial.measuredHeight//这个是第一个item加第二个item的高度  下面同理+
+            h3 =
+                tvOfficial.top + tvStyle.top + tvGlobal.top +
+                        rvOfficial.measuredHeight + rvStyle.measuredHeight
+            h4 =
+                tvOfficial.top + tvStyle.top + tvGlobal.top + tvSelect.top +
+                        rvOfficial.measuredHeight + rvStyle.measuredHeight + rvGlobal.measuredHeight
+            (tvOfficial.top + tvStyle.top + tvGlobal.top + tvSelect.top +
+                    tvFeatures.top + rvSelect.measuredHeight + rvOfficial.measuredHeight +
+                    rvStyle.measuredHeight + rvGlobal.measuredHeight).also {
+                h5 = it
+            }*/
+
+
+        }
+
     }
 
 
