@@ -2,19 +2,20 @@ package com.example.homepage.toplist.ui.activity
 
 import android.os.Bundle
 import android.view.View
-import android.view.ViewGroup
 import android.view.ViewTreeObserver
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.marginBottom
 import androidx.core.view.marginTop
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.common.utils.OnViewListener
 import com.example.common.utils.UiUtils
+import com.example.common.utils.immersive
+import com.example.common.utils.navigationBarHeight
 import com.example.homepage.R
 import com.example.homepage.databinding.ActivityTopListBinding
 import com.example.homepage.toplist.adapter.OfficialAdapter
@@ -44,9 +45,11 @@ class TopListActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        immersive(window,this)
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_top_list)
         mBinding.lifecycleOwner = this
         mBinding.viewModel = mViewModel
+        initBottomImmersive()
         mViewTreeObserver = mBinding.scrollView.viewTreeObserver
         init()
         composeTabScroll()
@@ -55,6 +58,15 @@ class TopListActivity : AppCompatActivity() {
 
     }
 
+    private fun initBottomImmersive(){
+        mBinding.apply {
+            val lp = bottomView.layoutParams as ConstraintLayout.LayoutParams
+            lp.height= bottomView.height + navigationBarHeight
+            bottomView.layoutParams = lp
+            bottomView.requestLayout()
+            flControlPlay.bringToFront()
+        }
+    }
 
     private fun init() {
         mBinding.apply {
@@ -138,33 +150,14 @@ class TopListActivity : AppCompatActivity() {
             scrollView.viewTreeObserver.addOnScrollChangedListener {
                 scrollView.apply {
                     println("scrollY为$scrollY   ${rvStyle.top} ${rvStyle.measuredHeight} ${tvSelect.top}}")
- /*                   h1 = tvOfficial.top*//* 表示第一个item的高度,这是高度 *//*
-                    h2 =
-                        tvOfficial.top + tvStyle.top + rvOfficial.measuredHeight  + rvOfficial.marginTop
-                        +rvStyle.marginBottom+        tvOfficial.marginBottom+tvOfficial.marginTop //这个是第一个item加第二个item的高度  下面同理+
-                    h3 =
-                        tvOfficial.top + tvStyle.top + tvGlobal.top +
-                                rvOfficial.measuredHeight + rvStyle.measuredHeight+
-                    +rvOfficial.marginTop
-                    +rvStyle.marginBottom+        tvOfficial.marginBottom+tvOfficial.marginTop+tvStyle.marginTop+tvStyle.marginBottom
-                    +rvStyle.marginBottom+rvStyle.marginTop
-                    h4 =
-                        tvOfficial.top + tvStyle.top + tvGlobal.top + tvSelect.top +
-                                rvOfficial.measuredHeight + rvStyle.measuredHeight + rvGlobal.measuredHeight
-                    (tvOfficial.top + tvStyle.top + tvGlobal.top + tvSelect.top +
-                            tvFeatures.top + rvSelect.measuredHeight + rvOfficial.measuredHeight +
-                            rvStyle.measuredHeight + rvGlobal.measuredHeight).also {
-                        h5 = it
-                    }*/
+
 
                     h1 =tvOfficial.marginTop
                     h2 = calculateView(tvOfficial)+calculateView(rvOfficial)+tvStyle.marginTop
                     h3=  calculateView(tvOfficial)+calculateView(rvOfficial)+calculateView(tvStyle)+calculateView(rvStyle)+tvGlobal.marginTop
 
-//                    h4 =  calculateView(tvOfficial)+calculateView(rvOfficial)+calculateView(tvStyle)+calculateView(rvStyle)+calculateView(tvGlobal)+calculateView(rvGlobal)+tvSelect.marginTop
                     h4 = h3+ calculateView(rvSelect)
                     h5 = h4+ calculateView(tvFeatures)
-//                    h5 = calculateView(tvOfficial)+calculateView(rvOfficial)+calculateView(tvStyle)+calculateView(rvStyle)+calculateView(tvGlobal)+calculateView(rvGlobal)+calculateView(tvSelect)+calculateView(rvSelect)+tvFeatures.marginTop
                     println("$h1,$h2,$h3,$h4,$h5 莎莎很大声的 ${tvStyle.top}")
 
                     mScrollviewFlag = true
@@ -204,30 +197,6 @@ class TopListActivity : AppCompatActivity() {
 
 
 
-    override fun onWindowFocusChanged(hasFocus: Boolean) {
-        super.onWindowFocusChanged(hasFocus)
-        mBinding.apply {
-
-            tvFeatures.measure(0, 0)
-/*            h1 = tvOfficial.top*//* 表示第一个item的高度,这是高度 *//*
-            h2 =
-                tvOfficial.top + tvStyle.top + rvOfficial.measuredHeight//这个是第一个item加第二个item的高度  下面同理+
-            h3 =
-                tvOfficial.top + tvStyle.top + tvGlobal.top +
-                        rvOfficial.measuredHeight + rvStyle.measuredHeight
-            h4 =
-                tvOfficial.top + tvStyle.top + tvGlobal.top + tvSelect.top +
-                        rvOfficial.measuredHeight + rvStyle.measuredHeight + rvGlobal.measuredHeight
-            (tvOfficial.top + tvStyle.top + tvGlobal.top + tvSelect.top +
-                    tvFeatures.top + rvSelect.measuredHeight + rvOfficial.measuredHeight +
-                    rvStyle.measuredHeight + rvGlobal.measuredHeight).also {
-                h5 = it
-            }*/
-
-
-        }
-
-    }
 
 
 }

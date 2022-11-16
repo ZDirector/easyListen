@@ -78,7 +78,7 @@
             android:singleLine="true"
             android:textColor="@color/black"
             android:textSize="14sp"
-
+            android:maxLines="1"
             app:layout_constraintBottom_toBottomOf="@+id/tv_one"
             app:layout_constraintEnd_toStartOf="@+id/tv_line_one"
             app:layout_constraintStart_toEndOf="@+id/tv_one"
@@ -105,6 +105,7 @@
             android:singleLine="true"
             android:textColor="@color/gray_7c"
             android:textSize="12sp"
+
             app:layout_constraintBottom_toBottomOf="@+id/tv_one_song"
             app:layout_constraintStart_toEndOf="@+id/tv_line_one"
             app:layout_constraintTop_toTopOf="@+id/tv_one_song" />
