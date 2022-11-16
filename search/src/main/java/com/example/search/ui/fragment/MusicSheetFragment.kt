@@ -54,7 +54,7 @@ class MusicSheetFragment : BaseFragment<FragmentMusicSheetBinding,MusicSheetView
             if (it.isNullOrEmpty()){
                 showToast("没有更多数据啦!")
                 binding.musicSheetResultListRefresh.finishLoadMore()
-                viewModel.offset--
+                if (viewModel.offset > 0) viewModel.offset--
             }else{
                 val adapter : MusicSheetResultListAdapter
                 if (binding.musicSheetResultList.adapter == null){

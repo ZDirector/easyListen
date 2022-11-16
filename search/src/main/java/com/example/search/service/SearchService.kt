@@ -1,6 +1,6 @@
 package com.example.search.service
 
-import com.example.common.bean.searchbean.*
+import com.example.common.bean.searchBean.*
 import retrofit2.http.GET
 import retrofit2.http.Query
 

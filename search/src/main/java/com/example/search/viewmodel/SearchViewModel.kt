@@ -27,6 +27,7 @@ class SearchViewModel : BaseViewModel() {
     val initMission = MutableLiveData<HashMap<String,Boolean>>(HashMap())
     var keyWords : MutableLiveData<String> = MutableLiveData()
     val isSearchResultFinishLoading = MutableLiveData<Boolean>()
+    var viewMode = MutableLiveData(1)
 
     fun getSearchSuggest(ketWords : String){
         viewModelScope.launch{
@@ -34,13 +35,18 @@ class SearchViewModel : BaseViewModel() {
                 emit(SearchRepository.getSearchSuggest(ketWords))
             }.collectNetwork {
                 success { response ->
-                    val searchSuggestList = mutableListOf<String>()
-                    if (response.result.allMatch != null){
-                        response.result.allMatch!!.forEach{
-                            searchSuggestList.add(it.keyword)
-                        }
-                    }else searchSuggestList.add(ketWords)
-                    _searchSuggestList.postValue(searchSuggestList)
+                    if (response.code == 200){
+                        val searchSuggestList = mutableListOf<String>()
+                        if (response.result.allMatch != null){
+                            response.result.allMatch!!.forEach{
+                                searchSuggestList.add(it.keyword)
+                            }
+                        }else searchSuggestList.add(ketWords)
+                        _searchSuggestList.postValue(searchSuggestList)
+                    }else _searchSuggestList.postValue(null)
+                }
+                failure {
+                    _searchSuggestList.postValue(null)
                 }
                 toastError()
             }
@@ -61,6 +67,9 @@ class SearchViewModel : BaseViewModel() {
                     initMission.value!!["getHotSearchList"] = true
                     initMission.postValue(initMission.value)
                 }
+                failure {
+                    _hotSearchList.postValue(null)
+                }
                 toastError()
             }
         }
@@ -79,6 +88,9 @@ class SearchViewModel : BaseViewModel() {
                     _recommendSearchList.postValue(recommendSearchList)
                     initMission.value!!["getRecommendSearchList"] = true
                     initMission.postValue(initMission.value)
+                }
+                failure {
+                    _recommendSearchList.postValue(null)
                 }
                 toastError()
             }

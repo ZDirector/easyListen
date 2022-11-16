@@ -16,6 +16,7 @@
             <option value="$PROJECT_DIR$/music_comment" />
             <option value="$PROJECT_DIR$/preference" />
             <option value="$PROJECT_DIR$/search" />
+            <option value="$PROJECT_DIR$/video" />
           </set>
         </option>
       </GradleProjectSettings>

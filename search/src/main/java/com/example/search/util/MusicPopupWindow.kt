@@ -11,11 +11,12 @@ import androidx.core.widget.PopupWindowCompat
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
-import com.example.common.bean.searchbean.Song
+import com.example.common.bean.searchBean.Song
 import com.example.common.utils.MyApplication
 import com.example.common.utils.windowsHeight
 import com.example.music_comment.ui.MusicCommentActivity
 import com.example.search.R.*
+import com.example.video.ui.VideoActivity
 
 /**
  * 音乐列表的音乐设置弹出PopupWindow
@@ -106,6 +107,16 @@ class MusicPopupWindow(touchView: View,song : Song) {
                 else singer.append("/" + mSong.ar[i].name )
             }
             intent.putExtra("Singer",singer.toString())
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            MyApplication.context.startActivity(intent)
+        }
+
+        itemMusicVideo.setOnClickListener {
+            val intent = Intent(MyApplication.context,VideoActivity::class.java)
+            val videoIdList = IntArray(1)
+            videoIdList[0] = mSong.mv
+            intent.putExtra("videoIdList",videoIdList)
+            intent.putExtra("currentLocation",0)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             MyApplication.context.startActivity(intent)
         }

@@ -40,6 +40,8 @@ android {
 
 dependencies {
 
+    implementation('com.danikula:videocache:2.7.1')
+
     //加载动画库
     implementation('com.wang.avi:library:2.1.3')
 

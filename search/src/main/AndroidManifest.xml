@@ -14,6 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EasyListen"
         android:usesCleartextTraffic="true"
+        android:screenOrientation="portrait"
         tools:targetApi="n">
         <activity
             android:name=".ui.SearchActivity"

@@ -4,8 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.common.baseui.BaseViewModel
-import com.example.common.bean.searchbean.Mv
-import com.example.common.bean.searchbean.Song
+import com.example.common.bean.searchBean.Mv
 import com.example.common.network.collectNetwork
 import com.example.search.repository.SearchRepository
 import kotlinx.coroutines.flow.flow
@@ -26,8 +25,10 @@ class MusicVideoViewModel : BaseViewModel() {
             }.collectNetwork {
                 success { response ->
                     if (offset == 0) videoList.clear()
-                    videoList.addAll(response.result.mvs)
-                    _searchMusicVideoList.postValue(videoList)
+                    if (response.code == 200 &&  response.result.mvs != null){
+                        videoList.addAll(response.result.mvs!!)
+                        _searchMusicVideoList.postValue(videoList)
+                    }else _searchMusicVideoList.postValue(null)
                 }
                 failure {
                     _searchMusicVideoList.postValue(null)

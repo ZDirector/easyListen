@@ -14,4 +14,8 @@ public class BR {
   public static final int searchUserViewModel = 5;
 
   public static final int searchViewModel = 6;
+
+  public static final int videoFragmentViewModel = 7;
+
+  public static final int videoViewModel = 8;
 }

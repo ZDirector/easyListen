@@ -9,9 +9,9 @@
         android:targetSdkVersion="32" />
     <!-- 网络 -->
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 读 -->
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- 写 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:name="com.example.common.utils.MyApplication"
@@ -22,6 +22,7 @@
         android:label="@string/app_name"
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@drawable/ic_icon"
+        android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/Theme.EasyListen"
@@ -37,6 +38,10 @@
         </activity>
         <activity
             android:name="com.example.music_comment.ui.MusicCommentActivity"
+            android:exported="true" >
+        </activity>
+        <activity
+            android:name="com.example.video.ui.VideoActivity"
             android:exported="true" >
         </activity>
 

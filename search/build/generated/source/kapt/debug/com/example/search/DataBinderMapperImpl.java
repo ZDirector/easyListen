@@ -120,15 +120,16 @@ public class DataBinderMapperImpl extends DataBinderMapper {
 
   @Override
   public List<DataBinderMapper> collectDependencies() {
-    ArrayList<DataBinderMapper> result = new ArrayList<DataBinderMapper>(3);
+    ArrayList<DataBinderMapper> result = new ArrayList<DataBinderMapper>(4);
     result.add(new androidx.databinding.library.baseAdapters.DataBinderMapperImpl());
     result.add(new com.example.common.DataBinderMapperImpl());
     result.add(new com.example.music_comment.DataBinderMapperImpl());
+    result.add(new com.example.video.DataBinderMapperImpl());
     return result;
   }
 
   private static class InnerBrLookup {
-    static final SparseArray<String> sKeys = new SparseArray<String>(7);
+    static final SparseArray<String> sKeys = new SparseArray<String>(9);
 
     static {
       sKeys.put(0, "_all");
@@ -138,6 +139,8 @@ public class DataBinderMapperImpl extends DataBinderMapper {
       sKeys.put(4, "musicVideoViewModel");
       sKeys.put(5, "searchUserViewModel");
       sKeys.put(6, "searchViewModel");
+      sKeys.put(7, "videoFragmentViewModel");
+      sKeys.put(8, "videoViewModel");
     }
   }
 

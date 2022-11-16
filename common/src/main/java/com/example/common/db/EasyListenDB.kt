@@ -3,7 +3,7 @@ package com.example.common.db
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.common.bean.searchbean.SearchHistoryBean
+import com.example.common.bean.searchBean.SearchHistoryBean
 import com.example.common.dao.SearchHistoryDao
 import com.example.common.utils.MyApplication
 

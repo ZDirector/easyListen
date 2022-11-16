@@ -4,7 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.common.bean.searchbean.SearchHistoryBean
+import com.example.common.bean.searchBean.SearchHistoryBean
 import kotlinx.coroutines.flow.Flow
 
 @Dao
