@@ -1,7 +1,6 @@
 package com.example.video.ui.fragment
 
 import android.content.Context
-import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.View
 import android.view.animation.AnimationUtils
@@ -27,10 +26,7 @@ import com.example.video.util.ProgressUtil
 import com.example.video.util.VideoLoadState
 import com.example.video.viewmodel.VideoFragmentViewModel
 import com.example.video.viewmodel.VideoViewModel
-import com.google.android.exoplayer2.ExoPlayer
-import com.google.android.exoplayer2.MediaItem
-import com.google.android.exoplayer2.PlaybackException
-import com.google.android.exoplayer2.Player
+import com.google.android.exoplayer2.*
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import java.io.File
@@ -142,13 +138,7 @@ class VideoFragment :
             if (mVideoPlayer != null){
                 binding.videoPlayer.player = mVideoPlayer
                 if (lifecycle.currentState == Lifecycle.State.RESUMED && proxy == null){
-                    proxy = activityViewModel.proxy
-                    proxy!!.registerCacheListener(this,viewModel.mVideoData!!.url)
-                    val mediaItem = MediaItem.fromUri(proxy!!.getProxyUrl(viewModel.mVideoData!!.url))
-                    mVideoPlayer!!.setMediaItem(mediaItem)
-                    mVideoPlayer!!.prepare()
-                    binding.videoPb.max = if (mVideoPlayer!!.duration > 0) mVideoPlayer!!.duration.toInt() else viewModel.mVideoData!!.duration.toInt()
-                    activityViewModel.currentVideoData = viewModel.mVideoData
+                    loadVideo()
                 }
             }
         }
@@ -288,13 +278,7 @@ class VideoFragment :
         if (mVideoPlayer != null){
 
             if (viewModel.mVideoData != null && proxy == null){
-                proxy = activityViewModel.proxy
-                proxy!!.registerCacheListener(this,viewModel.mVideoData!!.url)
-                val mediaItem = MediaItem.fromUri(proxy!!.getProxyUrl(viewModel.mVideoData!!.url))
-                mVideoPlayer!!.setMediaItem(mediaItem)
-                mVideoPlayer!!.prepare()
-                binding.videoPb.max = if (mVideoPlayer!!.duration > 0) mVideoPlayer!!.duration.toInt() else viewModel.mVideoData!!.duration.toInt()
-                activityViewModel.currentVideoData = viewModel.mVideoData
+                loadVideo()
             }
 
             binding.icPause.visibility = View.GONE
@@ -333,6 +317,17 @@ class VideoFragment :
     
     private fun isCurrent() : Boolean{
         return activityViewModel.currentExoPlayer == mVideoPlayer
+    }
+
+    private fun loadVideo(){
+        proxy = activityViewModel.proxy
+        proxy!!.registerCacheListener(this,viewModel.mVideoData!!.url)
+        val mediaItem = MediaItem.fromUri(proxy!!.getProxyUrl(viewModel.mVideoData!!.url))
+        mVideoPlayer!!.setMediaItem(mediaItem)
+        mVideoPlayer!!.prepare()
+        binding.videoPb.max = if (mVideoPlayer!!.duration > 0) mVideoPlayer!!.duration.toInt() else viewModel.mVideoData!!.duration.toInt()
+        activityViewModel.currentVideoData = viewModel.mVideoData
+        if (proxy!!.isCached(viewModel.mVideoData!!.url)) binding.videoPb.secondaryProgress = binding.videoPb.max
     }
 
     override fun onCacheAvailable(cacheFile: File?, url: String?, percentsAvailable: Int) {
