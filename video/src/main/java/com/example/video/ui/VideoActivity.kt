@@ -11,6 +11,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.viewpager2.widget.ViewPager2
 import com.example.common.baseui.BaseActivity
+import com.example.common.utils.LogUtil
 import com.example.common.utils.setStatusBarColor
 import com.example.common.utils.setStatusBarTextColor
 import com.example.video.BR
@@ -42,14 +43,15 @@ class VideoActivity : BaseActivity<ActivityVideoBinding,VideoViewModel>() , View
         viewModel.videoIdList.addAll(list!!.toMutableList())
         viewModel.currentPage = intent.getIntExtra("currentLocation",0)
         binding.videoVp.adapter = VideoViewPageAdapter(viewModel.videoIdList,supportFragmentManager,lifecycle)
-        binding.videoVp.setCurrentItem(viewModel.currentPage,false)
-        binding.videoVp.offscreenPageLimit = 1
         binding.videoVp.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
+                LogUtil.d("VideoActivity","onPageSelected")
                 viewModel.currentPage = position
                 super.onPageSelected(position)
             }
         })
+        binding.videoVp.setCurrentItem(viewModel.currentPage,false)
+        binding.videoVp.offscreenPageLimit = 1
     }
 
 

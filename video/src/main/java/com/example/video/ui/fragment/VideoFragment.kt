@@ -79,7 +79,6 @@ class VideoFragment :
     private fun initView(){
         activityViewModel = ViewModelProvider(requireActivity())[VideoViewModel::class.java]
         mVideoPlayer = ExoPlayer.Builder(MyApplication.context).build()
-
         viewModel.getVideoData(videoId.toLong())
     }
 
@@ -276,7 +275,6 @@ class VideoFragment :
 
     override fun onResume() {
         if (mVideoPlayer != null){
-
             if (viewModel.mVideoData != null && proxy == null){
                 loadVideo()
             }
