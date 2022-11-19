@@ -1,5 +1,6 @@
 package com.example.video.viewmodel
 
+import androidx.lifecycle.MutableLiveData
 import com.example.common.baseui.BaseViewModel
 import com.example.common.bean.videoBean.VideoData
 import com.example.common.utils.LogUtil
@@ -16,11 +17,11 @@ class VideoViewModel : BaseViewModel(){
 
     val videoIdList : MutableList<Int> = mutableListOf()
 
-    var currentExoPlayer : ExoPlayer? = null
-    var currentPage : Int = 0
-    var currentVideoData : VideoData? = null
+    var previewExoPlayer : ExoPlayer = ExoPlayer.Builder(MyApplication.context).build()
+    var currentExoPlayer : ExoPlayer = ExoPlayer.Builder(MyApplication.context).build()
+    var nextExoPlayer : ExoPlayer = ExoPlayer.Builder(MyApplication.context).build()
 
-    val proxy = MyApplication.getProxy()
+    var currentPage : MutableLiveData<Int> = MutableLiveData(0)
 
     private val _videoLoadState: MutableStateFlow<VideoLoadState> = MutableStateFlow(VideoLoadState.Loading)
     val videoLoadState: StateFlow<VideoLoadState> = _videoLoadState
@@ -30,8 +31,7 @@ class VideoViewModel : BaseViewModel(){
             _videoLoadState.value.run {
                 // 只有在状态为正在播放才更新进度
                 if (this is VideoLoadState.Playing) {
-                    LogUtil.d("VideoViewModel","progressFlow")
-                    emit(currentExoPlayer!!.currentPosition)
+                    emit(currentExoPlayer.currentPosition)
                 }
             }
             delay(1000)

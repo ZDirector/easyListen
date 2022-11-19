@@ -14,6 +14,6 @@ class VideoViewPageAdapter(
     private val mVideoIdList = videoIdList
     override fun getItemCount() = mVideoIdList.size
 
-    override fun createFragment(position: Int) = VideoFragment.newInstance(mVideoIdList[position])
+    override fun createFragment(position: Int) = VideoFragment.newInstance(position,mVideoIdList[position])
 
 }

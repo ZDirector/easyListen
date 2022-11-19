@@ -16,6 +16,7 @@ class VideoFragmentViewModel : BaseViewModel() {
 
     private val _videoData : MutableLiveData<VideoData> = MutableLiveData()
     val videoData : LiveData<VideoData> get() = _videoData
+    var lastProcess : Long = 0
 
     var mVideoData : VideoData? = null
     var isMore = false

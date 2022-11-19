@@ -42,8 +42,6 @@ android {
 dependencies {
     implementation(project(":common"))
 
-    implementation ("com.danikula:videocache:2.7.1")
-
     //ExoPlayer
     implementation("com.google.android.exoplayer:exoplayer-core:2.18.1")
     implementation("com.google.android.exoplayer:exoplayer-dash:2.18.1")

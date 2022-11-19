@@ -13,8 +13,6 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.request.RequestOptions
-import com.danikula.videocache.CacheListener
-import com.danikula.videocache.HttpProxyCacheServer
 import com.example.common.baseui.BaseFragment
 import com.example.common.utils.LogUtil
 import com.example.common.utils.MyApplication
@@ -29,23 +27,24 @@ import com.example.video.viewmodel.VideoViewModel
 import com.google.android.exoplayer2.*
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import java.io.File
 
 class VideoFragment :
     BaseFragment<FragmentVideoBinding,VideoFragmentViewModel>(),
     View.OnClickListener,
-    Player.Listener, CacheListener {
+    Player.Listener{
 
     override val layoutId = R.layout.fragment_video
     override val variableId = BR.videoFragmentViewModel
     private var videoId  = 0
+    private var position = 0
     private var mVideoPlayer : ExoPlayer? = null
     private lateinit var activityViewModel : VideoViewModel
-    private var proxy : HttpProxyCacheServer? = null
+    private var isReload = true
 
     companion object{
-        fun newInstance(videoId: Int): VideoFragment {
+        fun newInstance(position: Int,videoId: Int): VideoFragment {
             val bundle = Bundle()
+            bundle.putInt("position",position)
             bundle.putInt("videoId",videoId)
             val fragment = VideoFragment()
             fragment.arguments = bundle
@@ -57,11 +56,6 @@ class VideoFragment :
         super.onAttach(context)
         val callback: OnBackPressedCallback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                if (mVideoPlayer != null){
-                    mVideoPlayer!!.pause()
-                    mVideoPlayer!!.release()
-                    mVideoPlayer = null
-                }
                 requireActivity().finish()
             }
         }
@@ -70,7 +64,8 @@ class VideoFragment :
     }
 
     override fun initData(savedInstanceState: Bundle?) {
-        videoId = arguments?.getInt("videoId") ?: 0
+        position = requireArguments().getInt("position")
+        videoId = requireArguments().getInt("videoId")
         initView()
         initListener()
         initObserve()
@@ -78,7 +73,6 @@ class VideoFragment :
 
     private fun initView(){
         activityViewModel = ViewModelProvider(requireActivity())[VideoViewModel::class.java]
-        mVideoPlayer = ExoPlayer.Builder(MyApplication.context).build()
         viewModel.getVideoData(videoId.toLong())
     }
 
@@ -88,9 +82,6 @@ class VideoFragment :
         binding.icMore.setOnClickListener(this)
         binding.videoFragment.setOnClickListener(this)
         binding.icFullScreen.setOnClickListener(this)
-        if (mVideoPlayer != null){
-            mVideoPlayer!!.addListener(this)
-        }
         binding.videoPb.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 if (fromUser){
@@ -135,9 +126,31 @@ class VideoFragment :
             binding.videoNameAndSinger.text = it.name + " - " + it.artistName
 
             if (mVideoPlayer != null){
-                binding.videoPlayer.player = mVideoPlayer
-                if (lifecycle.currentState == Lifecycle.State.RESUMED && proxy == null){
+                if (lifecycle.currentState == Lifecycle.State.RESUMED){
                     loadVideo()
+                }
+            }
+        }
+
+        activityViewModel.currentPage.observe(this){
+            if (it - 1 > position || it + 1 < position ){
+                if (mVideoPlayer != null){
+                    viewModel.lastProcess = mVideoPlayer!!.currentPosition
+                    binding.videoPlayer.player = null
+                    mVideoPlayer!!.stop()
+                    mVideoPlayer!!.removeListener(this)
+                    mVideoPlayer = null
+                    isReload = true
+                }
+            }else{
+                if (mVideoPlayer == null){
+                    when (position) {
+                        it - 1 -> mVideoPlayer = activityViewModel.previewExoPlayer
+                        it -> mVideoPlayer = activityViewModel.currentExoPlayer
+                        it + 1 -> mVideoPlayer = activityViewModel.nextExoPlayer
+                    }
+                    binding.videoPlayer.player = mVideoPlayer
+                    mVideoPlayer!!.addListener(this)
                 }
             }
         }
@@ -146,7 +159,7 @@ class VideoFragment :
             lifecycle.repeatOnLifecycle(Lifecycle.State.RESUMED){
                 activityViewModel.videoLoadState.collect{
                     if (mVideoPlayer != null && isCurrent()){
-                        LogUtil.d("VideoFragment","$it")
+                        LogUtil.d("VideoFragment","Player : $mVideoPlayer$it")
                         when(it){
                             is VideoLoadState.Playing ->{
                                 binding.videoPbLoading.hide()
@@ -190,11 +203,6 @@ class VideoFragment :
     override fun onClick(v: View?) {
         when(v?.id){
             R.id.ic_back ->{
-                if (mVideoPlayer != null){
-                    mVideoPlayer!!.pause()
-                    mVideoPlayer!!.release()
-                    mVideoPlayer = null
-                }
                 requireActivity().finish()
             }
             R.id.ic_thumb ->{
@@ -244,6 +252,11 @@ class VideoFragment :
         }
     }
 
+    override fun onResume() {
+        if (viewModel.mVideoData != null && isReload) loadVideo()
+        super.onResume()
+    }
+
     override fun onPlayerError(error: PlaybackException) {
         super.onPlayerError(error)
         if (isCurrent()){
@@ -273,65 +286,16 @@ class VideoFragment :
         }
     }
 
-    override fun onResume() {
-        if (mVideoPlayer != null){
-            if (viewModel.mVideoData != null && proxy == null){
-                loadVideo()
-            }
-
-            binding.icPause.visibility = View.GONE
-            activityViewModel.currentExoPlayer = mVideoPlayer
-            if (isCurrent()){
-                activityViewModel.onPlayerReady()
-            }
-        }
-        super.onResume()
-    }
-
-    override fun onPause() {
-        if (mVideoPlayer != null){
-            mVideoPlayer!!.pause()
-            binding.icPause.visibility = View.VISIBLE
-        }
-        super.onPause()
-    }
-
-    override fun onStop() {
-        if (mVideoPlayer != null){
-            mVideoPlayer!!.stop()
-            proxy = null
-        }
-        super.onStop()
-    }
-
-    override fun onDestroyView() {
-        if (mVideoPlayer != null){
-            mVideoPlayer!!.release()
-            mVideoPlayer = null
-            proxy?.unregisterCacheListener(this)
-        }
-        super.onDestroyView()
-    }
-    
     private fun isCurrent() : Boolean{
         return activityViewModel.currentExoPlayer == mVideoPlayer
     }
 
     private fun loadVideo(){
-        proxy = activityViewModel.proxy
-        proxy!!.registerCacheListener(this,viewModel.mVideoData!!.url)
-        val mediaItem = MediaItem.fromUri(proxy!!.getProxyUrl(viewModel.mVideoData!!.url))
+        isReload = false
+        val mediaItem = MediaItem.fromUri(viewModel.mVideoData!!.url)
         mVideoPlayer!!.setMediaItem(mediaItem)
         mVideoPlayer!!.prepare()
+        mVideoPlayer!!.seekTo(viewModel.lastProcess)
         binding.videoPb.max = if (mVideoPlayer!!.duration > 0) mVideoPlayer!!.duration.toInt() else viewModel.mVideoData!!.duration.toInt()
-        activityViewModel.currentVideoData = viewModel.mVideoData
-        if (proxy!!.isCached(viewModel.mVideoData!!.url)) binding.videoPb.secondaryProgress = binding.videoPb.max
-    }
-
-    override fun onCacheAvailable(cacheFile: File?, url: String?, percentsAvailable: Int) {
-        if (viewModel.mVideoData!!.url == url){
-            LogUtil.d("VideoViewModel","当前进度：${binding.videoPb.progress}  " + "缓存进度：${(percentsAvailable / 100.0 * binding.videoPb.max).toInt()}")
-            binding.videoPb.secondaryProgress = (percentsAvailable / 100.0 * binding.videoPb.max).toInt()
-        }
     }
 }

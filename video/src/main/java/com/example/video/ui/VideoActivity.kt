@@ -1,15 +1,15 @@
 package com.example.video.ui
 
 import android.Manifest
-import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
 import android.graphics.Color
 import android.os.Bundle
-import android.view.View
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.viewpager2.widget.ViewPager2
+import androidx.viewpager2.widget.ViewPager2.SCROLL_STATE_DRAGGING
+import androidx.viewpager2.widget.ViewPager2.SCROLL_STATE_SETTLING
 import com.example.common.baseui.BaseActivity
 import com.example.common.utils.LogUtil
 import com.example.common.utils.setStatusBarColor
@@ -21,7 +21,7 @@ import com.example.video.databinding.ActivityVideoBinding
 import com.example.video.viewmodel.VideoViewModel
 
 
-class VideoActivity : BaseActivity<ActivityVideoBinding,VideoViewModel>() , View.OnClickListener{
+class VideoActivity : BaseActivity<ActivityVideoBinding,VideoViewModel>(){
 
     override val layoutId = R.layout.activity_video
     override val variableId = BR.videoViewModel
@@ -39,18 +39,39 @@ class VideoActivity : BaseActivity<ActivityVideoBinding,VideoViewModel>() , View
         setStatusBarTextColor(false)
         initPermission()
 
+        LogUtil.d("VideoFragment","previewExoPlayer : ${viewModel.previewExoPlayer}")
+        LogUtil.d("VideoFragment","currentExoPlayer : ${viewModel.currentExoPlayer}")
+        LogUtil.d("VideoFragment","nextExoPlayer : ${viewModel.nextExoPlayer}")
         val list = intent.getIntArrayExtra("videoIdList")
         viewModel.videoIdList.addAll(list!!.toMutableList())
-        viewModel.currentPage = intent.getIntExtra("currentLocation",0)
+        viewModel.currentPage.value = intent.getIntExtra("currentLocation",0)
         binding.videoVp.adapter = VideoViewPageAdapter(viewModel.videoIdList,supportFragmentManager,lifecycle)
         binding.videoVp.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageScrollStateChanged(state: Int) {
+                if (state == SCROLL_STATE_DRAGGING) viewModel.onPlayerPause()
+                LogUtil.d("VideoFragment","onPageScrollStateChanged")
+                super.onPageScrollStateChanged(state)
+            }
+
             override fun onPageSelected(position: Int) {
-                LogUtil.d("VideoActivity","onPageSelected")
-                viewModel.currentPage = position
+                if(viewModel.currentPage.value!! < position){
+                    val temp = viewModel.previewExoPlayer
+                    viewModel.previewExoPlayer = viewModel.currentExoPlayer
+                    viewModel.currentExoPlayer = viewModel.nextExoPlayer
+                    viewModel.nextExoPlayer = temp
+                }else if (viewModel.currentPage.value!! > position){
+                    val temp = viewModel.nextExoPlayer
+                    viewModel.nextExoPlayer = viewModel.currentExoPlayer
+                    viewModel.currentExoPlayer = viewModel.previewExoPlayer
+                    viewModel.previewExoPlayer = temp
+                }
+                LogUtil.d("VideoFragment","onPageSelected")
+                viewModel.currentPage.postValue(position)
+                viewModel.onPlayerReady()
                 super.onPageSelected(position)
             }
         })
-        binding.videoVp.setCurrentItem(viewModel.currentPage,false)
+        binding.videoVp.setCurrentItem(viewModel.currentPage.value!!,false)
         binding.videoVp.offscreenPageLimit = 1
     }
 
@@ -84,17 +105,11 @@ class VideoActivity : BaseActivity<ActivityVideoBinding,VideoViewModel>() , View
         }
     }
 
-    override fun onClick(v: View?) {
-        when(v?.id){
-            R.id.ic_back ->{
-                viewModel.currentExoPlayer?.pause()
-                requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
-            }
-        }
-    }
 
     override fun onDestroy() {
         super.onDestroy()
-        viewModel.proxy.shutdown()
+        viewModel.previewExoPlayer.release()
+        viewModel.currentExoPlayer.release()
+        viewModel.nextExoPlayer.release()
     }
 }
