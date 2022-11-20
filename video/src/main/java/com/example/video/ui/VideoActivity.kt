@@ -9,7 +9,6 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.viewpager2.widget.ViewPager2
 import androidx.viewpager2.widget.ViewPager2.SCROLL_STATE_DRAGGING
-import androidx.viewpager2.widget.ViewPager2.SCROLL_STATE_SETTLING
 import com.example.common.baseui.BaseActivity
 import com.example.common.utils.LogUtil
 import com.example.common.utils.setStatusBarColor
@@ -105,6 +104,10 @@ class VideoActivity : BaseActivity<ActivityVideoBinding,VideoViewModel>(){
         }
     }
 
+    override fun onPause() {
+        viewModel.onPlayerPause()
+        super.onPause()
+    }
 
     override fun onDestroy() {
         super.onDestroy()

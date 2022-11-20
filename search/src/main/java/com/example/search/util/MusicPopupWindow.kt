@@ -13,6 +13,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.example.common.bean.searchBean.Song
 import com.example.common.utils.MyApplication
+import com.example.common.utils.showToast
 import com.example.common.utils.windowsHeight
 import com.example.music_comment.ui.MusicCommentActivity
 import com.example.search.R.*
@@ -112,13 +113,17 @@ class MusicPopupWindow(touchView: View,song : Song) {
         }
 
         itemMusicVideo.setOnClickListener {
-            val intent = Intent(MyApplication.context,VideoActivity::class.java)
-            val videoIdList = IntArray(1)
-            videoIdList[0] = mSong.mv
-            intent.putExtra("videoIdList",videoIdList)
-            intent.putExtra("currentLocation",0)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-            MyApplication.context.startActivity(intent)
+            if(mSong.mv != 0){
+                val intent = Intent(MyApplication.context,VideoActivity::class.java)
+                val videoIdList = IntArray(1)
+                videoIdList[0] = mSong.mv
+                intent.putExtra("videoIdList",videoIdList)
+                intent.putExtra("currentLocation",0)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                MyApplication.context.startActivity(intent)
+            }else{
+                showToast("抱歉,该歌曲暂时无相关视频!")
+            }
         }
     }
 

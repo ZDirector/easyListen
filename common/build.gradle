@@ -40,6 +40,8 @@ android {
 
 dependencies {
 
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.10'
+
     //加载动画库
     implementation('com.wang.avi:library:2.1.3')
 

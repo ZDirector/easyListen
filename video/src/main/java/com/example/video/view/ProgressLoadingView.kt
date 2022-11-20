@@ -10,6 +10,7 @@ import android.os.Message
 import android.util.AttributeSet
 import android.view.View
 import com.example.video.R
+import java.lang.ref.WeakReference
 import java.util.regex.Pattern
 
 class ProgressLoadingView : View {
@@ -23,7 +24,19 @@ class ProgressLoadingView : View {
     private var mColor: String? = null
     private val mHandler: Handler
     private var mTimePeriod = 20
-    private var isShow = false
+
+    companion object{
+        class ProgressLoadingHandler(view: ProgressLoadingView,time : Long) : Handler(Looper.getMainLooper()){
+            private val viewWeakReference = WeakReference(view)
+            private val mTime = time
+            override fun handleMessage(msg: Message) {
+                super.handleMessage(msg)
+                val progressLoadingView = viewWeakReference.get()
+                progressLoadingView?.invalidate()
+                sendEmptyMessageDelayed(1,mTime)
+            }
+        }
+    }
 
     constructor(context: Context?) : this(context, null)
     constructor(context: Context?, attrs: AttributeSet?) : this(context, attrs, 0)
@@ -58,14 +71,8 @@ class ProgressLoadingView : View {
         mPaint.style = Paint.Style.FILL_AND_STROKE
         //设置抗锯齿
         mPaint.isAntiAlias = true
-        mHandler = object : Handler(Looper.getMainLooper()) {
-            override fun handleMessage(msg: Message) {
-                super.handleMessage(msg)
-                if (isShow) invalidate()
-                sendEmptyMessageDelayed(1, mTimePeriod.toLong())
-            }
-        }
-        mHandler.sendEmptyMessageDelayed(1, mTimePeriod.toLong())
+        mHandler = ProgressLoadingHandler(this,mTimePeriod.toLong())
+        mHandler.sendEmptyMessage(1)
     }
 
     /**
@@ -79,12 +86,10 @@ class ProgressLoadingView : View {
     }
 
     fun show(){
-        if (!isShow) isShow = true
         this.visibility = VISIBLE
     }
 
     fun hide(){
-        if (isShow) isShow = false
         this.visibility = GONE
     }
 
