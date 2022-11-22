@@ -4,8 +4,8 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
+import com.example.common.bean.home.Playlist
 
-import com.example.homepage.playSquare.bean.Playlist
 import com.example.homepage.playSquare.service.SquareService
 
 

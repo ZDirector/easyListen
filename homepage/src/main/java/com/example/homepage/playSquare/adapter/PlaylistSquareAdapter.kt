@@ -9,8 +9,8 @@ import com.bumptech.glide.request.RequestOptions
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.example.common.adapter.DataClickListener
+import com.example.common.bean.home.Playlist
 import com.example.homepage.R
-import com.example.homepage.playSquare.bean.Playlist
 
 class PlaylistSquareAdapter: BaseQuickAdapter<Playlist,BaseViewHolder>(R.layout.item_square_list) {
     var itemClickListener: DataClickListener<Playlist>? = null

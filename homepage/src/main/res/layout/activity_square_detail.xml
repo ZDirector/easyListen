@@ -312,6 +312,9 @@
             android:layout_marginTop="12dp"
             android:layout_marginEnd="10dp"
             android:hint="@string/playlist"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:marqueeRepeatLimit="-1"
             android:textColorHint="@color/mike_white"
             android:textSize="20sp" />
 
@@ -320,6 +323,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:singleLine="true"
+            android:marqueeRepeatLimit="-1"
             android:layout_marginStart="16dp"
             android:layout_marginTop="12dp"
             android:text="@{viewModel.listLiveData.name}"

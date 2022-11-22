@@ -1,7 +1,6 @@
 package com.example.homepage.music.repostory
 
-import android.widget.Toast
-import com.example.common.bean.MusicSheet
+import com.example.common.bean.home.Playlist
 import com.example.homepage.music.bean.Banner
 import com.example.homepage.music.bean.Rank
 import com.example.homepage.network.MyNetWork
@@ -17,7 +16,7 @@ object MusicRepository {
         }.flowOn(Dispatchers.IO)
     }
 
-    fun getRecoList():Flow<List<MusicSheet>>{
+    fun getRecoList():Flow<List<Playlist>>{
         return flow {
             emit(MyNetWork.getRecommendedList().result)
         }.flowOn(Dispatchers.IO)

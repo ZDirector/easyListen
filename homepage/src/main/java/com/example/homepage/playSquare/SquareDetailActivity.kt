@@ -2,7 +2,6 @@ package com.example.homepage.playSquare
 
 
 import android.content.Context
-import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
 import android.view.Gravity
@@ -21,6 +20,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.example.common.adapter.DataClickListener
+import com.example.common.bean.home.Playlist
 import com.example.common.bean.searchbean.Song
 import com.example.common.utils.UiUtils.setPic
 import com.example.common.utils.immersive
@@ -28,7 +28,6 @@ import com.example.common.utils.navigationBarHeight
 import com.example.homepage.R
 import com.example.homepage.databinding.ActivitySquareDetailBinding
 import com.example.homepage.playSquare.adapter.SongsAdapter
-import com.example.homepage.playSquare.bean.Playlist
 import com.example.homepage.playSquare.viewmodel.PlayListDetailViewModel
 import kotlin.math.abs
 
@@ -82,7 +81,10 @@ class SquareDetailActivity : AppCompatActivity() {
                 mViewModel.apply {
                     nameLiveData.postValue(it.name)
                     describeLiveData.postValue(it.description)
-                    setPic(ibPlaylist, 20, it.coverImgUrl)
+                    val picUrl :String = if(listLiveData.value!!.picUrl != ""){
+                        listLiveData.value?.picUrl.toString()
+                    }else listLiveData.value?.coverImgUrl!!
+                    setPic(ibPlaylist, 20,  picUrl)
                     loadList()
                 }
             }
@@ -116,7 +118,6 @@ class SquareDetailActivity : AppCompatActivity() {
                 if (palette != null) {
                     mMainColor = palette.getDarkVibrantColor(Color.WHITE)
                 }
-                Toast.makeText(applicationContext, "这个是什么情况", Toast.LENGTH_SHORT).show()
                 initColor()
             }
         }
@@ -201,6 +202,7 @@ class SquareDetailActivity : AppCompatActivity() {
             top.height = viewTop.height + getStatusBarHeight(applicationContext)
             viewTop.layoutParams = top
             viewTop.requestLayout()
+            tvTitleBarPlay.requestFocus()
         }
     }
 
@@ -245,7 +247,6 @@ class SquareDetailActivity : AppCompatActivity() {
     private fun initList() {
         lifecycleScope.launchWhenCreated {
             mViewModel.songsStateFlow.collect {
-                Toast.makeText(applicationContext, "来了老弟$it", Toast.LENGTH_SHORT).show()
                 val size = mAdapter.data.size
                 mAdapter.data.addAll(it)
                 mAdapter.notifyItemRangeChanged(size, it.size)

@@ -23,6 +23,7 @@ import com.example.homepage.music.adapter.RankListAdapter
 import com.example.homepage.music.bean.Banner
 import com.example.homepage.music.bean.Rank
 import com.example.homepage.music.viewmodel.MusicViewModel
+import com.example.homepage.playSquare.SquareDetailActivity
 import com.example.homepage.toplist.ui.activity.TopListActivity
 import com.youth.banner.adapter.BannerImageAdapter
 import com.youth.banner.holder.BannerImageHolder
@@ -101,6 +102,13 @@ class MusicFragment : Fragment(), OnBannerListener<Banner> {
         }
         mBinding.apply {
             lvRecommendedPlaylist.setMusicSheet(viewLifecycleOwner,mViewModel.mRecoLists)
+            lvRecommendedPlaylist.setOnItemClickListener{
+                musicSheet, _ ->
+                    val intent = Intent(activity,SquareDetailActivity::class.java)
+                    intent.putExtra("playlist",musicSheet)
+                    startActivity(intent)
+
+            }
         }
     }
 

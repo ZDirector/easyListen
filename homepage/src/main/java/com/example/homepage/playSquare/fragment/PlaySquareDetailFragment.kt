@@ -14,12 +14,12 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.common.adapter.DataClickListener
+import com.example.common.bean.home.Playlist
 import com.example.homepage.R
 import com.example.homepage.databinding.FragmentPlaySquareDetailBinding
 import com.example.homepage.playSquare.SongSquareActivity
 import com.example.homepage.playSquare.SquareDetailActivity
 import com.example.homepage.playSquare.adapter.PlaylistSquareAdapter
-import com.example.homepage.playSquare.bean.Playlist
 import com.example.homepage.playSquare.viewmodel.SquareViewModel
 import java.util.concurrent.RecursiveAction
 

@@ -3,8 +3,8 @@ package com.example.homepage.playSquare.viewmodel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import com.example.common.baseui.BaseViewModel
+import com.example.common.bean.home.Playlist
 import com.example.homepage.playSquare.bean.HighQualityResponse
-import com.example.homepage.playSquare.bean.Playlist
 import com.example.homepage.playSquare.bean.Sub
 import com.example.homepage.playSquare.repository.SquareRepository
 import kotlinx.coroutines.flow.MutableStateFlow

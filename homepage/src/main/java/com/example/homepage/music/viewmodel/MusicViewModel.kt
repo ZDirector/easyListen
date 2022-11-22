@@ -3,7 +3,7 @@ package com.example.homepage.music.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.common.bean.MusicSheet
+import com.example.common.bean.home.Playlist
 import com.example.homepage.music.bean.Banner
 import com.example.homepage.music.bean.Rank
 import com.example.homepage.music.repostory.MusicRepository
@@ -33,10 +33,10 @@ class MusicViewModel : ViewModel() {
         }
 
     private val _mBanners: MutableLiveData<List<Banner>> = MutableLiveData(listOf())
-    private val _mRecoLists: MutableLiveData<List<MusicSheet>> = MutableLiveData(listOf())
+    private val _mRecoLists: MutableLiveData<List<Playlist>> = MutableLiveData(listOf())
     private val _mRankList: MutableLiveData<List<Rank>> = MutableLiveData(listOf())
 
-    val mRecoLists: LiveData<List<MusicSheet>> = _mRecoLists
+    val mRecoLists: LiveData<List<Playlist>> = _mRecoLists
     val mBanners: LiveData<List<Banner>> = _mBanners
     val mRankList: LiveData<List<Rank>> = _mRankList
 

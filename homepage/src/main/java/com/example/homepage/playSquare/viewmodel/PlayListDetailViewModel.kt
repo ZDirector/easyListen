@@ -8,10 +8,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.bumptech.glide.Glide
 import com.example.common.baseui.BaseViewModel
+import com.example.common.bean.home.Playlist
 import com.example.common.bean.searchbean.Song
 import com.example.common.utils.MyApplication
 import com.example.homepage.R
-import com.example.homepage.playSquare.bean.Playlist
 import com.example.homepage.playSquare.repository.SquareRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -55,8 +55,11 @@ class PlayListDetailViewModel: BaseViewModel() {
     fun setBitMap(){
         viewModelScope.launch(Dispatchers.IO) {
             listLiveData.value?.coverImgUrl?.apply {
+                val picUrl :String = if(listLiveData.value!!.picUrl != ""){
+                    listLiveData.value?.picUrl.toString()
+                }else listLiveData.value?.coverImgUrl!!
                 _bitmapStateFlow.value =
-                    Glide.with(MyApplication.context).asBitmap().load(listLiveData.value?.coverImgUrl).submit().get()
+                Glide.with(MyApplication.context).asBitmap().load(picUrl).submit().get()
             }
         }
     }
