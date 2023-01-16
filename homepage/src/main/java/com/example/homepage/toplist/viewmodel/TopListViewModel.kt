@@ -15,7 +15,7 @@ class TopListViewModel : ViewModel() {
 
 
     fun loadTopListData(){
-        viewModelScope.launch {
+        viewModelScope.launch{
             TopListRepository.getTopDetail().collect{
                 _topDetailsStateFlow.value = TopListRepository.collectTopListMap(it)
             }

@@ -1,5 +1,6 @@
 package com.example.search.ui
 
+import android.app.Activity
 import android.content.Context
 import android.graphics.Color
 import android.os.Build
@@ -31,7 +32,8 @@ class SearchActivity : BaseActivity<ActivitySearchBinding,SearchViewModel>() ,
     View.OnClickListener{
     override var layoutId: Int = R.layout.activity_search
     override var variableId: Int = BR.searchViewModel
-
+    override val activity: Activity
+        get() = this
     private val titleList = listOf("单曲","歌单","视频","用户")
     private val pageList = listOf(
         MusicResultFragment(),

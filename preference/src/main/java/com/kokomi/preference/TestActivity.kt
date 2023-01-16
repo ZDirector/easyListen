@@ -3,7 +3,6 @@ package com.kokomi.preference
 import android.os.Bundle
 import androidx.lifecycle.MutableLiveData
 import com.example.common.baseui.BaseActivity
-import com.example.common.bean.MusicSheet
 import com.kokomi.preference.databinding.FragmentUserBinding
 
 class TestActivity : BaseActivity<FragmentUserBinding, TestViewModel>() {

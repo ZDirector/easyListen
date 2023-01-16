@@ -1,5 +1,6 @@
 package com.example.music_comment.ui
 
+import android.app.Activity
 import android.graphics.Color
 import android.os.Bundle
 import com.bumptech.glide.Glide
@@ -17,7 +18,8 @@ import com.scwang.smart.refresh.layout.api.RefreshFooter
 import com.scwang.smart.refresh.layout.simple.SimpleMultiListener
 
 class MusicCommentActivity : BaseActivity<ActivityMusicCommentBinding,MusicCommentViewModel>() {
-
+    override val activity: Activity
+        get() =  this
     override val layoutId = R.layout.activity_music_comment
     override val variableId = BR.musicCommentViewModel
 

@@ -14,7 +14,6 @@ import com.example.homepage.R
 
 class PlaylistSquareAdapter: BaseQuickAdapter<Playlist,BaseViewHolder>(R.layout.item_square_list) {
     var itemClickListener: DataClickListener<Playlist>? = null
-
     override fun convert(helper: BaseViewHolder, item: Playlist) {
         helper.apply {
 /*            itemView.setOnClickListener {

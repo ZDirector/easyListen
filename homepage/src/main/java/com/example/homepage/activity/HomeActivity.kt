@@ -1,10 +1,12 @@
 package com.example.homepage.activity
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentManager
@@ -17,6 +19,7 @@ import com.example.homepage.ui.fragment.MineFragment
 import com.example.homepage.ui.fragment.VideoFragment
 import com.example.homepage.utils.HomeConstants
 import com.example.homepage.utils.HomeConstants.BOTTOM_MUSIC
+import com.example.search.ui.SearchActivity
 import com.google.android.material.navigation.NavigationBarView
 
 
@@ -40,7 +43,12 @@ class HomeActivity : AppCompatActivity() {
 
     private fun init() {
         setFragment(BOTTOM_MUSIC)
-
+        mBinding.apply {
+            toolbar.findViewById<TextView>(R.id.et_search).setOnClickListener {
+                val intent = Intent(this@HomeActivity,SearchActivity::class.java)
+                startActivity(intent)
+            }
+        }
     }
 
     private fun initListener() {
@@ -168,6 +176,8 @@ class HomeActivity : AppCompatActivity() {
             transaction.hide(mMineFragment!!)
         }
     }
+
+
 
 
 }

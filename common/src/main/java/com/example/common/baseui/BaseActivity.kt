@@ -1,5 +1,6 @@
 package com.example.common.baseui
 
+import android.app.Activity
 import android.app.Dialog
 import android.os.Bundle
 import androidx.annotation.CallSuper
@@ -9,6 +10,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
 import com.example.common.R
 import com.example.common.baseui.dialog.LoadingDialog
+import com.example.common.utils.ExitUtils
 import java.lang.reflect.ParameterizedType
 
 abstract class BaseActivity<VDB : ViewDataBinding, VM : BaseViewModel> : AppCompatActivity() {
@@ -21,10 +23,16 @@ abstract class BaseActivity<VDB : ViewDataBinding, VM : BaseViewModel> : AppComp
 
     protected val binding: VDB get() = _binding!!
 
+
+
+
     /**
      * @LayoutRes
      */
     protected abstract val layoutId: Int
+
+
+    protected abstract val activity:Activity
 
     /**
      * ViewModel 的 ID ，默认不设置 ID
@@ -52,6 +60,7 @@ abstract class BaseActivity<VDB : ViewDataBinding, VM : BaseViewModel> : AppComp
         initViewModelAndViewDataBinding()
         viewModel.loadingEvent.observe(this, ::showOrHideDialog)
         initData(savedInstanceState)
+        ExitUtils.addActivity(activity)
     }
 
     @Suppress("UNCHECKED_CAST")
@@ -80,4 +89,8 @@ abstract class BaseActivity<VDB : ViewDataBinding, VM : BaseViewModel> : AppComp
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        ExitUtils.addActivity(activity)
+    }
 }

@@ -22,3 +22,4 @@ include ':preference'
 include ':search'
 include ':music_comment'
 include(':homepage')
+include ':playing'

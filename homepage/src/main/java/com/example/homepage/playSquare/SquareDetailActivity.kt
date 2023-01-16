@@ -34,7 +34,6 @@ import kotlin.math.abs
 
 class SquareDetailActivity : AppCompatActivity() {
 
-
     private lateinit var mBinding: ActivitySquareDetailBinding
     private lateinit var mViewModel: PlayListDetailViewModel
     private var mMainColor: Int = 0
@@ -238,7 +237,6 @@ class SquareDetailActivity : AppCompatActivity() {
 
     private fun loadList() {
         loading = true
-
         mViewModel.listLiveData.value?.let { mViewModel.getSongs(it.id, 18, mAdapter.data.size) }
 
 
