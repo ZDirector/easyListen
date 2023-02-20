@@ -9,5 +9,5 @@ object HttpConstants {
 
     const val BAD_REQUEST = 400
 
-    const val BASE_URL = "https://netease.coderwdd.top/"
+    const val BASE_URL = "https://cloud.aliyun.topviewclub.cn/"
 }
