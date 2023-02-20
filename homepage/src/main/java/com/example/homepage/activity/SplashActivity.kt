@@ -6,6 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.WindowManager
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.example.common.utils.ExitUtils
@@ -22,13 +23,13 @@ class SplashActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Toast.makeText(this,"abc",Toast.LENGTH_SHORT).show()
         //隐层状态栏和标题栏
         window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
         //隐藏标题栏
         supportActionBar?.hide()
         setContentView(R.layout.activity_splash)
         initAgreementService()
-        initPermission()
     }
 
     /**
@@ -46,12 +47,16 @@ class SplashActivity : AppCompatActivity() {
                 editor.putBoolean("is_first_open",false)
                 editor.apply()
                 initSplash()
+                initPermission()
             }
         })
 
         if (prefs.getBoolean("is_first_open",true)){
             firstDialog.isCancelable=false
             firstDialog.showNow(supportFragmentManager,"firstDialog")
+        }
+        if (!prefs.getBoolean("is_first_open",true)){
+            initSplash()
         }
     }
 
@@ -83,7 +88,8 @@ class SplashActivity : AppCompatActivity() {
             this,
             arrayOf(
                 Manifest.permission.READ_EXTERNAL_STORAGE,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.WRITE_SETTINGS
             ),
             1
         )
@@ -109,7 +115,7 @@ class SplashActivity : AppCompatActivity() {
 
             when (permissions[0]) {
 
-                Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE -> {
+                Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.WRITE_SETTINGS -> {
                     Log.e("回调", "读写")
 
                     if (PermissionUtils.verifyPermissions(*grantResults)) {
@@ -117,7 +123,9 @@ class SplashActivity : AppCompatActivity() {
                         ActivityCompat.requestPermissions(
                             this,
                             arrayOf(
-                                Manifest.permission.CAMERA
+                                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                                Manifest.permission.WRITE_SETTINGS,
+                                Manifest.permission.READ_EXTERNAL_STORAGE
                             ),
                             1
                         );
