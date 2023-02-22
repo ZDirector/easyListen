@@ -238,8 +238,6 @@ class SquareDetailActivity : AppCompatActivity() {
     private fun loadList() {
         loading = true
         mViewModel.listLiveData.value?.let { mViewModel.getSongs(it.id, 18, mAdapter.data.size) }
-
-
     }
 
     private fun initList() {

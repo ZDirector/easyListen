@@ -7,13 +7,13 @@ import android.os.Looper
 import com.example.common.music.abs.MusicPlayer
 
 class MusicPlayerImpl(
-    var preparedListener: MusicPlayer.PreparedListener ?=null,
+        var preparedListener: MusicPlayer.PreparedListener ?=null,
     private val handler: Handler = Handler(Looper.getMainLooper()),
     var completeListener:MusicPlayer.CompleteListener ? =null,
     var errorListener: MusicPlayer.ErrorListener ?= null
 ):MusicPlayer {
     private val player = MediaPlayer()
-    @Volatile
+
     private var isPrepared:Boolean =false
 
     init {
@@ -90,4 +90,7 @@ class MusicPlayerImpl(
         reset()
         player.release()
     }
+
+
+
 }
