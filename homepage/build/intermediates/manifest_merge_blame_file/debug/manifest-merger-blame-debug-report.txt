@@ -1,0 +1,320 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.easylisten1"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+8-->/Users/chenzhuohong01/AndroidStudioProjects/easyListen/homepage/src/main/AndroidManifest.xml
+9        android:targetSdkVersion="32" />
+9-->/Users/chenzhuohong01/AndroidStudioProjects/easyListen/homepage/src/main/AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->/Users/chenzhuohong01/AndroidStudioProjects/easyListen/homepage/src/main/AndroidManifest.xml:6:5-67
+11-->/Users/chenzhuohong01/AndroidStudioProjects/easyListen/homepage/src/main/AndroidManifest.xml:6:22-64
+12    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+12-->/Users/chenzhuohong01/AndroidStudioProjects/easyListen/homepage/src/main/AndroidManifest.xml:7:5-81
+12-->/Users/chenzhuohong01/AndroidStudioProjects/easyListen/homepage/src/main/AndroidManifest.xml:7:22-78
+13    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+13-->/Users/chenzhuohong01/AndroidStudioProjects/easyListen/homepage/src/main/AndroidManifest.xml:8:5-80
+13-->/Users/chenzhuohong01/AndroidStudioProjects/easyListen/homepage/src/main/AndroidManifest.xml:8:22-77
+14    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- To allow posting notifications on Android 13 -->
+14-->[:common] /Users/chenzhuohong01/AndroidStudioProjects/easyListen/common/build/intermediates/merged_manifest/debug/AndroidManifest.xml:11:5-79
+14-->[:common] /Users/chenzhuohong01/AndroidStudioProjects/easyListen/common/build/intermediates/merged_manifest/debug/AndroidManifest.xml:11:22-76
+15    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+15-->[com.squareup.leakcanary:leakcanary-android-core:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/ed487e6ae02367961adaad3864327164/transformed/jetified-leakcanary-android-core-2.10/AndroidManifest.xml:29:5-77
+15-->[com.squareup.leakcanary:leakcanary-android-core:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/ed487e6ae02367961adaad3864327164/transformed/jetified-leakcanary-android-core-2.10/AndroidManifest.xml:29:22-74
+16
+17    <application
+17-->/Users/chenzhuohong01/AndroidStudioProjects/easyListen/homepage/src/main/AndroidManifest.xml:10:5-46:19
+18        android:name="com.example.common.utils.MyApplication"
+18-->[:search] /Users/chenzhuohong01/AndroidStudioProjects/easyListen/search/build/intermediates/merged_manifest/debug/AndroidManifest.xml:13:9-62
+19        android:allowBackup="true"
+19-->/Users/chenzhuohong01/AndroidStudioProjects/easyListen/homepage/src/main/AndroidManifest.xml:11:9-35
+20        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+20-->[androidx.core:core:1.8.0] /Users/chenzhuohong01/.gradle/caches/transforms-3/319818de8066db9dee1015fa48896948/transformed/core-1.8.0/AndroidManifest.xml:24:18-86
+21        android:debuggable="true"
+22        android:icon="@drawable/ic_icon"
+22-->[:search] /Users/chenzhuohong01/AndroidStudioProjects/easyListen/search/build/intermediates/merged_manifest/debug/AndroidManifest.xml:15:9-41
+23        android:label="@string/app_name"
+23-->/Users/chenzhuohong01/AndroidStudioProjects/easyListen/homepage/src/main/AndroidManifest.xml:12:9-41
+24        android:networkSecurityConfig="@xml/network_security_config"
+24-->/Users/chenzhuohong01/AndroidStudioProjects/easyListen/homepage/src/main/AndroidManifest.xml:13:9-69
+25        android:requestLegacyExternalStorage="true"
+25-->[:video] /Users/chenzhuohong01/AndroidStudioProjects/easyListen/video/build/intermediates/merged_manifest/debug/AndroidManifest.xml:18:9-52
+26        android:roundIcon="@drawable/ic_icon"
+26-->[:search] /Users/chenzhuohong01/AndroidStudioProjects/easyListen/search/build/intermediates/merged_manifest/debug/AndroidManifest.xml:17:9-46
+27        android:screenOrientation="portrait"
+27-->[:search] /Users/chenzhuohong01/AndroidStudioProjects/easyListen/search/build/intermediates/merged_manifest/debug/AndroidManifest.xml:18:9-45
+28        android:supportsRtl="true"
+28-->/Users/chenzhuohong01/AndroidStudioProjects/easyListen/homepage/src/main/AndroidManifest.xml:14:9-35
+29        android:testOnly="true"
+30        android:theme="@style/Theme.EasyListen"
+30-->/Users/chenzhuohong01/AndroidStudioProjects/easyListen/homepage/src/main/AndroidManifest.xml:15:9-48
+31        android:usesCleartextTraffic="true" >
+31-->/Users/chenzhuohong01/AndroidStudioProjects/easyListen/homepage/src/main/AndroidManifest.xml:16:9-44
+32        <activity
+32-->/Users/chenzhuohong01/AndroidStudioProjects/easyListen/homepage/src/main/AndroidManifest.xml:18:9-20:40
+33            android:name="com.example.homepage.activity.ContentServiceActivity"
+33-->/Users/chenzhuohong01/AndroidStudioProjects/easyListen/homepage/src/main/AndroidManifest.xml:19:13-60
+34            android:exported="false" />
+34-->/Users/chenzhuohong01/AndroidStudioProjects/easyListen/homepage/src/main/AndroidManifest.xml:20:13-37
+35        <activity
+35-->/Users/chenzhuohong01/AndroidStudioProjects/easyListen/homepage/src/main/AndroidManifest.xml:21:9-29:20
+36            android:name="com.example.homepage.activity.SplashActivity"
+36-->/Users/chenzhuohong01/AndroidStudioProjects/easyListen/homepage/src/main/AndroidManifest.xml:22:13-52
+37            android:exported="true" >
+37-->/Users/chenzhuohong01/AndroidStudioProjects/easyListen/homepage/src/main/AndroidManifest.xml:23:13-36
+38            <intent-filter>
+38-->/Users/chenzhuohong01/AndroidStudioProjects/easyListen/homepage/src/main/AndroidManifest.xml:24:13-28:29
+39                <action android:name="android.intent.action.MAIN" />
+39-->/Users/chenzhuohong01/AndroidStudioProjects/easyListen/homepage/src/main/AndroidManifest.xml:25:17-69
+39-->/Users/chenzhuohong01/AndroidStudioProjects/easyListen/homepage/src/main/AndroidManifest.xml:25:25-66
+40
+41                <category android:name="android.intent.category.LAUNCHER" />
+41-->/Users/chenzhuohong01/AndroidStudioProjects/easyListen/homepage/src/main/AndroidManifest.xml:27:17-77
+41-->/Users/chenzhuohong01/AndroidStudioProjects/easyListen/homepage/src/main/AndroidManifest.xml:27:27-74
+42            </intent-filter>
+43        </activity>
+44        <activity
+44-->/Users/chenzhuohong01/AndroidStudioProjects/easyListen/homepage/src/main/AndroidManifest.xml:30:9-32:40
+45            android:name="com.example.homepage.toplist.ui.activity.TopListActivity"
+45-->/Users/chenzhuohong01/AndroidStudioProjects/easyListen/homepage/src/main/AndroidManifest.xml:31:13-64
+46            android:exported="false" />
+46-->/Users/chenzhuohong01/AndroidStudioProjects/easyListen/homepage/src/main/AndroidManifest.xml:32:13-37
+47        <activity
+47-->/Users/chenzhuohong01/AndroidStudioProjects/easyListen/homepage/src/main/AndroidManifest.xml:33:9-35:40
+48            android:name="com.example.homepage.playSquare.SquareDetailActivity"
+48-->/Users/chenzhuohong01/AndroidStudioProjects/easyListen/homepage/src/main/AndroidManifest.xml:34:13-60
+49            android:exported="false" />
+49-->/Users/chenzhuohong01/AndroidStudioProjects/easyListen/homepage/src/main/AndroidManifest.xml:35:13-37
+50        <activity
+50-->/Users/chenzhuohong01/AndroidStudioProjects/easyListen/homepage/src/main/AndroidManifest.xml:36:9-38:40
+51            android:name="com.example.homepage.playSquare.SongSquareActivity"
+51-->/Users/chenzhuohong01/AndroidStudioProjects/easyListen/homepage/src/main/AndroidManifest.xml:37:13-58
+52            android:exported="false" />
+52-->/Users/chenzhuohong01/AndroidStudioProjects/easyListen/homepage/src/main/AndroidManifest.xml:38:13-37
+53        <activity
+53-->/Users/chenzhuohong01/AndroidStudioProjects/easyListen/homepage/src/main/AndroidManifest.xml:39:9-41:40
+54            android:name="com.example.homepage.activity.WebActivity"
+54-->/Users/chenzhuohong01/AndroidStudioProjects/easyListen/homepage/src/main/AndroidManifest.xml:40:13-49
+55            android:exported="false" />
+55-->/Users/chenzhuohong01/AndroidStudioProjects/easyListen/homepage/src/main/AndroidManifest.xml:41:13-37
+56        <activity
+56-->/Users/chenzhuohong01/AndroidStudioProjects/easyListen/homepage/src/main/AndroidManifest.xml:42:9-45:20
+57            android:name="com.example.homepage.activity.HomeActivity"
+57-->/Users/chenzhuohong01/AndroidStudioProjects/easyListen/homepage/src/main/AndroidManifest.xml:43:13-50
+58            android:exported="true" >
+58-->/Users/chenzhuohong01/AndroidStudioProjects/easyListen/homepage/src/main/AndroidManifest.xml:44:13-36
+59        </activity>
+60        <activity
+60-->[:search] /Users/chenzhuohong01/AndroidStudioProjects/easyListen/search/build/intermediates/merged_manifest/debug/AndroidManifest.xml:22:9-25:20
+61            android:name="com.example.search.ui.SearchActivity"
+61-->[:search] /Users/chenzhuohong01/AndroidStudioProjects/easyListen/search/build/intermediates/merged_manifest/debug/AndroidManifest.xml:23:13-64
+62            android:exported="true" >
+62-->[:search] /Users/chenzhuohong01/AndroidStudioProjects/easyListen/search/build/intermediates/merged_manifest/debug/AndroidManifest.xml:24:13-36
+63        </activity>
+64        <activity
+64-->[:music_comment] /Users/chenzhuohong01/AndroidStudioProjects/easyListen/music_comment/build/intermediates/merged_manifest/debug/AndroidManifest.xml:21:9-24:20
+65            android:name="com.example.music_comment.ui.MusicCommentActivity"
+65-->[:music_comment] /Users/chenzhuohong01/AndroidStudioProjects/easyListen/music_comment/build/intermediates/merged_manifest/debug/AndroidManifest.xml:22:13-77
+66            android:exported="true" >
+66-->[:music_comment] /Users/chenzhuohong01/AndroidStudioProjects/easyListen/music_comment/build/intermediates/merged_manifest/debug/AndroidManifest.xml:23:13-36
+67        </activity>
+68        <activity
+68-->[:video] /Users/chenzhuohong01/AndroidStudioProjects/easyListen/video/build/intermediates/merged_manifest/debug/AndroidManifest.xml:24:9-27:20
+69            android:name="com.example.video.ui.VideoActivity"
+69-->[:video] /Users/chenzhuohong01/AndroidStudioProjects/easyListen/video/build/intermediates/merged_manifest/debug/AndroidManifest.xml:25:13-62
+70            android:exported="true" >
+70-->[:video] /Users/chenzhuohong01/AndroidStudioProjects/easyListen/video/build/intermediates/merged_manifest/debug/AndroidManifest.xml:26:13-36
+71        </activity>
+72
+73        <provider
+73-->[com.squareup.leakcanary:leakcanary-android-core:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/ed487e6ae02367961adaad3864327164/transformed/jetified-leakcanary-android-core-2.10/AndroidManifest.xml:32:9-40:20
+74            android:name="leakcanary.internal.LeakCanaryFileProvider"
+74-->[com.squareup.leakcanary:leakcanary-android-core:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/ed487e6ae02367961adaad3864327164/transformed/jetified-leakcanary-android-core-2.10/AndroidManifest.xml:33:13-70
+75            android:authorities="com.squareup.leakcanary.fileprovider.com.example.easylisten1"
+75-->[com.squareup.leakcanary:leakcanary-android-core:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/ed487e6ae02367961adaad3864327164/transformed/jetified-leakcanary-android-core-2.10/AndroidManifest.xml:34:13-88
+76            android:exported="false"
+76-->[com.squareup.leakcanary:leakcanary-android-core:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/ed487e6ae02367961adaad3864327164/transformed/jetified-leakcanary-android-core-2.10/AndroidManifest.xml:35:13-37
+77            android:grantUriPermissions="true" >
+77-->[com.squareup.leakcanary:leakcanary-android-core:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/ed487e6ae02367961adaad3864327164/transformed/jetified-leakcanary-android-core-2.10/AndroidManifest.xml:36:13-47
+78            <meta-data
+78-->[com.squareup.leakcanary:leakcanary-android-core:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/ed487e6ae02367961adaad3864327164/transformed/jetified-leakcanary-android-core-2.10/AndroidManifest.xml:37:13-39:66
+79                android:name="android.support.FILE_PROVIDER_PATHS"
+79-->[com.squareup.leakcanary:leakcanary-android-core:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/ed487e6ae02367961adaad3864327164/transformed/jetified-leakcanary-android-core-2.10/AndroidManifest.xml:38:17-67
+80                android:resource="@xml/leak_canary_file_paths" />
+80-->[com.squareup.leakcanary:leakcanary-android-core:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/ed487e6ae02367961adaad3864327164/transformed/jetified-leakcanary-android-core-2.10/AndroidManifest.xml:39:17-63
+81        </provider>
+82
+83        <activity
+83-->[com.squareup.leakcanary:leakcanary-android-core:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/ed487e6ae02367961adaad3864327164/transformed/jetified-leakcanary-android-core-2.10/AndroidManifest.xml:42:9-73:20
+84            android:name="leakcanary.internal.activity.LeakActivity"
+84-->[com.squareup.leakcanary:leakcanary-android-core:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/ed487e6ae02367961adaad3864327164/transformed/jetified-leakcanary-android-core-2.10/AndroidManifest.xml:43:13-69
+85            android:exported="true"
+85-->[com.squareup.leakcanary:leakcanary-android-core:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/ed487e6ae02367961adaad3864327164/transformed/jetified-leakcanary-android-core-2.10/AndroidManifest.xml:44:13-36
+86            android:icon="@mipmap/leak_canary_icon"
+86-->[com.squareup.leakcanary:leakcanary-android-core:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/ed487e6ae02367961adaad3864327164/transformed/jetified-leakcanary-android-core-2.10/AndroidManifest.xml:45:13-52
+87            android:label="@string/leak_canary_display_activity_label"
+87-->[com.squareup.leakcanary:leakcanary-android-core:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/ed487e6ae02367961adaad3864327164/transformed/jetified-leakcanary-android-core-2.10/AndroidManifest.xml:46:13-71
+88            android:taskAffinity="com.squareup.leakcanary.com.example.easylisten1"
+88-->[com.squareup.leakcanary:leakcanary-android-core:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/ed487e6ae02367961adaad3864327164/transformed/jetified-leakcanary-android-core-2.10/AndroidManifest.xml:47:13-76
+89            android:theme="@style/leak_canary_LeakCanary.Base" >
+89-->[com.squareup.leakcanary:leakcanary-android-core:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/ed487e6ae02367961adaad3864327164/transformed/jetified-leakcanary-android-core-2.10/AndroidManifest.xml:48:13-63
+90            <intent-filter android:label="@string/leak_canary_import_hprof_file" >
+90-->[com.squareup.leakcanary:leakcanary-android-core:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/ed487e6ae02367961adaad3864327164/transformed/jetified-leakcanary-android-core-2.10/AndroidManifest.xml:49:13-72:29
+90-->[com.squareup.leakcanary:leakcanary-android-core:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/ed487e6ae02367961adaad3864327164/transformed/jetified-leakcanary-android-core-2.10/AndroidManifest.xml:49:28-81
+91                <action android:name="android.intent.action.VIEW" />
+91-->[com.squareup.leakcanary:leakcanary-android-core:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/ed487e6ae02367961adaad3864327164/transformed/jetified-leakcanary-android-core-2.10/AndroidManifest.xml:50:17-69
+91-->[com.squareup.leakcanary:leakcanary-android-core:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/ed487e6ae02367961adaad3864327164/transformed/jetified-leakcanary-android-core-2.10/AndroidManifest.xml:50:25-66
+92
+93                <category android:name="android.intent.category.DEFAULT" />
+93-->[com.squareup.leakcanary:leakcanary-android-core:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/ed487e6ae02367961adaad3864327164/transformed/jetified-leakcanary-android-core-2.10/AndroidManifest.xml:52:17-76
+93-->[com.squareup.leakcanary:leakcanary-android-core:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/ed487e6ae02367961adaad3864327164/transformed/jetified-leakcanary-android-core-2.10/AndroidManifest.xml:52:27-73
+94                <category android:name="android.intent.category.BROWSABLE" />
+94-->[com.squareup.leakcanary:leakcanary-android-core:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/ed487e6ae02367961adaad3864327164/transformed/jetified-leakcanary-android-core-2.10/AndroidManifest.xml:53:17-78
+94-->[com.squareup.leakcanary:leakcanary-android-core:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/ed487e6ae02367961adaad3864327164/transformed/jetified-leakcanary-android-core-2.10/AndroidManifest.xml:53:27-75
+95
+96                <data android:scheme="file" />
+96-->[com.squareup.leakcanary:leakcanary-android-core:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/ed487e6ae02367961adaad3864327164/transformed/jetified-leakcanary-android-core-2.10/AndroidManifest.xml:55:17-47
+96-->[com.squareup.leakcanary:leakcanary-android-core:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/ed487e6ae02367961adaad3864327164/transformed/jetified-leakcanary-android-core-2.10/AndroidManifest.xml:55:23-44
+97                <data android:scheme="content" />
+97-->[com.squareup.leakcanary:leakcanary-android-core:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/ed487e6ae02367961adaad3864327164/transformed/jetified-leakcanary-android-core-2.10/AndroidManifest.xml:55:17-47
+97-->[com.squareup.leakcanary:leakcanary-android-core:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/ed487e6ae02367961adaad3864327164/transformed/jetified-leakcanary-android-core-2.10/AndroidManifest.xml:55:23-44
+98                <data android:mimeType="*/*" />
+98-->[com.squareup.leakcanary:leakcanary-android-core:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/ed487e6ae02367961adaad3864327164/transformed/jetified-leakcanary-android-core-2.10/AndroidManifest.xml:55:17-47
+99                <data android:host="*" />
+99-->[com.squareup.leakcanary:leakcanary-android-core:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/ed487e6ae02367961adaad3864327164/transformed/jetified-leakcanary-android-core-2.10/AndroidManifest.xml:55:17-47
+100                <data android:pathPattern=".*\\.hprof" />
+100-->[com.squareup.leakcanary:leakcanary-android-core:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/ed487e6ae02367961adaad3864327164/transformed/jetified-leakcanary-android-core-2.10/AndroidManifest.xml:55:17-47
+101                <data android:pathPattern=".*\\..*\\.hprof" />
+101-->[com.squareup.leakcanary:leakcanary-android-core:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/ed487e6ae02367961adaad3864327164/transformed/jetified-leakcanary-android-core-2.10/AndroidManifest.xml:55:17-47
+102                <data android:pathPattern=".*\\..*\\..*\\.hprof" />
+102-->[com.squareup.leakcanary:leakcanary-android-core:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/ed487e6ae02367961adaad3864327164/transformed/jetified-leakcanary-android-core-2.10/AndroidManifest.xml:55:17-47
+103                <data android:pathPattern=".*\\..*\\..*\\..*\\.hprof" />
+103-->[com.squareup.leakcanary:leakcanary-android-core:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/ed487e6ae02367961adaad3864327164/transformed/jetified-leakcanary-android-core-2.10/AndroidManifest.xml:55:17-47
+104                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\.hprof" />
+104-->[com.squareup.leakcanary:leakcanary-android-core:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/ed487e6ae02367961adaad3864327164/transformed/jetified-leakcanary-android-core-2.10/AndroidManifest.xml:55:17-47
+105                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\.hprof" />
+105-->[com.squareup.leakcanary:leakcanary-android-core:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/ed487e6ae02367961adaad3864327164/transformed/jetified-leakcanary-android-core-2.10/AndroidManifest.xml:55:17-47
+106                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\.hprof" />
+106-->[com.squareup.leakcanary:leakcanary-android-core:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/ed487e6ae02367961adaad3864327164/transformed/jetified-leakcanary-android-core-2.10/AndroidManifest.xml:55:17-47
+107                <!--
+108            Since hprof isn't a standard MIME type, we have to declare such patterns.
+109            Most file providers will generate URIs including their own package name,
+110            which contains `.` characters that must be explicitly escaped in pathPattern.
+111            @see https://stackoverflow.com/a/31028507/703646
+112                -->
+113            </intent-filter>
+114        </activity>
+115
+116        <activity-alias
+116-->[com.squareup.leakcanary:leakcanary-android-core:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/ed487e6ae02367961adaad3864327164/transformed/jetified-leakcanary-android-core-2.10/AndroidManifest.xml:75:9-92:26
+117            android:name="leakcanary.internal.activity.LeakLauncherActivity"
+117-->[com.squareup.leakcanary:leakcanary-android-core:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/ed487e6ae02367961adaad3864327164/transformed/jetified-leakcanary-android-core-2.10/AndroidManifest.xml:76:13-77
+118            android:banner="@drawable/leak_canary_tv_icon"
+118-->[com.squareup.leakcanary:leakcanary-android-core:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/ed487e6ae02367961adaad3864327164/transformed/jetified-leakcanary-android-core-2.10/AndroidManifest.xml:77:13-59
+119            android:enabled="@bool/leak_canary_add_launcher_icon"
+119-->[com.squareup.leakcanary:leakcanary-android-core:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/ed487e6ae02367961adaad3864327164/transformed/jetified-leakcanary-android-core-2.10/AndroidManifest.xml:78:13-66
+120            android:exported="true"
+120-->[com.squareup.leakcanary:leakcanary-android-core:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/ed487e6ae02367961adaad3864327164/transformed/jetified-leakcanary-android-core-2.10/AndroidManifest.xml:79:13-36
+121            android:icon="@mipmap/leak_canary_icon"
+121-->[com.squareup.leakcanary:leakcanary-android-core:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/ed487e6ae02367961adaad3864327164/transformed/jetified-leakcanary-android-core-2.10/AndroidManifest.xml:80:13-52
+122            android:label="@string/leak_canary_display_activity_label"
+122-->[com.squareup.leakcanary:leakcanary-android-core:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/ed487e6ae02367961adaad3864327164/transformed/jetified-leakcanary-android-core-2.10/AndroidManifest.xml:81:13-71
+123            android:targetActivity="leakcanary.internal.activity.LeakActivity"
+123-->[com.squareup.leakcanary:leakcanary-android-core:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/ed487e6ae02367961adaad3864327164/transformed/jetified-leakcanary-android-core-2.10/AndroidManifest.xml:82:13-79
+124            android:taskAffinity="com.squareup.leakcanary.com.example.easylisten1"
+124-->[com.squareup.leakcanary:leakcanary-android-core:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/ed487e6ae02367961adaad3864327164/transformed/jetified-leakcanary-android-core-2.10/AndroidManifest.xml:83:13-76
+125            android:theme="@style/leak_canary_LeakCanary.Base" >
+125-->[com.squareup.leakcanary:leakcanary-android-core:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/ed487e6ae02367961adaad3864327164/transformed/jetified-leakcanary-android-core-2.10/AndroidManifest.xml:84:13-63
+126            <intent-filter>
+126-->[com.squareup.leakcanary:leakcanary-android-core:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/ed487e6ae02367961adaad3864327164/transformed/jetified-leakcanary-android-core-2.10/AndroidManifest.xml:85:13-91:29
+127                <action android:name="android.intent.action.MAIN" />
+127-->/Users/chenzhuohong01/AndroidStudioProjects/easyListen/homepage/src/main/AndroidManifest.xml:25:17-69
+127-->/Users/chenzhuohong01/AndroidStudioProjects/easyListen/homepage/src/main/AndroidManifest.xml:25:25-66
+128
+129                <category android:name="android.intent.category.LAUNCHER" />
+129-->/Users/chenzhuohong01/AndroidStudioProjects/easyListen/homepage/src/main/AndroidManifest.xml:27:17-77
+129-->/Users/chenzhuohong01/AndroidStudioProjects/easyListen/homepage/src/main/AndroidManifest.xml:27:27-74
+130                <!-- Android TV launcher intent -->
+131                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+131-->[com.squareup.leakcanary:leakcanary-android-core:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/ed487e6ae02367961adaad3864327164/transformed/jetified-leakcanary-android-core-2.10/AndroidManifest.xml:90:17-86
+131-->[com.squareup.leakcanary:leakcanary-android-core:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/ed487e6ae02367961adaad3864327164/transformed/jetified-leakcanary-android-core-2.10/AndroidManifest.xml:90:27-83
+132            </intent-filter>
+133        </activity-alias>
+134
+135        <activity
+135-->[com.squareup.leakcanary:leakcanary-android-core:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/ed487e6ae02367961adaad3864327164/transformed/jetified-leakcanary-android-core-2.10/AndroidManifest.xml:94:9-100:68
+136            android:name="leakcanary.internal.RequestPermissionActivity"
+136-->[com.squareup.leakcanary:leakcanary-android-core:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/ed487e6ae02367961adaad3864327164/transformed/jetified-leakcanary-android-core-2.10/AndroidManifest.xml:95:13-73
+137            android:excludeFromRecents="true"
+137-->[com.squareup.leakcanary:leakcanary-android-core:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/ed487e6ae02367961adaad3864327164/transformed/jetified-leakcanary-android-core-2.10/AndroidManifest.xml:96:13-46
+138            android:icon="@mipmap/leak_canary_icon"
+138-->[com.squareup.leakcanary:leakcanary-android-core:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/ed487e6ae02367961adaad3864327164/transformed/jetified-leakcanary-android-core-2.10/AndroidManifest.xml:97:13-52
+139            android:label="@string/leak_canary_storage_permission_activity_label"
+139-->[com.squareup.leakcanary:leakcanary-android-core:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/ed487e6ae02367961adaad3864327164/transformed/jetified-leakcanary-android-core-2.10/AndroidManifest.xml:98:13-82
+140            android:taskAffinity="com.squareup.leakcanary.com.example.easylisten1"
+140-->[com.squareup.leakcanary:leakcanary-android-core:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/ed487e6ae02367961adaad3864327164/transformed/jetified-leakcanary-android-core-2.10/AndroidManifest.xml:99:13-76
+141            android:theme="@style/leak_canary_Theme.Transparent" />
+141-->[com.squareup.leakcanary:leakcanary-android-core:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/ed487e6ae02367961adaad3864327164/transformed/jetified-leakcanary-android-core-2.10/AndroidManifest.xml:100:13-65
+142
+143        <receiver android:name="leakcanary.internal.NotificationReceiver" />
+143-->[com.squareup.leakcanary:leakcanary-android-core:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/ed487e6ae02367961adaad3864327164/transformed/jetified-leakcanary-android-core-2.10/AndroidManifest.xml:102:9-77
+143-->[com.squareup.leakcanary:leakcanary-android-core:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/ed487e6ae02367961adaad3864327164/transformed/jetified-leakcanary-android-core-2.10/AndroidManifest.xml:102:19-74
+144
+145        <provider
+145-->[androidx.emoji2:emoji2:1.2.0] /Users/chenzhuohong01/.gradle/caches/transforms-3/9eaa5499e5917bf161e9e1c1138b7d31/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
+146            android:name="androidx.startup.InitializationProvider"
+146-->[androidx.emoji2:emoji2:1.2.0] /Users/chenzhuohong01/.gradle/caches/transforms-3/9eaa5499e5917bf161e9e1c1138b7d31/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:25:13-67
+147            android:authorities="com.example.easylisten1.androidx-startup"
+147-->[androidx.emoji2:emoji2:1.2.0] /Users/chenzhuohong01/.gradle/caches/transforms-3/9eaa5499e5917bf161e9e1c1138b7d31/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:26:13-68
+148            android:exported="false" >
+148-->[androidx.emoji2:emoji2:1.2.0] /Users/chenzhuohong01/.gradle/caches/transforms-3/9eaa5499e5917bf161e9e1c1138b7d31/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:27:13-37
+149            <meta-data
+149-->[androidx.emoji2:emoji2:1.2.0] /Users/chenzhuohong01/.gradle/caches/transforms-3/9eaa5499e5917bf161e9e1c1138b7d31/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
+150                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+150-->[androidx.emoji2:emoji2:1.2.0] /Users/chenzhuohong01/.gradle/caches/transforms-3/9eaa5499e5917bf161e9e1c1138b7d31/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:30:17-75
+151                android:value="androidx.startup" />
+151-->[androidx.emoji2:emoji2:1.2.0] /Users/chenzhuohong01/.gradle/caches/transforms-3/9eaa5499e5917bf161e9e1c1138b7d31/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:31:17-49
+152            <meta-data
+152-->[androidx.lifecycle:lifecycle-process:2.5.0] /Users/chenzhuohong01/.gradle/caches/transforms-3/20094a7a661d24426efc7cd2df6d72f2/transformed/jetified-lifecycle-process-2.5.0/AndroidManifest.xml:31:13-33:52
+153                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+153-->[androidx.lifecycle:lifecycle-process:2.5.0] /Users/chenzhuohong01/.gradle/caches/transforms-3/20094a7a661d24426efc7cd2df6d72f2/transformed/jetified-lifecycle-process-2.5.0/AndroidManifest.xml:32:17-78
+154                android:value="androidx.startup" />
+154-->[androidx.lifecycle:lifecycle-process:2.5.0] /Users/chenzhuohong01/.gradle/caches/transforms-3/20094a7a661d24426efc7cd2df6d72f2/transformed/jetified-lifecycle-process-2.5.0/AndroidManifest.xml:33:17-49
+155        </provider>
+156
+157        <service
+157-->[androidx.room:room-runtime:2.4.3] /Users/chenzhuohong01/.gradle/caches/transforms-3/95923d3386b280608cf631337ad8cbd5/transformed/room-runtime-2.4.3/AndroidManifest.xml:25:9-28:40
+158            android:name="androidx.room.MultiInstanceInvalidationService"
+158-->[androidx.room:room-runtime:2.4.3] /Users/chenzhuohong01/.gradle/caches/transforms-3/95923d3386b280608cf631337ad8cbd5/transformed/room-runtime-2.4.3/AndroidManifest.xml:26:13-74
+159            android:directBootAware="true"
+159-->[androidx.room:room-runtime:2.4.3] /Users/chenzhuohong01/.gradle/caches/transforms-3/95923d3386b280608cf631337ad8cbd5/transformed/room-runtime-2.4.3/AndroidManifest.xml:27:13-43
+160            android:exported="false" />
+160-->[androidx.room:room-runtime:2.4.3] /Users/chenzhuohong01/.gradle/caches/transforms-3/95923d3386b280608cf631337ad8cbd5/transformed/room-runtime-2.4.3/AndroidManifest.xml:28:13-37
+161
+162        <provider
+162-->[com.squareup.leakcanary:leakcanary-object-watcher-android:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/af3986a74fe4ead5f7656e109f4a4b48/transformed/jetified-leakcanary-object-watcher-android-2.10/AndroidManifest.xml:8:9-12:40
+163            android:name="leakcanary.internal.MainProcessAppWatcherInstaller"
+163-->[com.squareup.leakcanary:leakcanary-object-watcher-android:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/af3986a74fe4ead5f7656e109f4a4b48/transformed/jetified-leakcanary-object-watcher-android-2.10/AndroidManifest.xml:9:13-78
+164            android:authorities="com.example.easylisten1.leakcanary-installer"
+164-->[com.squareup.leakcanary:leakcanary-object-watcher-android:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/af3986a74fe4ead5f7656e109f4a4b48/transformed/jetified-leakcanary-object-watcher-android-2.10/AndroidManifest.xml:10:13-72
+165            android:enabled="@bool/leak_canary_watcher_auto_install"
+165-->[com.squareup.leakcanary:leakcanary-object-watcher-android:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/af3986a74fe4ead5f7656e109f4a4b48/transformed/jetified-leakcanary-object-watcher-android-2.10/AndroidManifest.xml:11:13-69
+166            android:exported="false" />
+166-->[com.squareup.leakcanary:leakcanary-object-watcher-android:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/af3986a74fe4ead5f7656e109f4a4b48/transformed/jetified-leakcanary-object-watcher-android-2.10/AndroidManifest.xml:12:13-37
+167        <provider
+167-->[com.squareup.leakcanary:plumber-android:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/3f02b7963fa8d13757dd223dae80abf4/transformed/jetified-plumber-android-2.10/AndroidManifest.xml:8:9-12:40
+168            android:name="leakcanary.internal.PlumberInstaller"
+168-->[com.squareup.leakcanary:plumber-android:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/3f02b7963fa8d13757dd223dae80abf4/transformed/jetified-plumber-android-2.10/AndroidManifest.xml:9:13-64
+169            android:authorities="com.example.easylisten1.plumber-installer"
+169-->[com.squareup.leakcanary:plumber-android:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/3f02b7963fa8d13757dd223dae80abf4/transformed/jetified-plumber-android-2.10/AndroidManifest.xml:10:13-69
+170            android:enabled="@bool/leak_canary_plumber_auto_install"
+170-->[com.squareup.leakcanary:plumber-android:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/3f02b7963fa8d13757dd223dae80abf4/transformed/jetified-plumber-android-2.10/AndroidManifest.xml:11:13-69
+171            android:exported="false" />
+171-->[com.squareup.leakcanary:plumber-android:2.10] /Users/chenzhuohong01/.gradle/caches/transforms-3/3f02b7963fa8d13757dd223dae80abf4/transformed/jetified-plumber-android-2.10/AndroidManifest.xml:12:13-37
+172    </application>
+173
+174</manifest>

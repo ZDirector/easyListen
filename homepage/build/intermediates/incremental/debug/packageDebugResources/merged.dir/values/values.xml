@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="blue">#FF1A67A5</color>
+    <color name="little_black">#373839</color>
+    <color name="mike_white">#ECEDF1</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="yellow">#89C215</color>
+    <string name="app_name">My Application</string>
+    <string name="ban">某某榜</string>
+    <string name="care">关注</string>
+    <string name="features">特色</string>
+    <string name="features_top">特色</string>
+    <string name="global_top">全球</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home_toplist_loading_tip">加载中</string>
+    <string name="language_top">语种</string>
+    <string name="left_parentheses">(</string>
+    <string name="line">-</string>
+    <string name="list">排行榜</string>
+    <string name="list_top">榜单</string>
+    <string name="mine">我的</string>
+    <string name="more">更多〉</string>
+    <string name="more_symbol">〉</string>
+    <string name="music">音乐</string>
+    <string name="offical_top">官方榜</string>
+    <string name="official_top">官方榜</string>
+    <string name="one">1.</string>
+    <string name="personal_fm">私人FM</string>
+    <string name="play_all">播放全部</string>
+    <string name="play_square">歌单广场</string>
+    <string name="playlist">歌单</string>
+    <string name="recommended">每日推荐</string>
+    <string name="recommended_playlist">推荐歌单</string>
+    <string name="right_parentheses">)</string>
+    <string name="select">精选</string>
+    <string name="select_top">精选</string>
+    <string name="style">曲风</string>
+    <string name="style_top">曲风</string>
+    <string name="tab_official">官方</string>
+    <string name="tap_global">全球</string>
+    <string name="test">1</string>
+    <string name="three">3.</string>
+    <string name="title_activity_top_list">TopListActivity</string>
+    <string name="two">2.</string>
+    <string name="video">视频</string>
+    <style name="Theme.EasyListen" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/white</item>
+        
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        
+    </style>
+</resources>

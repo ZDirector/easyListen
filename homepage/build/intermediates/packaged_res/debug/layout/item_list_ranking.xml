@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+                                                        
+
+    
+
+           
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#99EAEDEF" android:tag="layout/item_list_ranking_0" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginVertical="5dp"
+            android:background="@drawable/shape_list_ranking_details"
+            android:elevation="3dp"
+            android:translationZ="1dp">
+
+            <TextView
+                android:layout_marginStart="10dp"
+                android:id="@+id/tv_rank_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginTop="12dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_more_show"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/more_symbol"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:layout_marginTop="12dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/tv_rank_title"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_list_top1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_rank_title">
+
+                <ImageView
+                    android:id="@+id/iv_list_top1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:src="@drawable/ic_round_solid_1"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_list1_top1"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="4dp"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_list1_top2"
+                    app:layout_constraintStart_toEndOf="@+id/iv_list_top1"
+                    app:layout_constraintTop_toTopOf="@id/iv_list_top1" />
+
+                <TextView
+                    android:id="@+id/tv_list1_top2"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginHorizontal="4dp"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_list_top1"
+                    app:layout_constraintStart_toEndOf="@+id/iv_list_top1"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_list1_top1" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_list_top2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cl_list_top1">
+
+                <ImageView
+                    android:id="@+id/iv_list_top2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:src="@drawable/ic_round_solid_2"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_list2_top1"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginHorizontal="4dp"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_list2_top2"
+                    app:layout_constraintStart_toEndOf="@+id/iv_list_top2"
+                    app:layout_constraintTop_toTopOf="@id/iv_list_top2" />
+
+                <TextView
+                    android:id="@+id/tv_list2_top2"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="4dp"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_list_top2"
+                    app:layout_constraintStart_toEndOf="@+id/iv_list_top2"
+                    android:layout_marginBottom="4dp"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_list2_top1" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_list_top3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cl_list_top2">
+
+                <ImageView
+                    android:id="@+id/iv_list_top3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:src="@drawable/ic_round_solid_3"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_list3_top1"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginHorizontal="4dp"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_list3_top2"
+                    app:layout_constraintStart_toEndOf="@+id/iv_list_top3"
+                    app:layout_constraintTop_toTopOf="@id/iv_list_top3" />
+
+                <TextView
+                    android:id="@+id/tv_list3_top2"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginHorizontal="4dp"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_list_top3"
+                    app:layout_constraintStart_toEndOf="@+id/iv_list_top3"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_list3_top1" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+         

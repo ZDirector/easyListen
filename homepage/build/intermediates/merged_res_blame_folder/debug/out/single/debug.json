@@ -1,0 +1,274 @@
+[
+    {
+        "merged": "com.example.homepage-merged_res-69:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.homepage-main-71:/mipmap-hdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/layout_fragment_mine.xml.flat",
+        "source": "com.example.homepage-main-71:/layout/fragment_mine.xml"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/drawable_ic_round_solid_2.xml.flat",
+        "source": "com.example.homepage-main-71:/drawable/ic_round_solid_2.xml"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.homepage-main-71:/mipmap-xhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/drawable_star.jpg.flat",
+        "source": "com.example.homepage-main-71:/drawable/star.jpg"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/menu_menu_main.xml.flat",
+        "source": "com.example.homepage-main-71:/menu/menu_main.xml"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/layout_activity_home.xml.flat",
+        "source": "com.example.homepage-main-71:/layout/activity_home.xml"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.homepage-main-71:/mipmap-xxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/layout_fragment_music.xml.flat",
+        "source": "com.example.homepage-main-71:/layout/fragment_music.xml"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/drawable_ic_baseline_share_24.xml.flat",
+        "source": "com.example.homepage-main-71:/drawable/ic_baseline_share_24.xml"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/layout_item_top_other.xml.flat",
+        "source": "com.example.homepage-main-71:/layout/item_top_other.xml"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/drawable_shape_square_comment.xml.flat",
+        "source": "com.example.homepage-main-71:/drawable/shape_square_comment.xml"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/drawable_ic_baseline_play_circle_outline_24.xml.flat",
+        "source": "com.example.homepage-main-71:/drawable/ic_baseline_play_circle_outline_24.xml"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/layout_floating_play_control.xml.flat",
+        "source": "com.example.homepage-main-71:/layout/floating_play_control.xml"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/drawable_progress_bar_states.xml.flat",
+        "source": "com.example.homepage-main-71:/drawable/progress_bar_states.xml"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/drawable_ic_music.xml.flat",
+        "source": "com.example.homepage-main-71:/drawable/ic_music.xml"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "com.example.homepage-main-71:/mipmap-hdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/drawable-v24_ic_launcher_foreground.xml.flat",
+        "source": "com.example.homepage-main-71:/drawable-v24/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.homepage-main-71:/mipmap-xxxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/drawable_splash_pic.jpg.flat",
+        "source": "com.example.homepage-main-71:/drawable/splash_pic.jpg"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/drawable_ic_share.xml.flat",
+        "source": "com.example.homepage-main-71:/drawable/ic_share.xml"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/drawable_ic_round_solid_3.xml.flat",
+        "source": "com.example.homepage-main-71:/drawable/ic_round_solid_3.xml"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/drawable_ic_care.xml.flat",
+        "source": "com.example.homepage-main-71:/drawable/ic_care.xml"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/drawable_ic_video.xml.flat",
+        "source": "com.example.homepage-main-71:/drawable/ic_video.xml"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.example.homepage-main-71:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/drawable_shape_oval.xml.flat",
+        "source": "com.example.homepage-main-71:/drawable/shape_oval.xml"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/drawable_selector_bottom.xml.flat",
+        "source": "com.example.homepage-main-71:/drawable/selector_bottom.xml"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/drawable_shape_more.xml.flat",
+        "source": "com.example.homepage-main-71:/drawable/shape_more.xml"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.homepage-main-71:/mipmap-mdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.example.homepage-main-71:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/drawable_shape_oral_music_list.xml.flat",
+        "source": "com.example.homepage-main-71:/drawable/shape_oral_music_list.xml"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/layout_activity_top_list.xml.flat",
+        "source": "com.example.homepage-main-71:/layout/activity_top_list.xml"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/layout_fragment_term_service_dialog.xml.flat",
+        "source": "com.example.homepage-main-71:/layout/fragment_term_service_dialog.xml"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/layout_activity_splash.xml.flat",
+        "source": "com.example.homepage-main-71:/layout/activity_splash.xml"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/layout_fragment_video.xml.flat",
+        "source": "com.example.homepage-main-71:/layout/fragment_video.xml"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "com.example.homepage-main-71:/mipmap-xhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "com.example.homepage-main-71:/mipmap-mdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/layout_activity_square_detail.xml.flat",
+        "source": "com.example.homepage-main-71:/layout/activity_square_detail.xml"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.example.homepage-main-71:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/drawable_ic_comment.xml.flat",
+        "source": "com.example.homepage-main-71:/drawable/ic_comment.xml"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/drawable_ic_control_more_list.xml.flat",
+        "source": "com.example.homepage-main-71:/drawable/ic_control_more_list.xml"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/drawable_shape_agreement_service.xml.flat",
+        "source": "com.example.homepage-main-71:/drawable/shape_agreement_service.xml"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/layout_activity_web.xml.flat",
+        "source": "com.example.homepage-main-71:/layout/activity_web.xml"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/layout_toolbar_text.xml.flat",
+        "source": "com.example.homepage-main-71:/layout/toolbar_text.xml"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "com.example.homepage-main-71:/mipmap-xxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/layout_fragment_care.xml.flat",
+        "source": "com.example.homepage-main-71:/layout/fragment_care.xml"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/layout_foot_layout.xml.flat",
+        "source": "com.example.homepage-main-71:/layout/foot_layout.xml"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/drawable_ic_4gf_playcircle.xml.flat",
+        "source": "com.example.homepage-main-71:/drawable/ic_4gf_playcircle.xml"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/layout_item_top_official.xml.flat",
+        "source": "com.example.homepage-main-71:/layout/item_top_official.xml"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "com.example.homepage-main-71:/mipmap-xxxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/drawable_ic_baseline_arrow_back_24.xml.flat",
+        "source": "com.example.homepage-main-71:/drawable/ic_baseline_arrow_back_24.xml"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/drawable_ic_playlist.xml.flat",
+        "source": "com.example.homepage-main-71:/drawable/ic_playlist.xml"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/drawable_ic_recommomed.xml.flat",
+        "source": "com.example.homepage-main-71:/drawable/ic_recommomed.xml"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/drawable_ic_mine.xml.flat",
+        "source": "com.example.homepage-main-71:/drawable/ic_mine.xml"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/drawable_ic_round_solid_1.xml.flat",
+        "source": "com.example.homepage-main-71:/drawable/ic_round_solid_1.xml"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/drawable_ic_control_play.xml.flat",
+        "source": "com.example.homepage-main-71:/drawable/ic_control_play.xml"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/drawable_ic_list.xml.flat",
+        "source": "com.example.homepage-main-71:/drawable/ic_list.xml"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/layout_fragment_square_recommend.xml.flat",
+        "source": "com.example.homepage-main-71:/layout/fragment_square_recommend.xml"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/drawable_shape_control_circle.xml.flat",
+        "source": "com.example.homepage-main-71:/drawable/shape_control_circle.xml"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/layout_fragment_play_square_detail.xml.flat",
+        "source": "com.example.homepage-main-71:/layout/fragment_play_square_detail.xml"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/drawable_shape_list_ranking_details.xml.flat",
+        "source": "com.example.homepage-main-71:/drawable/shape_list_ranking_details.xml"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/layout_item_list_ranking.xml.flat",
+        "source": "com.example.homepage-main-71:/layout/item_list_ranking.xml"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/layout_activity_content.xml.flat",
+        "source": "com.example.homepage-main-71:/layout/activity_content.xml"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/drawable_shape_top_list_official.xml.flat",
+        "source": "com.example.homepage-main-71:/drawable/shape_top_list_official.xml"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/layout_item_square_list.xml.flat",
+        "source": "com.example.homepage-main-71:/layout/item_square_list.xml"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/layout_activity_song_square.xml.flat",
+        "source": "com.example.homepage-main-71:/layout/activity_song_square.xml"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/drawable_ic_personal_fm.xml.flat",
+        "source": "com.example.homepage-main-71:/drawable/ic_personal_fm.xml"
+    },
+    {
+        "merged": "com.example.homepage-merged_res-69:/xml_network_security_config.xml.flat",
+        "source": "com.example.homepage-main-71:/xml/network_security_config.xml"
+    }
+]

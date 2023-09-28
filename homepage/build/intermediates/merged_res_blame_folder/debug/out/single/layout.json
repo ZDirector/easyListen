@@ -1,0 +1,86 @@
+[
+    {
+        "merged": "com.example.homepage-mergeDebugResources-68:/layout/item_top_other.xml",
+        "source": "com.example.homepage-main-71:/layout/item_top_other.xml"
+    },
+    {
+        "merged": "com.example.homepage-mergeDebugResources-68:/layout/item_square_list.xml",
+        "source": "com.example.homepage-main-71:/layout/item_square_list.xml"
+    },
+    {
+        "merged": "com.example.homepage-mergeDebugResources-68:/layout/activity_splash.xml",
+        "source": "com.example.homepage-main-71:/layout/activity_splash.xml"
+    },
+    {
+        "merged": "com.example.homepage-mergeDebugResources-68:/layout/activity_content.xml",
+        "source": "com.example.homepage-main-71:/layout/activity_content.xml"
+    },
+    {
+        "merged": "com.example.homepage-mergeDebugResources-68:/layout/fragment_square_recommend.xml",
+        "source": "com.example.homepage-main-71:/layout/fragment_square_recommend.xml"
+    },
+    {
+        "merged": "com.example.homepage-mergeDebugResources-68:/layout/fragment_term_service_dialog.xml",
+        "source": "com.example.homepage-main-71:/layout/fragment_term_service_dialog.xml"
+    },
+    {
+        "merged": "com.example.homepage-mergeDebugResources-68:/layout/activity_top_list.xml",
+        "source": "com.example.homepage-main-71:/layout/activity_top_list.xml"
+    },
+    {
+        "merged": "com.example.homepage-mergeDebugResources-68:/layout/activity_home.xml",
+        "source": "com.example.homepage-main-71:/layout/activity_home.xml"
+    },
+    {
+        "merged": "com.example.homepage-mergeDebugResources-68:/layout/item_top_official.xml",
+        "source": "com.example.homepage-main-71:/layout/item_top_official.xml"
+    },
+    {
+        "merged": "com.example.homepage-mergeDebugResources-68:/layout/floating_play_control.xml",
+        "source": "com.example.homepage-main-71:/layout/floating_play_control.xml"
+    },
+    {
+        "merged": "com.example.homepage-mergeDebugResources-68:/layout/fragment_video.xml",
+        "source": "com.example.homepage-main-71:/layout/fragment_video.xml"
+    },
+    {
+        "merged": "com.example.homepage-mergeDebugResources-68:/layout/fragment_music.xml",
+        "source": "com.example.homepage-main-71:/layout/fragment_music.xml"
+    },
+    {
+        "merged": "com.example.homepage-mergeDebugResources-68:/layout/fragment_play_square_detail.xml",
+        "source": "com.example.homepage-main-71:/layout/fragment_play_square_detail.xml"
+    },
+    {
+        "merged": "com.example.homepage-mergeDebugResources-68:/layout/activity_square_detail.xml",
+        "source": "com.example.homepage-main-71:/layout/activity_square_detail.xml"
+    },
+    {
+        "merged": "com.example.homepage-mergeDebugResources-68:/layout/toolbar_text.xml",
+        "source": "com.example.homepage-main-71:/layout/toolbar_text.xml"
+    },
+    {
+        "merged": "com.example.homepage-mergeDebugResources-68:/layout/fragment_care.xml",
+        "source": "com.example.homepage-main-71:/layout/fragment_care.xml"
+    },
+    {
+        "merged": "com.example.homepage-mergeDebugResources-68:/layout/activity_song_square.xml",
+        "source": "com.example.homepage-main-71:/layout/activity_song_square.xml"
+    },
+    {
+        "merged": "com.example.homepage-mergeDebugResources-68:/layout/fragment_mine.xml",
+        "source": "com.example.homepage-main-71:/layout/fragment_mine.xml"
+    },
+    {
+        "merged": "com.example.homepage-mergeDebugResources-68:/layout/activity_web.xml",
+        "source": "com.example.homepage-main-71:/layout/activity_web.xml"
+    },
+    {
+        "merged": "com.example.homepage-mergeDebugResources-68:/layout/foot_layout.xml",
+        "source": "com.example.homepage-main-71:/layout/foot_layout.xml"
+    },
+    {
+        "merged": "com.example.homepage-mergeDebugResources-68:/layout/item_list_ranking.xml",
+        "source": "com.example.homepage-main-71:/layout/item_list_ranking.xml"
+    }
+]

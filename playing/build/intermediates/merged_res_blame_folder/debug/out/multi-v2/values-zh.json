@@ -1,0 +1,53 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.example.playing-mergeDebugResources-46:/values-zh/values-zh.xml",
+            "map": [
+                {
+                    "source": "/Users/chenzhuohong01/.gradle/caches/transforms-3/2d48286d6aff82294a7c52807d411163/transformed/jetified-refresh-footer-classics-2.0.5/res/values-zh/values-zh.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "55,106,157,210,265,319,379",
+                        "endColumns": "50,50,52,54,53,59,53",
+                        "endOffsets": "101,152,205,260,314,374,428"
+                    },
+                    "to": {
+                        "startLines": "4,5,6,7,8,9,10",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "255,306,357,410,465,519,579",
+                        "endColumns": "50,50,52,54,53,59,53",
+                        "endOffsets": "301,352,405,460,514,574,628"
+                    }
+                },
+                {
+                    "source": "/Users/chenzhuohong01/.gradle/caches/transforms-3/e0a23d36b818d07a2e78232731638ee2/transformed/jetified-refresh-header-classics-2.0.5/res/values-zh/values-zh.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,106,157,214,268,324,378,434",
+                        "endColumns": "50,50,56,53,55,53,55,60",
+                        "endOffsets": "101,152,209,263,319,373,429,490"
+                    },
+                    "to": {
+                        "startLines": "11,12,13,14,15,16,17,18",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "633,684,735,792,846,902,956,1012",
+                        "endColumns": "50,50,56,53,55,53,55,60",
+                        "endOffsets": "679,730,787,841,897,951,1007,1068"
+                    }
+                },
+                {
+                    "source": "/Users/chenzhuohong01/.gradle/caches/transforms-3/00d85cd1f7173421f421af6ee0ccc99a/transformed/jetified-refresh-layout-kernel-2.0.5/res/values-zh/values-zh.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,163",
+                        "endColumns": "107,91",
+                        "endOffsets": "158,250"
+                    }
+                }
+            ]
+        }
+    ]
+}

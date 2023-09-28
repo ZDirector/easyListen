@@ -1,0 +1,30 @@
+R_DEF: Internal format may change without notice
+local
+color black
+color gray
+color mike_white
+color purple_200
+color purple_500
+color purple_700
+color teal_200
+color teal_700
+color white
+drawable ic_baseline_arrow_back_ios_24
+drawable ic_last
+drawable ic_launcher_background
+drawable ic_launcher_foreground
+drawable ic_next
+drawable ic_play
+id ll_bottom_control
+id tv_singer
+id tv_song_name
+id view_back
+id view_bottom
+id view_top
+layout activity_play
+mipmap ic_launcher
+mipmap ic_launcher_round
+string app_name
+string singer_name
+string song_name
+style Theme.EasyListen
