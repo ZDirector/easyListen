@@ -4,7 +4,7 @@ import android.app.Service
 import android.content.Intent
 import android.os.Binder
 import android.os.IBinder
-import com.example.common.bean.searchbean.Song
+import com.example.common.bean.searchBean.Song
 import com.example.common.music.abs.MusicControl
 import com.example.common.music.abs.MusicPlayer
 import com.example.common.music.data.Item

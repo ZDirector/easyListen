@@ -12,7 +12,8 @@
         android:roundIcon="@drawable/ic_icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.EasyListen"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true"
+        android:screenOrientation="portrait">
         <activity
             android:name=".ui.MusicCommentActivity"
             android:exported="true">

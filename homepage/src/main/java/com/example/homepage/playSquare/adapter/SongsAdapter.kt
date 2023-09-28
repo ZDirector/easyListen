@@ -9,7 +9,7 @@ import com.example.search.R
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.example.common.adapter.DataClickListener
-import com.example.common.bean.searchbean.Song
+import com.example.common.bean.searchBean.Song
 
 
 class SongsAdapter : BaseQuickAdapter<Song, BaseViewHolder>(R.layout.item_search_music_list) {

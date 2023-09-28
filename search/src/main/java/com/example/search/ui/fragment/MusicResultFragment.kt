@@ -5,7 +5,6 @@ import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.common.baseui.BaseFragment
-import com.example.common.utils.LogUtil
 import com.example.common.utils.showToast
 import com.example.search.BR
 import com.example.search.R
@@ -56,7 +55,8 @@ class MusicResultFragment : BaseFragment<FragmentMusicResultBinding,MusicResultV
             if (it.isNullOrEmpty()){
                 showToast("没有更多数据啦!")
                 binding.musicResultListRefresh.finishLoadMore()
-                viewModel.offset--
+                if (viewModel.offset > 0) viewModel.offset--
+                else activityModel.viewMode.postValue(activityModel.viewMode.value!! - 1)
             }else{
                 val adapter : MusicResultListAdapter
                 if (binding.musicResultList.adapter == null){
@@ -87,5 +87,4 @@ class MusicResultFragment : BaseFragment<FragmentMusicResultBinding,MusicResultV
             activityModel.isSearchResultFinishLoading(true)
         }
     }
-
 }

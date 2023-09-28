@@ -2,27 +2,26 @@ package com.example.homepage.music.fragment
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.example.homepage.R
-import com.example.homepage.playSquare.SongSquareActivity
 import com.example.homepage.activity.WebActivity
 import com.example.homepage.databinding.FragmentMusicBinding
 import com.example.homepage.music.adapter.RankListAdapter
 import com.example.homepage.music.bean.Banner
 import com.example.homepage.music.bean.Rank
 import com.example.homepage.music.viewmodel.MusicViewModel
+import com.example.homepage.playSquare.SongSquareActivity
 import com.example.homepage.playSquare.SquareDetailActivity
 import com.example.homepage.toplist.ui.activity.TopListActivity
 import com.youth.banner.adapter.BannerImageAdapter
@@ -81,17 +80,15 @@ class MusicFragment : Fragment(), OnBannerListener<Banner> {
         initRecommendedList()
         mBinding.apply {
             val layoutManager = LinearLayoutManager(context)
-            layoutManager.orientation = LinearLayout.HORIZONTAL
+            layoutManager.orientation = RecyclerView.HORIZONTAL
             rvListRank.layoutManager = layoutManager
             mRankAdapter = RankListAdapter(mRanks)
             rvListRank.adapter = mRankAdapter
-                mViewModel.mRankList.observe(viewLifecycleOwner) {
-                    mRanks.clear()
-                    mRanks.addAll(it)
-                    mRankAdapter.notifyDataSetChanged()
-                }
-
-
+            mViewModel.mRankList.observe(viewLifecycleOwner) {
+                mRanks.clear()
+                mRanks.addAll(it)
+                mRankAdapter.notifyDataSetChanged()
+            }
         }
     }
 

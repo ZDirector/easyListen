@@ -1,6 +1,6 @@
 package com.example.homepage.playSquare.bean
 
-import com.example.common.bean.searchbean.Song
+import com.example.common.bean.searchBean.Song
 
 
 data class PlaylistSongsResponse(

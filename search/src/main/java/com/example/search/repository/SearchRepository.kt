@@ -1,6 +1,6 @@
 package com.example.search.repository
 
-import com.example.common.bean.searchbean.SearchHistoryBean
+import com.example.common.bean.searchBean.SearchHistoryBean
 import com.example.common.db.EasyListenDB
 import com.example.search.network.SearchNetWork
 

@@ -13,14 +13,11 @@
         android:roundIcon="@drawable/ic_icon"
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
+        android:screenOrientation="portrait"
         tools:targetApi="n">
         <activity
             android:name=".ui.SearchActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

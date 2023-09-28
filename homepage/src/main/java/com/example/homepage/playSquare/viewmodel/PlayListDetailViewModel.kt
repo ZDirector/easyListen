@@ -9,7 +9,7 @@ import androidx.lifecycle.viewModelScope
 import com.bumptech.glide.Glide
 import com.example.common.baseui.BaseViewModel
 import com.example.common.bean.home.Playlist
-import com.example.common.bean.searchbean.Song
+import com.example.common.bean.searchBean.Song
 import com.example.common.utils.MyApplication
 import com.example.homepage.R
 import com.example.homepage.playSquare.repository.SquareRepository

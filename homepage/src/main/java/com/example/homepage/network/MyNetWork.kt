@@ -1,5 +1,6 @@
 package com.example.homepage.network
 
+import com.example.common.network.RetrofitClient
 import com.example.homepage.music.service.BannerService
 import com.example.homepage.music.service.RankListService
 import com.example.homepage.music.service.RecoListService
@@ -7,9 +8,9 @@ import com.example.homepage.playSquare.service.SquareService
 import retrofit2.create
 
 object MyNetWork {
-    private val bannerService = ServiceCreator.retrofit.create<BannerService>()
-    private val recommendedPlaylistService = ServiceCreator.retrofit.create<RecoListService>()
-    private val rankListService = ServiceCreator.retrofit.create<RankListService>()
+    private val bannerService = RetrofitClient.retrofit.create<BannerService>()
+    private val recommendedPlaylistService = RetrofitClient.retrofit.create<RecoListService>()
+    private val rankListService = RetrofitClient.retrofit.create<RankListService>()
     suspend fun getBanner() =
         bannerService.getBanner()
 
@@ -18,7 +19,7 @@ object MyNetWork {
     suspend fun getRankResponse() = rankListService.getRankListResponse()
 
 
-    private val squareService = ServiceCreator.retrofit.create<SquareService>()
+    private val squareService = RetrofitClient.retrofit.create<SquareService>()
 
     suspend fun getTags() = squareService.getTags()
 

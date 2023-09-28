@@ -4,8 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.common.baseui.BaseViewModel
-import com.example.common.bean.searchbean.Mv
-import com.example.common.bean.searchbean.Userprofile
+import com.example.common.bean.searchBean.Userprofile
 import com.example.common.network.collectNetwork
 import com.example.search.repository.SearchRepository
 import kotlinx.coroutines.flow.flow
@@ -26,8 +25,10 @@ class SearchUserViewModel : BaseViewModel() {
             }.collectNetwork {
                 success { response ->
                     if (offset == 0) userList.clear()
-                    userList.addAll(response.result.userprofiles)
-                    _searchUserList.postValue(userList)
+                    if (response.code == 200 && !response.result.userprofiles.isNullOrEmpty()){
+                        userList.addAll(response.result.userprofiles!!)
+                        _searchUserList.postValue(userList)
+                    }else _searchUserList.postValue(null)
                 }
                 failure {
                     _searchUserList.postValue(null)

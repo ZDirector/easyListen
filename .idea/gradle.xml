@@ -18,6 +18,7 @@
             <option value="$PROJECT_DIR$/playing" />
             <option value="$PROJECT_DIR$/preference" />
             <option value="$PROJECT_DIR$/search" />
+            <option value="$PROJECT_DIR$/video" />
           </set>
         </option>
       </GradleProjectSettings>

@@ -1,10 +1,12 @@
 package com.example.search.ui.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.common.baseui.BaseFragment
+import com.example.common.utils.MyApplication
 import com.example.common.utils.showToast
 import com.example.search.BR
 import com.example.search.R
@@ -12,6 +14,7 @@ import com.example.search.adapter.MusicVideoListAdapter
 import com.example.search.databinding.FragmentMusicViedoBinding
 import com.example.search.viewmodel.SearchViewModel
 import com.example.search.viewmodel.fragment.MusicVideoViewModel
+import com.example.video.ui.VideoActivity
 
 class MusicVideoFragment : BaseFragment<FragmentMusicViedoBinding,MusicVideoViewModel>() {
 
@@ -52,14 +55,21 @@ class MusicVideoFragment : BaseFragment<FragmentMusicViedoBinding,MusicVideoView
             if (it.isNullOrEmpty()){
                 showToast("没有更多数据啦!")
                 binding.musicVideoListRefresh.finishLoadMore()
-                viewModel.offset--
+                if (viewModel.offset > 0) viewModel.offset--
             }else{
                 val adapter : MusicVideoListAdapter
                 if (binding.musicVideoList.adapter == null){
                     adapter = MusicVideoListAdapter(it.toMutableList())
                     adapter.setItemOnClickListener(object : MusicVideoListAdapter.ItemOnClickListener{
                         override fun onClick(view: View, i: Int) {
-
+                            val intent = Intent(requireContext(), VideoActivity::class.java)
+                            val videoIdList = IntArray(adapter.musicVideoList.size)
+                            adapter.musicVideoList.forEachIndexed { index, mv ->
+                                videoIdList[index] = mv.id
+                            }
+                            intent.putExtra("videoIdList",videoIdList)
+                            intent.putExtra("currentLocation",i)
+                            startActivity(intent)
                         }
                     })
                     binding.musicVideoList.adapter = adapter

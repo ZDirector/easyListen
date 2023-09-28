@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.common.bean.searchbean.Song
+import com.example.common.bean.searchBean.Song
 import com.example.search.R
 
 class MusicResultListAdapter(var musicResultList : MutableList<Song> ) : RecyclerView.Adapter<MusicResultListAdapter.ViewHolder>(){
@@ -69,7 +69,7 @@ class MusicResultListAdapter(var musicResultList : MutableList<Song> ) : Recycle
         holder.itemSearchMusicSinger.text = singer
         holder.itemSearchMusicAl.text = song.al.name
         if (!song.alia.isNullOrEmpty()){
-            holder.itemSearchMusicAlia.text = song.alia!![0]
+            holder.itemSearchMusicAlia.text = song.alia[0]
             holder.itemSearchMusicAlia.visibility = View.VISIBLE
         }
 

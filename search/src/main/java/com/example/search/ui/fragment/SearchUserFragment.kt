@@ -52,7 +52,7 @@ class SearchUserFragment : BaseFragment<FragmentSearchUserBinding,SearchUserView
             if (it.isNullOrEmpty()){
                 showToast("没有更多数据啦!")
                 binding.searchUserListRefresh.finishLoadMore()
-                viewModel.offset--
+                if (viewModel.offset > 0) viewModel.offset--
             }else{
                 val adapter : SearchUserListAdapter
                 if (binding.searchUserList.adapter == null){

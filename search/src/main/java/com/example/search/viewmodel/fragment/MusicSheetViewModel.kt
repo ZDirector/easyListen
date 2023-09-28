@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.common.baseui.BaseViewModel
-import com.example.common.bean.searchbean.Playlists
+import com.example.common.bean.searchBean.Playlists
 import com.example.common.network.collectNetwork
 import com.example.search.repository.SearchRepository
 import kotlinx.coroutines.flow.flow
@@ -25,8 +25,10 @@ class MusicSheetViewModel : BaseViewModel() {
             }.collectNetwork {
                 success { response ->
                     if (offset == 0) musicSheetList.clear()
-                    musicSheetList.addAll(response.result.playlists)
-                    _searchMusicSheetResultList.postValue(musicSheetList)
+                    if (response.code == 200 && response.result.playlists != null){
+                        musicSheetList.addAll(response.result.playlists!!)
+                        _searchMusicSheetResultList.postValue(musicSheetList)
+                    }else _searchMusicSheetResultList.postValue(null)
                 }
                 failure {
                     _searchMusicSheetResultList.postValue(null)

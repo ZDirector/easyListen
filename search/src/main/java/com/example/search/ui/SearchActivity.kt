@@ -60,7 +60,7 @@ class SearchActivity : BaseActivity<ActivitySearchBinding,SearchViewModel>() ,
         binding.searchResultLayout.mViewPage.adapter = BaseViewPageAdapter(pageList,supportFragmentManager,lifecycle)
         binding.searchResultLayout.attach(titleList)
 
-        startLoading()
+        viewModel.viewMode.postValue(0)
         //加载搜索历史记录
         viewModel.getSearchHistory()
         //加载搜索推荐
@@ -80,16 +80,11 @@ class SearchActivity : BaseActivity<ActivitySearchBinding,SearchViewModel>() ,
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 if(s.toString() == ""){
-                    binding.searchSuggestList.visibility = View.GONE
-                    binding.searchMainLayout.visibility = View.VISIBLE
-                    binding.searchResultLayout.visibility = View.GONE
-                }
-                else{
+                    viewModel.viewMode.postValue(1)
+                } else{
                     if (!isSuggestToSearch){
                         viewModel.getSearchSuggest(s.toString())
-                        startLoading()
-                        binding.searchMainLayout.visibility = View.GONE
-                        binding.searchResultLayout.visibility = View.GONE
+                        viewModel.viewMode.postValue(0)
                     }else isSuggestToSearch = false
                 }
             }
@@ -101,42 +96,56 @@ class SearchActivity : BaseActivity<ActivitySearchBinding,SearchViewModel>() ,
         binding.searchTextInput.setOnKeyListener { _, keyCode, _ ->
             if (keyCode == KeyEvent.KEYCODE_ENTER && keyCode != KeyEvent.ACTION_UP) {
                 val text = binding.searchTextInput.text
-                onClickSearch(text.toString())
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                    imm.hideSoftInputFromWindow(window.decorView.windowToken, 0)
+                if (text.toString() != ""){
+                    onClickSearch(text.toString())
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                        imm.hideSoftInputFromWindow(window.decorView.windowToken, 0)
+                    }
                 }
                 return@setOnKeyListener true
             } else return@setOnKeyListener false
         }
+
+
+    }
+
+    override fun onBackPressed() {
+        if (viewModel.viewMode.value!! > 1) viewModel.viewMode.postValue(viewModel.viewMode.value!! - 1)
+        else finish()
     }
 
     private fun initObserve(){
         //获得搜索建议数据并传递给搜索建议列表
         viewModel.mSearchSuggestList.observe(this){
-            val adapter : SearchSuggestListAdapter
-            //防止反复创建adapter
-            if (binding.searchSuggestList.adapter == null){
-                adapter = SearchSuggestListAdapter(it)
-                adapter.setItemOnClickListener(object : SearchSuggestListAdapter.ItemOnClickListener{
-                    override fun onClick(view: View, i: Int) {
-                        isSuggestToSearch = true
-                        binding.searchTextInput.setText(adapter.searchSuggestList[i])
-                        onClickSearch(adapter.searchSuggestList[i])
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                            imm.hideSoftInputFromWindow(window.decorView.windowToken, 0)
+            if (!it.isNullOrEmpty()){
+                val adapter : SearchSuggestListAdapter
+                //防止反复创建adapter
+                if (binding.searchSuggestList.adapter == null){
+                    adapter = SearchSuggestListAdapter(it)
+                    adapter.setItemOnClickListener(object : SearchSuggestListAdapter.ItemOnClickListener{
+                        override fun onClick(view: View, i: Int) {
+                            isSuggestToSearch = true
+                            binding.searchTextInput.setText(adapter.searchSuggestList[i])
+                            onClickSearch(adapter.searchSuggestList[i])
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                                val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                                imm.hideSoftInputFromWindow(window.decorView.windowToken, 0)
+                            }
                         }
-                    }
-                })
-                binding.searchSuggestList.adapter = adapter
+                    })
+                    binding.searchSuggestList.adapter = adapter
+                }else{
+                    adapter = binding.searchSuggestList.adapter as SearchSuggestListAdapter
+                    adapter.searchSuggestList = it
+                    adapter.notifyDataSetChanged()
+                }
+                finishLoading()
+                viewModel.viewMode.postValue(2)
             }else{
-                adapter = binding.searchSuggestList.adapter as SearchSuggestListAdapter
-                adapter.searchSuggestList = it
-                adapter.notifyDataSetChanged()
+                finishLoading()
+                viewModel.viewMode.postValue(1)
             }
-            finishLoading()
-            binding.searchSuggestList.visibility = View.VISIBLE
         }
 
         //获得热搜榜数据并传递给热搜榜
@@ -196,7 +205,7 @@ class SearchActivity : BaseActivity<ActivitySearchBinding,SearchViewModel>() ,
             }
             if (isFinish){
                 finishLoading()
-                binding.searchMainLayout.visibility = View.VISIBLE
+                viewModel.viewMode.postValue(1)
             }
         }
 
@@ -204,11 +213,39 @@ class SearchActivity : BaseActivity<ActivitySearchBinding,SearchViewModel>() ,
         viewModel.isSearchResultFinishLoading.observe(this){
             if (it){
                 finishLoading()
-                binding.searchResultLayout.visibility = View.VISIBLE
+                viewModel.viewMode.postValue(3)
             }
             else{
-                startLoading()
-                binding.searchResultLayout.visibility = View.INVISIBLE
+                viewModel.viewMode.postValue(0)
+            }
+        }
+
+        viewModel.viewMode.observe(this){
+            when(it){
+                1 ->{
+                    binding.searchMainLayout.visibility = View.VISIBLE
+                    binding.searchSuggestList.visibility = View.GONE
+                    binding.searchResultLayout.visibility = View.INVISIBLE
+                    binding.searchLoadingLayout.visibility = View.GONE
+                }
+                2 ->{
+                    binding.searchMainLayout.visibility = View.GONE
+                    binding.searchSuggestList.visibility = View.VISIBLE
+                    binding.searchResultLayout.visibility = View.INVISIBLE
+                    binding.searchLoadingLayout.visibility = View.GONE
+                }
+                3 ->{
+                    binding.searchMainLayout.visibility = View.GONE
+                    binding.searchSuggestList.visibility = View.GONE
+                    binding.searchResultLayout.visibility = View.VISIBLE
+                    binding.searchLoadingLayout.visibility = View.GONE
+                }
+                else ->{
+                    binding.searchMainLayout.visibility = View.GONE
+                    binding.searchSuggestList.visibility = View.GONE
+                    binding.searchResultLayout.visibility = View.INVISIBLE
+                    startLoading()
+                }
             }
         }
     }
@@ -235,7 +272,7 @@ class SearchActivity : BaseActivity<ActivitySearchBinding,SearchViewModel>() ,
 
     private fun finishLoading(){
         binding.searchLoadingLayout.visibility = View.GONE
-        binding.searchLoadingAnim.smoothToShow()
+        binding.searchLoadingAnim.smoothToHide()
     }
 
     private fun onClickSearch(keyWords : String){

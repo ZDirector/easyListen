@@ -21,5 +21,6 @@ include ':common'
 include ':preference'
 include ':search'
 include ':music_comment'
-include(':homepage')
+include ':video'
+include ':homepage'
 include ':playing'

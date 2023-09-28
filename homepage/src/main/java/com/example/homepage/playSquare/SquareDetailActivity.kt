@@ -21,7 +21,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.example.common.adapter.DataClickListener
 import com.example.common.bean.home.Playlist
-import com.example.common.bean.searchbean.Song
+import com.example.common.bean.searchBean.Song
 import com.example.common.utils.UiUtils.setPic
 import com.example.common.utils.immersive
 import com.example.common.utils.navigationBarHeight
