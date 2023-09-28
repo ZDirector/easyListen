@@ -9,5 +9,5 @@ object HttpConstants {
 
     const val BAD_REQUEST = 400
 
-    const val BASE_URL = "xxx"
+    const val BASE_URL = "https://cloud-music-api-note.vercel.app/"
 }

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="260dp"
+        android:layout_height="450dp"
+        android:orientation="vertical"
+        tools:context=".agreement.TermServiceDialogFragment">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="服务余款和隐私协议提示"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:gravity="center_horizontal"
+            android:layout_margin="15dp" />
+
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="      本软件尊重并保护所有使用服务用户的个人隐私权。为了给您提供更准确、更有个性化的服务，本软件会按照本隐私权政策的规定使用和披露您的个人信息。但本软件将以高度的勤勉、审慎义务对待这些信息。除本隐私权政策另有规定外,在未征得您事先许可的情况下，本软件不会将这些信息对外披露或向第三方提供。本软件会不时更新本隐私权政策。请你认真阅读并了解《服务条款》和《隐私政策》，您在同意本软件服务使用协议之时,即视为您已经同意本隐私权政策全部内容。本隐私权政策属于本软件服务协议机不可分割的一部分。"
+            android:textColor="@color/black"
+            android:textSize="13sp"
+            android:layout_marginHorizontal="15dp" />
+
+        <RelativeLayout
+            android:id="@+id/rv_sure"
+            android:layout_margin="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/shape_agreement_service">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="同意"
+                android:textColor="@color/white"
+                android:layout_centerInParent="true" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="不同意并退出应用"
+            android:textSize="10sp"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_horizontal" />
+
+    </LinearLayout>
+</layout>

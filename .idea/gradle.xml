@@ -7,13 +7,18 @@
         <option name="testRunner" value="GRADLE" />
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleJvm" value="Embedded JDK" />
+        <option name="gradleJvm" value="jbr-17" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/common" />
+            <option value="$PROJECT_DIR$/homepage" />
+            <option value="$PROJECT_DIR$/music_comment" />
+            <option value="$PROJECT_DIR$/playing" />
             <option value="$PROJECT_DIR$/preference" />
+            <option value="$PROJECT_DIR$/search" />
+            <option value="$PROJECT_DIR$/video" />
           </set>
         </option>
       </GradleProjectSettings>

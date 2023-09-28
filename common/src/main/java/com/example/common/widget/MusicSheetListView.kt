@@ -21,7 +21,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.common.R
-import com.example.common.bean.MusicSheet
+import com.example.common.bean.home.Playlist
 import com.example.common.utils.dp2px
 import com.example.common.utils.isDarkMode
 
@@ -35,25 +35,25 @@ class MusicSheetListView @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : LinearLayoutCompat(
     context, attrs, defStyleAttr
-), Observer<List<MusicSheet>> {
+), Observer<List<Playlist>> {
 
-    private lateinit var musicSheet: LiveData<List<MusicSheet>>
+    private lateinit var musicSheet: LiveData<List<Playlist>>
 
     private val textView: TextView
     private val recyclerView: RecyclerView
 
-    private val musicSheetList = mutableListOf<MusicSheet>()
+    private val musicSheetList = mutableListOf<Playlist>()
     private val musicSheetAdapter: MusicSheetAdapter = MusicSheetAdapter(musicSheetList)
 
     init {
         orientation = VERTICAL
         textView = TextView(context).apply {
-            setPadding(16.dp2px, 4.dp2px, 16, 4.dp2px)
+            setPadding(16.dp2px, 1.dp2px, 16, 4.dp2px)
             layoutParams = LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT
             )
-            textSize = 20f
+            textSize = 1f
             paint.isFakeBoldText = true
             setTextColor(if (!context.isDarkMode) Color.BLACK else Color.WHITE)
         }
@@ -87,7 +87,7 @@ class MusicSheetListView @JvmOverloads constructor(
     @MainThread
     fun setMusicSheet(
         lifecycleOwner: LifecycleOwner,
-        sheet: LiveData<List<MusicSheet>>
+        sheet: LiveData<List<Playlist>>
     ) {
         if (this::musicSheet.isInitialized) {
             musicSheet.removeObserver(this)
@@ -103,18 +103,21 @@ class MusicSheetListView @JvmOverloads constructor(
      * 设置列表的点击事件
      * */
     @MainThread
-    fun setOnItemClickListener(listener: (MusicSheet, Int) -> Unit) {
+    fun setOnItemClickListener(listener: (Playlist, Int) -> Unit) {
         musicSheetAdapter.setOnItemClickListener(listener)
     }
 
-    override fun onChanged(t: List<MusicSheet>?) {
+    override fun onChanged(t: List<Playlist>?) {
         t ?: return
+        val size = musicSheetList.size
+        musicSheetList.clear()
+        musicSheetAdapter.notifyItemRangeRemoved(0, size)
         musicSheetList.addAll(t)
         musicSheetAdapter.notifyItemRangeInserted(0, musicSheetList.size)
     }
 
     private class MusicSheetAdapter(
-        private val musicSheet: List<MusicSheet>
+        private val musicSheet: List<Playlist>
     ) : RecyclerView.Adapter<MusicSheetAdapter.ViewHolder>() {
 
         companion object {
@@ -122,9 +125,9 @@ class MusicSheetListView @JvmOverloads constructor(
             private const val TEXT_VIEW_TAG = "text_view_tag"
         }
 
-        private var onItemClickListener: ((MusicSheet, Int) -> Unit)? = null
+        private var onItemClickListener: ((Playlist, Int) -> Unit)? = null
 
-        fun setOnItemClickListener(listener: (MusicSheet, Int) -> Unit) {
+        fun setOnItemClickListener(listener: (Playlist, Int) -> Unit) {
             onItemClickListener = listener
         }
 
@@ -187,7 +190,7 @@ class MusicSheetListView @JvmOverloads constructor(
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             with(holder) {
-                imageView.load(musicSheet[position].img)
+                imageView.load(musicSheet[position].picUrl)
                 textView.text = musicSheet[position].name
                 itemView.setOnClickListener {
                     onItemClickListener?.invoke(musicSheet[position], position)

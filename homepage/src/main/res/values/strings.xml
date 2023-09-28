@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="music">音乐</string>
+    <string name="care">关注</string>
+    <string name="video">视频</string>
+    <string name="mine">我的</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="recommended">每日推荐</string>
+    <string name="personal_fm">私人FM</string>
+    <string name="list">排行榜</string>
+    <string name="playlist">歌单</string>
+    <string name="recommended_playlist">推荐歌单</string>
+    <string name="more">更多〉</string>
+    <string name="more_symbol">〉</string>
+    <string name="play_square">歌单广场</string>
+    <string name="test">1</string>
+    <string name="play_all">播放全部</string>
+    <string name="left_parentheses">(</string>
+    <string name="right_parentheses">)</string>
+    <string name="home_toplist_loading_tip">加载中</string>
+    <string name="title_activity_top_list">TopListActivity</string>
+    <string name="offical_top">官方榜</string>
+    <string name="official_top">官方榜</string>
+    <string name="list_top">榜单</string>
+    <string name="style_top">曲风</string>
+    <string name="language_top">语种</string>
+    <string name="global_top">全球</string>
+    <string name="select_top">精选</string>
+    <string name="features_top">特色</string>
+    <string name="ban">某某榜</string>
+    <string name="one">1.</string>
+    <string name="two">2.</string>
+    <string name="three">3.</string>
+    <string name="tab_official">官方</string>
+    <string name="style">曲风</string>
+    <string name="tap_global">全球</string>
+    <string name="select">精选</string>
+    <string name="features">特色</string>
+    <string name="line">-</string>
+</resources>

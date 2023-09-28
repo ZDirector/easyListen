@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">playing</string>
+    <string name="song_name">歌曲名</string>
+    <string name="singer_name">歌手</string>
+</resources>

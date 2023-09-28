@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.music_comment">
+    <!-- 网络 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:name="com.example.common.utils.MyApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_icon"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/ic_icon"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.EasyListen"
+        android:usesCleartextTraffic="true"
+        android:screenOrientation="portrait">
+        <activity
+            android:name=".ui.MusicCommentActivity"
+            android:exported="true">
+        </activity>
+    </application>
+
+</manifest>
