@@ -1,59 +1,50 @@
 package com.example.playing
 
-import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
-import android.content.ServiceConnection
-import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.IBinder
-import com.example.common.music.service.ControlBinder
-import com.example.common.music.service.MusicService
+import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import com.example.common.utils.MyApplication
+import com.example.common.utils.SystemUtils
+import com.example.playing.databinding.ActivityPlayBinding
+import com.example.playing.viewModel.PlayViewModel
 
 class PlayActivity : AppCompatActivity() {
 
-    private var mControlBinder: ControlBinder? = null
-
-    private val mConnection by lazy {
-        MusicConnection()
+    companion object {
+        fun start(context: Context) {
+            val intent = Intent(context, PlayActivity::class.java)
+            context.startActivity(intent)
+        }
     }
+
+    private lateinit var binding: ActivityPlayBinding
+    private lateinit var viewModel: PlayViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_play)
+        binding.lifecycleOwner = this
 
-        setContentView(R.layout.activity_play)
-        initData()
-        initListener()
+        SystemUtils.changeStatusBarTransTextWhite(this)
+
+        viewModel = MyApplication.getAppViewModel(PlayViewModel::class.java)
+        binding.viewModel = viewModel
+        binding.executePendingBindings()
+
+        initView()
+        subscribeData()
     }
 
-    fun initData() {
-        val uri = intent.getStringExtra("uri")
-        val intent = Intent(this, MusicService::class.java)
-
-        bindService(intent, mConnection, Context.BIND_AUTO_CREATE)
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            startForegroundService(intent)
-        } else {
-            startService(intent)
+    private fun initView() {
+        binding.ivPlay.setOnClickListener {
+            viewModel.play()
         }
     }
 
-    fun initListener() {
+    private fun subscribeData() {
 
     }
-
-
-    inner class MusicConnection : ServiceConnection {
-        override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
-            mControlBinder = service as ControlBinder
-        }
-
-        override fun onServiceDisconnected(name: ComponentName?) {
-            mControlBinder = null
-        }
-    }
-
 
 }

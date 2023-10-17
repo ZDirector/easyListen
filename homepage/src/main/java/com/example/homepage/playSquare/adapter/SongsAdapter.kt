@@ -53,7 +53,7 @@ class SongsAdapter : BaseQuickAdapter<Song, BaseViewHolder>(R.layout.item_search
                 }
                 itemSearchMusicSinger.text = singer
                 itemSearchMusicAl.text = item.al.name
-                if (!item.alia.isNullOrEmpty()) {
+                if (item.alia.isNotEmpty()) {
                     itemSearchMusicAlia.text = item.alia!![0]
                     itemSearchMusicAlia.visibility = View.VISIBLE
                 }

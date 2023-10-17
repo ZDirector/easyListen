@@ -9,10 +9,14 @@ import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.lifecycle.lifecycleScope
 import com.example.common.utils.ExitUtils
+import com.example.common.utils.MyApplication
 import com.example.homepage.R
 import com.example.homepage.agreement.ClickCallBack
 import com.example.homepage.agreement.TermServiceDialogFragment
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import permissions.dispatcher.PermissionUtils
 import java.lang.Thread.sleep
 
@@ -23,21 +27,31 @@ class SplashActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Toast.makeText(this,"abc",Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "abc", Toast.LENGTH_SHORT).show()
         //隐层状态栏和标题栏
         window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
         //隐藏标题栏
         supportActionBar?.hide()
         setContentView(R.layout.activity_splash)
         initAgreementService()
+        initMusicService()
+    }
+
+    /**
+     * 初始化音乐服务
+     */
+    private fun initMusicService() {
+        MyApplication.instance.let {
+            it.get()?.mediaManager?.connectService()
+        }
     }
 
     /**
      * 初始化第一次启动的时候弹窗的服务与协议
      */
-    private fun initAgreementService(){
-        val prefs = getSharedPreferences("data",Context.MODE_PRIVATE)
-        val editor= prefs.edit()
+    private fun initAgreementService() {
+        val prefs = getSharedPreferences("data", Context.MODE_PRIVATE)
+        val editor = prefs.edit()
         firstDialog.setCallBack(object : ClickCallBack {
             override fun cancel() {
                 ExitUtils.exitApp()

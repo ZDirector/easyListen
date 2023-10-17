@@ -86,9 +86,9 @@ class VideoFragment :
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 if (fromUser){
                     val currentProgressText =
-                            ProgressUtil.toTimeText(binding.videoPb.progress.toLong()) +
-                            " / " +
-                            ProgressUtil.toTimeText(binding.videoPb.max.toLong())
+                        ProgressUtil.toTimeText(binding.videoPb.progress.toLong()) +
+                                " / " +
+                                ProgressUtil.toTimeText(binding.videoPb.max.toLong())
                     binding.videoCurrentProgressText.text = currentProgressText
                     binding.videoCurrentProgressText.visibility = View.VISIBLE
                 }

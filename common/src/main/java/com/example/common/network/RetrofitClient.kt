@@ -3,6 +3,7 @@ package com.example.common.network
 import com.example.common.constants.HttpConstants
 import com.example.common.network.interceptor.LogInterceptor
 import com.example.common.network.interceptor.RetryInterceptor
+import com.example.common.network.interceptor.TokenInterceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -24,6 +25,7 @@ object RetrofitClient {
             .retryOnConnectionFailure(true)
             .addInterceptor(LogInterceptor())
             .addInterceptor(retryInterceptor)
+            .addInterceptor(TokenInterceptor(HttpConstants.TOKEN))
             .build()
     }
 

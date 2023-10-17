@@ -14,7 +14,7 @@ class VideoFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_video, container, false)
+        return inflater.inflate(R.layout.fragment_homepage_video, container, false)
     }
 
     companion object {

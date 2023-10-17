@@ -25,27 +25,34 @@ class ProgressLoadingView : View {
     private val mHandler: Handler
     private var mTimePeriod = 20
 
-    companion object{
-        class ProgressLoadingHandler(view: ProgressLoadingView,time : Long) : Handler(Looper.getMainLooper()){
+    companion object {
+        class ProgressLoadingHandler(view: ProgressLoadingView, time: Long) :
+            Handler(Looper.getMainLooper()) {
             private val viewWeakReference = WeakReference(view)
             private val mTime = time
             override fun handleMessage(msg: Message) {
                 super.handleMessage(msg)
                 val progressLoadingView = viewWeakReference.get()
                 progressLoadingView?.invalidate()
-                sendEmptyMessageDelayed(1,mTime)
+                sendEmptyMessageDelayed(1, mTime)
             }
         }
     }
 
     constructor(context: Context?) : this(context, null)
     constructor(context: Context?, attrs: AttributeSet?) : this(context, attrs, 0)
-    constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
+    constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(
+        context,
+        attrs,
+        defStyleAttr
+    ) {
         //获取颜色值和最小宽高度，以及进度条最小宽度
         val typedArray = context!!.obtainStyledAttributes(attrs, R.styleable.ProgressLoadingView)
         val color = typedArray.getString(R.styleable.ProgressLoadingView_progressColor)
-        mDefaultWidth = typedArray.getDimension(R.styleable.ProgressLoadingView_minWidth, 600f).toInt()
-        mDefaultHeight = typedArray.getDimension(R.styleable.ProgressLoadingView_minHeight, 5f).toInt()
+        mDefaultWidth =
+            typedArray.getDimension(R.styleable.ProgressLoadingView_minWidth, 600f).toInt()
+        mDefaultHeight =
+            typedArray.getDimension(R.styleable.ProgressLoadingView_minHeight, 5f).toInt()
         mMinProgressWidth =
             typedArray.getDimension(R.styleable.ProgressLoadingView_minProgressWidth, 100f).toInt()
         mProgressWidth = mMinProgressWidth
@@ -71,7 +78,7 @@ class ProgressLoadingView : View {
         mPaint.style = Paint.Style.FILL_AND_STROKE
         //设置抗锯齿
         mPaint.isAntiAlias = true
-        mHandler = ProgressLoadingHandler(this,mTimePeriod.toLong())
+        mHandler = ProgressLoadingHandler(this, mTimePeriod.toLong())
         mHandler.sendEmptyMessage(1)
     }
 
@@ -85,11 +92,11 @@ class ProgressLoadingView : View {
         }
     }
 
-    fun show(){
+    fun show() {
         this.visibility = VISIBLE
     }
 
-    fun hide(){
+    fun hide() {
         this.visibility = GONE
     }
 
@@ -123,6 +130,7 @@ class ProgressLoadingView : View {
             //父view不限定子view的大小，我们将其值设置为默认值
             MeasureSpec.UNSPECIFIED ->
                 if (isWidth) mDefaultWidth else mDefaultHeight
+
             else -> if (isWidth) mDefaultWidth else mDefaultHeight
         }
     }
