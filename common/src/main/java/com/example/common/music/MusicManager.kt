@@ -7,6 +7,7 @@ import android.content.ServiceConnection
 import android.graphics.Bitmap
 import android.os.IBinder
 import android.os.RemoteException
+import android.util.Log
 import com.example.common.IMusicService
 import com.example.common.bean.searchBean.MusicBean
 import com.example.common.utils.LogUtil
@@ -37,6 +38,8 @@ class MusicManager(internal val context: Context) : IMusicService.Stub() {
             override fun onServiceDisconnected(name: ComponentName) {
                 //音频服务断开的标志
                 LogUtil.i(TAG, "MediaManager:disconnected")
+                Log.d("Test", "onServiceDisconnected")
+                mediaService = null
             }
         }
     }
@@ -52,8 +55,9 @@ class MusicManager(internal val context: Context) : IMusicService.Stub() {
     }
 
     fun disconnectService() {
+        Log.d("TestService", "disconnectService")
         context.unbindService(serviceConnection)
-        context.stopService(Intent(MUSIC_SERVICE))
+        context.stopService(Intent(context, MusicService::class.java))
     }
 
     override fun play(pos: Int): Boolean {

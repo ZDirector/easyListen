@@ -56,13 +56,15 @@ class MusicControl(val context: Context) : MediaPlayer.OnCompletionListener {
                     mCurPlayIndex = seekPosById(mPlaylist, mCurMusicId)
                     if (mCurPlayIndex != -1) {
                         mCurMusic = mPlaylist[mCurPlayIndex]
-                        prepare(mCurPlayIndex)
+                        play(mCurPlayIndex)
                         seekTo(mCurMusic?.lastPlayTime?.toInt() ?: 0)
                     }
                 } else {
-                    mCurPlayIndex = 0
-                    mCurMusic = mPlaylist[mCurPlayIndex]
-                    prepare(mCurPlayIndex)
+                    if (mPlaylist.isNotEmpty()) {
+                        mCurPlayIndex = 0
+                        mCurMusic = mPlaylist[mCurPlayIndex]
+                        play(mCurPlayIndex)
+                    }
                 }
             }
         }
@@ -126,14 +128,8 @@ class MusicControl(val context: Context) : MediaPlayer.OnCompletionListener {
      */
     fun setCurMusic(music: MusicBean) {
         Log.d(TAG, "setCurMusic: $music")
-        mPlaylist.forEachIndexed { index, item ->
-            if (item.id == music.id) {
-                mCurPlayIndex = index
-                mCurMusicId = music.id
-                mCurMusic = music
-                prepare(mCurPlayIndex)
-            }
-        }
+        val position = seekPosById(mPlaylist, music.id)
+        play(position)
     }
 
     /**
@@ -171,6 +167,7 @@ class MusicControl(val context: Context) : MediaPlayer.OnCompletionListener {
             showToast("歌曲路径为空")
         }
         mCurMusic = mPlaylist[mCurPlayIndex]
+        mCurMusicId = mCurMusic!!.id
         sendMusicPlayBroadcast()
         return true
     }
@@ -321,6 +318,7 @@ class MusicControl(val context: Context) : MediaPlayer.OnCompletionListener {
      */
     fun play(pos: Int): Boolean {
         Log.d(TAG, "play: $pos")
+        if (pos == -1) return false
         return if (requestFocus()) {
             if (mCurPlayIndex == pos) {
                 if (!mMediaPlayer.isPlaying) {

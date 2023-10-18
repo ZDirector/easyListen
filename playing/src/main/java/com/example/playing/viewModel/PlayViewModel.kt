@@ -1,5 +1,6 @@
 package com.example.playing.viewModel
 
+import android.util.Log
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -48,7 +49,7 @@ class PlayViewModel : BaseViewModel() {
                 }
             }
             musicList.add(music)
-            it.refreshPlaylist(musicList)
+            it.refreshPlaylist(musicList.toMutableList())
             viewModelScope.launch(Dispatchers.IO) {
                 mDao.add2PlaySongList(music)
             }
@@ -101,7 +102,9 @@ class PlayViewModel : BaseViewModel() {
     }
 
     override fun onDestroy(owner: LifecycleOwner) {
-        super.onDestroy(owner)
+        Log.d("TestService", "ViewModel onDestroy")
+        mediaManager?.stop()
         mediaManager?.disconnectService()
+        super.onDestroy(owner)
     }
 }

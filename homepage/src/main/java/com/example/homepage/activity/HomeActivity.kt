@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.TextView
@@ -11,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import com.example.common.utils.MyApplication
 import com.example.homepage.R
 import com.example.homepage.databinding.ActivityHomeBinding
 import com.example.homepage.music.fragment.MusicFragment
@@ -177,7 +179,11 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
-
-
-
+    override fun onDestroy() {
+        MyApplication.instance.get()?.let {
+            it.mediaManager?.stop()
+            it.mediaManager?.disconnectService()
+        }
+        super.onDestroy()
+    }
 }

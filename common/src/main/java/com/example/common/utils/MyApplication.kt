@@ -3,6 +3,7 @@ package com.example.common.utils
 import android.annotation.SuppressLint
 import android.app.Application
 import android.content.Context
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStore
@@ -57,10 +58,5 @@ class MyApplication : Application(), ViewModelStoreOwner {
             appViewModelStore = ViewModelStore()
         }
         return appViewModelStore!!
-    }
-
-    override fun onTerminate() {
-        mediaManager?.disconnectService()
-        super.onTerminate()
     }
 }
