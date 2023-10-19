@@ -101,8 +101,45 @@ class PlayViewModel : BaseViewModel() {
         mediaManager?.play(currentIndex.value ?: 0)
     }
 
+    fun next() {
+        mediaManager?.next()
+    }
+
+    fun previous() {
+        mediaManager?.prev()
+    }
+
+    fun seekTo(progress: Int) {
+        mediaManager?.seekTo(progress)
+    }
+
+    fun changePlayMode() {
+        val mode = when (playMode.value) {
+            MusicConstants.PLAY_MODE_LOOP -> {
+                playMode.value = MusicConstants.PLAY_MODE_RANDOM
+                MusicConstants.PLAY_MODE_RANDOM
+            }
+            MusicConstants.PLAY_MODE_RANDOM -> {
+                playMode.value = MusicConstants.PLAY_MODE_SINGLE
+                MusicConstants.PLAY_MODE_SINGLE
+            }
+            MusicConstants.PLAY_MODE_SINGLE -> {
+                playMode.value = MusicConstants.PLAY_MODE_ORDER
+                MusicConstants.PLAY_MODE_ORDER
+            }
+            MusicConstants.PLAY_MODE_ORDER -> {
+                playMode.value = MusicConstants.PLAY_MODE_LOOP
+                MusicConstants.PLAY_MODE_LOOP
+            }
+            else -> {
+                playMode.value = MusicConstants.PLAY_MODE_LOOP
+                MusicConstants.PLAY_MODE_LOOP
+            }
+        }
+        mediaManager?.playMode = mode
+    }
+
     override fun onDestroy(owner: LifecycleOwner) {
-        Log.d("TestService", "ViewModel onDestroy")
         mediaManager?.stop()
         mediaManager?.disconnectService()
         super.onDestroy(owner)

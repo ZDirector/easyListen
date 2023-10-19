@@ -89,6 +89,7 @@ class MusicResultFragment : BaseFragment<FragmentMusicResultBinding, MusicResult
                                                 playViewModel.addMusic(music)
                                                 playViewModel.setCurMusic(music)
                                                 PlayActivity.start(requireActivity())
+                                                return@getMusicUrl
                                             }
                                         }
                                     }

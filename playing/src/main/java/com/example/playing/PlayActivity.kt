@@ -3,6 +3,7 @@ package com.example.playing
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.widget.SeekBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.common.utils.MyApplication
@@ -38,8 +39,35 @@ class PlayActivity : AppCompatActivity() {
     }
 
     private fun initView() {
+        binding.ivBack.setOnClickListener {
+            finish()
+        }
         binding.ivPlay.setOnClickListener {
             viewModel.play()
+        }
+        binding.ivNext.setOnClickListener {
+            viewModel.next()
+        }
+        binding.ivPre.setOnClickListener {
+            viewModel.previous()
+        }
+        binding.musicSeekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                if (fromUser) {
+                    viewModel.seekTo(progress)
+                }
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+
+            }
+        })
+        binding.ivPlayMode.setOnClickListener {
+            viewModel.changePlayMode()
         }
     }
 

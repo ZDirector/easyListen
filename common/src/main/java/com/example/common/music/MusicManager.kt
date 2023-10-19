@@ -55,7 +55,6 @@ class MusicManager(internal val context: Context) : IMusicService.Stub() {
     }
 
     fun disconnectService() {
-        Log.d("TestService", "disconnectService")
         context.unbindService(serviceConnection)
         context.stopService(Intent(context, MusicService::class.java))
     }

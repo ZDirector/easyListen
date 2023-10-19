@@ -34,16 +34,6 @@ class SplashActivity : AppCompatActivity() {
         supportActionBar?.hide()
         setContentView(R.layout.activity_splash)
         initAgreementService()
-        initMusicService()
-    }
-
-    /**
-     * 初始化音乐服务
-     */
-    private fun initMusicService() {
-        MyApplication.instance.let {
-            it.get()?.mediaManager?.connectService()
-        }
     }
 
     /**

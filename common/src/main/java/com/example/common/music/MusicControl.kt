@@ -11,6 +11,7 @@ import com.example.common.IMusicService
 import com.example.common.bean.searchBean.MusicBean
 import com.example.common.db.EasyListenDB
 import com.example.common.utils.showToast
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.io.IOException
@@ -46,9 +47,10 @@ class MusicControl(val context: Context) : MediaPlayer.OnCompletionListener {
         setAudioAttributes(attrs)
         setOnCompletionListener(this@MusicControl)
     }
+    private var isInit = false
 
     init {
-        GlobalScope.launch {
+        GlobalScope.launch(Dispatchers.IO) {
             mPlaylist = mDao.queryPlaySongList().toMutableList()
             context.getSharedPreferences("data", Context.MODE_PRIVATE).apply {
                 mCurMusicId = getLong("current_music_id", -1)
@@ -400,9 +402,7 @@ class MusicControl(val context: Context) : MediaPlayer.OnCompletionListener {
             return false
         }
         val pro = reviseSeekValue(progress)
-        val time = mMediaPlayer.duration
-        val curTime = (pro.toFloat() / 100 * time).toInt()
-        mMediaPlayer.seekTo(curTime)
+        mMediaPlayer.seekTo(pro)
         return true
     }
 
@@ -558,7 +558,8 @@ class MusicControl(val context: Context) : MediaPlayer.OnCompletionListener {
     }
 
     override fun onCompletion(mp: MediaPlayer) {
-        next()
+        if (isInit) next()
+        else isInit = true
     }
 
     /**
@@ -583,8 +584,8 @@ class MusicControl(val context: Context) : MediaPlayer.OnCompletionListener {
         var progress = progress
         if (progress < 0) {
             progress = 0
-        } else if (progress > 100) {
-            progress = 100
+        } else if (progress > duration()) {
+            progress = duration()
         }
         return progress
     }

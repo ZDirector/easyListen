@@ -39,8 +39,8 @@ class HomeActivity : AppCompatActivity() {
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_home)
         init()
         initListener()
+        initMusicService()
         mBinding.navView.labelVisibilityMode= NavigationBarView.LABEL_VISIBILITY_LABELED
-
     }
 
     private fun init() {
@@ -50,6 +50,15 @@ class HomeActivity : AppCompatActivity() {
                 val intent = Intent(this@HomeActivity,SearchActivity::class.java)
                 startActivity(intent)
             }
+        }
+    }
+
+    /**
+     * 初始化音乐服务
+     */
+    private fun initMusicService() {
+        MyApplication.instance.let {
+            it.get()?.mediaManager?.connectService()
         }
     }
 
@@ -179,11 +188,15 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
-    override fun onDestroy() {
+    private fun disconnectMusicService() {
         MyApplication.instance.get()?.let {
             it.mediaManager?.stop()
             it.mediaManager?.disconnectService()
         }
+    }
+
+    override fun onDestroy() {
+        disconnectMusicService()
         super.onDestroy()
     }
 }
