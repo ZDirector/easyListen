@@ -44,7 +44,6 @@ class PlayViewModel : BaseViewModel() {
             val musicList = it.playlist
             musicList.forEach { musicBean ->
                 if (musicBean.id == music.id) {
-                    setCurMusic(musicBean)
                     return@addMusic
                 }
             }
@@ -73,15 +72,6 @@ class PlayViewModel : BaseViewModel() {
         viewModelScope.launch {
             val result = repository.getMusicUrl(ids.toList())
             result.doSuccess {
-                musicList.value?.let { musicList ->
-                    musicList.forEach { music ->
-                        result.data.forEach { musicUrl ->
-                            if (music.id == musicUrl.id) {
-                                music.url = musicUrl.url
-                            }
-                        }
-                    }
-                }
                 callback(result.data)
             }
         }
