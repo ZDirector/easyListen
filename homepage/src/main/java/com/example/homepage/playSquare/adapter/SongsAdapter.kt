@@ -39,7 +39,7 @@ class SongsAdapter : BaseQuickAdapter<Song, BaseViewHolder>(R.layout.item_search
             if (item != null) {
                 itemSearchMusicName.text = item.name
 
-                if (item.tns != null) itemSearchMusicTns.text = "(" + item.tns!![0] + ")"
+                if (item.tns?.isNotEmpty() == true) itemSearchMusicTns.text = "( ${item?.tns?.get(0)} )"
                 if (item.privilege?.fee != 0) itemSearchMusicLabelVIP.visibility = View.VISIBLE
                 if (item.privilege?.freeTrialPrivilege?.resConsumable == true) itemSearchMusicLabelAudition.visibility =
                     View.VISIBLE

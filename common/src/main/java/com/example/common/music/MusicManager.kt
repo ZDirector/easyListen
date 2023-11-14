@@ -68,14 +68,6 @@ class MusicManager(internal val context: Context) : IMusicService.Stub() {
         return false
     }
 
-    override fun playByUrl(music: MusicBean?, url: String?) {
-        try {
-            mediaService?.playByUrl(music, url)
-        } catch (e: RemoteException) {
-            e.printStackTrace()
-        }
-    }
-
     override fun replay(): Boolean {
         try {
             return mediaService?.replay() ?: false
@@ -169,6 +161,14 @@ class MusicManager(internal val context: Context) : IMusicService.Stub() {
         try {
             assert(playlist != null)
             mediaService?.refreshPlaylist(playlist)
+        } catch (e: RemoteException) {
+            e.printStackTrace()
+        }
+    }
+
+    override fun removeMusic(pos: Int) {
+        try {
+            mediaService?.removeMusic(pos)
         } catch (e: RemoteException) {
             e.printStackTrace()
         }

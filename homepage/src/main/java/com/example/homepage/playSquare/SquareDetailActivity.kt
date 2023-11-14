@@ -23,6 +23,7 @@ import com.example.common.adapter.DataClickListener
 import com.example.common.bean.home.Playlist
 import com.example.common.bean.searchBean.Song
 import com.example.common.utils.UiUtils.setPic
+import com.example.common.utils.bindImageFromUrlBlur
 import com.example.common.utils.immersive
 import com.example.common.utils.navigationBarHeight
 import com.example.homepage.R
@@ -80,10 +81,11 @@ class SquareDetailActivity : AppCompatActivity() {
                 mViewModel.apply {
                     nameLiveData.postValue(it.name)
                     describeLiveData.postValue(it.description)
-                    val picUrl :String = if(listLiveData.value!!.picUrl != ""){
+                    val picUrl: String = if (listLiveData.value!!.picUrl != "") {
                         listLiveData.value?.picUrl.toString()
-                    }else listLiveData.value?.coverImgUrl!!
-                    setPic(ibPlaylist, 20,  picUrl)
+                    } else listLiveData.value?.coverImgUrl!!
+                    setPic(ibPlaylist, 20, picUrl)
+                    bindImageFromUrlBlur(ivBg, picUrl)
                     loadList()
                 }
             }

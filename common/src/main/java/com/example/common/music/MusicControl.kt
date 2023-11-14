@@ -14,7 +14,6 @@ import com.example.common.utils.showToast
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import java.io.IOException
 import java.util.Random
 import kotlin.math.abs
 
@@ -55,17 +54,11 @@ class MusicControl(val context: Context) : MediaPlayer.OnCompletionListener {
             context.getSharedPreferences("data", Context.MODE_PRIVATE).apply {
                 mCurMusicId = getLong("current_music_id", -1)
                 if (mCurMusicId != -1L) {
-                    mCurPlayIndex = seekPosById(mPlaylist, mCurMusicId)
-                    if (mCurPlayIndex != -1) {
-                        mCurMusic = mPlaylist[mCurPlayIndex]
-                        play(mCurPlayIndex)
-                        seekTo(mCurMusic?.lastPlayTime?.toInt() ?: 0)
-                    }
+                    prepare(seekPosById(mPlaylist, mCurMusicId))
+                    seekTo(mCurMusic?.lastPlayTime?.toInt() ?: 0)
                 } else {
                     if (mPlaylist.isNotEmpty()) {
-                        mCurPlayIndex = 0
-                        mCurMusic = mPlaylist[mCurPlayIndex]
-                        play(mCurPlayIndex)
+                        prepare(0)
                     }
                 }
             }
@@ -130,8 +123,7 @@ class MusicControl(val context: Context) : MediaPlayer.OnCompletionListener {
      */
     fun setCurMusic(music: MusicBean) {
         Log.d(TAG, "setCurMusic: $music")
-        val position = seekPosById(mPlaylist, music.id)
-        play(position)
+        playById(music.id)
     }
 
     /**
@@ -141,14 +133,15 @@ class MusicControl(val context: Context) : MediaPlayer.OnCompletionListener {
      * @return
      */
     private fun prepare(pos: Int): Boolean {
-        var pos = pos
-        mCurPlayIndex = pos
         mPendingProgress = 0
         mMediaPlayer.reset()
         val path: String = mPlaylist[pos].url
         if (path.isNotEmpty()) {
             try {
                 Log.d(TAG, "pos : $pos prepare: $path")
+                mCurPlayIndex = pos
+                mCurMusic = mPlaylist[mCurPlayIndex]
+                mCurMusicId = mCurMusic!!.id
                 mPlayState = MusicConstants.MPS_PREPARE
                 mMediaPlayer.setDataSource(path)
                 mMediaPlayer.prepare()
@@ -159,8 +152,7 @@ class MusicControl(val context: Context) : MediaPlayer.OnCompletionListener {
                 } catch (e : Exception) {
                     mPlayState = MusicConstants.MPS_INVALID
                     if (pos < mPlaylist.size - 1) {
-                        pos++
-                        playById(mPlaylist[pos].id)
+                        playById(mPlaylist[pos + 1].id)
                     }
                     return false
                 }
@@ -168,8 +160,6 @@ class MusicControl(val context: Context) : MediaPlayer.OnCompletionListener {
         } else {
             showToast("歌曲路径为空")
         }
-        mCurMusic = mPlaylist[mCurPlayIndex]
-        mCurMusicId = mCurMusic!!.id
         sendMusicPlayBroadcast()
         return true
     }
@@ -184,13 +174,11 @@ class MusicControl(val context: Context) : MediaPlayer.OnCompletionListener {
         Log.d(TAG, "playById: $id")
         return if (requestFocus()) {
             val position = seekPosById(mPlaylist, id)
-            mCurPlayIndex = position
             if (mCurMusicId == id) {
                 if (!mMediaPlayer.isPlaying) {
                     mMediaPlayer.start()
                     mPlayState = MusicConstants.MPS_PLAYING
                     sendMusicPlayBroadcast()
-                    mCurMusic = mPlaylist[mCurPlayIndex]
                 } else {
                     pause()
                 }
@@ -201,62 +189,6 @@ class MusicControl(val context: Context) : MediaPlayer.OnCompletionListener {
             } else replay()
         } else {
             false
-        }
-    }
-
-    /**
-     * 根据URL播放歌曲。
-     *
-     * @param music
-     * @param url
-     */
-    fun playByUrl(music: MusicBean, url: String?) {
-        Log.d(TAG, "playByUrl: $music")
-        if (requestFocus()) {
-            try {
-                mMediaPlayer.setAudioCachePath(music.url)
-                mMediaPlayer.setOnCachedProgressUpdateListener(object :
-                    MediaPlayerProxy.OnCachedProgressUpdateListener {
-                    override fun updateCachedProgress(progress: Int) {
-                        mPendingProgress = progress
-                    }
-                })
-                val localProxyUrl = mMediaPlayer.getLocalURLAndSetRemoteSocketAddress(url!!)
-                mPlaylist.add(mCurPlayIndex, music) //插入到当前播放位置
-                mCurMusic = music
-                mMediaPlayer.startProxy()
-                mMediaPlayer.reset()
-                mMediaPlayer.setDataSource(localProxyUrl)
-                mMediaPlayer.prepareAsync()
-                mMediaPlayer.start()
-                mPlayState = MusicConstants.MPS_PLAYING
-                sendMusicPlayBroadcast()
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-        }
-    }
-
-    /**
-     * 根据本地文件路径播放歌曲。
-     *
-     * @param path
-     */
-    fun play(path: String?) {
-        Log.d(TAG, "play: $path")
-        if (requestFocus()) {
-            try {
-                mMediaPlayer.stop()
-                mMediaPlayer.reset()
-                mMediaPlayer.setDataSource(path)
-                mMediaPlayer.prepare()
-                mMediaPlayer.setOnPreparedListener {
-                    mMediaPlayer.start()
-                    sendMusicPlayBroadcast()
-                }
-            } catch (e: IOException) {
-                e.printStackTrace()
-            }
         }
     }
 
@@ -320,25 +252,8 @@ class MusicControl(val context: Context) : MediaPlayer.OnCompletionListener {
      */
     fun play(pos: Int): Boolean {
         Log.d(TAG, "play: $pos")
-        if (pos == -1) return false
-        return if (requestFocus()) {
-            if (mCurPlayIndex == pos) {
-                if (!mMediaPlayer.isPlaying) {
-                    mMediaPlayer.start()
-                    mPlayState = MusicConstants.MPS_PLAYING
-                    sendMusicPlayBroadcast()
-                    mCurMusic = mPlaylist[mCurPlayIndex]
-                } else {
-                    pause()
-                }
-                return true
-            }
-            if (!prepare(pos)) {
-                false
-            } else replay()
-        } else {
-            false
-        }
+        if (pos == -1 && pos < mPlaylist.size -1) return false
+        return playById(mPlaylist[pos].id)
     }
 
     /**
@@ -599,11 +514,33 @@ class MusicControl(val context: Context) : MediaPlayer.OnCompletionListener {
         Log.d(TAG, "refreshPlaylist : $playlist")
         mPlaylist.clear()
         mPlaylist.addAll(playlist)
+        mPlaylist.forEachIndexed { index, item ->
+            if (mCurMusicId == item.id) {
+                mCurPlayIndex = index
+                mCurMusic = item
+                return@forEachIndexed
+            }
+        }
         if (mPlaylist.size == 0) {
             mPlayState = MusicConstants.MPS_NO_FILE
             mCurPlayIndex = -1
             return
         }
+    }
+
+    /**
+     * 删除指定歌曲
+     * @param music
+     */
+    fun removeMusic(position: Int) {
+        Log.d(TAG, "removeMusic : $position")
+        if (position > mPlaylist.size - 1) return
+        if (mCurPlayIndex == position) {
+            next()
+        } else if (mCurPlayIndex > position) {
+            mCurPlayIndex--
+        }
+        mPlaylist.removeAt(position)
     }
 
     /**

@@ -6,7 +6,6 @@ import android.graphics.Bitmap;
 
 interface IMusicService {
     boolean play(int pos);
-    void playByUrl(in MusicBean music, String url);
     boolean replay();
     boolean pause();
     boolean prev();
@@ -18,6 +17,7 @@ interface IMusicService {
     int pendingProgress();
     boolean seekTo(int progress);
     void refreshPlaylist(in List<MusicBean> playlist);
+    void removeMusic(int pos);
 
     int getPlayState();
     int getPlayMode();

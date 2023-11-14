@@ -31,10 +31,6 @@ class MusicService : Service() {
             return mc.play(pos)
         }
 
-        override fun playByUrl(music: MusicBean, url: String?) {
-            mc.playByUrl(music, url)
-        }
-
         override fun replay(): Boolean {
             return mc.replay()
         }
@@ -78,6 +74,10 @@ class MusicService : Service() {
         override fun refreshPlaylist(playlist: MutableList<MusicBean>) {
             assert(playlist.isNotEmpty())
             mc.refreshPlaylist(playlist)
+        }
+
+        override fun removeMusic(pos: Int) {
+            mc.removeMusic(pos)
         }
 
         override fun getPlayState(): Int {

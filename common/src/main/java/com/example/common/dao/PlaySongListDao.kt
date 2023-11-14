@@ -15,6 +15,9 @@ interface PlaySongListDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun add2PlaySongList(vararg history : MusicBean)
 
+    @Query("DELETE FROM playSongList WHERE id = :musicId")
+    fun deleteMusic(musicId : Long)
+
     @Query("DELETE FROM playSongList")
     fun deleteAll()
 

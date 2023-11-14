@@ -1,6 +1,5 @@
 package com.example.playing.viewModel
 
-import android.util.Log
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -121,12 +120,17 @@ class PlayViewModel : BaseViewModel() {
                 playMode.value = MusicConstants.PLAY_MODE_LOOP
                 MusicConstants.PLAY_MODE_LOOP
             }
+
             else -> {
                 playMode.value = MusicConstants.PLAY_MODE_LOOP
                 MusicConstants.PLAY_MODE_LOOP
             }
         }
         mediaManager?.playMode = mode
+    }
+
+    fun removeMusic(position: Int) {
+        mediaManager?.removeMusic(position)
     }
 
     override fun onDestroy(owner: LifecycleOwner) {

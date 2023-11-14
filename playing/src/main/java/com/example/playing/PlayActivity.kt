@@ -69,6 +69,9 @@ class PlayActivity : AppCompatActivity() {
         binding.ivPlayMode.setOnClickListener {
             viewModel.changePlayMode()
         }
+        binding.ivPlayList.setOnClickListener {
+            PLayListFragment.show(this)
+        }
     }
 
     private fun subscribeData() {
