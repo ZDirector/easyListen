@@ -6,12 +6,13 @@ import android.os.Bundle
 import android.widget.SeekBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.FragmentActivity
 import com.example.common.utils.MyApplication
 import com.example.common.utils.SystemUtils
 import com.example.playing.databinding.ActivityPlayBinding
 import com.example.playing.viewModel.PlayViewModel
 
-class PlayActivity : AppCompatActivity() {
+class PlayActivity : FragmentActivity() {
 
     companion object {
         fun start(context: Context) {

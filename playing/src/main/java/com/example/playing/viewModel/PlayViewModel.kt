@@ -63,7 +63,7 @@ class PlayViewModel : BaseViewModel() {
             playMode.postValue(mediaManager.playMode)
             musicList.postValue(mediaManager.playlist)
             currentIndex.postValue(mediaManager.curIndex())
-            LogUtil.d("PlayViewModel","refresh")
+            LogUtil.d("PlayViewModel","refresh currentMusic = ${currentMusic.value}")
         }
     }
 

@@ -8,6 +8,7 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import com.example.common.utils.LogUtil
 import com.example.common.utils.MyApplication.Companion.context
 import com.example.homepage.R
 import com.example.homepage.databinding.ActivityWebBinding
@@ -31,7 +32,10 @@ class WebActivity : AppCompatActivity() {
             webSettings.loadWithOverviewMode = true
             webSettings.javaScriptEnabled = true
             webSettings.domStorageEnabled = true
-            intent.getStringExtra("url")?.let { web.loadUrl(it) }
+            intent.getStringExtra("url")?.let {
+                LogUtil.d("WebActivity", "Url = $it")
+                web.loadUrl(it)
+            }
             web.webViewClient = MyWebViewClient()
             if (WebUtils.isWifi(context)) {
                 //当前有可用网络

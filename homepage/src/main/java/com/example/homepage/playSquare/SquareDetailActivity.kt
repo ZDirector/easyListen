@@ -8,9 +8,9 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.widget.RelativeLayout
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.marginTop
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.palette.graphics.Palette
@@ -33,7 +33,7 @@ import com.example.homepage.playSquare.viewmodel.PlayListDetailViewModel
 import kotlin.math.abs
 
 
-class SquareDetailActivity : AppCompatActivity() {
+class SquareDetailActivity : FragmentActivity() {
 
     private lateinit var mBinding: ActivitySquareDetailBinding
     private lateinit var mViewModel: PlayListDetailViewModel
@@ -137,7 +137,6 @@ class SquareDetailActivity : AppCompatActivity() {
 
     private fun setToolBar() {
         mBinding.apply {
-            setSupportActionBar(toolbar)
             toolbarLayout.isTitleEnabled = false
             toolbarLayout.expandedTitleGravity = Gravity.CENTER//设置展开后标题的位置
             toolbarLayout.collapsedTitleGravity = Gravity.CENTER//设置收缩后标题的位置

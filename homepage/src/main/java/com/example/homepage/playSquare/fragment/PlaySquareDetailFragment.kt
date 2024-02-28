@@ -42,9 +42,12 @@ class PlaySquareDetailFragment(private val title: String) : Fragment() {
         adapter.itemClickListener = object : DataClickListener<Playlist> {
             override fun onClick(value: Playlist, position: Int) {
                 //跳转到歌单详程
-                val intent = Intent(requireActivity(),SquareDetailActivity::class.java)
-                if(position<mViewModel. squareListStateFlow.value.playlists.size){
-                    intent.putExtra("playlist",mViewModel.squareListStateFlow.value.playlists[position])
+                val intent = Intent(requireActivity(), SquareDetailActivity::class.java)
+                if (position < mViewModel.squareListStateFlow.value.playlists.size) {
+                    intent.putExtra(
+                        "playlist",
+                        mViewModel.squareListStateFlow.value.playlists[position]
+                    )
                     startActivity(intent)
                 }
 
@@ -106,7 +109,6 @@ class PlaySquareDetailFragment(private val title: String) : Fragment() {
         }
     }
 
-
     private fun initRvListener(rv: RecyclerView) {
         rv.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
@@ -118,8 +120,12 @@ class PlaySquareDetailFragment(private val title: String) : Fragment() {
                             loadList()
                             mAdapter.addFooterView(footLayout)
                         } else {
-                            if(!loading){
-                                Toast.makeText(requireContext(), "所有数据加载完毕！", Toast.LENGTH_SHORT).show()
+                            if (!loading) {
+                                Toast.makeText(
+                                    requireContext(),
+                                    "所有数据加载完毕！",
+                                    Toast.LENGTH_SHORT
+                                ).show()
                             }
                         }
                     }
@@ -130,7 +136,6 @@ class PlaySquareDetailFragment(private val title: String) : Fragment() {
 
     }
 
-
     /**
      * 加载更多数据
      */
@@ -138,9 +143,5 @@ class PlaySquareDetailFragment(private val title: String) : Fragment() {
         loading = true
         mViewModel.getSquareList(mAdapter.data.size, 51, title)
     }
-
-
-
-
 
 }

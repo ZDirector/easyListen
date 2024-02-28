@@ -10,10 +10,10 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.marginBottom
 import androidx.core.view.marginTop
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.common.utils.UiUtils
 import com.example.common.utils.immersive
 import com.example.common.utils.navigationBarHeight
 import com.example.homepage.R
@@ -25,7 +25,7 @@ import com.example.homepage.toplist.viewmodel.TopListViewModel
 import com.google.android.material.tabs.TabLayout
 
 
-class TopListActivity : AppCompatActivity() {
+class TopListActivity : FragmentActivity() {
     private lateinit var mBinding: ActivityTopListBinding
     private val mViewModel by viewModels<TopListViewModel>()
     private val mAdapter by lazy { OfficialAdapter() }
@@ -64,7 +64,6 @@ class TopListActivity : AppCompatActivity() {
             lp.height= bottomView.height + navigationBarHeight
             bottomView.layoutParams = lp
             bottomView.requestLayout()
-            flControlPlay.bringToFront()
         }
     }
 

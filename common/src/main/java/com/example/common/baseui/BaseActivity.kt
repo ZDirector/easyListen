@@ -4,16 +4,16 @@ import android.app.Activity
 import android.app.Dialog
 import android.os.Bundle
 import androidx.annotation.CallSuper
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.common.R
 import com.example.common.baseui.dialog.LoadingDialog
 import com.example.common.utils.ExitUtils
 import java.lang.reflect.ParameterizedType
 
-abstract class BaseActivity<VDB : ViewDataBinding, VM : BaseViewModel> : AppCompatActivity() {
+abstract class BaseActivity<VDB : ViewDataBinding, VM : BaseViewModel> : FragmentActivity() {
 
     // Protected Field Start ----<<<<
     //
@@ -91,6 +91,6 @@ abstract class BaseActivity<VDB : ViewDataBinding, VM : BaseViewModel> : AppComp
 
     override fun onDestroy() {
         super.onDestroy()
-        ExitUtils.addActivity(activity)
+        ExitUtils.delActivity(activity)
     }
 }
