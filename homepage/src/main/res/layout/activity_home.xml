@@ -82,7 +82,7 @@
             android:id="@+id/floatingPlayControlView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@+id/nav_view"/>
+            app:layout_constraintBottom_toTopOf="@+id/nav_view" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/nav_view"

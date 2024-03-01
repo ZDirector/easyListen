@@ -45,7 +45,7 @@ class TopListActivity : FragmentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        immersive(window,this)
+        immersive(window, this)
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_top_list)
         mBinding.lifecycleOwner = this
         mBinding.viewModel = mViewModel
@@ -58,10 +58,10 @@ class TopListActivity : FragmentActivity() {
 
     }
 
-    private fun initBottomImmersive(){
+    private fun initBottomImmersive() {
         mBinding.apply {
             val lp = bottomView.layoutParams as ConstraintLayout.LayoutParams
-            lp.height= bottomView.height + navigationBarHeight
+            lp.height = bottomView.height + navigationBarHeight
             bottomView.layoutParams = lp
             bottomView.requestLayout()
         }
@@ -151,51 +151,50 @@ class TopListActivity : FragmentActivity() {
                     println("scrollY为$scrollY   ${rvStyle.top} ${rvStyle.measuredHeight} ${tvSelect.top}}")
 
 
-                    h1 =tvOfficial.marginTop
-                    h2 = calculateView(tvOfficial)+calculateView(rvOfficial)+tvStyle.marginTop
-                    h3=  calculateView(tvOfficial)+calculateView(rvOfficial)+calculateView(tvStyle)+calculateView(rvStyle)+tvGlobal.marginTop
+                    h1 = tvOfficial.marginTop
+                    h2 = calculateView(tvOfficial) + calculateView(rvOfficial) + tvStyle.marginTop
+                    h3 = calculateView(tvOfficial) + calculateView(rvOfficial) + calculateView(
+                        tvStyle
+                    ) + calculateView(rvStyle) + tvGlobal.marginTop
 
-                    h4 = h3+ calculateView(rvSelect)
-                    h5 = h4+ calculateView(tvFeatures)
+                    h4 = h3 + calculateView(rvSelect)
+                    h5 = h4 + calculateView(tvFeatures)
                     println("$h1,$h2,$h3,$h4,$h5 莎莎很大声的 ${tvStyle.top}")
 
                     mScrollviewFlag = true
                     mTabIndex = tabLayout.selectedTabPosition
-                        if (scrollY < h2) {
-                            if (mTabIndex != 0) {//增加判断，如果滑动的区域是tableIndex=0对应的区域，则不改变tablayout的状态
-                                tabLayout.selectTab(tabLayout.getTabAt(0))
-                            }
-                        } else if (scrollY in h2 until h3) {
-                            if (mTabIndex != 1) {
-                                tabLayout.selectTab(tabLayout.getTabAt(1))
-                            }
-                        } else if (scrollY in h3 until h4) {
-                            if (mTabIndex != 2) {
-                                tabLayout.selectTab(tabLayout.getTabAt(2))
-                            }
-                        } else if (scrollY in h4 until h5) {
-                            if (mTabIndex != 3) {
-                                tabLayout.selectTab(tabLayout.getTabAt(3))
-                            }
-                        } else {
-                            if (mTabIndex != 4) {
-                                tabLayout.selectTab(tabLayout.getTabAt(4))
-                            }
+                    if (scrollY < h2) {
+                        if (mTabIndex != 0) {//增加判断，如果滑动的区域是tableIndex=0对应的区域，则不改变tablayout的状态
+                            tabLayout.selectTab(tabLayout.getTabAt(0))
+                        }
+                    } else if (scrollY in h2 until h3) {
+                        if (mTabIndex != 1) {
+                            tabLayout.selectTab(tabLayout.getTabAt(1))
+                        }
+                    } else if (scrollY in h3 until h4) {
+                        if (mTabIndex != 2) {
+                            tabLayout.selectTab(tabLayout.getTabAt(2))
+                        }
+                    } else if (scrollY in h4 until h5) {
+                        if (mTabIndex != 3) {
+                            tabLayout.selectTab(tabLayout.getTabAt(3))
+                        }
+                    } else {
+                        if (mTabIndex != 4) {
+                            tabLayout.selectTab(tabLayout.getTabAt(4))
                         }
                     }
-                    mScrollviewFlag = false
+                }
+                mScrollviewFlag = false
 
             }
 
         }
     }
 
-    private fun calculateView(view: View):Int{
-        return view.marginTop+view.marginBottom+view.measuredHeight
+    private fun calculateView(view: View): Int {
+        return view.marginTop + view.marginBottom + view.measuredHeight
     }
-
-
-
 
 
 }

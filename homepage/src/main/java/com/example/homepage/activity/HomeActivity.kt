@@ -79,13 +79,16 @@ class HomeActivity : FragmentActivity() {
                     R.id.musicFragment -> {
                         setFragment(BOTTOM_MUSIC)
                     }
+
                     R.id.careFragment -> {
 
                         setFragment(HomeConstants.BOTTOM_CARE)
                     }
+
                     R.id.videoFragment -> {
                         setFragment(HomeConstants.BOTTOM_VIDEO)
                     }
+
                     R.id.mineFragment -> {
                         setFragment(HomeConstants.BOTTOM_MINE)
                     }
@@ -137,38 +140,41 @@ class HomeActivity : FragmentActivity() {
         //隐藏所有Fragment
         hideFragments(mTransaction)
         mBinding.apply {
-            when(index){
-                BOTTOM_MUSIC->{
-                    if (mMusicFragment == null){
+            when (index) {
+                BOTTOM_MUSIC -> {
+                    if (mMusicFragment == null) {
                         mMusicFragment = MusicFragment()
-                        mTransaction.add(R.id.container,mMusicFragment!!)
-                    }else{
+                        mTransaction.add(R.id.container, mMusicFragment!!)
+                    } else {
                         mTransaction.show(mMusicFragment!!)
                     }
                 }
-                HomeConstants.BOTTOM_CARE->{
-                    if (mCareFragment == null){
+
+                HomeConstants.BOTTOM_CARE -> {
+                    if (mCareFragment == null) {
                         mCareFragment = CareFragment()
-                        mTransaction.add(R.id.container,mCareFragment!!)
-                    }else{
+                        mTransaction.add(R.id.container, mCareFragment!!)
+                    } else {
                         mTransaction.show(mCareFragment!!)
                     }
                 }
-                HomeConstants.BOTTOM_VIDEO->{
 
-                    if (mVideoFragment == null){
+                HomeConstants.BOTTOM_VIDEO -> {
+
+                    if (mVideoFragment == null) {
                         mVideoFragment = VideoFragment()
-                        mTransaction.add(R.id.container,mVideoFragment!!)
-                    }else{
+                        mTransaction.add(R.id.container, mVideoFragment!!)
+                    } else {
                         mTransaction.show(mVideoFragment!!)
                     }
                 }
-                HomeConstants.BOTTOM_MINE->{
 
-                    if (mMineFragment == null){
+                HomeConstants.BOTTOM_MINE -> {
+
+                    if (mMineFragment == null) {
                         mMineFragment = MineFragment()
-                        mTransaction.add(R.id.container,mMineFragment!!)
-                    }else{
+                        mTransaction.add(R.id.container, mMineFragment!!)
+                    } else {
                         mTransaction.show(mMineFragment!!)
                     }
                 }
