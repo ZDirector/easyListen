@@ -8,9 +8,9 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.widget.RelativeLayout
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.marginTop
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.palette.graphics.Palette
@@ -23,6 +23,7 @@ import com.example.common.adapter.DataClickListener
 import com.example.common.bean.home.Playlist
 import com.example.common.bean.searchBean.Song
 import com.example.common.utils.UiUtils.setPic
+import com.example.common.utils.bindImageFromUrlBlur
 import com.example.common.utils.immersive
 import com.example.common.utils.navigationBarHeight
 import com.example.homepage.R
@@ -32,7 +33,7 @@ import com.example.homepage.playSquare.viewmodel.PlayListDetailViewModel
 import kotlin.math.abs
 
 
-class SquareDetailActivity : AppCompatActivity() {
+class SquareDetailActivity : FragmentActivity() {
 
     private lateinit var mBinding: ActivitySquareDetailBinding
     private lateinit var mViewModel: PlayListDetailViewModel
@@ -80,10 +81,11 @@ class SquareDetailActivity : AppCompatActivity() {
                 mViewModel.apply {
                     nameLiveData.postValue(it.name)
                     describeLiveData.postValue(it.description)
-                    val picUrl :String = if(listLiveData.value!!.picUrl != ""){
+                    val picUrl: String = if (listLiveData.value!!.picUrl != "") {
                         listLiveData.value?.picUrl.toString()
-                    }else listLiveData.value?.coverImgUrl!!
-                    setPic(ibPlaylist, 20,  picUrl)
+                    } else listLiveData.value?.coverImgUrl!!
+                    setPic(ibPlaylist, 20, picUrl)
+                    bindImageFromUrlBlur(ivBg, picUrl)
                     loadList()
                 }
             }
@@ -135,7 +137,6 @@ class SquareDetailActivity : AppCompatActivity() {
 
     private fun setToolBar() {
         mBinding.apply {
-            setSupportActionBar(toolbar)
             toolbarLayout.isTitleEnabled = false
             toolbarLayout.expandedTitleGravity = Gravity.CENTER//设置展开后标题的位置
             toolbarLayout.collapsedTitleGravity = Gravity.CENTER//设置收缩后标题的位置

@@ -2,27 +2,27 @@ package com.example.homepage.playSquare
 
 import android.graphics.Color
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import com.example.common.utils.navigationBarHeight
 import com.example.common.baseui.assembly.BaseViewPageAdapter
+import com.example.common.utils.navigationBarHeight
 import com.example.homepage.R
 import com.example.homepage.databinding.ActivitySongSquareBinding
 import com.example.homepage.playSquare.fragment.PlaySquareDetailFragment
 import com.example.homepage.playSquare.viewmodel.SquareViewModel
 import com.google.android.material.tabs.TabLayout
 
-class SongSquareActivity : AppCompatActivity() {
+class SongSquareActivity : FragmentActivity() {
     private lateinit var mBinding: ActivitySongSquareBinding
     private lateinit var mViewModel: SquareViewModel
-    private  val mTabList: MutableList<String> = ArrayList()
-    private val mPageList: MutableList<PlaySquareDetailFragment> = ArrayList()
+    private val mTabList: MutableList<String> = mutableListOf()
+    private val mPageList: MutableList<PlaySquareDetailFragment> = mutableListOf()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,7 +39,7 @@ class SongSquareActivity : AppCompatActivity() {
         mBinding.apply {
 
             val lp = bottomNav.layoutParams as ConstraintLayout.LayoutParams
-            lp.height= bottomNav.height + navigationBarHeight
+            lp.height = bottomNav.height + navigationBarHeight
             bottomNav.layoutParams = lp
             bottomNav.requestLayout()
 
@@ -50,11 +50,11 @@ class SongSquareActivity : AppCompatActivity() {
     /**
      * 初始化tags
      */
-    private fun getTags(){
+    private fun getTags() {
         lifecycleScope.launchWhenCreated {
-            mViewModel.tagsStateFlow.collect{
+            mViewModel.tagsStateFlow.collect {
                 mTabList.clear()
-                for (i in it.indices){
+                for (i in it.indices) {
                     mTabList.add(it[i].name)
                 }
                 initFragment()
@@ -66,17 +66,14 @@ class SongSquareActivity : AppCompatActivity() {
 
     }
 
-    private fun initFragment(){
+    private fun initFragment() {
         mPageList.clear()
-
-        for(i in mTabList.indices){
+        for (i in mTabList.indices) {
             mPageList.add(PlaySquareDetailFragment(mTabList[i]))
-
         }
-
     }
 
-    private fun initPager(){
+    private fun initPager() {
         mBinding.apply {
             vpTabSquare.mViewPage.adapter =
                 BaseViewPageAdapter(mPageList, supportFragmentManager, lifecycle)

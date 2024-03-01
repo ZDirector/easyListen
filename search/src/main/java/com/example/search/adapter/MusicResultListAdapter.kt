@@ -56,7 +56,7 @@ class MusicResultListAdapter(var musicResultList : MutableList<Song> ) : Recycle
         val song = musicResultList[position]
         holder.itemSearchMusicName.text = song.name
 
-        if (song.tns != null) holder.itemSearchMusicTns.text = "(" + song.tns!![0] + ")"
+        if (song.tns?.isNotEmpty() == true) holder.itemSearchMusicTns.text = "( ${song?.tns?.get(0)} )"
         if (song.privilege.fee != 0) holder.itemSearchMusicLabelVIP.visibility = View.VISIBLE
         if (song.privilege.freeTrialPrivilege.resConsumable) holder.itemSearchMusicLabelAudition.visibility = View.VISIBLE
         if (song.originCoverType == 1) holder.itemSearchMusicLabelOriginal.visibility = View.VISIBLE

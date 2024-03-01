@@ -6,11 +6,11 @@ import android.os.Build
 import android.os.Bundle
 import android.view.ViewGroup
 import android.view.WindowManager
-import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import com.example.common.utils.MyApplication
 import com.example.homepage.R
 import com.example.homepage.databinding.ActivityHomeBinding
 import com.example.homepage.music.fragment.MusicFragment
@@ -23,13 +23,12 @@ import com.example.search.ui.SearchActivity
 import com.google.android.material.navigation.NavigationBarView
 
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : FragmentActivity() {
     private lateinit var mBinding: ActivityHomeBinding
     private var mMusicFragment: MusicFragment? = null
     private var mCareFragment: CareFragment? = null
     private var mVideoFragment: VideoFragment? = null
     private var mMineFragment: MineFragment? = null
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,17 +36,38 @@ class HomeActivity : AppCompatActivity() {
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_home)
         init()
         initListener()
-        mBinding.navView.labelVisibilityMode= NavigationBarView.LABEL_VISIBILITY_LABELED
-
+        initMusicService()
+        mBinding.navView.labelVisibilityMode = NavigationBarView.LABEL_VISIBILITY_LABELED
     }
 
     private fun init() {
         setFragment(BOTTOM_MUSIC)
-        mBinding.apply {
-            toolbar.findViewById<TextView>(R.id.et_search).setOnClickListener {
-                val intent = Intent(this@HomeActivity,SearchActivity::class.java)
-                startActivity(intent)
-            }
+        initView()
+        subscribeData()
+    }
+
+    private fun initView() {
+        mBinding.etSearch.setOnClickListener {
+            val intent = Intent(this@HomeActivity, SearchActivity::class.java)
+            startActivity(intent)
+        }
+
+        mBinding.floatingPlayControlView.setOnClickListener {
+            val intent = Intent(this@HomeActivity, SearchActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    private fun subscribeData() {
+
+    }
+
+    /**
+     * 初始化音乐服务
+     */
+    private fun initMusicService() {
+        MyApplication.instance.let {
+            it.get()?.mediaManager?.connectService()
         }
     }
 
@@ -109,8 +129,6 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
-
-
     private fun setFragment(index: Int) {
         //获取Fragment管理器
         val mFragmentManager: FragmentManager = supportFragmentManager
@@ -161,7 +179,6 @@ class HomeActivity : AppCompatActivity() {
         mTransaction.commit()
     }
 
-
     private fun hideFragments(transaction: FragmentTransaction) {
         if (mMusicFragment != null) {
             transaction.hide(mMusicFragment!!)
@@ -177,7 +194,15 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
+    private fun disconnectMusicService() {
+        MyApplication.instance.get()?.let {
+            it.mediaManager?.stop()
+            it.mediaManager?.disconnectService()
+        }
+    }
 
-
-
+    override fun onDestroy() {
+        disconnectMusicService()
+        super.onDestroy()
+    }
 }

@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
+import com.example.common.utils.LogUtil
 import com.example.homepage.R
 import com.example.homepage.activity.WebActivity
 import com.example.homepage.databinding.FragmentMusicBinding
@@ -36,11 +37,11 @@ class MusicFragment : Fragment(), OnBannerListener<Banner> {
     private lateinit var mViewModel: MusicViewModel
     private var mList = mutableListOf<Banner>()
     private var mRanks = mutableListOf<Rank>()
-    private lateinit var mRankAdapter:RankListAdapter
+    private lateinit var mRankAdapter: RankListAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_music, container, false)
         return mBinding.root
     }
@@ -93,17 +94,16 @@ class MusicFragment : Fragment(), OnBannerListener<Banner> {
     }
 
     private fun initRecommendedList() {
-        lifecycleScope.launch{
+        lifecycleScope.launch {
             mViewModel.getRecoLists()
 
         }
         mBinding.apply {
-            lvRecommendedPlaylist.setMusicSheet(viewLifecycleOwner,mViewModel.mRecoLists)
-            lvRecommendedPlaylist.setOnItemClickListener{
-                musicSheet, _ ->
-                    val intent = Intent(activity,SquareDetailActivity::class.java)
-                    intent.putExtra("playlist",musicSheet)
-                    startActivity(intent)
+            lvRecommendedPlaylist.setMusicSheet(viewLifecycleOwner, mViewModel.mRecoLists)
+            lvRecommendedPlaylist.setOnItemClickListener { musicSheet, _ ->
+                val intent = Intent(activity, SquareDetailActivity::class.java)
+                intent.putExtra("playlist", musicSheet)
+                startActivity(intent)
 
             }
         }
@@ -111,55 +111,58 @@ class MusicFragment : Fragment(), OnBannerListener<Banner> {
 
 
     private val mAdapter: BannerImageAdapter<Banner> = object : BannerImageAdapter<Banner>(mList) {
-    override fun onBindView(
-        holder: BannerImageHolder,
-        data: Banner,
-        position: Int,
-        size: Int
-    ) {
-        Glide.with(holder.itemView.context)
-            .load(data.pic)
-            .apply(RequestOptions.bitmapTransform(RoundedCorners(30)))
-            .into(holder.imageView)
-
-    }
-}
-
-private fun initBanner() {
-    mBinding.banner.addBannerLifecycleObserver(viewLifecycleOwner)
-    mBinding.banner
-        .setAdapter(mAdapter)
-        .setIndicator(CircleIndicator(context))
-        .setLoopTime(3000)
-        .setOnBannerListener(this)
-    mViewModel.mBanners.observe(
-        viewLifecycleOwner
-    )
-    {
-        context?.let {
-            if (mList.size > 0) {
-            }
+        override fun onBindView(
+            holder: BannerImageHolder,
+            data: Banner,
+            position: Int,
+            size: Int
+        ) {
+            Glide.with(holder.itemView.context)
+                .load(data.pic)
+                .apply(RequestOptions.bitmapTransform(RoundedCorners(30)))
+                .into(holder.imageView)
 
         }
-        mList.clear()
-        mList.addAll(it)
-        mAdapter.notifyDataSetChanged()
-
     }
-}
 
-companion object {
-    @JvmStatic
-    fun newInstance(param1: String, param2: String) =
-        MusicFragment().apply {
-            arguments = Bundle().apply {
+    private fun initBanner() {
+        mBinding.banner.addBannerLifecycleObserver(viewLifecycleOwner)
+        mBinding.banner
+            .setAdapter(mAdapter)
+            .setIndicator(CircleIndicator(context))
+            .setLoopTime(3000)
+            .setOnBannerListener(this)
+        mViewModel.mBanners.observe(
+            viewLifecycleOwner
+        )
+        {
+            context?.let {
+                if (mList.size > 0) {
+                }
+
             }
+            mList.clear()
+            mList.addAll(it)
+            mAdapter.notifyDataSetChanged()
+
         }
-}
+    }
+
+    companion object {
+        @JvmStatic
+        fun newInstance(param1: String, param2: String) =
+            MusicFragment().apply {
+                arguments = Bundle().apply {
+                }
+            }
+    }
 
     override fun OnBannerClick(data: Banner, position: Int) {
-        val intent = Intent(context,WebActivity::class.java)
-        intent.putExtra("url",mList[position].url)
-        startActivity(intent)
+        val url = mList[position].url
+        url?.let {
+            val intent = Intent(context, WebActivity::class.java)
+            intent.putExtra("url", mList[position].url)
+            startActivity(intent)
+        }
     }
 }

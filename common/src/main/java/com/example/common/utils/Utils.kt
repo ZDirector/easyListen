@@ -6,7 +6,6 @@ import android.content.res.Configuration
 import android.os.Handler
 import android.os.Looper
 import android.widget.Toast
-import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException

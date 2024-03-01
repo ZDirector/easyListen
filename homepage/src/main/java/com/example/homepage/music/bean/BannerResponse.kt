@@ -39,7 +39,7 @@ data class Banner(
     val targetType: Int,
     val titleColor: String,
     val typeTitle: String,
-    val url: String,
+    val url: String? = null,
     val video: Any
 )
 
@@ -64,7 +64,7 @@ data class Song(
     val id: Int,
     val l: L,
     val m: M,
-    val mark: Int,
+    val mark: Long,
     val mst: Int,
     val mv: Int,
     val name: String,

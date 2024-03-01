@@ -43,6 +43,7 @@ dependencies {
     implementation(project(':common'))
     implementation(project(':music_comment'))
     implementation(project(':video'))
+    implementation(project(':playing'))
 
 
     //加载动画库
