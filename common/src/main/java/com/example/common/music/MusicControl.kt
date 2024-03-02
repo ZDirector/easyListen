@@ -72,7 +72,6 @@ class MusicControl(
                 setCurMusicId(getLong("current_music_id", -1))
                 if (mCurMusicId != -1L) {
                     prepare(seekPosById(mPlaylist, mCurMusicId))
-                    seekTo(mCurMusic?.lastPlayTime?.toInt() ?: 0)
                 } else {
                     if (mPlaylist.isNotEmpty()) {
                         prepare(0)
@@ -93,17 +92,12 @@ class MusicControl(
         val editor = sp.edit()
         editor.putLong("current_music_id", mCurMusicId)
         editor.apply()
-        mDao.deleteAll()
-        mPlaylist.forEach {
-            if (it.id != mCurMusic?.id) {
-                it.lastPlayTime = 0
-            } else {
-                it.lastPlayTime = position().toLong()
-            }
-        }
         stop()
 
-        mDao.add2PlaySongList(*mPlaylist.toTypedArray())
+        GlobalScope.launch(Dispatchers.IO) {
+            mDao.deleteAll()
+            mDao.add2PlaySongList(*mPlaylist.toTypedArray())
+        }
     }
 
     /**
@@ -520,12 +514,17 @@ class MusicControl(
     fun removeMusic(position: Int) {
         Log.d(TAG, "removeMusic : $position")
         if (position > mPlaylist.size - 1) return
+        val id = mPlaylist[position].id
+        GlobalScope.launch(Dispatchers.IO) {
+            mDao.deleteMusic(id)
+        }
+        mPlaylist.removeAt(position)
         if (mCurPlayIndex == position) {
             next()
         } else if (mCurPlayIndex > position) {
             mCurPlayIndex--
         }
-        mPlaylist.removeAt(position)
+        callback?.onPlayListChanged(mPlaylist)
     }
 
     /**
