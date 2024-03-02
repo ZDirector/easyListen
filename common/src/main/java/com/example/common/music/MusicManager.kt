@@ -22,6 +22,7 @@ class MusicManager(internal val context: Context) : IMusicService.Stub() {
     private var mediaService: IMusicService? = null
     private val serviceConnection: ServiceConnection
     private var onCompletionListener: MusicControl.OnConnectCompletionListener? = null
+    private var iMusicManager: IMusicManager? = null
 
     init {
         this.serviceConnection = object : ServiceConnection {
@@ -57,6 +58,10 @@ class MusicManager(internal val context: Context) : IMusicService.Stub() {
     fun disconnectService() {
         context.unbindService(serviceConnection)
         context.stopService(Intent(context, MusicService::class.java))
+    }
+
+    fun setIMusicManager(iMusicManager: IMusicManager) {
+        this.iMusicManager = iMusicManager
     }
 
     override fun play(pos: Int): Boolean {
@@ -166,6 +171,16 @@ class MusicManager(internal val context: Context) : IMusicService.Stub() {
         }
     }
 
+    override fun addMusic(music: MusicBean?) {
+        music?.let {
+            try {
+                mediaService?.addMusic(it)
+            } catch (e: RemoteException) {
+                e.printStackTrace()
+            }
+        }
+    }
+
     override fun removeMusic(pos: Int) {
         try {
             mediaService?.removeMusic(pos)
@@ -174,39 +189,12 @@ class MusicManager(internal val context: Context) : IMusicService.Stub() {
         }
     }
 
-    override fun getPlayState(): Int {
-        try {
-            return mediaService?.playState ?: 0
-        } catch (e: RemoteException) {
-            e.printStackTrace()
-        }
-        return 0
-    }
-
-    override fun getPlayMode(): Int {
-        try {
-            return mediaService?.playMode ?: 0
-        } catch (e: RemoteException) {
-            e.printStackTrace()
-        }
-        return 0
-    }
-
     override fun setPlayMode(mode: Int) {
         try {
-            mediaService?.playMode = mode
+            mediaService?.setPlayMode(mode)
         } catch (e: RemoteException) {
             e.printStackTrace()
         }
-    }
-
-    override fun getCurMusicId(): Long {
-        try {
-            return mediaService?.curMusicId ?: 0
-        } catch (e: RemoteException) {
-            e.printStackTrace()
-        }
-        return 0
     }
 
     override fun loadCurMusic(music: MusicBean?): Boolean {
@@ -220,28 +208,10 @@ class MusicManager(internal val context: Context) : IMusicService.Stub() {
 
     override fun setCurMusic(music: MusicBean?) {
         try {
-            mediaService?.curMusic = music
+            mediaService?.setCurMusic(music)
         } catch (e: RemoteException) {
             e.printStackTrace()
         }
-    }
-
-    override fun getCurMusic(): MusicBean {
-        try {
-            return mediaService?.curMusic ?: MusicBean()
-        } catch (e: RemoteException) {
-            e.printStackTrace()
-        }
-        return MusicBean()
-    }
-
-    override fun getPlaylist(): MutableList<MusicBean> {
-        try {
-            return mediaService?.playlist ?: mutableListOf()
-        } catch (e: RemoteException) {
-            e.printStackTrace()
-        }
-        return mutableListOf()
     }
 
     override fun updateNotification(bitmap: Bitmap?, title: String?, name: String?) {
@@ -252,5 +222,37 @@ class MusicManager(internal val context: Context) : IMusicService.Stub() {
 
     }
 
+    override fun onPlayStateChanged(isPlaying: Int) {
+        iMusicManager?.onPlayStateChanged(isPlaying)
+    }
+
+    override fun onPlayListChanged(playlist: MutableList<MusicBean>?) {
+        iMusicManager?.onPlayListChanged(playlist)
+    }
+
+    override fun onCurMusicChanged(music: MusicBean?) {
+        iMusicManager?.onCurMusicChanged(music)
+    }
+
+    override fun onPlayModeChanged(mode: Int) {
+        iMusicManager?.onPlayModeChanged(mode)
+    }
+
+    override fun onPlayProgressChanged(progress: Int) {
+        iMusicManager?.onPlayProgressChanged(progress)
+    }
+
+    override fun onCurPlayIndexChanged(index: Int) {
+        iMusicManager?.onCurPlayIndexChanged(index)
+    }
+
+    interface IMusicManager {
+        fun onPlayStateChanged(isPlaying: Int)
+        fun onPlayListChanged(playlist: MutableList<MusicBean>?)
+        fun onCurMusicChanged(music: MusicBean?)
+        fun onPlayModeChanged(mode: Int)
+        fun onPlayProgressChanged(progress: Int)
+        fun onCurPlayIndexChanged(index: Int)
+    }
 
 }

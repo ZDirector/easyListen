@@ -17,16 +17,20 @@ interface IMusicService {
     int pendingProgress();
     boolean seekTo(int progress);
     void refreshPlaylist(in List<MusicBean> playlist);
+    void addMusic(in MusicBean music);
     void removeMusic(int pos);
 
-    int getPlayState();
-    int getPlayMode();
     void setPlayMode(int mode);
-    long getCurMusicId();
     boolean loadCurMusic(in MusicBean music);
     void setCurMusic(in MusicBean music);
-    MusicBean getCurMusic();
-    List<MusicBean> getPlaylist();
     void updateNotification(in Bitmap bitmap, String title, String name);
     void cancelNotification();
+
+    void onPlayStateChanged(int isPlaying);
+    void onPlayListChanged(in List<MusicBean> playlist);
+    void onCurMusicChanged(in MusicBean music);
+    void onPlayModeChanged(int mode);
+    void onPlayProgressChanged(int progress);
+    void onCurPlayIndexChanged(int index);
+
 }

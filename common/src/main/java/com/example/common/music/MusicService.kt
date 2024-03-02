@@ -76,24 +76,18 @@ class MusicService : Service() {
             mc.refreshPlaylist(playlist)
         }
 
+        override fun addMusic(music: MusicBean?) {
+            music?.let {
+                mc.addMusic(it)
+            }
+        }
+
         override fun removeMusic(pos: Int) {
             mc.removeMusic(pos)
         }
 
-        override fun getPlayState(): Int {
-            return mc.getPlayState()
-        }
-
-        override fun getPlayMode(): Int {
-            return mc.getPlayMode()
-        }
-
         override fun setPlayMode(mode: Int) {
             mc.setPlayMode(mode)
-        }
-
-        override fun getCurMusicId(): Long {
-            return mc.getCurMusic()?.id ?: -1L
         }
 
         override fun loadCurMusic(music: MusicBean): Boolean {
@@ -104,20 +98,36 @@ class MusicService : Service() {
             mc.setCurMusic(music)
         }
 
-        override fun getCurMusic(): MusicBean {
-            return mc.getCurMusic() ?: MusicBean()
-        }
-
-        override fun getPlaylist(): MutableList<MusicBean> {
-            return mc.getPlaylist()
-        }
-
         override fun updateNotification(bitmap: Bitmap?, title: String?, name: String?) {
 
         }
 
         override fun cancelNotification() {
 
+        }
+
+        override fun onPlayStateChanged(isPlaying: Int) {
+            TODO("Not yet implemented")
+        }
+
+        override fun onPlayListChanged(playlist: MutableList<MusicBean>?) {
+            TODO("Not yet implemented")
+        }
+
+        override fun onCurMusicChanged(music: MusicBean?) {
+            TODO("Not yet implemented")
+        }
+
+        override fun onPlayModeChanged(mode: Int) {
+            TODO("Not yet implemented")
+        }
+
+        override fun onPlayProgressChanged(progress: Int) {
+            TODO("Not yet implemented")
+        }
+
+        override fun onCurPlayIndexChanged(index: Int) {
+            TODO("Not yet implemented")
         }
 
     }

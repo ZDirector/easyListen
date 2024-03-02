@@ -28,7 +28,6 @@ class MusicControl(val context: Context) : MediaPlayer.OnCompletionListener {
     }
     private var mPlayMode = MusicConstants.PLAY_MODE_LOOP // 默认列表循环
     private val mDao = EasyListenDB.instance.playSongListDao()
-    private val mContext: Context = context
     private lateinit var mPlaylist: MutableList<MusicBean>
     private var mCurPlayIndex = -1
     private var mPlayState = MusicConstants.MPS_NO_FILE // 默认没有音频文件播放
@@ -526,6 +525,11 @@ class MusicControl(val context: Context) : MediaPlayer.OnCompletionListener {
             mCurPlayIndex = -1
             return
         }
+    }
+
+    fun addMusic(music: MusicBean) {
+        Log.d(TAG, "addMusic : $music")
+        mPlaylist.add(music)
     }
 
     /**
