@@ -36,7 +36,6 @@ class HomeActivity : FragmentActivity() {
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_home)
         init()
         initListener()
-        initMusicService()
         mBinding.navView.labelVisibilityMode = NavigationBarView.LABEL_VISIBILITY_LABELED
     }
 
@@ -51,24 +50,10 @@ class HomeActivity : FragmentActivity() {
             val intent = Intent(this@HomeActivity, SearchActivity::class.java)
             startActivity(intent)
         }
-
-        mBinding.floatingPlayControlView.setOnClickListener {
-            val intent = Intent(this@HomeActivity, SearchActivity::class.java)
-            startActivity(intent)
-        }
     }
 
     private fun subscribeData() {
 
-    }
-
-    /**
-     * 初始化音乐服务
-     */
-    private fun initMusicService() {
-        MyApplication.instance.let {
-            it.get()?.mediaManager?.connectService()
-        }
     }
 
     private fun initListener() {

@@ -3,6 +3,7 @@ package com.example.common;
 import com.example.common.bean.searchBean.MusicBean;
 import java.util.List;
 import android.graphics.Bitmap;
+import com.example.common.IMusicCommunicate;
 
 interface IMusicService {
     boolean play(int pos);
@@ -17,16 +18,14 @@ interface IMusicService {
     int pendingProgress();
     boolean seekTo(int progress);
     void refreshPlaylist(in List<MusicBean> playlist);
+    void addMusic(in MusicBean music);
     void removeMusic(int pos);
 
-    int getPlayState();
-    int getPlayMode();
     void setPlayMode(int mode);
-    long getCurMusicId();
-    boolean loadCurMusic(in MusicBean music);
-    void setCurMusic(in MusicBean music);
-    MusicBean getCurMusic();
-    List<MusicBean> getPlaylist();
+    void loadCurMusic(in MusicBean music);
     void updateNotification(in Bitmap bitmap, String title, String name);
     void cancelNotification();
+
+    void resister(in IMusicCommunicate callback);
+    void unresister();
 }

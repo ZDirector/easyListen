@@ -1,10 +1,10 @@
 package com.example.common.music
 
 import android.app.Service
-import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.os.IBinder
+import com.example.common.IMusicCommunicate
 import com.example.common.IMusicService
 import com.example.common.bean.searchBean.MusicBean
 
@@ -16,7 +16,7 @@ class MusicService : Service() {
     private lateinit var mc: MusicControl
     private var binder: IBinder? = null
 
-    override fun onBind(p0: Intent?): IBinder? {
+    override fun onBind(intent: Intent?): IBinder? {
         binder = MediaServiceImpl()
         return binder
     }
@@ -76,40 +76,22 @@ class MusicService : Service() {
             mc.refreshPlaylist(playlist)
         }
 
+        override fun addMusic(music: MusicBean?) {
+            music?.let {
+                mc.addMusic(it)
+            }
+        }
+
         override fun removeMusic(pos: Int) {
             mc.removeMusic(pos)
-        }
-
-        override fun getPlayState(): Int {
-            return mc.getPlayState()
-        }
-
-        override fun getPlayMode(): Int {
-            return mc.getPlayMode()
         }
 
         override fun setPlayMode(mode: Int) {
             mc.setPlayMode(mode)
         }
 
-        override fun getCurMusicId(): Long {
-            return mc.getCurMusic()?.id ?: -1L
-        }
-
-        override fun loadCurMusic(music: MusicBean): Boolean {
-            return mc.loadCurMusic(music)
-        }
-
-        override fun setCurMusic(music: MusicBean) {
-            mc.setCurMusic(music)
-        }
-
-        override fun getCurMusic(): MusicBean {
-            return mc.getCurMusic() ?: MusicBean()
-        }
-
-        override fun getPlaylist(): MutableList<MusicBean> {
-            return mc.getPlaylist()
+        override fun loadCurMusic(music: MusicBean) {
+            mc.loadCurMusic(music)
         }
 
         override fun updateNotification(bitmap: Bitmap?, title: String?, name: String?) {
@@ -118,6 +100,16 @@ class MusicService : Service() {
 
         override fun cancelNotification() {
 
+        }
+
+        override fun resister(callback: IMusicCommunicate?) {
+            callback?.let {
+                mc.resister(callback)
+            }
+        }
+
+        override fun unresister() {
+            mc.unResister()
         }
 
     }

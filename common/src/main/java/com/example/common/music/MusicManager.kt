@@ -8,6 +8,7 @@ import android.graphics.Bitmap
 import android.os.IBinder
 import android.os.RemoteException
 import android.util.Log
+import com.example.common.IMusicCommunicate
 import com.example.common.IMusicService
 import com.example.common.bean.searchBean.MusicBean
 import com.example.common.utils.LogUtil
@@ -166,6 +167,16 @@ class MusicManager(internal val context: Context) : IMusicService.Stub() {
         }
     }
 
+    override fun addMusic(music: MusicBean?) {
+        music?.let {
+            try {
+                mediaService?.addMusic(it)
+            } catch (e: RemoteException) {
+                e.printStackTrace()
+            }
+        }
+    }
+
     override fun removeMusic(pos: Int) {
         try {
             mediaService?.removeMusic(pos)
@@ -174,74 +185,20 @@ class MusicManager(internal val context: Context) : IMusicService.Stub() {
         }
     }
 
-    override fun getPlayState(): Int {
-        try {
-            return mediaService?.playState ?: 0
-        } catch (e: RemoteException) {
-            e.printStackTrace()
-        }
-        return 0
-    }
-
-    override fun getPlayMode(): Int {
-        try {
-            return mediaService?.playMode ?: 0
-        } catch (e: RemoteException) {
-            e.printStackTrace()
-        }
-        return 0
-    }
-
     override fun setPlayMode(mode: Int) {
         try {
-            mediaService?.playMode = mode
+            mediaService?.setPlayMode(mode)
         } catch (e: RemoteException) {
             e.printStackTrace()
         }
     }
 
-    override fun getCurMusicId(): Long {
+    override fun loadCurMusic(music: MusicBean?) {
         try {
-            return mediaService?.curMusicId ?: 0
+            mediaService?.loadCurMusic(music)
         } catch (e: RemoteException) {
             e.printStackTrace()
         }
-        return 0
-    }
-
-    override fun loadCurMusic(music: MusicBean?): Boolean {
-        try {
-            return mediaService?.loadCurMusic(music) ?: false
-        } catch (e: RemoteException) {
-            e.printStackTrace()
-        }
-        return false
-    }
-
-    override fun setCurMusic(music: MusicBean?) {
-        try {
-            mediaService?.curMusic = music
-        } catch (e: RemoteException) {
-            e.printStackTrace()
-        }
-    }
-
-    override fun getCurMusic(): MusicBean {
-        try {
-            return mediaService?.curMusic ?: MusicBean()
-        } catch (e: RemoteException) {
-            e.printStackTrace()
-        }
-        return MusicBean()
-    }
-
-    override fun getPlaylist(): MutableList<MusicBean> {
-        try {
-            return mediaService?.playlist ?: mutableListOf()
-        } catch (e: RemoteException) {
-            e.printStackTrace()
-        }
-        return mutableListOf()
     }
 
     override fun updateNotification(bitmap: Bitmap?, title: String?, name: String?) {
@@ -250,6 +207,24 @@ class MusicManager(internal val context: Context) : IMusicService.Stub() {
 
     override fun cancelNotification() {
 
+    }
+
+    override fun resister(callback: IMusicCommunicate?) {
+        try {
+            LogUtil.i(TAG, "resister")
+            mediaService?.resister(callback)
+        } catch (e: RemoteException) {
+            e.printStackTrace()
+        }
+    }
+
+
+    override fun unresister() {
+        try {
+            mediaService?.unresister()
+        } catch (e: RemoteException) {
+            e.printStackTrace()
+        }
     }
 
 

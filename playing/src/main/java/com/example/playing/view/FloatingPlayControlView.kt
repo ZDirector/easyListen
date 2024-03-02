@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentActivity
 import com.example.common.utils.MyApplication
 import com.example.playing.PLayListFragment
+import com.example.playing.PlayActivity
 import com.example.playing.R
 import com.example.playing.databinding.FloatingPlayControlViewBinding
 import com.example.playing.viewModel.PlayViewModel
@@ -50,6 +51,10 @@ class FloatingPlayControlView : FrameLayout {
 
             binding.ivControlMoreList.setOnClickListener {
                 PLayListFragment.show(context)
+            }
+
+            binding.root.setOnClickListener {
+                PlayActivity.start(context)
             }
         }
     }

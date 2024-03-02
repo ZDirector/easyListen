@@ -3,11 +3,14 @@ package com.example.playing.viewModel
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.common.IMusicCommunicate
+import com.example.common.IMusicService
 import com.example.common.baseui.BaseViewModel
 import com.example.common.bean.doSuccess
 import com.example.common.bean.searchBean.MusicBean
 import com.example.common.db.EasyListenDB
 import com.example.common.music.MusicConstants
+import com.example.common.music.MusicControl
 import com.example.common.utils.LogUtil
 import com.example.common.utils.MyApplication
 import com.example.playing.data.MusicRepository
@@ -18,9 +21,40 @@ import kotlinx.coroutines.launch
 
 class PlayViewModel : BaseViewModel() {
 
+    companion object {
+        private const val TAG = "PlayViewModel"
+    }
+
     private val mediaManager = MyApplication.instance.get()?.mediaManager
     private val repository = MusicRepository()
     private val mDao = EasyListenDB.instance.playSongListDao()
+    private val listener = object : IMusicCommunicate.Stub() {
+
+        override fun onPlayStateChanged(playStatus: Int) {
+            LogUtil.d(TAG, "onPlayStateChanged: $playStatus")
+            isPlaying.postValue(playStatus == MusicConstants.MPS_PLAYING)
+        }
+
+        override fun onPlayListChanged(playlist: MutableList<MusicBean>?) {
+            LogUtil.d(TAG, "onPlayListChanged: $playlist")
+            musicList.postValue(playlist)
+        }
+
+        override fun onCurMusicChanged(music: MusicBean?) {
+            LogUtil.d(TAG, "onCurMusicChanged: $music")
+            currentMusic.postValue(music)
+        }
+
+        override fun onPlayModeChanged(mode: Int) {
+            LogUtil.d(TAG, "onPlayModeChanged: $mode")
+            playMode.postValue(mode)
+        }
+
+        override fun onCurPlayIndexChanged(index: Int) {
+            LogUtil.d(TAG, "onCurPlayIndexChanged: $index")
+            currentIndex.postValue(index)
+        }
+    }
 
     val currentMusic = MutableLiveData(MusicBean())
     val currentProgress = MutableLiveData(0)
@@ -31,23 +65,28 @@ class PlayViewModel : BaseViewModel() {
     val currentIndex = MutableLiveData<Int>()
 
     init {
-        sync()
+        mediaManager?.setOnCompletionListener(object : MusicControl.OnConnectCompletionListener {
+            override fun onConnectCompletion(service: IMusicService?) {
+                mediaManager.resister(listener)
+                sync()
+            }
+        })
+        mediaManager?.connectService()
     }
 
     fun setCurMusic(music: MusicBean) {
-        mediaManager?.curMusic = music
+        mediaManager?.loadCurMusic(music)
     }
 
     fun addMusic(music: MusicBean) {
         mediaManager?.let {
-            val musicList = it.playlist
+            val musicList = musicList.value ?: mutableListOf()
             musicList.forEach { musicBean ->
                 if (musicBean.id == music.id) {
                     return@addMusic
                 }
             }
-            musicList.add(music)
-            it.refreshPlaylist(musicList.toMutableList())
+            it.addMusic(music)
             viewModelScope.launch(Dispatchers.IO) {
                 mDao.add2PlaySongList(music)
             }
@@ -56,14 +95,8 @@ class PlayViewModel : BaseViewModel() {
 
     private fun refresh() {
         mediaManager?.let {
-            currentMusic.postValue(mediaManager.curMusic)
             totalProgress.postValue(mediaManager.duration())
             currentProgress.postValue(mediaManager.position())
-            isPlaying.postValue(mediaManager.playState == MusicConstants.MPS_PLAYING)
-            playMode.postValue(mediaManager.playMode)
-            musicList.postValue(mediaManager.playlist)
-            currentIndex.postValue(mediaManager.curIndex())
-            LogUtil.d("PlayViewModel","refresh currentMusic = ${currentMusic.value}")
         }
     }
 
@@ -108,14 +141,17 @@ class PlayViewModel : BaseViewModel() {
                 playMode.value = MusicConstants.PLAY_MODE_RANDOM
                 MusicConstants.PLAY_MODE_RANDOM
             }
+
             MusicConstants.PLAY_MODE_RANDOM -> {
                 playMode.value = MusicConstants.PLAY_MODE_SINGLE
                 MusicConstants.PLAY_MODE_SINGLE
             }
+
             MusicConstants.PLAY_MODE_SINGLE -> {
                 playMode.value = MusicConstants.PLAY_MODE_ORDER
                 MusicConstants.PLAY_MODE_ORDER
             }
+
             MusicConstants.PLAY_MODE_ORDER -> {
                 playMode.value = MusicConstants.PLAY_MODE_LOOP
                 MusicConstants.PLAY_MODE_LOOP
@@ -126,7 +162,7 @@ class PlayViewModel : BaseViewModel() {
                 MusicConstants.PLAY_MODE_LOOP
             }
         }
-        mediaManager?.playMode = mode
+        mediaManager?.setPlayMode(mode)
     }
 
     fun removeMusic(position: Int) {
@@ -136,6 +172,7 @@ class PlayViewModel : BaseViewModel() {
     override fun onDestroy(owner: LifecycleOwner) {
         mediaManager?.stop()
         mediaManager?.disconnectService()
+        mediaManager?.unresister()
         super.onDestroy(owner)
     }
 }
