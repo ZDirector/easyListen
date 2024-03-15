@@ -2,6 +2,7 @@ package com.example.common.utils
 
 
 import android.graphics.Outline
+import android.graphics.Typeface
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.ColorDrawable
 import android.view.View
@@ -170,4 +171,10 @@ fun setRoundCornerOutline(
         view.clipToOutline = true
     }
 }
+
+@BindingAdapter("textStyleBold")
+fun setTextStyleBold(textView: TextView, isBold: Boolean) {
+    textView.setTypeface(null, if (isBold) Typeface.BOLD else Typeface.NORMAL)
+}
+
 

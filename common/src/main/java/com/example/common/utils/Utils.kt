@@ -27,6 +27,10 @@ fun showToast(msg: String, time: Int = Toast.LENGTH_SHORT) {
     }
 }
 
+fun showToast(resId: Int, time: Int = Toast.LENGTH_SHORT) {
+    showToast(MyApplication.context.getString(resId), time)
+}
+
 /**
  * 设置状态栏颜色
  */

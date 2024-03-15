@@ -8,11 +8,15 @@ import com.example.common.IMusicService
 import com.example.common.baseui.BaseViewModel
 import com.example.common.bean.doSuccess
 import com.example.common.bean.searchBean.MusicBean
+import com.example.common.constants.HttpConstants
 import com.example.common.db.EasyListenDB
 import com.example.common.music.MusicConstants
 import com.example.common.music.MusicControl
 import com.example.common.utils.LogUtil
 import com.example.common.utils.MyApplication
+import com.example.common.utils.showToast
+import com.example.playing.R
+import com.example.playing.data.LyricLine
 import com.example.playing.data.MusicRepository
 import com.example.playing.data.MusicUrl
 import kotlinx.coroutines.Dispatchers
@@ -63,6 +67,7 @@ class PlayViewModel : BaseViewModel() {
     val playMode = MutableLiveData<Int>()
     val musicList = MutableLiveData<MutableList<MusicBean>>()
     val currentIndex = MutableLiveData<Int>()
+    val musicLyricList = MutableLiveData<MutableList<LyricLine>>()
 
     init {
         mediaManager?.setOnCompletionListener(object : MusicControl.OnConnectCompletionListener {
@@ -105,6 +110,17 @@ class PlayViewModel : BaseViewModel() {
             val result = repository.getMusicUrl(ids.toList())
             result.doSuccess {
                 callback(result.data)
+            }
+        }
+    }
+
+    fun getLyric(id: Long) {
+        viewModelScope.launch {
+            val result = repository.getLyric(id)
+            if (result.code == HttpConstants.SUCCESS) {
+                musicLyricList.postValue(result.lrc.parseLyrics().toMutableList())
+            } else {
+                showToast(R.string.get_lyric_error)
             }
         }
     }

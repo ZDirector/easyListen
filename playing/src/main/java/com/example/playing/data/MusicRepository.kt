@@ -12,4 +12,8 @@ class MusicRepository {
         return service.getMusicUrl(id)
     }
 
+    suspend fun getLyric(id: Long) : LyricData {
+        return service.getLyric(id.toString())
+    }
+
 }

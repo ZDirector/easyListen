@@ -4,9 +4,9 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.SeekBar
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentActivity
+import com.example.common.utils.LogUtil
 import com.example.common.utils.MyApplication
 import com.example.common.utils.SystemUtils
 import com.example.playing.databinding.ActivityPlayBinding
@@ -76,7 +76,15 @@ class PlayActivity : FragmentActivity() {
     }
 
     private fun subscribeData() {
+        viewModel.currentMusic.observe(this) {
+            if (it.id != -1L) {
+                viewModel.getLyric(it.id)
+            }
+        }
 
+        viewModel.musicLyricList.observe(this) {
+
+        }
     }
 
 }

@@ -9,4 +9,7 @@ interface MusicService {
     @GET("song/url")
     suspend fun getMusicUrl(@Query("id") id: String): BaseBean<List<MusicUrl>>
 
+    @GET("lyric")
+    suspend fun getLyric(@Query("id") id: String): LyricData
+
 }
