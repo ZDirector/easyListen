@@ -29,13 +29,13 @@ data class Lyric(
     fun parseLyrics(): List<LyricLine> {
         val lines = lyric.split("\n")
         val lyricList = mutableListOf<LyricLine>()
-        val pattern = Pattern.compile("\\[(\\d{2}):(\\d{2})\\.(\\d{2,3})\\](.*)")
+        val pattern = Pattern.compile("\\[(\\d{2}):(\\d{2})\\.(\\d{2,3})](.*)")
         for (line in lines) {
             val matcher = pattern.matcher(line)
             if (matcher.find()) {
-                val minute = matcher.group(1)?.toLong() ?: 0
-                val second = matcher.group(2)?.toLong() ?: 0
-                val millisecond = matcher.group(3)?.toLong() ?: 0
+                val minute = matcher.group(1)?.toInt() ?: 0
+                val second = matcher.group(2)?.toInt() ?: 0
+                val millisecond = matcher.group(3)?.toInt() ?: 0
                 val time = minute * 60 * 1000 + second * 1000 + millisecond
                 val text = matcher.group(4) ?: ""
                 lyricList.add(LyricLine(time, text))
@@ -47,10 +47,9 @@ data class Lyric(
 
 @Keep
 data class LyricLine(
-    val time: Long = 0L, // 单位毫秒
+    val time: Int = 0, // 单位毫秒
     val text: String = "",
 
     // 以下为本地字段
     var _isPlaying: Boolean = false, // 是否正在播放
-    var _isBeSelected: Boolean = false // 是否被选中
 )

@@ -4,12 +4,17 @@ import android.app.Activity
 import android.content.Context
 import android.graphics.Color
 import android.os.Build
-import android.view.*
+import android.view.View
+import android.view.ViewGroup
+import android.view.ViewTreeObserver
 import android.view.ViewTreeObserver.OnGlobalLayoutListener
+import android.view.Window
+import android.view.WindowManager
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
+import com.example.common.R
 
 
 object UiUtils {
@@ -53,6 +58,54 @@ val Context.navigationBarHeight: Int
         return result
     }
 private var navigationBarHeightInternal = -1
+
+private val lastClickTimeTag = R.id.last_click_time_tag
+private val delayTag = R.id.delay_tag
+
+/**
+ * 单击
+ * @receiver View
+ * @param time Long 单击间隔
+ * @param block Function0<Unit> 回调
+ */
+fun View.setOnSingleClickListener(time: Long = 500, block: (view: View) -> Unit) {
+    triggerDelay = time
+    setOnClickListener {
+        if (clickEnable()) {
+            block(this)
+        }
+    }
+}
+
+private var View.lastClickTime: Long
+    get() = if (getTag(lastClickTimeTag) != null) {
+        getTag(lastClickTimeTag) as? Long ?: 0
+    } else {
+        0
+    }
+    set(value) {
+        setTag(lastClickTimeTag, value)
+    }
+
+private var View.triggerDelay: Long
+    get() = if (getTag(delayTag) != null) {
+        getTag(delayTag) as? Long ?: 500
+    } else {
+        500
+    }
+    set(value) {
+        setTag(delayTag, value)
+    }
+
+private fun View.clickEnable(): Boolean {
+    var flag = false
+    val currentClickTime = System.currentTimeMillis()
+    if (currentClickTime - lastClickTime >= triggerDelay) {
+        flag = true
+        lastClickTime = currentClickTime
+    }
+    return flag
+}
 
 
 /**

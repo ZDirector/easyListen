@@ -3,12 +3,13 @@ package com.example.playing
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.SeekBar
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentActivity
-import com.example.common.utils.LogUtil
 import com.example.common.utils.MyApplication
 import com.example.common.utils.SystemUtils
+import com.example.common.utils.setOnSingleClickListener
 import com.example.playing.databinding.ActivityPlayBinding
 import com.example.playing.viewModel.PlayViewModel
 
@@ -40,16 +41,16 @@ class PlayActivity : FragmentActivity() {
     }
 
     private fun initView() {
-        binding.ivBack.setOnClickListener {
+        binding.ivBack.setOnSingleClickListener {
             finish()
         }
-        binding.ivPlay.setOnClickListener {
+        binding.ivPlay.setOnSingleClickListener {
             viewModel.play()
         }
-        binding.ivNext.setOnClickListener {
+        binding.ivNext.setOnSingleClickListener {
             viewModel.next()
         }
-        binding.ivPre.setOnClickListener {
+        binding.ivPre.setOnSingleClickListener {
             viewModel.previous()
         }
         binding.musicSeekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
@@ -67,11 +68,19 @@ class PlayActivity : FragmentActivity() {
 
             }
         })
-        binding.ivPlayMode.setOnClickListener {
+        binding.ivPlayMode.setOnSingleClickListener {
             viewModel.changePlayMode()
         }
-        binding.ivPlayList.setOnClickListener {
+        binding.ivPlayList.setOnSingleClickListener {
             PLayListFragment.show(this)
+        }
+        binding.ivAlbum.setOnSingleClickListener {
+            binding.ivAlbum.visibility = View.GONE
+            binding.mlvLyric.visibility = View.VISIBLE
+        }
+        binding.mlvLyric.setOnSingleClickListener {
+            binding.ivAlbum.visibility = View.VISIBLE
+            binding.mlvLyric.visibility = View.GONE
         }
     }
 
@@ -83,7 +92,11 @@ class PlayActivity : FragmentActivity() {
         }
 
         viewModel.musicLyricList.observe(this) {
+            binding.mlvLyric.setLyric(it)
+        }
 
+        viewModel.currentProgress.observe(this) {
+            binding.mlvLyric.setCurrentTime(it)
         }
     }
 

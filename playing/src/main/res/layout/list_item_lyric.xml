@@ -16,12 +16,15 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvLyric"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="36dp"
             android:text="@{data.text}"
-            android:textSize="@{data._isPlaying ? @dimen/dp_16 : @dimen/dp_14}"
+            android:gravity="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            android:paddingVertical="6dp"
+            android:textSize="@{data._isPlaying ? @dimen/dp_20 : @dimen/dp_18}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:textStyleBold="@{data._isPlaying}"

@@ -3,23 +3,31 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="currentTime"
+            type="Integer" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorBlack12">
+        tools:background="@color/colorBlack12">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvLyric"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintTop_toTopOf="parent"
+            tools:itemCount="11"
             tools:listitem="@layout/list_item_lyric" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/clPlayLine"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             android:layout_marginHorizontal="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -50,6 +58,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorWhite87"
                 android:textSize="12sp"
+                app:playTimeText="@{currentTime}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"

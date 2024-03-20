@@ -18,6 +18,14 @@ abstract class BaseListAdapter<T, VH : RecyclerView.ViewHolder> :
         super.submitList(list?.toMutableList(), commitCallback)
     }
 
+    override fun onBindViewHolder(holder: VH, position: Int) {
+        holder.itemView.setOnSingleClickListener {
+            if (position in 0 until currentList.size) {
+                onItemClick?.invoke(currentList[position])
+            }
+        }
+    }
+
     fun submitListOrigin(list: List<T>?) {
         super.submitList(list)
     }
