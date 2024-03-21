@@ -78,7 +78,7 @@ class PlayActivity : FragmentActivity() {
             binding.ivAlbum.visibility = View.GONE
             binding.mlvLyric.visibility = View.VISIBLE
         }
-        binding.mlvLyric.setOnSingleClickListener {
+        binding.mlvLyric.setClickListener {
             binding.ivAlbum.visibility = View.VISIBLE
             binding.mlvLyric.visibility = View.GONE
         }

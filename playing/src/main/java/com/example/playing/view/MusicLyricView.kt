@@ -50,6 +50,9 @@ class MusicLyricView : FrameLayout {
     private var beSelectPosition = 0
     private var handler: Handler? = Handler(Looper.getMainLooper())
 
+    private var callback: (() -> Unit)? = null
+    private var lastClickTime = 0L
+
     private fun initView(context: Context) {
         if (context is FragmentActivity) {
             val inflater = LayoutInflater.from(context)
@@ -73,14 +76,25 @@ class MusicLyricView : FrameLayout {
                 override fun onInterceptTouchEvent(rv: RecyclerView, e: MotionEvent): Boolean {
                     when (e.action) {
                         MotionEvent.ACTION_DOWN -> {
+                            lastClickTime = System.currentTimeMillis()
+                        }
+
+                        MotionEvent.ACTION_MOVE -> {
                             isScrolling = true
                             binding.clPlayLine.visibility = VISIBLE
                             handler?.removeCallbacksAndMessages(null)
                         }
 
                         MotionEvent.ACTION_UP -> {
-                            // 延迟3s后设置为false，防止歌曲进度回调导致立即滚动回currentPosition
-                            gonePlayLine(3000)
+                            if (System.currentTimeMillis() - lastClickTime < 100) {
+                                // 如果是点击事件
+                                callback?.invoke()
+                                gonePlayLine(0)
+                                lastClickTime = 0
+                            } else {
+                                // 延迟3s后设置为false，防止歌曲进度回调导致立即滚动回currentPosition
+                                gonePlayLine(3000)
+                            }
                         }
                     }
                     return false
@@ -99,7 +113,6 @@ class MusicLyricView : FrameLayout {
                                 binding.rvLyric,
                                 binding.rvLyric.layoutManager as LinearLayoutManager
                             )
-                            LogUtil.d(TAG, "centerItem = $centerItem")
                             centerItem?.let {
                                 val list = adapter.currentList.toMutableList()
                                 binding.currentTime = list[it].time
@@ -118,6 +131,10 @@ class MusicLyricView : FrameLayout {
                 }
             }
         }
+    }
+
+    fun setClickListener(callback: () -> Unit) {
+        this.callback = callback
     }
 
     fun setLyric(lyricList: List<LyricLine>) {
@@ -172,6 +189,9 @@ class MusicLyricView : FrameLayout {
         }, interval.toLong())
     }
 
+    /**
+     * 计算当前列表中居中的item的位置
+     */
     private fun calculateCenterItemPosition(
         recyclerView: RecyclerView,
         layoutManager: LinearLayoutManager
@@ -196,6 +216,5 @@ class MusicLyricView : FrameLayout {
 
         return if (closestPosition >= 0) closestPosition else null
     }
-
 
 }

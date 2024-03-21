@@ -19,9 +19,11 @@ abstract class BaseListAdapter<T, VH : RecyclerView.ViewHolder> :
     }
 
     override fun onBindViewHolder(holder: VH, position: Int) {
-        holder.itemView.setOnSingleClickListener {
-            if (position in 0 until currentList.size) {
-                onItemClick?.invoke(currentList[position])
+        if (onItemClick != null) {
+            holder.itemView.setOnSingleClickListener {
+                if (position in 0 until currentList.size) {
+                    onItemClick?.invoke(currentList[position])
+                }
             }
         }
     }
