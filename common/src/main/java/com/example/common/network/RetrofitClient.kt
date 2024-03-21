@@ -25,7 +25,7 @@ object RetrofitClient {
             .retryOnConnectionFailure(true)
             .addInterceptor(LogInterceptor())
             .addInterceptor(retryInterceptor)
-            .addInterceptor(TokenInterceptor(HttpConstants.TOKEN))
+            .addInterceptor(TokenInterceptor())
             .build()
     }
 

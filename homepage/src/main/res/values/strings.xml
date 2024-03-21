@@ -38,4 +38,8 @@
     <string name="select">精选</string>
     <string name="features">特色</string>
     <string name="line">-</string>
+    <string name="phone_chinese_code">+86</string>
+    <string name="phone_input_hint">请输入手机号</string>
+    <string name="password_input_hint">请输入密码</string>
+    <string name="login_button">登录</string>
 </resources>

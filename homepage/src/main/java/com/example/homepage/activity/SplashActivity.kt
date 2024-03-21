@@ -9,15 +9,11 @@ import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import androidx.fragment.app.FragmentActivity
-import androidx.lifecycle.lifecycleScope
+import com.example.common.constants.HttpConstants
 import com.example.common.utils.ExitUtils
-import com.example.common.utils.MyApplication
 import com.example.homepage.R
 import com.example.homepage.agreement.ClickCallBack
 import com.example.homepage.agreement.TermServiceDialogFragment
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import permissions.dispatcher.PermissionUtils
 import java.lang.Thread.sleep
 
@@ -71,8 +67,14 @@ class SplashActivity : AppCompatActivity() {
     private fun initSplash(){
         Thread{
             try {
+                val token = getToken()
+                val intent: Intent = if (token.isEmpty()) {
+                    Intent(applicationContext, LoginActivity::class.java)
+                } else {
+                    HttpConstants.TOKEN = token
+                    Intent(applicationContext, HomeActivity::class.java)
+                }
                 sleep(3000)
-                val intent = Intent(applicationContext, HomeActivity::class.java)
                 startActivity(intent)
                 finish()
             } catch (e: InterruptedException) {
@@ -82,12 +84,15 @@ class SplashActivity : AppCompatActivity() {
         }.start()
     }
 
-
+    private fun getToken(): String {
+        val prefs = getSharedPreferences("data", Context.MODE_PRIVATE)
+        return prefs.getString("token", "").toString()
+    }
 
     /**
      * 初始化权限申请
      */
-    private fun initPermission(){
+    private fun initPermission() {
 
         ActivityCompat.requestPermissions(
             this,
@@ -99,10 +104,6 @@ class SplashActivity : AppCompatActivity() {
             1
         )
     }
-
-
-
-
 
     override fun onRequestPermissionsResult(
         requestCode: Int,

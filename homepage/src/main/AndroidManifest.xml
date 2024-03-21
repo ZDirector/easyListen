@@ -14,16 +14,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EasyListen"
         android:usesCleartextTraffic="true"
-        tools:targetApi="n" >
+        tools:targetApi="n">
+        <activity
+            android:name=".activity.LoginActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".activity.ContentServiceActivity"
             android:exported="false" />
         <activity
             android:name=".activity.SplashActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
