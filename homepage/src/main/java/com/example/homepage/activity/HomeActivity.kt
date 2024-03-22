@@ -6,11 +6,13 @@ import android.os.Build
 import android.os.Bundle
 import android.view.ViewGroup
 import android.view.WindowManager
+import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.example.common.utils.MyApplication
+import com.example.common.utils.setOnSingleClickListener
 import com.example.homepage.R
 import com.example.homepage.databinding.ActivityHomeBinding
 import com.example.homepage.music.fragment.MusicFragment
@@ -19,6 +21,7 @@ import com.example.homepage.ui.fragment.MineFragment
 import com.example.homepage.ui.fragment.VideoFragment
 import com.example.homepage.utils.HomeConstants
 import com.example.homepage.utils.HomeConstants.BOTTOM_MUSIC
+import com.example.homepage.viewModel.UserViewModel
 import com.example.search.ui.SearchActivity
 import com.google.android.material.navigation.NavigationBarView
 
@@ -30,10 +33,15 @@ class HomeActivity : FragmentActivity() {
     private var mVideoFragment: VideoFragment? = null
     private var mMineFragment: MineFragment? = null
 
+    private val userViewModel: UserViewModel by lazy {
+        MyApplication.getAppViewModel(UserViewModel::class.java)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         immersive()
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_home)
+        mBinding.lifecycleOwner = this
         init()
         initListener()
         mBinding.navView.labelVisibilityMode = NavigationBarView.LABEL_VISIBILITY_LABELED
@@ -46,14 +54,24 @@ class HomeActivity : FragmentActivity() {
     }
 
     private fun initView() {
+        mBinding.drawerLayout.closeDrawer(GravityCompat.START)
         mBinding.etSearch.setOnClickListener {
             val intent = Intent(this@HomeActivity, SearchActivity::class.java)
             startActivity(intent)
         }
+
+        mBinding.ivDraw.setOnSingleClickListener {
+            mBinding.drawerLayout.openDrawer(GravityCompat.START)
+        }
+
+        mBinding.drawer.userViewModel = userViewModel
+        mBinding.drawer.tvLoginOut.setOnSingleClickListener {
+
+        }
     }
 
     private fun subscribeData() {
-
+        userViewModel.fetchUserInfo()
     }
 
     private fun initListener() {
@@ -195,5 +213,13 @@ class HomeActivity : FragmentActivity() {
     override fun onDestroy() {
         disconnectMusicService()
         super.onDestroy()
+    }
+
+    override fun onBackPressed() {
+        if (mBinding.drawerLayout.isOpen) {
+            mBinding.drawerLayout.close()
+            return
+        }
+        super.onBackPressed()
     }
 }

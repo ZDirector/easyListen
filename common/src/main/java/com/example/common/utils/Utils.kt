@@ -7,6 +7,8 @@ import android.os.Handler
 import android.os.Looper
 import android.widget.Toast
 import androidx.core.view.WindowCompat
+import java.net.URLEncoder
+import java.nio.charset.StandardCharsets
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
 
@@ -107,5 +109,12 @@ fun String.toMd5() : String{
         e.printStackTrace()
     }
     return ""
+}
+
+fun String.encodeUTF8() : String{
+    if (this.isEmpty()) {
+        return ""
+    }
+    return URLEncoder.encode(this, StandardCharsets.UTF_8.toString())
 }
 

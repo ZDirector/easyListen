@@ -9,6 +9,8 @@ data class LoginData(
     val code: Int = 0,
     @SerializedName("token")
     val token: String = "",
+    @SerializedName("cookie")
+    val cookie: String = "",
     @SerializedName("profile")
     val profile: UserInfo = UserInfo(),
     @SerializedName("msg")
@@ -31,4 +33,30 @@ data class UserInfo(
     val followeds: Int = 0,
     @SerializedName("follows")
     val follows: Int = 0,
+)
+
+@Keep
+data class UserAccountData(
+    @SerializedName("code")
+    val code: Int = 0,
+    @SerializedName("account")
+    val account: Account = Account(),
+    @SerializedName("msg")
+    val msg: String = "",
+)
+
+@Keep
+data class Account(
+    @SerializedName("id")
+    val userId: Long = 0,
+)
+
+@Keep
+data class UserDetail(
+    @SerializedName("code")
+    val code: Int = 0,
+    @SerializedName("profile")
+    val profile: UserInfo = UserInfo(),
+    @SerializedName("msg")
+    val msg: String = "",
 )

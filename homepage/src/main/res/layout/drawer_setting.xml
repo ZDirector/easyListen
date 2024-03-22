@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="userViewModel"
+            type="com.example.homepage.viewModel.UserViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/drawer"
+        android:layout_width="258dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@color/colorWhite"
+        android:paddingVertical="16dp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivAvatar"
+            android:layout_width="104dp"
+            android:layout_height="104dp"
+            android:layout_marginTop="32dp"
+            app:imageFromUrlRound="@{userViewModel.userInfo.avatarUrl}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:background="@color/colorF3" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:lines="1"
+            android:text="@{userViewModel.userInfo.name}"
+            android:textColor="@color/colorBlack"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/ivAvatar"
+            app:layout_constraintStart_toStartOf="@+id/ivAvatar"
+            app:layout_constraintTop_toBottomOf="@+id/ivAvatar"
+            app:layout_constraintWidth_max="124dp"
+            tools:text="1111" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivGender"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginStart="4dp"
+            android:src="@{userViewModel.userInfo.gender == 1 ? @drawable/ic_gender_man : @drawable/ic_gender_woman}"
+            app:layout_constraintBottom_toBottomOf="@+id/tvName"
+            app:layout_constraintStart_toEndOf="@+id/tvName"
+            app:layout_constraintTop_toTopOf="@+id/tvName"
+            tools:src="@drawable/ic_gender_man" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvFollowNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@{String.valueOf(userViewModel.userInfo.follows)}"
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/tvFollowedNum"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvName"
+            tools:text="21" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvFollow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/drawer_follow"
+            android:textColor="@color/colorBlack"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@+id/tvFollowNum"
+            app:layout_constraintStart_toStartOf="@+id/tvFollowNum"
+            app:layout_constraintTop_toBottomOf="@+id/tvFollowNum" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvFollowedNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="12dp"
+            android:text="@{String.valueOf(userViewModel.userInfo.followeds)}"
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tvFollowNum"
+            app:layout_constraintTop_toBottomOf="@+id/tvName"
+            tools:text="21" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvFollowed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/drawer_followed"
+            android:textColor="@color/colorBlack"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@+id/tvFollowedNum"
+            app:layout_constraintStart_toStartOf="@+id/tvFollowedNum"
+            app:layout_constraintTop_toBottomOf="@+id/tvFollowedNum" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvLoginOut"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginHorizontal="36dp"
+            android:layout_marginBottom="32dp"
+            android:background="@color/transparent"
+            android:gravity="center"
+            android:text="@string/drawer_logout"
+            android:textColor="@color/colorRed2"
+            android:textSize="16sp"
+            app:bg_roundRadius="@{22}"
+            app:bg_strokeColor="@{@color/colorRed2}"
+            app:bg_strokeWidth="@{2}"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -67,11 +67,11 @@ class SplashActivity : AppCompatActivity() {
     private fun initSplash(){
         Thread{
             try {
-                val token = getToken()
-                val intent: Intent = if (token.isEmpty()) {
+                val cookie = getCookie()
+                val intent: Intent = if (cookie.isEmpty()) {
                     Intent(applicationContext, LoginActivity::class.java)
                 } else {
-                    HttpConstants.TOKEN = token
+                    HttpConstants.COOKIE = cookie
                     Intent(applicationContext, HomeActivity::class.java)
                 }
                 sleep(3000)
@@ -84,9 +84,9 @@ class SplashActivity : AppCompatActivity() {
         }.start()
     }
 
-    private fun getToken(): String {
+    private fun getCookie(): String {
         val prefs = getSharedPreferences("data", Context.MODE_PRIVATE)
-        return prefs.getString("token", "").toString()
+        return prefs.getString("cookie", "").toString()
     }
 
     /**

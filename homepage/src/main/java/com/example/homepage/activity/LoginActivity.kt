@@ -45,7 +45,7 @@ class LoginActivity : FragmentActivity() {
 
     private fun subscribeData() {
         viewModel.loginData.observe(this) {
-            saveToken(it.token)
+            saveCookie(it.cookie)
             userViewModel.updateUserInfo(it.profile)
             val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
@@ -53,11 +53,11 @@ class LoginActivity : FragmentActivity() {
         }
     }
 
-    private fun saveToken(token: String) {
-        HttpConstants.TOKEN = token
+    private fun saveCookie(cookie: String) {
+        HttpConstants.COOKIE = cookie
         val prefs = getSharedPreferences("data", MODE_PRIVATE)
         val editor = prefs.edit()
-        editor.putString("token", token)
+        editor.putString("cookie", cookie)
         editor.apply()
     }
 

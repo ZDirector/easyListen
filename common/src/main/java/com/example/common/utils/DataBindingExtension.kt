@@ -172,6 +172,56 @@ fun setRoundCornerOutline(
     }
 }
 
+/**
+ * 绘制背景，支持stroke和solid
+ * @param strokeWidth 边框宽度
+ * @param strokeColor 边框颜色
+ * @param roundRadius 圆角大小
+ * @param leftTopRadius 左上角圆角角度
+ * @param rightTopRadius 右上角圆角角度
+ * @param leftBottomRadius 左下角圆角角度
+ * @param rightBottomRadius 右下角圆角角度
+ * 这里有个坑，如果使用圆角的view要动态变化宽高，那么就会失效，需要重新调用一次
+ */
+@BindingAdapter(
+    value = ["bg_strokeWidth", "bg_strokeColor", "bg_roundRadius", "bg_leftTopRadius", "bg_rightTopRadius", "bg_leftBottomRadius", "bg_rightBottomRadius"],
+    requireAll = false
+)
+fun setRoundCornerBackground(
+    view: View,
+    strokeWidth: Int = 0,
+    @androidx.annotation.ColorInt
+    strokeColor: Int = 0,
+    roundRadius: Int = 0,
+    leftTopRadius: Int = 0,
+    rightTopRadius: Int = 0,
+    leftBottomRadius: Int = 0,
+    rightBottomRadius: Int = 0,
+) {
+    val background = view.background
+    if (background is ColorDrawable) {
+        val drawable = BackgroundDrawable(
+            strokeWidth.dp2px,
+            strokeColor,
+            background.color,
+            roundRadius.dp2px.toFloat(),
+            leftTopRadius.dp2px.toFloat(),
+            rightTopRadius.dp2px.toFloat(),
+            leftBottomRadius.dp2px.toFloat(),
+            rightBottomRadius.dp2px.toFloat()
+        )
+
+        view.background = drawable
+        //为了能够兼容evaluate，使用outlineProvider
+        view.outlineProvider = object : ViewOutlineProvider() {
+            override fun getOutline(view: View, outline: Outline) {
+                drawable.getOutline(outline)
+            }
+        }
+        view.clipToOutline = true
+    }
+}
+
 @BindingAdapter("textStyleBold")
 fun setTextStyleBold(textView: TextView, isBold: Boolean) {
     textView.setTypeface(null, if (isBold) Typeface.BOLD else Typeface.NORMAL)

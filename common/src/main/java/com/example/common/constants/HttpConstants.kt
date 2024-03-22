@@ -11,5 +11,7 @@ object HttpConstants {
 
     const val BASE_URL = "https://cloud-music-api-note.vercel.app/"
 
+    var COOKIE = ""
+
     var TOKEN = ""
 }
