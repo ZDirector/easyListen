@@ -60,3 +60,11 @@ data class UserDetail(
     @SerializedName("msg")
     val msg: String = "",
 )
+
+@Keep
+data class LogoutData(
+    @SerializedName("code")
+    val code: Int = 0,
+    @SerializedName("msg")
+    val msg: String = "",
+)

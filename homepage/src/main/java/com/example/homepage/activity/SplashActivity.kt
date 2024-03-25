@@ -10,7 +10,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.example.common.constants.HttpConstants
-import com.example.common.utils.ExitUtils
+import com.example.common.utils.MyApplication
 import com.example.homepage.R
 import com.example.homepage.agreement.ClickCallBack
 import com.example.homepage.agreement.TermServiceDialogFragment
@@ -41,7 +41,7 @@ class SplashActivity : AppCompatActivity() {
         val editor = prefs.edit()
         firstDialog.setCallBack(object : ClickCallBack {
             override fun cancel() {
-                ExitUtils.exitApp()
+                MyApplication.instance.get()?.activityLifeCycle?.closeAll()
             }
 
             override fun confirm() {

@@ -112,11 +112,10 @@ class MusicService : Service() {
             mc.unResister()
         }
 
-    }
+        override fun saveLatest() {
+            mc.saveLatest()
+            mc.exit()
+        }
 
-    override fun onDestroy() {
-        mc.saveLatest()
-        mc.exit()
-        super.onDestroy()
     }
 }

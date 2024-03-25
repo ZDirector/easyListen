@@ -14,4 +14,8 @@ object LoginRepository {
         loginService.login(phone, password)
     }
 
+    suspend fun logout() = withContext(Dispatchers.IO) {
+        loginService.logout()
+    }
+
 }

@@ -28,4 +28,5 @@ interface IMusicService {
 
     void resister(in IMusicCommunicate callback);
     void unresister();
+    void saveLatest();
 }

@@ -21,6 +21,7 @@ class MyApplication : Application(), ViewModelStoreOwner {
 
     private var viewModelProvider: ViewModelProvider? = null
     private var appViewModelStore: ViewModelStore? = null
+    var activityLifeCycle: ActivityLifeCycle? = null
 
     companion object {
         @SuppressLint("StaticFieldLeak")
@@ -51,6 +52,8 @@ class MyApplication : Application(), ViewModelStoreOwner {
         CrashHandler.instance.init(context)
         mediaManager = MusicManager(this)
         instance = WeakReference(this)
+        activityLifeCycle = ActivityLifeCycle()
+        registerActivityLifecycleCallbacks(activityLifeCycle)
     }
 
     override fun getViewModelStore(): ViewModelStore {

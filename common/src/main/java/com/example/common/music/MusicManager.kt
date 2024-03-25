@@ -23,6 +23,8 @@ class MusicManager(internal val context: Context) : IMusicService.Stub() {
     private var mediaService: IMusicService? = null
     private val serviceConnection: ServiceConnection
     private var onCompletionListener: MusicControl.OnConnectCompletionListener? = null
+    var isServiceConnected = false
+        private set
 
     init {
         this.serviceConnection = object : ServiceConnection {
@@ -33,14 +35,15 @@ class MusicManager(internal val context: Context) : IMusicService.Stub() {
                     //音频服务启动的标志
                     LogUtil.i(TAG, "MediaManager:connected")
                     onCompletionListener?.onConnectCompletion(mediaService)
+                    isServiceConnected = true
                 }
             }
 
             override fun onServiceDisconnected(name: ComponentName) {
                 //音频服务断开的标志
                 LogUtil.i(TAG, "MediaManager:disconnected")
-                Log.d("Test", "onServiceDisconnected")
                 mediaService = null
+                isServiceConnected
             }
         }
     }
@@ -56,6 +59,9 @@ class MusicManager(internal val context: Context) : IMusicService.Stub() {
     }
 
     fun disconnectService() {
+        if (mediaService == null) {
+            return
+        }
         context.unbindService(serviceConnection)
         context.stopService(Intent(context, MusicService::class.java))
     }
@@ -227,5 +233,12 @@ class MusicManager(internal val context: Context) : IMusicService.Stub() {
         }
     }
 
+    override fun saveLatest() {
+        try {
+            mediaService?.saveLatest()
+        } catch (e: RemoteException) {
+            e.printStackTrace()
+        }
+    }
 
 }

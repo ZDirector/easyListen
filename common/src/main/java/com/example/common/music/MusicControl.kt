@@ -70,6 +70,9 @@ class MusicControl(
             refreshPlaylist(mDao.queryPlaySongList())
             context.getSharedPreferences("data", Context.MODE_PRIVATE).apply {
                 setCurMusicId(getLong("current_music_id", -1))
+                val editor = this.edit()
+                editor.putLong("current_music_id", -1)
+                editor.apply()
                 if (mCurMusicId != -1L) {
                     prepare(seekPosById(mPlaylist, mCurMusicId))
                 } else {

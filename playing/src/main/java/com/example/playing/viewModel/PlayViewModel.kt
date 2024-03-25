@@ -127,7 +127,7 @@ class PlayViewModel : BaseViewModel() {
 
     private fun sync() {
         viewModelScope.launch(Dispatchers.IO) {
-            while (true) {
+            while (mediaManager?.isServiceConnected == true) {
                 refresh()
                 delay(1000)
             }

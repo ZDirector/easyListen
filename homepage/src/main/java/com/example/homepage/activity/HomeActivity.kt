@@ -6,11 +6,13 @@ import android.os.Build
 import android.os.Bundle
 import android.view.ViewGroup
 import android.view.WindowManager
+import androidx.activity.viewModels
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import androidx.lifecycle.ViewModelProvider
 import com.example.common.utils.MyApplication
 import com.example.common.utils.setOnSingleClickListener
 import com.example.homepage.R
@@ -21,6 +23,7 @@ import com.example.homepage.ui.fragment.MineFragment
 import com.example.homepage.ui.fragment.VideoFragment
 import com.example.homepage.utils.HomeConstants
 import com.example.homepage.utils.HomeConstants.BOTTOM_MUSIC
+import com.example.homepage.viewModel.LoginViewModel
 import com.example.homepage.viewModel.UserViewModel
 import com.example.search.ui.SearchActivity
 import com.google.android.material.navigation.NavigationBarView
@@ -66,7 +69,8 @@ class HomeActivity : FragmentActivity() {
 
         mBinding.drawer.userViewModel = userViewModel
         mBinding.drawer.tvLoginOut.setOnSingleClickListener {
-
+            val loginViewModel = ViewModelProvider(this)[LoginViewModel::class.java]
+            loginViewModel.logout()
         }
     }
 
@@ -201,18 +205,6 @@ class HomeActivity : FragmentActivity() {
         if (mMineFragment != null) {
             transaction.hide(mMineFragment!!)
         }
-    }
-
-    private fun disconnectMusicService() {
-        MyApplication.instance.get()?.let {
-            it.mediaManager?.stop()
-            it.mediaManager?.disconnectService()
-        }
-    }
-
-    override fun onDestroy() {
-        disconnectMusicService()
-        super.onDestroy()
     }
 
     override fun onBackPressed() {

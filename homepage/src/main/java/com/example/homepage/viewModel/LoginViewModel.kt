@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.common.bean.login.LoginData
+import com.example.common.utils.LogoutUtils
 import com.example.common.utils.showToast
 import com.example.common.utils.toMd5
 import com.example.homepage.repostory.LoginRepository
@@ -33,6 +34,17 @@ class LoginViewModel : ViewModel() {
             val response = LoginRepository.login(phone, password.toMd5())
             if (response.code == 200) {
                 loginData.postValue(response)
+            } else {
+                showToast(response.msg)
+            }
+        }
+    }
+
+    fun logout() {
+        viewModelScope.launch {
+            val response = LoginRepository.logout()
+            if (response.code == 200) {
+                LogoutUtils.logout()
             } else {
                 showToast(response.msg)
             }

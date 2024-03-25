@@ -10,7 +10,6 @@ import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.common.R
 import com.example.common.baseui.dialog.LoadingDialog
-import com.example.common.utils.ExitUtils
 import java.lang.reflect.ParameterizedType
 
 abstract class BaseActivity<VDB : ViewDataBinding, VM : BaseViewModel> : FragmentActivity() {
@@ -60,7 +59,6 @@ abstract class BaseActivity<VDB : ViewDataBinding, VM : BaseViewModel> : Fragmen
         initViewModelAndViewDataBinding()
         viewModel.loadingEvent.observe(this, ::showOrHideDialog)
         initData(savedInstanceState)
-        ExitUtils.addActivity(activity)
     }
 
     @Suppress("UNCHECKED_CAST")
@@ -87,10 +85,5 @@ abstract class BaseActivity<VDB : ViewDataBinding, VM : BaseViewModel> : Fragmen
         } else if (!isVisible && dialog.isShowing) {
             dialog.hide()
         }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        ExitUtils.delActivity(activity)
     }
 }
