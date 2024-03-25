@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.common.baseui.assembly.BaseViewPageAdapter
 import com.example.common.utils.navigationBarHeight
+import com.example.common.utils.setOnSingleClickListener
 import com.example.homepage.R
 import com.example.homepage.databinding.ActivitySongSquareBinding
 import com.example.homepage.playSquare.fragment.PlaySquareDetailFragment
@@ -29,6 +30,7 @@ class SongSquareActivity : FragmentActivity() {
         super.onCreate(savedInstanceState)
         immersive()
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_song_square)
+        mBinding.lifecycleOwner = this
         mViewModel = ViewModelProvider(this)[SquareViewModel::class.java]
         init()
     }
@@ -43,6 +45,9 @@ class SongSquareActivity : FragmentActivity() {
             bottomNav.layoutParams = lp
             bottomNav.requestLayout()
 
+            mBinding.ivBack.setOnSingleClickListener {
+                finish()
+            }
         }
 
     }

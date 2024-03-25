@@ -17,16 +17,46 @@
             android:id="@+id/view"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@id/text_bar"
+            app:layout_constraintBottom_toTopOf="@id/textBar"
             android:background="@color/mike_white"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.example.homepage.widget.TextBar
-            android:id="@+id/text_bar"
+        <LinearLayout
+            android:id="@+id/textBar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@id/guideline2"/>
+            android:layout_height="50dp"
+            app:layout_constraintBottom_toBottomOf="@id/guideline2"
+            android:background="@color/mike_white"
+            android:orientation="horizontal">
 
+            <ImageView
+                android:id="@+id/ivBack"
+                android:layout_width="18dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="7dp"
+                android:layout_weight="1"
+                android:src="@drawable/ic_baseline_arrow_back_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/et_search"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvBarText"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="14"
+                android:gravity="center_vertical"
+                android:text="@string/play_square"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline2"

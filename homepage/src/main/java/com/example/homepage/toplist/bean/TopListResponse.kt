@@ -58,9 +58,7 @@ data class TopDetail (
     val updateFrequency: String,
     val updateTime: Long,
     val userId: Long
-){
-    var songs:List<Song> = emptyList()
-}
+)
 
 data class RewardToplist(
     val coverUrl: String,

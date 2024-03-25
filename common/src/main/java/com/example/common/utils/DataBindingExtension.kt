@@ -12,6 +12,7 @@ import android.widget.TextView
 import androidx.annotation.Nullable
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
 import com.example.common.R
@@ -43,6 +44,26 @@ fun bindImageFromUrlRound(view: ImageView, imageUrl: String?) {
         .load(imageUrl)
         .transition(DrawableTransitionOptions.withCrossFade())
         .apply(RequestOptions.circleCropTransform())
+        .into(view)
+}
+
+@BindingAdapter(
+    value = ["ifurc_url", "ifurc_radius"],
+    requireAll = true
+)
+fun bindImageFromUrlRoundCorner(view: ImageView, imageUrl: String?, radius: Int) {
+    if (imageUrl.isNullOrEmpty()) {
+        Glide.with(view.context)
+            .load(R.color.white)
+            .transition(DrawableTransitionOptions.withCrossFade())
+            .apply(RequestOptions.bitmapTransform(RoundedCorners(radius.dp2px)))
+            .into(view)
+        return
+    }
+    Glide.with(view.context)
+        .load(imageUrl)
+        .transition(DrawableTransitionOptions.withCrossFade())
+        .apply(RequestOptions.bitmapTransform(RoundedCorners(radius.dp2px)))
         .into(view)
 }
 

@@ -11,7 +11,6 @@ class TopOtherAdapter : BaseQuickAdapter<TopDetail, BaseViewHolder>(R.layout.ite
         helper?.apply {
             itemView.apply {
                 item?.apply {
-                    println("adapter 这是事实￥￥$item")
                     UiUtils.setPic(findViewById(R.id.iv_top_playlist),10,coverImgUrl)
                 }
             }

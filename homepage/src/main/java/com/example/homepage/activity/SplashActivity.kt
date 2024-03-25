@@ -6,7 +6,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.WindowManager
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.example.common.constants.HttpConstants
@@ -24,7 +23,6 @@ class SplashActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Toast.makeText(this, "abc", Toast.LENGTH_SHORT).show()
         //隐层状态栏和标题栏
         window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
         //隐藏标题栏

@@ -3,9 +3,7 @@ package com.example.homepage.toplist.ui.activity
 import android.os.Bundle
 import android.view.View
 import android.view.ViewTreeObserver
-import android.widget.TextView
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.marginBottom
 import androidx.core.view.marginTop
@@ -16,6 +14,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.common.utils.immersive
 import com.example.common.utils.navigationBarHeight
+import com.example.common.utils.setOnSingleClickListener
 import com.example.homepage.R
 import com.example.homepage.databinding.ActivityTopListBinding
 import com.example.homepage.toplist.adapter.OfficialAdapter
@@ -69,7 +68,7 @@ class TopListActivity : FragmentActivity() {
 
     private fun init() {
         mBinding.apply {
-            toolbar.findViewById<TextView>(R.id.tv_bar_text).text = "排行榜"
+            tvBarText.text = "排行榜"
             rvOfficial.layoutManager = LinearLayoutManager(this@TopListActivity)
             rvOfficial.adapter = mAdapter
         }
@@ -187,6 +186,10 @@ class TopListActivity : FragmentActivity() {
                 }
                 mScrollviewFlag = false
 
+            }
+
+            ivBack.setOnSingleClickListener {
+                finish()
             }
 
         }

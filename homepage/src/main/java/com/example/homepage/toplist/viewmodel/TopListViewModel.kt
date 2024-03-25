@@ -10,20 +10,16 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class TopListViewModel : ViewModel() {
-    private val _topDetailsStateFlow = MutableStateFlow(emptyMap<TopListTab,List<TopDetail>>())
-    val topDetailsStateFlow :StateFlow<Map<TopListTab,List<TopDetail>>> = _topDetailsStateFlow
+    private val _topDetailsStateFlow = MutableStateFlow(emptyMap<TopListTab, List<TopDetail>>())
+    val topDetailsStateFlow: StateFlow<Map<TopListTab, List<TopDetail>>> = _topDetailsStateFlow
 
 
-    fun loadTopListData(){
-        viewModelScope.launch{
-            TopListRepository.getTopDetail().collect{
+    fun loadTopListData() {
+        viewModelScope.launch {
+            TopListRepository.getTopDetail().collect {
                 _topDetailsStateFlow.value = TopListRepository.collectTopListMap(it)
             }
-
         }
     }
-
-
-
 
 }

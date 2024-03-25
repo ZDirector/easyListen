@@ -26,26 +26,6 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/iv_three"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="25dp"
-
-            android:alpha="1"
-            app:layout_constraintBottom_toBottomOf="@+id/iv_two_pic"
-            app:layout_constraintStart_toStartOf="@id/iv_two_pic" />
-
-        <ImageView
-            android:id="@+id/iv_two_pic"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="25dp"
-
-            android:alpha="1"
-            app:layout_constraintBottom_toBottomOf="@+id/iv_one"
-            app:layout_constraintStart_toStartOf="@+id/iv_one" />
-
-        <ImageView
             android:id="@+id/iv_one"
             android:layout_width="60dp"
             android:layout_height="60dp"
@@ -66,8 +46,8 @@
             android:src="@drawable/ic_round_solid_1"
             android:textColor="@color/black"
             android:textSize="14sp"
-            app:layout_constraintBottom_toTopOf="@+id/iv_two_pic"
-            app:layout_constraintStart_toEndOf="@+id/iv_three"
+            app:layout_constraintBottom_toTopOf="@+id/iv_one"
+            app:layout_constraintStart_toEndOf="@+id/iv_one"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
