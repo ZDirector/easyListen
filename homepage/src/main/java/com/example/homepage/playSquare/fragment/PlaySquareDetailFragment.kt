@@ -2,26 +2,21 @@ package com.example.homepage.playSquare.fragment
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.Parcelable
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.common.adapter.DataClickListener
-import com.example.common.bean.home.Playlist
 import com.example.homepage.R
 import com.example.homepage.databinding.FragmentPlaySquareDetailBinding
-import com.example.homepage.playSquare.SongSquareActivity
 import com.example.homepage.playSquare.SquareDetailActivity
 import com.example.homepage.playSquare.adapter.PlaylistSquareAdapter
 import com.example.homepage.playSquare.viewmodel.SquareViewModel
-import java.util.concurrent.RecursiveAction
 
 
 class PlaySquareDetailFragment(private val title: String) : Fragment() {
@@ -37,25 +32,7 @@ class PlaySquareDetailFragment(private val title: String) : Fragment() {
     /**
      * 歌单广场的适配器
      */
-    private val mAdapter: PlaylistSquareAdapter by lazy {
-        val adapter = PlaylistSquareAdapter()
-        adapter.itemClickListener = object : DataClickListener<Playlist> {
-            override fun onClick(value: Playlist, position: Int) {
-                //跳转到歌单详程
-                val intent = Intent(requireActivity(), SquareDetailActivity::class.java)
-                if (position < mViewModel.squareListStateFlow.value.playlists.size) {
-                    intent.putExtra(
-                        "playlist",
-                        mViewModel.squareListStateFlow.value.playlists[position]
-                    )
-                    startActivity(intent)
-                }
-
-            }
-        }
-        adapter
-    }
-
+    private val mAdapter = PlaylistSquareAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -75,7 +52,6 @@ class PlaySquareDetailFragment(private val title: String) : Fragment() {
         init()
         initSquareList()
         loadList()
-        mAdapter.addFooterView(footLayout)
     }
 
 
@@ -85,6 +61,15 @@ class PlaySquareDetailFragment(private val title: String) : Fragment() {
         mBinding.apply {
             rvSquare.layoutManager = layoutManager
             rvSquare.adapter = mAdapter
+            mAdapter.onItemClick = {
+                //跳转到歌单详程
+                val intent = Intent(requireActivity(), SquareDetailActivity::class.java)
+                intent.putExtra(
+                    "playlist",
+                    it
+                )
+                startActivity(intent)
+            }
             footLayout = LayoutInflater.from(requireContext()).inflate(
                 R.layout.foot_layout, null
             )
@@ -99,12 +84,11 @@ class PlaySquareDetailFragment(private val title: String) : Fragment() {
     private fun initSquareList() {
         lifecycleScope.launchWhenCreated {
             mViewModel.squareListStateFlow.collect {
-                val size = mAdapter.data.size
-                mAdapter.data.addAll(it.playlists)
-                mAdapter.notifyItemRangeChanged(size, it.playlists.size)
+                val newList = mAdapter.currentList.toMutableList()
+                newList.addAll(it.playlists)
+                mAdapter.submitList(newList)
                 more = it.more
                 loading = false
-                mAdapter.removeFooterView(footLayout)
             }
         }
     }
@@ -118,16 +102,13 @@ class PlaySquareDetailFragment(private val title: String) : Fragment() {
                     if (more) {
                         if (!loading) {
                             loadList()
-                            mAdapter.addFooterView(footLayout)
-                        } else {
-                            if (!loading) {
-                                Toast.makeText(
-                                    requireContext(),
-                                    "所有数据加载完毕！",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                            }
                         }
+                    } else {
+                        Toast.makeText(
+                            requireContext(),
+                            "所有数据加载完毕！",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
             }
@@ -141,7 +122,7 @@ class PlaySquareDetailFragment(private val title: String) : Fragment() {
      */
     private fun loadList() {
         loading = true
-        mViewModel.getSquareList(mAdapter.data.size, 51, title)
+        mViewModel.getSquareList(mAdapter.currentList.size, 51, title)
     }
 
 }

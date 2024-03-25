@@ -39,12 +39,6 @@ class SongSquareActivity : FragmentActivity() {
         getTags()
 
         mBinding.apply {
-
-            val lp = bottomNav.layoutParams as ConstraintLayout.LayoutParams
-            lp.height = bottomNav.height + navigationBarHeight
-            bottomNav.layoutParams = lp
-            bottomNav.requestLayout()
-
             mBinding.ivBack.setOnSingleClickListener {
                 finish()
             }

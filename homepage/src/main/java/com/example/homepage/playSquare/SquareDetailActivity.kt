@@ -6,9 +6,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.view.Gravity
 import android.view.LayoutInflater
-import android.widget.RelativeLayout
 import android.widget.Toast
-import androidx.core.view.marginTop
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
@@ -25,7 +23,6 @@ import com.example.common.bean.searchBean.Song
 import com.example.common.utils.UiUtils.setPic
 import com.example.common.utils.bindImageFromUrlBlur
 import com.example.common.utils.immersive
-import com.example.common.utils.navigationBarHeight
 import com.example.homepage.R
 import com.example.homepage.databinding.ActivitySquareDetailBinding
 import com.example.homepage.playSquare.adapter.SongsAdapter
@@ -75,22 +72,6 @@ class SquareDetailActivity : FragmentActivity() {
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_square_detail)
         mViewModel = ViewModelProvider(this)[PlayListDetailViewModel::class.java]
         mBinding.viewModel = mViewModel
-        mViewModel.listLiveData.observe(this) {
-            getPicColor()
-            mBinding.apply {
-                mViewModel.apply {
-                    nameLiveData.postValue(it.name)
-                    describeLiveData.postValue(it.description)
-                    val picUrl: String = if (listLiveData.value!!.picUrl != "") {
-                        listLiveData.value?.picUrl.toString()
-                    } else listLiveData.value?.coverImgUrl!!
-                    setPic(ibPlaylist, 20, picUrl)
-                    bindImageFromUrlBlur(ivBg, picUrl)
-                    loadList()
-                }
-            }
-
-        }
         init()
         mBinding.apply {
             recyclerView.layoutManager = LinearLayoutManager(applicationContext)
@@ -114,11 +95,9 @@ class SquareDetailActivity : FragmentActivity() {
             mViewModel.setBitMap()
 
             mViewModel.bitmapStateFlow.collect {
-                val builder = it?.let { Palette.from(it) }
-                val palette = builder?.generate()
-                if (palette != null) {
-                    mMainColor = palette.getDarkVibrantColor(Color.WHITE)
-                }
+                val builder = it.let { Palette.from(it) }
+                val palette = builder.generate()
+                mMainColor = palette.getDarkVibrantColor(Color.WHITE)
                 initColor()
             }
         }
@@ -151,7 +130,7 @@ class SquareDetailActivity : FragmentActivity() {
                 toolbar.setBackgroundColor(mMainColor)
 
                 if (offset < appBarLayout.totalScrollRange / 2) {
-                    tvTitleBar.setTextColor(R.color.white)
+                    tvTitleBar.setTextColor(resources.getColor(R.color.white))
 
                     tvTitleBar.alpha =
                         (appBarLayout.totalScrollRange / 2 - offset * 1.0f) / (appBarLayout.totalScrollRange / 2)
@@ -177,31 +156,25 @@ class SquareDetailActivity : FragmentActivity() {
 
     private fun init() {
         if (intent.getSerializableExtra("playlist") != null) {
-            mViewModel.setList(intent.getSerializableExtra("playlist") as Playlist)
+            val playlist = intent.getSerializableExtra("playlist") as Playlist
+            mViewModel.listData = playlist
+            getPicColor()
+            mBinding.apply {
+                mViewModel.apply {
+                    urlLiveData.value = playlist.coverImgUrl
+                    nameLiveData.postValue(playlist.name)
+                    describeLiveData.postValue(playlist.description)
+                    val picUrl: String = if (listData!!.picUrl != "") {
+                        listData?.picUrl.toString()
+                    } else listData?.coverImgUrl!!
+                    setPic(ibPlaylist, 20, picUrl)
+                    bindImageFromUrlBlur(ivBg, picUrl)
+                    loadList()
+                }
+            }
         }
         mBinding.apply {
-
-            val lp = bottomNav.layoutParams as RelativeLayout.LayoutParams
-            lp.height = bottomNav.height + navigationBarHeight
-            bottomNav.layoutParams = lp
-            bottomNav.requestLayout()
-
-
-            val rpTv = tvTitleBar.layoutParams as RelativeLayout.LayoutParams
-            rpTv.topMargin = tvTitleBar.marginTop + getStatusBarHeight(applicationContext)
-            tvTitleBar.layoutParams = rpTv
-            tvTitleBar.requestLayout()
-
-            val rpTv1 = tvTitleBarPlay.layoutParams as RelativeLayout.LayoutParams
-            rpTv1.topMargin = tvTitleBarPlay.marginTop + getStatusBarHeight(applicationContext)
-            tvTitleBarPlay.layoutParams = rpTv1
-            tvTitleBarPlay.requestLayout()
-
-
-            val top = viewTop.layoutParams as RelativeLayout.LayoutParams
-            top.height = viewTop.height + getStatusBarHeight(applicationContext)
-            viewTop.layoutParams = top
-            viewTop.requestLayout()
+            viewTop.layoutParams.height = getStatusBarHeight(applicationContext)
             tvTitleBarPlay.requestFocus()
         }
     }
@@ -217,18 +190,14 @@ class SquareDetailActivity : FragmentActivity() {
                         if (mMore) {
                             if (!loading) {
                                 loadList()
-
                                 mAdapter.addFooterView(mFootView)
-                            } else {
-                                if (!loading) {
-                                    Toast.makeText(
-                                        applicationContext,
-                                        "所有数据加载完毕！",
-                                        Toast.LENGTH_SHORT
-                                    )
-                                        .show()
-                                }
                             }
+                        } else {
+                            Toast.makeText(
+                                applicationContext,
+                                "所有数据加载完毕！",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
                     }
                 }
@@ -238,7 +207,9 @@ class SquareDetailActivity : FragmentActivity() {
 
     private fun loadList() {
         loading = true
-        mViewModel.listLiveData.value?.let { mViewModel.getSongs(it.id, 18, mAdapter.data.size) }
+        mViewModel.listData?.let {
+            mViewModel.getSongs(it.id, 18, mAdapter.data.size)
+        }
     }
 
     private fun initList() {
@@ -249,7 +220,6 @@ class SquareDetailActivity : FragmentActivity() {
                 mAdapter.notifyItemRangeChanged(size, it.size)
                 loading = false
                 mAdapter.removeFooterView(mFootView)
-
             }
         }
     }
