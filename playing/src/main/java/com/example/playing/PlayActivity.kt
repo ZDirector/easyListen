@@ -74,12 +74,12 @@ class PlayActivity : FragmentActivity() {
         binding.ivPlayList.setOnSingleClickListener {
             PLayListFragment.show(this)
         }
-        binding.ivAlbum.setOnSingleClickListener {
-            binding.ivAlbum.visibility = View.GONE
+        binding.clAlbum.setOnSingleClickListener {
+            binding.clAlbum.visibility = View.GONE
             binding.mlvLyric.visibility = View.VISIBLE
         }
         binding.mlvLyric.setClickListener {
-            binding.ivAlbum.visibility = View.VISIBLE
+            binding.clAlbum.visibility = View.VISIBLE
             binding.mlvLyric.visibility = View.GONE
         }
     }
